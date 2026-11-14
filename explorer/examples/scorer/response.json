@@ -1,0 +1,281 @@
+{
+  "placeholder": true,
+  "rotations": [
+    {
+      "id": "current",
+      "is_current": true,
+      "rank": null,
+      "name": "Your rotation",
+      "short": "Continuous corn",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null
+        },
+        {
+          "year": 2028,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null
+        },
+        {
+          "year": 2029,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null
+        },
+        {
+          "year": 2030,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null
+        }
+      ],
+      "score": 0.202,
+      "score_parts": {
+        "water": 0.0,
+        "profit": 0.202,
+        "soil": 0.0,
+        "erosion": 0.0
+      },
+      "kpi": {
+        "irrigation_in": {
+          "v": 16.1,
+          "p10": 11.7,
+          "p90": 19.3
+        },
+        "within_right": 31,
+        "profit": {
+          "v": 264,
+          "p10": 225,
+          "p90": 317
+        },
+        "bare_months": 6.0,
+        "spring_bare": 3.0,
+        "n_lb": 200,
+        "same_crop": 4,
+        "n_loss": 32,
+        "pump_cost": {
+          "v": 193,
+          "p10": 140,
+          "p90": 232
+        },
+        "n_cost": {
+          "v": 110,
+          "lo": 90,
+          "hi": 150
+        }
+      }
+    },
+    {
+      "id": "opt_cswg",
+      "is_current": false,
+      "rank": 3,
+      "name": "Corn · soybean · wheat · sorghum",
+      "short": "4-crop, limited water",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "corn",
+          "irrigation": "reduced",
+          "cover": null
+        },
+        {
+          "year": 2028,
+          "crop": "soybean",
+          "irrigation": "reduced",
+          "cover": null
+        },
+        {
+          "year": 2029,
+          "crop": "winter_wheat",
+          "irrigation": "reduced",
+          "cover": null
+        },
+        {
+          "year": 2030,
+          "crop": "sorghum",
+          "irrigation": "reduced",
+          "cover": null
+        }
+      ],
+      "score": 0.49,
+      "score_parts": {
+        "water": 0.225,
+        "profit": 0.0,
+        "soil": 0.122,
+        "erosion": 0.143
+      },
+      "kpi": {
+        "irrigation_in": {
+          "v": 8.6,
+          "p10": 6.8,
+          "p90": 10.0
+        },
+        "within_right": 42,
+        "profit": {
+          "v": 211,
+          "p10": 194,
+          "p90": 233
+        },
+        "bare_months": 5.5,
+        "spring_bare": 2.2,
+        "n_lb": 95,
+        "same_crop": 1,
+        "n_loss": 27,
+        "pump_cost": {
+          "v": 103,
+          "p10": 81,
+          "p90": 120
+        },
+        "n_cost": {
+          "v": 52,
+          "lo": 43,
+          "hi": 71
+        }
+      }
+    },
+    {
+      "id": "opt_sfw",
+      "is_current": false,
+      "rank": 2,
+      "name": "Sorghum · sunflower · wheat",
+      "short": "Low-water dryland mix",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sorghum",
+          "irrigation": "reduced",
+          "cover": null
+        },
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "none",
+          "cover": null
+        },
+        {
+          "year": 2029,
+          "crop": "winter_wheat",
+          "irrigation": "none",
+          "cover": null
+        },
+        {
+          "year": 2030,
+          "crop": "sorghum",
+          "irrigation": "reduced",
+          "cover": null
+        }
+      ],
+      "score": 0.599,
+      "score_parts": {
+        "water": 0.357,
+        "profit": 0.015,
+        "soil": 0.138,
+        "erosion": 0.089
+      },
+      "kpi": {
+        "irrigation_in": {
+          "v": 4.2,
+          "p10": 3.1,
+          "p90": 5.2
+        },
+        "within_right": 42,
+        "profit": {
+          "v": 215,
+          "p10": 191,
+          "p90": 252
+        },
+        "bare_months": 5.8,
+        "spring_bare": 2.5,
+        "n_lb": 88,
+        "same_crop": 0,
+        "n_loss": 25,
+        "pump_cost": {
+          "v": 51,
+          "p10": 37,
+          "p90": 62
+        },
+        "n_cost": {
+          "v": 48,
+          "lo": 39,
+          "hi": 66
+        }
+      }
+    },
+    {
+      "id": "opt_cst",
+      "is_current": false,
+      "rank": 1,
+      "name": "Corn · soybean + triticale cover",
+      "short": "Smallest change",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null
+        },
+        {
+          "year": 2028,
+          "crop": "soybean",
+          "irrigation": "reduced",
+          "cover": "triticale"
+        },
+        {
+          "year": 2029,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null
+        },
+        {
+          "year": 2030,
+          "crop": "soybean",
+          "irrigation": "reduced",
+          "cover": "triticale"
+        }
+      ],
+      "score": 0.734,
+      "score_parts": {
+        "water": 0.105,
+        "profit": 0.286,
+        "soil": 0.2,
+        "erosion": 0.143
+      },
+      "kpi": {
+        "irrigation_in": {
+          "v": 12.6,
+          "p10": 9.3,
+          "p90": 15.2
+        },
+        "within_right": 25,
+        "profit": {
+          "v": 286,
+          "p10": 254,
+          "p90": 326
+        },
+        "bare_months": 4.0,
+        "spring_bare": 2.2,
+        "n_lb": 90,
+        "same_crop": 1,
+        "n_loss": 17,
+        "pump_cost": {
+          "v": 151,
+          "p10": 111,
+          "p90": 183
+        },
+        "n_cost": {
+          "v": 50,
+          "lo": 40,
+          "hi": 68
+        }
+      }
+    }
+  ]
+}
