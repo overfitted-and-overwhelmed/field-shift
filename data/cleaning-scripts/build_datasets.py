@@ -8,7 +8,7 @@ Usage (from anywhere):
     uv run python data/cleaning-scripts/build_datasets.py climate_data       # one dataset
     uv run python data/cleaning-scripts/build_datasets.py --dry-run          # show only
     uv run python data/cleaning-scripts/build_datasets.py --prune            # also delete files in the
-                                                                             # OUTPUT folder that are no longer configured
+                                                                             # OUTPUT folder that are no longer configured (README.md is kept)
 """
 import argparse
 import hashlib
@@ -56,7 +56,8 @@ def build(name: str, files: list[str], dry_run: bool, prune: bool) -> None:
         if sha256(dst) != before[s]:
             sys.exit(f"ABORT: copy of {s.name} does not match its source")
 
-    stale = sorted(p for p in out_dir.glob("*") if p.is_file() and p.name not in files) if out_dir.exists() else []
+    keep = set(files) | {"README.md"}  # README.md in the output folder is hand-written and never touched
+    stale = sorted(p for p in out_dir.glob("*") if p.is_file() and p.name not in keep) if out_dir.exists() else []
     for p in stale:
         if prune and not dry_run:
             p.unlink()  # only ever inside the output folder (checked above)
