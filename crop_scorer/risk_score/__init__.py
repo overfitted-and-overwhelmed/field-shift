@@ -15,6 +15,7 @@ from crop_scorer.risk_score.config import (
     load_crop_configs,
 )
 from crop_scorer.risk_score.loader import load_temperature_data, validate_temperature_data
+from crop_scorer.risk_score.severity import SEVERITY_COLUMNS, compute_daily_risk, in_winter_rest
 
 __all__ = [
     "CROP_MAPPINGS",
@@ -28,6 +29,9 @@ __all__ = [
     "DEFAULT_WINTER_REST_END",
     "DEFAULT_WINTER_REST_START",
     "DEFAULT_WINTER_WHEAT_REST_KILL_TEMP",
+    "SEVERITY_COLUMNS",
+    "compute_daily_risk",
+    "in_winter_rest",
     "load_crop_configs",
     "load_temperature_data",
     "validate_temperature_data",
