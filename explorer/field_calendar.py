@@ -6,6 +6,8 @@ Step 2: plan the 4 seasons one after another, move a planting later if the field
         occupied, and build a calendar with one row per day (``schedule``, ``daily_calendar``).
 Step 3: condense the daily calendar into the 48 months of the frontend view and the summary
         numbers (``monthly_view``, ``summarize``).
+Step 4: cover crops (``SequenceStep.cover``) fill the gap after their season's harvest, until
+        shortly before the next main crop is planted. Done inside ``schedule``.
 
 Rules:
 * Target date = middle of NASS's "most active" window, i.e. roughly the date by which half of
@@ -17,12 +19,17 @@ Rules:
   soybean or sunflower), planting moves to harvest + GAP_AFTER_HARVEST_DAYS, as long as that
   stays inside NASS's FULL planting window. Otherwise the rotation is impossible and we raise
   CalendarConflict on purpose: a bad rotation should fail loudly, not produce wrong numbers.
+* A cover crop is planted GAP_AFTER_HARVEST_DAYS after its season's harvest, but not before
+  COVER_PLANTING_WINDOW opens (triticale is a winter cereal, sown in autumn), and terminated
+  COVER_END_BEFORE_PLANTING_DAYS before the next main crop is planted (after the last season:
+  it stays until the end of the rotation). Planting after the window closes or a cover that
+  stands less than MIN_COVER_DAYS -> CalendarConflict.
 """
 
 from __future__ import annotations
 
 import csv
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date, timedelta
 from functools import cache
 from pathlib import Path
@@ -37,6 +44,14 @@ from explorer.schema import SequenceStep
 # Days between harvesting one crop and planting the next. Assumption: wheat after soybean is
 # often drilled right after harvest in Kansas.
 GAP_AFTER_HARVEST_DAYS = 3
+
+# Cover crops (assumptions): terminated about two weeks before the next crop is planted, so the
+# seedbed can settle. A cover that would stand less than a month is not worth planting.
+COVER_END_BEFORE_PLANTING_DAYS = 14
+MIN_COVER_DAYS = 30
+# Autumn sowing window for the cover crop, as (month, day). After wheat (harvest end of June)
+# the field stays bare until the window opens instead of being "covered" all summer.
+COVER_PLANTING_WINDOW = ((9, 1), (11, 30))
 
 
 class CalendarConflict(ValueError):
@@ -152,6 +167,15 @@ def season_dates(step: SequenceStep, calendar: Mapping[str, CropWindow] | None =
 
 
 @dataclass(frozen=True)
+class PlannedCover:
+    """A cover crop after a season: from ``plant`` to ``end`` (termination), both inclusive."""
+
+    crop: str
+    plant: date
+    end: date
+
+
+@dataclass(frozen=True)
 class PlannedSeason:
     """One season with its final dates, after checking the season before it."""
 
@@ -160,6 +184,7 @@ class PlannedSeason:
     plant: date
     harvest: date
     shifted_days: int  # > 0: planting had to wait for the previous harvest ("tight window")
+    cover: PlannedCover | None = None  # cover crop after this season's harvest
 
 
 def schedule(
@@ -195,14 +220,43 @@ def schedule(
         planned.append(PlannedSeason(i, step.crop, plant, harvest, shifted))
         field_free_from = harvest
         before = f"season {i} ({step.crop})"
+
+    # Cover crops need the FINAL planting date of the next season, so they come second.
+    for i, step in enumerate(sequence):
+        if step.cover is None:
+            continue
+        season = planned[i]
+        start = season.harvest + timedelta(days=GAP_AFTER_HARVEST_DAYS)
+        (m1, d1), (m2, d2) = COVER_PLANTING_WINDOW
+        window_opens, window_closes = date(start.year, m1, d1), date(start.year, m2, d2)
+        if start > window_closes:
+            raise CalendarConflict(
+                f"cover crop '{step.cover}' after season {i} ({step.crop}): the field is free only from "
+                f"{start}, after the cover planting window closes ({window_closes})."
+            )
+        start = max(start, window_opens)
+        if i + 1 < len(planned):
+            end = planned[i + 1].plant - timedelta(days=COVER_END_BEFORE_PLANTING_DAYS)
+        else:
+            end = date(sequence[-1].year, 12, 31)  # last season: cover stays until the rotation ends
+        if (end - start).days + 1 < MIN_COVER_DAYS:
+            raise CalendarConflict(
+                f"cover crop '{step.cover}' after season {i} ({step.crop}) would stand only "
+                f"{max((end - start).days + 1, 0)} days ({start} to {end}), less than {MIN_COVER_DAYS}."
+            )
+        planned[i] = replace(season, cover=PlannedCover(step.cover, start, end))
     return planned
 
 
 def daily_calendar(seasons: Sequence[PlannedSeason], first_year: int, n_years: int = 4) -> pd.DataFrame:
     """One row per day from 1 Jan ``first_year`` to 31 Dec of the last year.
 
-    Columns: ``crop`` (None if bare), ``kind`` ("crop" or "bare"), ``season`` (index or <NA>).
+    Columns: ``crop`` (None if bare), ``kind`` ("crop", "cover" or "bare"),
+    ``season`` (index of the season the day belongs to, also for its cover crop; <NA> if bare).
     A winter crop planted before ``first_year`` shows up from 1 January.
+
+    To look at main crops only (e.g. frost/heat while the crop stands), filter on
+    ``kind == "crop"``. Filtering on ``season`` alone would include the cover crop days.
     """
     days = pd.date_range(f"{first_year}-01-01", f"{first_year + n_years - 1}-12-31", freq="D", name="date")
     cal = pd.DataFrame(
@@ -218,6 +272,13 @@ def daily_calendar(seasons: Sequence[PlannedSeason], first_year: int, n_years: i
         if span["season"].notna().any():  # cannot happen after schedule(); guards against misuse
             raise CalendarConflict(f"season {s.index} overlaps another season")
         cal.loc[span.index, ["crop", "kind", "season"]] = [s.crop, "crop", s.index]
+    for s in seasons:
+        if s.cover is None:
+            continue
+        span = cal.loc[pd.Timestamp(s.cover.plant) : pd.Timestamp(s.cover.end)]
+        if (span["kind"] != "bare").any():  # cannot happen after schedule(); guards against misuse
+            raise CalendarConflict(f"cover crop after season {s.index} overlaps a main crop")
+        cal.loc[span.index, ["crop", "kind", "season"]] = [s.cover.crop, "cover", s.index]
     return cal
 
 

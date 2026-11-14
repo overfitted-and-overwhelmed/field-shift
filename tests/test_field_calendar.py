@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 
 from explorer.field_calendar import (
+    COVER_END_BEFORE_PLANTING_DAYS,
     GAP_AFTER_HARVEST_DAYS,
     CalendarConflict,
     daily_calendar,
@@ -160,16 +161,17 @@ def _calendar(rotation_id: str):
     return daily_calendar(seasons, first_year=2027), seasons
 
 
-ABBREV = {"corn": "C", "soybean": "S", "winter_wheat": "W", "sorghum": "G", "sunflower": "F"}
+ABBREV = {"corn": "C", "soybean": "S", "winter_wheat": "W", "sorghum": "G", "sunflower": "F", "triticale": "t"}
 
 # Expected monthly view (Jan..Dec per year, 2027-2030; "." = bare). Compare with the mockup:
 #   current  ....CCCCCC.. ...   our summer crops stand a bit later (NASS window middle)
+#   opt_cst  ....CCCCCC.. ....SSSSSttt ttttCCCCCC.. ....SSSSSttt   (t = triticale cover)
 # Pinned on purpose: if NASS data or the rules change, this test shows exactly what moved.
 EXPECTED_MONTHS = {
     "current": "....CCCCC... ....CCCCC... ....CCCCC... ....CCCCC...",
     "opt_cswg": "....CCCCC... .....SSSSSWW WWWWWW...... .....GGGGG..",
     "opt_sfw": ".....GGGGG.. .....FFFFFWW WWWWWW...... .....GGGGG..",
-    "opt_cst": "....CCCCC... .....SSSSS.. ....CCCCC... .....SSSSS..",  # cover crops: step 4
+    "opt_cst": "....CCCCC... .....SSSSStt ttttCCCCC... .....SSSSStt",
 }
 
 
@@ -211,3 +213,61 @@ def test_wheat_rotation_has_fewer_bare_months_than_continuous_corn():
     corn = summarize(*_calendar("current"), PREVIOUS_CROP)["bare_months"]
     wheat = summarize(*_calendar("opt_cswg"), PREVIOUS_CROP)["bare_months"]
     assert wheat < corn
+
+
+# --- Step 4: cover crops -------------------------------------------------------------
+
+
+def test_cover_crop_fills_gap_between_soybean_and_corn():
+    soy_2028, corn_2029 = schedule(MOCKUP_ROTATIONS["opt_cst"], PREVIOUS_CROP)[1:3]
+    cover = soy_2028.cover
+    assert cover.crop == "triticale"
+    assert (cover.plant - soy_2028.harvest).days == GAP_AFTER_HARVEST_DAYS
+    assert (corn_2029.plant - cover.end).days == COVER_END_BEFORE_PLANTING_DAYS
+
+
+def test_cover_crop_after_last_season_stays_until_end_of_rotation():
+    last = schedule(MOCKUP_ROTATIONS["opt_cst"], PREVIOUS_CROP)[3]
+    assert last.cover.end == date(2030, 12, 31)
+
+
+def test_cover_crop_in_calendar_and_summary():
+    cal, seasons = _calendar("opt_cst")
+    assert cal.loc["2029-01-15", "kind"] == "cover" and cal.loc["2029-01-15", "crop"] == "triticale"
+    assert cal.loc["2029-01-15", "season"] == 1  # belongs to the soybean season before it
+    # mockup: 4.0 bare months; without the cover it would be about 7.2
+    assert summarize(cal, seasons, PREVIOUS_CROP)["bare_months"] < 5.5
+
+
+def test_cover_crop_without_room_fails_loudly():
+    # Soybean + cover, then winter wheat: wheat is planted 3 days after the soybean harvest.
+    seq = _seq("corn", "soybean", "winter_wheat", "sorghum")
+    seq[1] = SequenceStep(year=2028, crop="soybean", irrigation="full", cover="triticale")
+    with pytest.raises(CalendarConflict, match="cover crop 'triticale' after season 1"):
+        schedule(seq, PREVIOUS_CROP)
+
+
+def test_cover_crop_does_not_count_as_same_crop():
+    cal, seasons = _calendar("opt_cst")
+    assert summarize(cal, seasons, PREVIOUS_CROP)["same_crop_repeats"] == 1  # only corn after corn
+
+
+def test_cover_crop_after_wheat_waits_for_autumn():
+    # Wheat is harvested end of June; triticale is a winter cereal and is only sown from September.
+    seq = _seq("corn", "winter_wheat", "sorghum", "corn")
+    seq[1] = SequenceStep(year=2028, crop="winter_wheat", irrigation="full", cover="triticale")
+    cover = schedule(seq, PREVIOUS_CROP)[1].cover
+    assert cover.plant == date(2028, 9, 1)
+
+
+def test_cover_crop_after_late_harvest_fails_loudly():
+    # Fake calendar: corn harvested in December, after the cover planting window has closed.
+    from explorer.field_calendar import CropWindow, DayWindow
+
+    calendar = dict(load_nass_calendar())
+    corn = calendar["corn"]
+    calendar["corn"] = CropWindow(corn.planting, corn.planting_full, DayWindow(340, 350), DayWindow(330, 360))
+    seq = _seq("corn", "corn", "corn", "corn")
+    seq[0] = SequenceStep(year=2027, crop="corn", irrigation="full", cover="triticale")
+    with pytest.raises(CalendarConflict, match="planting window closes"):
+        schedule(seq, PREVIOUS_CROP, calendar)

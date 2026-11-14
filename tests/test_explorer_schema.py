@@ -70,6 +70,8 @@ CASES = [
     ("p10 above mean", lambda d, r: r["sequence"][0].update(irr_in={"v": 5, "p10": 6, "p90": 7}), "p10 <= v <= p90"),
     ("bare month with crop", lambda d, r: r["monthly"][0].update(kind="bare", crop="corn"), "must have crop null"),
     ("harvest outside harvest year", lambda d, r: r["sequence"][0].update(harvest_date="2028-10-02"), "harvest year"),
+    ("main crop as cover crop", lambda d, r: r["sequence"][0].update(cover="corn"), "triticale"),
+    ("cover crop as main crop", lambda d, r: r["sequence"][0].update(crop="triticale"), "sunflower"),
     ("planted after harvest", lambda d, r: r["sequence"][0].update(plant_date="2027-11-01"), "not before harvest_date"),
 ]
 

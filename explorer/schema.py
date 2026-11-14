@@ -42,7 +42,9 @@ N_MONTHS = N_SEASONS * 12
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
-CropId = Literal["corn", "sorghum", "soybean", "winter_wheat", "sunflower", "triticale"]
+MainCropId = Literal["corn", "sorghum", "soybean", "winter_wheat", "sunflower"]
+CoverCropId = Literal["triticale"]  # the only cover crop we support
+CropId = MainCropId | CoverCropId  # any crop that can be on the field (catalog, monthly view)
 Irrigation = Literal["full", "reduced", "none"]  # reduced = 50 % of full (assumption)
 MonthKind = Literal["crop", "cover", "bare", "fallow"]
 ProvenanceLabel = Literal["measured", "modeled", "rule", "assumption"]
@@ -158,9 +160,9 @@ class Climate(_Strict):
 
 class SequenceStep(_Strict):
     year: int  # harvest year; winter crops (winter wheat) are planted in the autumn before
-    crop: CropId
+    crop: MainCropId  # a cover crop can never be a season's main crop
     irrigation: Irrigation
-    cover: CropId | None = None
+    cover: CoverCropId | None = None  # and a main crop can never be a cover crop
 
 
 class ScoreParts(_Strict):
