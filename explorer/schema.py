@@ -17,8 +17,9 @@ Each rotation in ``explorer.json`` is the scorer rotation passed through unchang
 Who computes what: water use comes from the scorer (we only adapt it), yield and the rest
 come from us. Placeholders are marked with ``placeholder=True``.
 
-Units are part of the field names: ``_in`` inches of water, ``_lb`` lb N per acre,
-``_pct`` percent 0-100. We always deliver these units; a unit toggle in the UI converts for display.
+Units are part of the field names: ``_in`` inches of water, ``_lb`` lb N per acre, ``_ft`` feet,
+``_pct`` percent 0-100. Everything is in US units except temperature thresholds (°C, e.g.
+``heat_days_ge_35``). There is no unit toggle in the UI.
 
 Why pydantic: it turns these classes into a validator. ``Model.model_validate_json(text)``
 either returns a typed object or raises an error that names the broken field. That way a bad
@@ -33,7 +34,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "1.0.0-draft"
+CONTRACT_VERSION = "2.0.0-draft"
 
 N_SEASONS = 4
 N_MONTHS = N_SEASONS * 12
@@ -113,7 +114,7 @@ class FieldInfo(_Strict):
     name: str
     lat: float = Field(ge=-90, le=90)
     lon: float = Field(ge=-180, le=180)
-    elevation_m: float
+    elevation_ft: float
     slope_pct: float = Field(ge=0)
     soil: Soil
     crop_history: list[CropHistoryYear]

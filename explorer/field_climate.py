@@ -1,7 +1,8 @@
 """WP1 Field & Climate: the ``field``, ``crops`` and ``climate`` blocks of explorer.json.
 
 Reads only from ``data/processed/`` and returns the pydantic models from ``schema.py``,
-so every block is validated when it is built. Water values are converted from mm to inches.
+so every block is validated when it is built. Units are converted to US (mm -> in, m -> ft);
+temperature stays in °C.
 
 ``PROVENANCE`` and ``SOURCES`` are this package's entries for the export; the pipeline (WP7)
 merges them with those of the other packages.
@@ -22,6 +23,7 @@ ANNUAL_FILE = REPO / "data/processed/climate_data/features_annual_long.csv"
 CDL_FILE = REPO / "data/processed/field_data/cdl/cdl_history_clean.csv"
 
 MM_PER_IN = 25.4
+M_PER_FT = 0.3048
 
 # First harvest year of the explored rotations. CDL ends in 2025 and 2026 is already in the ground.
 ROTATION_START_YEAR = 2027
@@ -48,7 +50,7 @@ CLIMATE_UNITS = {
 }
 
 PROVENANCE: dict[str, ProvenanceEntry] = {
-    "field.elevation_m": ProvenanceEntry(label="measured", source="usgs_3dep"),
+    "field.elevation_ft": ProvenanceEntry(label="measured", source="usgs_3dep"),
     "field.slope_pct": ProvenanceEntry(label="measured", source="usgs_3dep"),
     "field.soil": ProvenanceEntry(label="measured", source="ssurgo"),
     "field.crop_history": ProvenanceEntry(label="measured", source="nass_cdl"),
@@ -91,7 +93,7 @@ def build_field(profile_path: Path = PROFILE_FILE, cdl_path: Path = CDL_FILE) ->
         name=f"{loc['county']} County, {loc['state']}",
         lat=loc["lat"],
         lon=loc["lon"],
-        elevation_m=terrain["elevation_m"],
+        elevation_ft=round(terrain["elevation_m"] / M_PER_FT),
         slope_pct=terrain["slope_pct"],
         soil={
             "texture": soil["texture"],

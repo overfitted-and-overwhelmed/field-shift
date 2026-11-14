@@ -1,12 +1,12 @@
 {
-  "contract_version": "1.0.0-draft",
+  "contract_version": "2.0.0-draft",
   "generated_at": "2026-11-14T21:15:15+00:00",
   "field": {
     "id": "ks-kearny-01",
     "name": "Kearny County, Kansas",
     "lat": 38.02511,
     "lon": -101.126084,
-    "elevation_m": 916,
+    "elevation_ft": 3005,
     "slope_pct": 0.55,
     "soil": {
       "texture": "silty clay loam",

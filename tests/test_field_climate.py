@@ -15,6 +15,7 @@ EXAMPLE = Path(__file__).resolve().parents[1] / "explorer" / "examples" / "explo
 def test_field_matches_profile_and_cdl():
     field = build_field()
     assert field.id == "ks-kearny-01"
+    assert field.elevation_ft == 3005  # 916 m
     assert field.soil.water_capacity_in == 7.2  # 183 mm
     assert [h.year for h in field.crop_history] == list(range(2008, 2026))
     assert {h.crop for h in field.crop_history} == {"corn"}
