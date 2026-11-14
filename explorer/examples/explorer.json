@@ -1409,7 +1409,7 @@
           "crop": "winter_wheat",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 275,
+          "plant_doy": 292,
           "harvest_doy": 178,
           "irr_in": {
             "v": 6.61,
@@ -2383,7 +2383,7 @@
           "crop": "winter_wheat",
           "irrigation": "none",
           "cover": null,
-          "plant_doy": 275,
+          "plant_doy": 299,
           "harvest_doy": 178,
           "irr_in": {
             "v": 0.0,
