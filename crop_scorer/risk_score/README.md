@@ -9,7 +9,7 @@ Temperatur-Risikoscore für 5 Crops (Winterweizen, Mais, Hirse, Soja, Sonnenblum
    - Hitze: Tmax, 0 bei `temp_opt_max`, 1 bei `temp_abs_max`, darüber weiter steigend (kein Deckel, kein Hitze-Kill).
    - Frost: Tmin, 0 bei `temp_opt_min`, 1 bei `temp_abs_min`, dort gedeckelt.
    - Kälte-Kill: Tmin < `killing_temp_early_growth`, wenn Ecocrop ihn kennt (Winterweizen, Sonnenblume: 0 °C), sonst Annahme 0 °C (Mais, Hirse, Soja). Ein Kill-Tag zählt +100 und ersetzt den Stresswert.
-   - Winterweizen, Ruhephase 1. Dez. bis 28. Feb.: kein Frost-Stress, Kill erst unter −20 °C.
+   - Winterweizen, Ruhephase 1. Nov. bis 31. März: kein Frost-Stress, Kill erst unter −20 °C. Davor (Okt., junge Saat) und danach (ab April) gilt wieder 0 °C.
 3. **Saison-Score:** Mittel der Tageswerte über die Saison. Score 0 = kein Risiko, höher = riskanter.
 4. **Hauptkennzahl** (`risk_score`, pro Crop und Saatjahr): Mittel der Saison-Scores im Hauptsaatfenster (`planting_most_active_*`). Zusätzlich `score_full_window`, `score_min`, `score_max` und Zähler für Frost-, Hitze- und Kill-Tage.
 
@@ -21,6 +21,18 @@ Temperatur-Risikoscore für 5 Crops (Winterweizen, Mais, Hirse, Soja, Sonnenblum
 | `loader.py` | `load_temperature_data()`: Tmin/Tmax/Tmean pro Tag, mit Prüfung auf Lücken und Ausreißer |
 | `severity.py` | `compute_daily_risk()`: Tageswerte und Kill-Flags für einen Crop |
 | `seasons.py` | `simulate_seasons()`, `aggregate_yearly()`, `check_season_lengths()` |
+| `run.py` | Einstiegspunkt: rechnet alles, schreibt 3 CSVs, druckt Zusammenfassung und Sanity-Checks |
+
+## Ausführen
+
+```bash
+uv run python -m crop_scorer.risk_score.run
+```
+
+Schreibt nach `data/processed/crop_risk_score/` (in `.gitignore`, wird bei jedem Lauf neu erzeugt):
+- `risk_score_annual.csv`: pro Crop und Saatjahr, `risk_score` ist die Hauptkennzahl
+- `risk_score_seasons.csv`: pro Crop, Saatjahr und Saattag
+- `risk_score_daily.csv`: pro Crop und Kalendertag mit Flags (`kill`, `stress_flag`, `in_season_any`)
 
 ## Beispiel
 
@@ -35,14 +47,11 @@ seasons = pd.concat([simulate_seasons(temps, c) for c in crops.values()], ignore
 print(aggregate_yearly(seasons))
 ```
 
-Aufruf mit `uv run python ...` aus dem Repo-Root.
-
 ## Was es nicht kann / Grenzen
 
-- Noch kein Einstiegspunkt und keine CSV-Ausgabe (geplant, siehe `risk-score-plan.md`).
 - Ecocrop-Grenzen gelten für die Tagesmitteltemperatur, wir wenden sie auf Tmin/Tmax an (Näherung).
 - Mais, Hirse, Soja: 0 °C als Kill-Grenze ist eine Annahme, Ecocrop hat keinen Wert.
-- Winterruhe-Zeitraum ist eine Näherung (Parameter). Winterweizen bleibt trotzdem deutlich am höchsten, weil Tmin im Herbst und Frühjahr oft unter 0 °C liegt.
+- Winterruhe-Zeitraum (1. Nov. bis 31. März) ist eine Näherung, änderbar über `DEFAULT_WINTER_REST_START/END` in `config.py`. Die restlichen Winterweizen-Kill-Tage liegen im Oktober und April (Tmin < 0 °C), `risk_score` ist mit ca. 3 weiter der höchste der 5 Crops.
 - NASS-Kalender ist für alle Jahre gleich, die Saatdaten variieren nicht pro Jahr.
 - NASA POWER hat ca. 50 km Auflösung, die Werte sind nicht feldgenau.
 - Winterweizen-Saatjahre nur 1991–2024 (Saison 2025/26 fehlt in den Daten).

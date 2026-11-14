@@ -15,8 +15,8 @@ DEFAULT_POWER_PATH: Final[Path] = DEFAULT_DATA_DIR / "processed" / "power_daily_
 # Default scoring and simulation parameters
 DEFAULT_KILL_PENALTY: Final[float] = 100.0
 DEFAULT_KILL_TEMP_FALLBACK: Final[float] = 0.0
-DEFAULT_WINTER_REST_START: Final[tuple[int, int]] = (12, 1)   # Dec 1 (month, day)
-DEFAULT_WINTER_REST_END: Final[tuple[int, int]] = (2, 28)     # Feb 28 (month, day)
+DEFAULT_WINTER_REST_START: Final[tuple[int, int]] = (11, 1)   # Nov 1 (month, day)
+DEFAULT_WINTER_REST_END: Final[tuple[int, int]] = (3, 31)     # Mar 31 (month, day)
 DEFAULT_WINTER_WHEAT_REST_KILL_TEMP: Final[float] = -20.0
 
 # Crop mapping: NASS crop key -> Ecocrop name / metadata
