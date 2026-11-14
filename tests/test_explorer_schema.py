@@ -1,0 +1,75 @@
+"""Tests for the explorer data contract (explorer/schema.py).
+
+1. The example files must be valid: explorer.json (our output) and scorer/response.json
+   (our assumed input).
+2. Each validation rule must actually reject bad data. We take the valid example,
+   break exactly one thing, and expect an error that mentions it.
+"""
+
+import copy
+import json
+from pathlib import Path
+
+import pytest
+from pydantic import ValidationError
+
+from explorer.schema import SequenceStep, ExplorerExport, ScorerResponse, load_explorer
+
+EXAMPLES = Path(__file__).resolve().parents[1] / "explorer" / "examples"
+
+
+def _load(name: str) -> dict:
+    return json.loads((EXAMPLES / name).read_text(encoding="utf-8"))
+
+
+def test_explorer_example_is_valid():
+    export = load_explorer(EXAMPLES / "explorer.json")
+    assert sum(r.is_current for r in export.rotations) == 1
+    assert sorted(r.rank for r in export.rotations if r.rank) == [1, 2, 3]
+
+
+def test_scorer_example_is_valid():
+    ScorerResponse.model_validate(_load("scorer/response.json"))
+
+
+def test_explorer_passes_scorer_rotations_through():
+    # Our rotations must contain exactly what the scorer sent. We strip what we added
+    # (placeholder flag, monthly, summary, extra season fields) and compare.
+    scorer = ScorerResponse.model_validate(_load("scorer/response.json"))
+    export = load_explorer(EXAMPLES / "explorer.json")
+    scorer_fields = set(SequenceStep.model_fields)
+    ours = []
+    for r in export.rotations:
+        d = r.model_dump(exclude={"placeholder", "monthly", "summary"})
+        d["sequence"] = [{k: v for k, v in s.items() if k in scorer_fields} for s in d["sequence"]]
+        ours.append(d)
+    assert ours == [r.model_dump() for r in scorer.rotations]
+
+
+def test_yield_is_written_as_yield():
+    # "yield" is a Python keyword, the model calls it yield_ internally (see SeasonDetail).
+    season = load_explorer(EXAMPLES / "explorer.json").model_dump(mode="json")["rotations"][0]["sequence"][0]
+    assert "yield" in season and "yield_" not in season
+
+
+# Each case: (what we break, function that breaks a copy of the valid example, expected error text)
+# r = the rotation "opt_cswg" (index 1), which has reduced irrigation in every season.
+CASES = [
+    ("unknown key", lambda d, r: d["field"].update(typo=1), "typo"),
+    ("wrong contract version", lambda d, r: d.update(contract_version="0.0.1"), "contract_version"),
+    ("climate lists differ in length", lambda d, r: d["climate"]["rain_in"].pop(), "rain_in"),
+    ("two current rotations", lambda d, r: r.update(is_current=True, rank=None), "exactly one current"),
+    ("crop missing from catalog", lambda d, r: d["crops"].pop("sunflower"), "sunflower"),
+    ("gap in months", lambda d, r: r["monthly"][5].update(m="2027-07"), "without gaps"),
+    ("water on dryland", lambda d, r: r["sequence"][0].update(irrigation="none"), "irrigation 'none'"),
+    ("p10 above median", lambda d, r: r["sequence"][0].update(irr_in={"v": 5, "p10": 6, "p90": 7}), "p10 <= v <= p90"),
+    ("bare month with crop", lambda d, r: r["monthly"][0].update(kind="bare", crop="corn"), "must have crop null"),
+]
+
+
+@pytest.mark.parametrize("what, break_it, error", CASES, ids=[c[0] for c in CASES])
+def test_rejects(what, break_it, error):
+    data = copy.deepcopy(_load("explorer.json"))
+    break_it(data, data["rotations"][1])
+    with pytest.raises(ValidationError, match=error):
+        ExplorerExport.model_validate(data)
