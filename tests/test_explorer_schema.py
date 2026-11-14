@@ -62,7 +62,7 @@ CASES = [
     ("crop missing from catalog", lambda d, r: d["crops"].pop("sunflower"), "sunflower"),
     ("gap in months", lambda d, r: r["monthly"][5].update(m="2027-07"), "without gaps"),
     ("water on dryland", lambda d, r: r["sequence"][0].update(irrigation="none"), "irrigation 'none'"),
-    ("p10 above median", lambda d, r: r["sequence"][0].update(irr_in={"v": 5, "p10": 6, "p90": 7}), "p10 <= v <= p90"),
+    ("p10 above mean", lambda d, r: r["sequence"][0].update(irr_in={"v": 5, "p10": 6, "p90": 7}), "p10 <= v <= p90"),
     ("bare month with crop", lambda d, r: r["monthly"][0].update(kind="bare", crop="corn"), "must have crop null"),
 ]
 
