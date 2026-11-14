@@ -1,0 +1,663 @@
+item,crop_component,iso3_code,country_iso3c,variable,nutrient,unit,value
+Alfalfa,Crop_products,USA,United States,N_pc,N,pc,2.25
+Alfalfa,Crop_products,USA,United States,P_pc,P,pc,0.22
+Alfalfa,Crop_products,USA,United States,K_pc,K,pc,1.87
+Alfalfa,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0055
+Alfalfa,Crop_products,USA,United States,Mg_pc,Mg,pc,0.26
+Alfalfa,Crop_products,USA,United States,Ca_pc,Ca,pc,1.4
+Alfalfa,Crop_products,USA,United States,S_pc,S,pc,0.24
+Alfalfa,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0053
+Alfalfa,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0008
+Alfalfa haylage (50% dm),Crop_products,USA,United States,Mg_pc,Mg,pc,0.33
+Alfalfa haylage (50% dm),Crop_products,USA,United States,Cu_pc,Cu,pc,0.0009
+Alfalfa haylage (50% dm),Crop_products,USA,United States,P_pc,P,pc,0.33
+Alfalfa haylage (50% dm),Crop_products,USA,United States,N_pc,N,pc,2.79
+Alfalfa haylage (50% dm),Crop_products,USA,United States,Ca_pc,Ca,pc,0.97
+Alfalfa haylage (50% dm),Crop_products,USA,United States,S_pc,S,pc,0.36
+Alfalfa haylage (50% dm),Crop_products,USA,United States,Mn_pc,Mn,pc,0.0052
+Alfalfa haylage (50% dm),Crop_products,USA,United States,K_pc,K,pc,2.32
+All_crops,Crop_residues,USA,United States,CR_removed_pc,CR,removed_pc,76.0
+Apples,Crop_products,USA,United States,K_pc,K,pc,0.16
+Apples,Crop_products,USA,United States,S_pc,S,pc,0.04
+Apples,Crop_products,USA,United States,P_pc,P,pc,0.02
+Apples,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0001
+Apples,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0001
+Apples,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0001
+Apples,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Apples,Crop_products,USA,United States,Ca_pc,Ca,pc,0.03
+Apples,Crop_products,USA,United States,N_pc,N,pc,0.13
+Arrowweed,Crop_products,USA,United States,N_pc,N,pc,2.74
+Bahiagrass,Crop_products,USA,United States,N_pc,N,pc,1.27
+Bahiagrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.43
+Bahiagrass,Crop_products,USA,United States,K_pc,K,pc,1.73
+Bahiagrass,Crop_products,USA,United States,S_pc,S,pc,0.19
+Bahiagrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.25
+Bahiagrass,Crop_products,USA,United States,P_pc,P,pc,0.13
+Bananas,Crop_products,USA,United States,Mg_pc,Mg,pc,0.3
+Bananas,Crop_products,USA,United States,Ca_pc,Ca,pc,0.23
+Bananas,Crop_products,USA,United States,N_pc,N,pc,0.19
+Bananas,Crop_products,USA,United States,P_pc,P,pc,0.02
+Bananas,Crop_products,USA,United States,K_pc,K,pc,0.54
+Barley,Crop_residues,USA,United States,P_pc,P,pc,0.11
+Barley,Crop_residues,USA,United States,S_pc,S,pc,0.2
+Barley,Crop_residues,USA,United States,Zn_pc,Zn,pc,0.0025
+Barley,Crop_products,USA,United States,N_pc,N,pc,1.82
+Barley,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0016
+Barley,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.0005
+Barley,Crop_products,USA,United States,HI,HI,,0.5
+Barley,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.4
+Barley,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0016
+Barley,Crop_products,USA,United States,P_pc,P,pc,0.34
+Barley,Crop_products,USA,United States,K_pc,K,pc,0.43
+Barley,Crop_products,USA,United States,S_pc,S,pc,0.16
+Barley,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0031
+Barley,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.1
+Barley,Crop_residues,USA,United States,N_pc,N,pc,0.75
+Barley,Crop_products,USA,United States,Mg_pc,Mg,pc,0.1
+Barley,Crop_products,USA,United States,Ca_pc,Ca,pc,0.05
+Barley,Crop_residues,USA,United States,K_pc,K,pc,1.25
+Barley,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.016
+"Beans, dry",Crop_products,USA,United States,Cu_pc,Cu,pc,0.0008
+"Beans, dry",Crop_products,USA,United States,S_pc,S,pc,0.21
+"Beans, dry",Crop_products,USA,United States,Zn_pc,Zn,pc,0.0025
+"Beans, dry",Crop_products,USA,United States,P_pc,P,pc,0.45
+"Beans, dry",Crop_products,USA,United States,Mn_pc,Mn,pc,0.0013
+"Beans, dry",Crop_products,USA,United States,K_pc,K,pc,0.86
+"Beans, dry",Crop_products,USA,United States,N_pc,N,pc,3.13
+"Beans, dry",Crop_products,USA,United States,Mg_pc,Mg,pc,0.08
+"Beans, dry",Crop_products,USA,United States,Ca_pc,Ca,pc,0.08
+"Chillies and peppers, green",Crop_products,USA,United States,P_pc,P,pc,0.12
+"Chillies and peppers, green",Crop_products,USA,United States,Mg_pc,Mg,pc,0.04
+"Chillies and peppers, green",Crop_products,USA,United States,N_pc,N,pc,0.4
+"Chillies and peppers, green",Crop_products,USA,United States,K_pc,K,pc,0.49
+Bentgrass,Crop_products,USA,United States,P_pc,P,pc,0.41
+Bentgrass,Crop_products,USA,United States,N_pc,N,pc,3.1
+Bentgrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.27
+Bentgrass,Crop_products,USA,United States,S_pc,S,pc,0.21
+Bentgrass,Crop_products,USA,United States,K_pc,K,pc,2.21
+Bentgrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.65
+Bermudagrass,Crop_products,USA,United States,N_pc,N,pc,1.88
+Bermudagrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.37
+Bermudagrass,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0013
+Bermudagrass,Crop_products,USA,United States,S_pc,S,pc,0.22
+Bermudagrass,Crop_products,USA,United States,P_pc,P,pc,0.19
+Bermudagrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.15
+Bermudagrass,Crop_products,USA,United States,K_pc,K,pc,1.4
+Big bluestem,Crop_products,USA,United States,N_pc,N,pc,0.99
+Big bluestem,Crop_products,USA,United States,K_pc,K,pc,1.75
+Big bluestem,Crop_products,USA,United States,P_pc,P,pc,0.85
+Big bluestem,Crop_products,USA,United States,Mg_pc,Mg,pc,0.2
+Birdsfoot trefoil,Crop_products,USA,United States,N_pc,N,pc,2.49
+Birdsfoot trefoil,Crop_products,USA,United States,Ca_pc,Ca,pc,1.75
+Birdsfoot trefoil,Crop_products,USA,United States,Mg_pc,Mg,pc,0.4
+Birdsfoot trefoil,Crop_products,USA,United States,K_pc,K,pc,1.82
+Birdsfoot trefoil,Crop_products,USA,United States,P_pc,P,pc,0.22
+Bluegrass,Crop_products,USA,United States,Zn_pc,Zn,pc,0.002
+Bluegrass,Crop_products,USA,United States,N_pc,N,pc,2.91
+Bluegrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.23
+Bluegrass,Crop_products,USA,United States,P_pc,P,pc,0.43
+Bluegrass,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0014
+Bluegrass,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0075
+Bluegrass,Crop_products,USA,United States,S_pc,S,pc,0.66
+Bluegrass,Crop_products,USA,United States,K_pc,K,pc,1.95
+Bluegrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.53
+Bluegrass-pastd.,Crop_products,USA,United States,N_pc,N,pc,2.91
+Bluegrass-pastd.,Crop_products,USA,United States,Ca_pc,Ca,pc,0.53
+Bluegrass-pastd.,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0075
+Bluegrass-pastd.,Crop_products,USA,United States,Zn_pc,Zn,pc,0.002
+Bluegrass-pastd.,Crop_products,USA,United States,Mg_pc,Mg,pc,0.23
+Bluegrass-pastd.,Crop_products,USA,United States,S_pc,S,pc,0.66
+Bluegrass-pastd.,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0014
+Bluegrass-pastd.,Crop_products,USA,United States,P_pc,P,pc,0.43
+Bluegrass-pastd.,Crop_products,USA,United States,K_pc,K,pc,1.95
+Bromegrass,Crop_products,USA,United States,K_pc,K,pc,2.55
+Bromegrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.19
+Bromegrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.47
+Bromegrass,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0008
+Bromegrass,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0052
+Bromegrass,Crop_products,USA,United States,S_pc,S,pc,0.19
+Bromegrass,Crop_products,USA,United States,N_pc,N,pc,1.87
+Bromegrass,Crop_products,USA,United States,P_pc,P,pc,0.21
+Buckwheat,Crop_residues,USA,United States,Ca_pc,Ca,pc,1.4
+Buckwheat,Crop_residues,USA,United States,S_pc,S,pc,0.01
+Buckwheat,Crop_products,USA,United States,Ca_pc,Ca,pc,0.09
+Buckwheat,Crop_residues,USA,United States,P_pc,P,pc,0.05
+Buckwheat,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0034
+Buckwheat,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0009
+Buckwheat,Crop_products,USA,United States,P_pc,P,pc,0.31
+Buckwheat,Crop_products,USA,United States,K_pc,K,pc,0.45
+Buckwheat,Crop_products,USA,United States,N_pc,N,pc,1.65
+Buckwheat,Crop_residues,USA,United States,N_pc,N,pc,0.78
+Buckwheat,Crop_residues,USA,United States,K_pc,K,pc,2.26
+Cabbages and other brassicas,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0001
+Cabbages and other brassicas,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Cabbages and other brassicas,Crop_products,USA,United States,S_pc,S,pc,0.11
+Cabbages and other brassicas,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0003
+Cabbages and other brassicas,Crop_products,USA,United States,Ca_pc,Ca,pc,0.05
+Cabbages and other brassicas,Crop_products,USA,United States,P_pc,P,pc,0.04
+Cabbages and other brassicas,Crop_products,USA,United States,N_pc,N,pc,0.33
+Cabbages and other brassicas,Crop_products,USA,United States,K_pc,K,pc,0.27
+Cabbages and other brassicas,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0002
+"Melons, other (inc.cantaloupes)",Crop_products,USA,United States,K_pc,K,pc,0.46
+"Melons, other (inc.cantaloupes)",Crop_products,USA,United States,Mg_pc,Mg,pc,0.34
+"Melons, other (inc.cantaloupes)",Crop_products,USA,United States,P_pc,P,pc,0.09
+"Melons, other (inc.cantaloupes)",Crop_products,USA,United States,N_pc,N,pc,0.22
+Carrots and turnips,Crop_products,USA,United States,N_pc,N,pc,0.19
+Carrots and turnips,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0004
+Carrots and turnips,Crop_products,USA,United States,K_pc,K,pc,0.25
+Carrots and turnips,Crop_products,USA,United States,P_pc,P,pc,0.04
+Carrots and turnips,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0001
+Carrots and turnips,Crop_products,USA,United States,S_pc,S,pc,0.02
+Carrots and turnips,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Carrots and turnips,Crop_products,USA,United States,Ca_pc,Ca,pc,0.05
+Cassava,Crop_products,USA,United States,P_pc,P,pc,0.13
+Cassava,Crop_products,USA,United States,K_pc,K,pc,0.63
+Cassava,Crop_products,USA,United States,Mg_pc,Mg,pc,0.13
+Cassava,Crop_products,USA,United States,Ca_pc,Ca,pc,0.26
+Cassava,Crop_products,USA,United States,N_pc,N,pc,0.4
+Cattails,Crop_products,USA,United States,P_pc,P,pc,0.18
+Cattails,Crop_products,USA,United States,N_pc,N,pc,1.02
+Celery,Crop_products,USA,United States,N_pc,N,pc,0.17
+Celery,Crop_products,USA,United States,K_pc,K,pc,0.45
+Celery,Crop_products,USA,United States,P_pc,P,pc,0.09
+Clover-grass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.92
+Clover-grass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.28
+Clover-grass,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0008
+Clover-grass,Crop_products,USA,United States,N_pc,N,pc,1.52
+Clover-grass,Crop_products,USA,United States,S_pc,S,pc,0.15
+Clover-grass,Crop_products,USA,United States,P_pc,P,pc,0.27
+Clover-grass,Crop_products,USA,United States,K_pc,K,pc,1.69
+Clover-grass,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0106
+Coconuts,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0076
+Coconuts,Crop_products,USA,United States,Ca_pc,Ca,pc,0.21
+Coconuts,Crop_products,USA,United States,N_pc,N,pc,5.0
+Coconuts,Crop_products,USA,United States,K_pc,K,pc,3.33
+Coconuts,Crop_products,USA,United States,S_pc,S,pc,0.34
+Coconuts,Crop_products,USA,United States,P_pc,P,pc,0.6
+Coconuts,Crop_products,USA,United States,Mg_pc,Mg,pc,0.36
+Coconuts,Crop_products,USA,United States,Cu_pc,Cu,pc,0.001
+Maize,Crop_products,USA,United States,N_pc,N,pc,1.61
+Maize,Crop_products,USA,United States,K_pc,K,pc,0.4
+Maize,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0007
+Maize,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.0005
+Maize,Crop_residues,USA,United States,S_pc,S,pc,0.16
+Maize,Crop_products,USA,United States,P_pc,P,pc,0.28
+Maize,Crop_products,USA,United States,Mg_pc,Mg,pc,0.1
+Maize,Crop_products,USA,United States,S_pc,S,pc,0.12
+Maize,Crop_residues,USA,United States,Zn_pc,Zn,pc,0.0033
+Maize,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0011
+Maize,Crop_residues,USA,United States,K_pc,K,pc,1.34
+Maize,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0018
+Maize,Crop_residues,USA,United States,N_pc,N,pc,1.11
+Maize,Crop_residues,USA,United States,P_pc,P,pc,0.2
+Maize,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.22
+Maize,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0166
+Maize,Crop_products,USA,United States,Ca_pc,Ca,pc,0.02
+Maize,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.29
+"Maize, green",Crop_products,USA,United States,Cu_pc,Cu,pc,0.0005
+"Maize, green",Crop_products,USA,United States,K_pc,K,pc,1.09
+"Maize, green",Crop_products,USA,United States,N_pc,N,pc,1.1
+"Maize, green",Crop_products,USA,United States,S_pc,S,pc,0.15
+"Maize, green",Crop_products,USA,United States,Mg_pc,Mg,pc,0.18
+"Maize, green",Crop_products,USA,United States,Ca_pc,Ca,pc,0.36
+"Maize, green",Crop_products,USA,United States,Mn_pc,Mn,pc,0.007
+"Maize, green",Crop_products,USA,United States,P_pc,P,pc,0.25
+Cotton,Crop_residues,USA,United States,K_pc,K,pc,1.45
+Cotton,Crop_residues,USA,United States,N_pc,N,pc,1.75
+Cotton,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.4
+Cotton,Crop_residues,USA,United States,Ca_pc,Ca,pc,1.4
+Cotton,Crop_residues,USA,United States,S_pc,S,pc,0.75
+Cotton,Crop_residues,USA,United States,P_pc,P,pc,0.22
+Cotton,Crop_products,USA,United States,P_pc,P,pc,0.58
+Cotton,Crop_products,USA,United States,Cu_pc,Cu,pc,0.004
+Cotton,Crop_products,USA,United States,Mg_pc,Mg,pc,0.27
+Cotton,Crop_products,USA,United States,Ca_pc,Ca,pc,0.13
+Cotton,Crop_products,USA,United States,N_pc,N,pc,2.67
+Cotton,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0073
+Cotton,Crop_products,USA,United States,K_pc,K,pc,0.83
+Cotton,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0213
+Cotton,Crop_products,USA,United States,S_pc,S,pc,0.2
+Cucumbers and gherkins,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Cucumbers and gherkins,Crop_products,USA,United States,K_pc,K,pc,0.33
+Cucumbers and gherkins,Crop_products,USA,United States,N_pc,N,pc,0.2
+Cucumbers and gherkins,Crop_products,USA,United States,P_pc,P,pc,0.07
+Dallisgrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.56
+Dallisgrass,Crop_products,USA,United States,P_pc,P,pc,0.2
+Dallisgrass,Crop_products,USA,United States,N_pc,N,pc,1.92
+Dallisgrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.4
+Dallisgrass,Crop_products,USA,United States,K_pc,K,pc,1.72
+Douglas fir,Crop_products,USA,United States,N_pc,N,pc,0.16
+Duckweed,Crop_products,USA,United States,N_pc,N,pc,3.36
+Duckweed,Crop_products,USA,United States,K_pc,K,pc,2.13
+Duckweed,Crop_products,USA,United States,P_pc,P,pc,1.0
+Flax fibre and tow,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.72
+Flax fibre and tow,Crop_products,USA,United States,Mg_pc,Mg,pc,0.43
+Flax fibre and tow,Crop_residues,USA,United States,S_pc,S,pc,0.27
+Flax fibre and tow,Crop_products,USA,United States,S_pc,S,pc,0.25
+Flax fibre and tow,Crop_products,USA,United States,Ca_pc,Ca,pc,0.23
+Flax fibre and tow,Crop_products,USA,United States,K_pc,K,pc,0.84
+Flax fibre and tow,Crop_products,USA,United States,N_pc,N,pc,4.09
+Flax fibre and tow,Crop_residues,USA,United States,N_pc,N,pc,1.24
+Flax fibre and tow,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0061
+Flax fibre and tow,Crop_residues,USA,United States,K_pc,K,pc,1.75
+Flax fibre and tow,Crop_residues,USA,United States,P_pc,P,pc,0.11
+Flax fibre and tow,Crop_products,USA,United States,P_pc,P,pc,0.55
+Flax fibre and tow,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.31
+Sorghum,Crop_products,USA,United States,N_pc,N,pc,1.44
+Sorghum,Crop_products,USA,United States,K_pc,K,pc,1.02
+Sorghum,Crop_products,USA,United States,P_pc,P,pc,0.19
+Sorghum,Crop_products,USA,United States,Mg_pc,Mg,pc,0.31
+Sorghum,Crop_products,USA,United States,Ca_pc,Ca,pc,0.37
+Sorghum,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0045
+Sorghum,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0032
+Sorghum,Crop_products,USA,United States,S_pc,S,pc,0.11
+Grapes,Crop_products,USA,United States,P_pc,P,pc,0.1
+Grapes,Crop_products,USA,United States,N_pc,N,pc,0.28
+Grapes,Crop_products,USA,United States,Mg_pc,Mg,pc,0.04
+Grapes,Crop_products,USA,United States,K_pc,K,pc,0.5
+Guineagrass,Crop_products,USA,United States,N_pc,N,pc,1.25
+Guineagrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.43
+Guineagrass,Crop_products,USA,United States,S_pc,S,pc,0.2
+Guineagrass,Crop_products,USA,United States,P_pc,P,pc,0.44
+Guineagrass,Crop_products,USA,United States,K_pc,K,pc,1.89
+Indiangrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.15
+Indiangrass,Crop_products,USA,United States,N_pc,N,pc,1.0
+Indiangrass,Crop_products,USA,United States,P_pc,P,pc,0.85
+Indiangrass,Crop_products,USA,United States,K_pc,K,pc,1.2
+Leaves,Crop_residues,USA,United States,K_pc,K,pc,0.46
+Leaves,Crop_residues,USA,United States,N_pc,N,pc,0.75
+Leaves,Crop_residues,USA,United States,P_pc,P,pc,0.06
+Lespedeza,Crop_products,USA,United States,S_pc,S,pc,0.33
+Lespedeza,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0152
+Lespedeza,Crop_products,USA,United States,Ca_pc,Ca,pc,1.12
+Lespedeza,Crop_products,USA,United States,Mg_pc,Mg,pc,0.21
+Lespedeza,Crop_products,USA,United States,P_pc,P,pc,0.21
+Lespedeza,Crop_products,USA,United States,N_pc,N,pc,2.33
+Lespedeza,Crop_products,USA,United States,K_pc,K,pc,1.06
+Lettuce and chicory,Crop_products,USA,United States,N_pc,N,pc,0.23
+Lettuce and chicory,Crop_products,USA,United States,K_pc,K,pc,0.46
+Lettuce and chicory,Crop_products,USA,United States,P_pc,P,pc,0.08
+Little bluestem,Crop_products,USA,United States,Mg_pc,Mg,pc,0.2
+Little bluestem,Crop_products,USA,United States,P_pc,P,pc,0.85
+Little bluestem,Crop_products,USA,United States,N_pc,N,pc,1.1
+Little bluestem,Crop_products,USA,United States,K_pc,K,pc,1.45
+Maize,Crop_products,USA,United States,HI,HI,,0.53
+Northern hardwoods,Crop_products,USA,United States,K_pc,K,pc,0.1
+Northern hardwoods,Crop_products,USA,United States,Ca_pc,Ca,pc,0.29
+Northern hardwoods,Crop_products,USA,United States,N_pc,N,pc,0.2
+Northern hardwoods,Crop_products,USA,United States,P_pc,P,pc,0.02
+Oats,Crop_products,USA,United States,N_pc,N,pc,1.6
+Oats,Crop_products,USA,United States,Mg_pc,Mg,pc,0.24
+Oats,Crop_products,USA,United States,P_pc,P,pc,0.28
+Oats,Crop_products,USA,United States,K_pc,K,pc,0.94
+Oats,Crop_products,USA,United States,S_pc,S,pc,0.18
+Oats,Crop_products,USA,United States,Ca_pc,Ca,pc,0.31
+Oats,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.2
+Oats,Crop_products,USA,United States,HI,HI,,0.44
+Oats,Crop_residues,USA,United States,K_pc,K,pc,1.66
+Oats,Crop_products,USA,United States,P_pc,P,pc,0.34
+Oats,Crop_products,USA,United States,N_pc,N,pc,1.95
+Oats,Crop_products,USA,United States,Mg_pc,Mg,pc,0.12
+Oats,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0012
+Oats,Crop_residues,USA,United States,P_pc,P,pc,0.16
+Oats,Crop_products,USA,United States,S_pc,S,pc,0.2
+Oats,Crop_products,USA,United States,HI,HI,,0.52
+Oats,Crop_products,USA,United States,Zn_pc,Zn,pc,0.002
+Oats,Crop_products,USA,United States,K_pc,K,pc,0.49
+Oats,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.0008
+Oats,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.003
+Oats,Crop_products,USA,United States,Ca_pc,Ca,pc,0.08
+Oats,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0047
+Oats,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.2
+Oats,Crop_residues,USA,United States,N_pc,N,pc,0.63
+Oats,Crop_residues,USA,United States,Zn_pc,Zn,pc,0.0072
+Oats,Crop_residues,USA,United States,S_pc,S,pc,0.23
+Oil palm,Crop_residues,USA,United States,K_pc,K,pc,1.69
+Oil palm,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.36
+Oil palm,Crop_products,USA,United States,K_pc,K,pc,0.16
+Oil palm,Crop_residues,USA,United States,N_pc,N,pc,1.07
+Oil palm,Crop_products,USA,United States,Mg_pc,Mg,pc,0.09
+Oil palm,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0225
+Oil palm,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0043
+Oil palm,Crop_products,USA,United States,N_pc,N,pc,1.13
+Oil palm,Crop_products,USA,United States,P_pc,P,pc,0.26
+Oil palm,Crop_products,USA,United States,Ca_pc,Ca,pc,0.19
+Oil palm,Crop_residues,USA,United States,P_pc,P,pc,0.49
+"Onions, shallots, green",Crop_products,USA,United States,P_pc,P,pc,0.06
+"Onions, shallots, green",Crop_products,USA,United States,S_pc,S,pc,0.12
+"Onions, shallots, green",Crop_products,USA,United States,Mn_pc,Mn,pc,0.005
+"Onions, shallots, green",Crop_products,USA,United States,Mg_pc,Mg,pc,0.01
+"Onions, shallots, green",Crop_products,USA,United States,Ca_pc,Ca,pc,0.07
+"Onions, shallots, green",Crop_products,USA,United States,Zn_pc,Zn,pc,0.0021
+"Onions, shallots, green",Crop_products,USA,United States,Cu_pc,Cu,pc,0.0002
+"Onions, shallots, green",Crop_products,USA,United States,N_pc,N,pc,0.3
+"Onions, shallots, green",Crop_products,USA,United States,K_pc,K,pc,0.22
+Oranges,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0001
+Oranges,Crop_products,USA,United States,P_pc,P,pc,0.02
+Oranges,Crop_products,USA,United States,N_pc,N,pc,0.2
+Oranges,Crop_products,USA,United States,Ca_pc,Ca,pc,0.06
+Oranges,Crop_products,USA,United States,Zn_pc,Zn,pc,0.004
+Oranges,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0004
+Oranges,Crop_products,USA,United States,S_pc,S,pc,0.02
+Oranges,Crop_products,USA,United States,K_pc,K,pc,0.21
+Oranges,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Orchardgrass,Crop_products,USA,United States,P_pc,P,pc,0.2
+Orchardgrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.24
+Orchardgrass,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0017
+Orchardgrass,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0078
+Orchardgrass,Crop_products,USA,United States,S_pc,S,pc,0.26
+Orchardgrass,Crop_products,USA,United States,N_pc,N,pc,1.47
+Orchardgrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.3
+Orchardgrass,Crop_products,USA,United States,K_pc,K,pc,2.16
+Pangolagrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.29
+Pangolagrass,Crop_products,USA,United States,P_pc,P,pc,0.47
+Pangolagrass,Crop_products,USA,United States,N_pc,N,pc,1.3
+Pangolagrass,Crop_products,USA,United States,S_pc,S,pc,0.2
+Pangolagrass,Crop_products,USA,United States,K_pc,K,pc,1.87
+Paragrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.33
+Paragrass,Crop_products,USA,United States,P_pc,P,pc,0.39
+Paragrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.39
+Paragrass,Crop_products,USA,United States,N_pc,N,pc,0.82
+Paragrass,Crop_products,USA,United States,S_pc,S,pc,0.17
+Paragrass,Crop_products,USA,United States,K_pc,K,pc,1.59
+Peaches and nectarines,Crop_products,USA,United States,Ca_pc,Ca,pc,0.01
+Peaches and nectarines,Crop_products,USA,United States,P_pc,P,pc,0.03
+Peaches and nectarines,Crop_products,USA,United States,N_pc,N,pc,0.12
+Peaches and nectarines,Crop_products,USA,United States,S_pc,S,pc,0.01
+Peaches and nectarines,Crop_products,USA,United States,Mg_pc,Mg,pc,0.03
+Peaches and nectarines,Crop_products,USA,United States,Zn_pc,Zn,pc,0.001
+Peaches and nectarines,Crop_products,USA,United States,K_pc,K,pc,0.19
+"Groundnuts, with shell",Crop_products,USA,United States,Cu_pc,Cu,pc,0.0008
+"Groundnuts, with shell",Crop_products,USA,United States,Ca_pc,Ca,pc,0.04
+"Groundnuts, with shell",Crop_products,USA,United States,S_pc,S,pc,0.24
+"Groundnuts, with shell",Crop_products,USA,United States,N_pc,N,pc,3.6
+"Groundnuts, with shell",Crop_residues,USA,United States,K_pc,K,pc,1.75
+"Groundnuts, with shell",Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0051
+"Groundnuts, with shell",Crop_residues,USA,United States,N_pc,N,pc,2.33
+"Groundnuts, with shell",Crop_products,USA,United States,K_pc,K,pc,0.5
+"Groundnuts, with shell",Crop_residues,USA,United States,Mg_pc,Mg,pc,0.38
+"Groundnuts, with shell",Crop_products,USA,United States,P_pc,P,pc,0.17
+"Groundnuts, with shell",Crop_residues,USA,United States,P_pc,P,pc,0.24
+"Groundnuts, with shell",Crop_residues,USA,United States,Ca_pc,Ca,pc,1.0
+"Groundnuts, with shell",Crop_products,USA,United States,Mn_pc,Mn,pc,0.004
+"Groundnuts, with shell",Crop_residues,USA,United States,S_pc,S,pc,0.36
+"Groundnuts, with shell",Crop_products,USA,United States,Mg_pc,Mg,pc,0.12
+"Peas, green",Crop_products,USA,United States,P_pc,P,pc,0.4
+"Peas, green",Crop_products,USA,United States,K_pc,K,pc,0.9
+"Peas, green",Crop_products,USA,United States,Ca_pc,Ca,pc,0.08
+"Peas, green",Crop_products,USA,United States,S_pc,S,pc,0.24
+"Peas, green",Crop_products,USA,United States,N_pc,N,pc,3.68
+"Peas, green",Crop_products,USA,United States,Mg_pc,Mg,pc,0.24
+Phragmites,Crop_products,USA,United States,N_pc,N,pc,1.83
+Phragmites,Crop_products,USA,United States,K_pc,K,pc,0.52
+Phragmites,Crop_products,USA,United States,P_pc,P,pc,0.1
+Pineapples,Crop_products,USA,United States,K_pc,K,pc,1.68
+Pineapples,Crop_products,USA,United States,Mg_pc,Mg,pc,0.18
+Pineapples,Crop_products,USA,United States,P_pc,P,pc,0.35
+Pineapples,Crop_products,USA,United States,N_pc,N,pc,0.43
+Pineapples,Crop_products,USA,United States,Ca_pc,Ca,pc,0.02
+Pineapples,Crop_products,USA,United States,S_pc,S,pc,0.04
+Potatoes,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0002
+Potatoes,Crop_products,USA,United States,N_pc,N,pc,0.33
+Potatoes,Crop_products,USA,United States,Ca_pc,Ca,pc,0.01
+Potatoes,Crop_products,USA,United States,S_pc,S,pc,0.03
+Potatoes,Crop_products,USA,United States,K_pc,K,pc,0.52
+Potatoes,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0004
+Potatoes,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0002
+Potatoes,Crop_products,USA,United States,P_pc,P,pc,0.06
+Potatoes,Crop_products,USA,United States,Mg_pc,Mg,pc,0.03
+Pulpwood,Crop_residues,USA,United States,N_pc,N,pc,0.12
+Pulpwood,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.02
+Pulpwood,Crop_residues,USA,United States,P_pc,P,pc,0.02
+Pulpwood,Crop_products,USA,United States,N_pc,N,pc,0.12
+Pulpwood,Crop_residues,USA,United States,K_pc,K,pc,0.06
+Pulpwood,Crop_products,USA,United States,K_pc,K,pc,0.06
+Pulpwood,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Pulpwood,Crop_products,USA,United States,P_pc,P,pc,0.02
+Rapeseed,Crop_products,USA,United States,Mg_pc,Mg,pc,0.66
+Rapeseed,Crop_residues,USA,United States,K_pc,K,pc,3.37
+Rapeseed,Crop_products,USA,United States,N_pc,N,pc,3.6
+Rapeseed,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.06
+Rapeseed,Crop_products,USA,United States,K_pc,K,pc,0.76
+Rapeseed,Crop_residues,USA,United States,S_pc,S,pc,0.68
+Rapeseed,Crop_products,USA,United States,P_pc,P,pc,0.79
+Rapeseed,Crop_residues,USA,United States,N_pc,N,pc,4.48
+Rapeseed,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.0001
+Rapeseed,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0008
+Rapeseed,Crop_residues,USA,United States,Ca_pc,Ca,pc,1.47
+Rapeseed,Crop_residues,USA,United States,P_pc,P,pc,0.43
+Red clover,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0072
+Red clover,Crop_products,USA,United States,P_pc,P,pc,0.22
+Red clover,Crop_products,USA,United States,Mg_pc,Mg,pc,0.34
+Red clover,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0008
+Red clover,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0108
+Red clover,Crop_products,USA,United States,K_pc,K,pc,1.66
+Red clover,Crop_products,USA,United States,S_pc,S,pc,0.14
+Red clover,Crop_products,USA,United States,N_pc,N,pc,2.0
+Red clover,Crop_products,USA,United States,Ca_pc,Ca,pc,1.38
+Reed canarygrass,Crop_products,USA,United States,P_pc,P,pc,0.18
+Reed canarygrass,Crop_products,USA,United States,N_pc,N,pc,1.35
+Reed canarygrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.36
+"Rice, paddy",Crop_products,USA,United States,S_pc,S,pc,0.08
+"Rice, paddy",Crop_residues,USA,United States,P_pc,P,pc,0.09
+"Rice, paddy",Crop_residues,USA,United States,Mg_pc,Mg,pc,0.1
+"Rice, paddy",Crop_residues,USA,United States,N_pc,N,pc,0.6
+"Rice, paddy",Crop_products,USA,United States,Cu_pc,Cu,pc,0.003
+"Rice, paddy",Crop_residues,USA,United States,Ca_pc,Ca,pc,0.18
+"Rice, paddy",Crop_products,USA,United States,P_pc,P,pc,0.24
+"Rice, paddy",Crop_products,USA,United States,N_pc,N,pc,1.39
+"Rice, paddy",Crop_products,USA,United States,Mg_pc,Mg,pc,0.11
+"Rice, paddy",Crop_products,USA,United States,Mn_pc,Mn,pc,0.0022
+"Rice, paddy",Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0316
+"Rice, paddy",Crop_residues,USA,United States,K_pc,K,pc,1.16
+"Rice, paddy",Crop_products,USA,United States,Ca_pc,Ca,pc,0.08
+"Rice, paddy",Crop_products,USA,United States,K_pc,K,pc,0.23
+"Rice, paddy",Crop_products,USA,United States,Zn_pc,Zn,pc,0.0019
+Rushes,Crop_products,USA,United States,N_pc,N,pc,1.67
+Rye,Crop_residues,USA,United States,K_pc,K,pc,0.69
+Rye,Crop_products,USA,United States,P_pc,P,pc,0.26
+Rye,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.03
+Rye,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0131
+Rye,Crop_residues,USA,United States,N_pc,N,pc,0.5
+Rye,Crop_products,USA,United States,S_pc,S,pc,0.42
+Rye,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0012
+Rye,Crop_residues,USA,United States,Zn_pc,Zn,pc,0.0023
+Rye,Crop_products,USA,United States,K_pc,K,pc,0.49
+Rye,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.07
+Rye,Crop_products,USA,United States,Mg_pc,Mg,pc,0.18
+Rye,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0018
+Rye,Crop_products,USA,United States,N_pc,N,pc,2.08
+Rye,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.27
+Rye,Crop_residues,USA,United States,S_pc,S,pc,0.1
+Rye,Crop_products,USA,United States,Ca_pc,Ca,pc,0.12
+Rye,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0047
+Rye,Crop_residues,USA,United States,P_pc,P,pc,0.12
+Ryegrass,Crop_products,USA,United States,N_pc,N,pc,1.67
+Ryegrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.35
+Ryegrass,Crop_products,USA,United States,K_pc,K,pc,1.42
+Ryegrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.65
+Ryegrass,Crop_products,USA,United States,P_pc,P,pc,0.27
+Saltgrass,Crop_products,USA,United States,P_pc,P,pc,0.27
+Saltgrass,Crop_products,USA,United States,N_pc,N,pc,1.44
+Saltgrass,Crop_products,USA,United States,K_pc,K,pc,0.62
+Sedges,Crop_products,USA,United States,N_pc,N,pc,1.79
+Sedges,Crop_products,USA,United States,Ca_pc,Ca,pc,0.66
+Sedges,Crop_products,USA,United States,P_pc,P,pc,0.26
+"Beans, green",Crop_products,USA,United States,N_pc,N,pc,0.88
+"Beans, green",Crop_products,USA,United States,S_pc,S,pc,0.11
+"Beans, green",Crop_products,USA,United States,P_pc,P,pc,0.26
+"Beans, green",Crop_products,USA,United States,Cu_pc,Cu,pc,0.0005
+"Beans, green",Crop_products,USA,United States,Mn_pc,Mn,pc,0.0009
+"Beans, green",Crop_products,USA,United States,Mg_pc,Mg,pc,0.1
+"Beans, green",Crop_products,USA,United States,K_pc,K,pc,0.96
+"Beans, green",Crop_products,USA,United States,Ca_pc,Ca,pc,0.05
+Sorghum,Crop_products,USA,United States,P_pc,P,pc,0.36
+Sorghum,Crop_residues,USA,United States,P_pc,P,pc,0.15
+Sorghum,Crop_residues,USA,United States,N_pc,N,pc,1.08
+Sorghum,Crop_products,USA,United States,HI,HI,,0.44
+Sorghum,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0116
+Sorghum,Crop_products,USA,United States,HI,HI,,0.47
+Sorghum,Crop_products,USA,United States,N_pc,N,pc,1.67
+Sorghum,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0003
+Sorghum,Crop_products,USA,United States,S_pc,S,pc,0.17
+Sorghum,Crop_residues,USA,United States,S_pc,S,pc,0.13
+Sorghum,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0013
+Sorghum,Crop_products,USA,United States,K_pc,K,pc,0.42
+Sorghum,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0013
+Sorghum,Crop_products,USA,United States,Mg_pc,Mg,pc,0.17
+Sorghum,Crop_residues,USA,United States,K_pc,K,pc,1.31
+Sorghum,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.48
+Sorghum,Crop_products,USA,United States,Ca_pc,Ca,pc,0.13
+Sorghum,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.3
+Sorghum,Crop_products,USA,United States,Ca_pc,Ca,pc,0.43
+Sorghum,Crop_products,USA,United States,K_pc,K,pc,1.45
+Sorghum,Crop_products,USA,United States,Mg_pc,Mg,pc,0.34
+Sorghum,Crop_products,USA,United States,N_pc,N,pc,1.36
+Sorghum,Crop_products,USA,United States,P_pc,P,pc,0.16
+Sorghum,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0091
+Sorghum,Crop_products,USA,United States,S_pc,S,pc,0.04
+Soybeans,Crop_residues,USA,United States,S_pc,S,pc,0.25
+Soybeans,Crop_products,USA,United States,K_pc,K,pc,1.9
+Soybeans,Crop_residues,USA,United States,P_pc,P,pc,0.22
+Soybeans,Crop_products,USA,United States,HI,HI,,0.42
+Soybeans,Crop_products,USA,United States,S_pc,S,pc,0.17
+Soybeans,Crop_residues,USA,United States,K_pc,K,pc,1.04
+Soybeans,Crop_residues,USA,United States,Zn_pc,Zn,pc,0.0038
+Soybeans,Crop_products,USA,United States,P_pc,P,pc,0.64
+Soybeans,Crop_products,USA,United States,N_pc,N,pc,6.25
+Soybeans,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0017
+Soybeans,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0017
+Soybeans,Crop_residues,USA,United States,N_pc,N,pc,2.25
+Soybeans,Crop_products,USA,United States,HI,HI,,0.46
+Soybeans,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0021
+Soybeans,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.001
+Soybeans,Crop_residues,USA,United States,Ca_pc,Ca,pc,1.0
+Soybeans,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.45
+Soybeans,Crop_products,USA,United States,Ca_pc,Ca,pc,0.29
+Soybeans,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0115
+Soybeans,Crop_products,USA,United States,Mg_pc,Mg,pc,0.29
+Sugar beet,Crop_products,USA,United States,P_pc,P,pc,0.03
+Sugar beet,Crop_products,USA,United States,N_pc,N,pc,0.2
+Sugar beet,Crop_products,USA,United States,K_pc,K,pc,0.14
+Sugar beet,Crop_products,USA,United States,Mg_pc,Mg,pc,0.08
+Sugar beet,Crop_products,USA,United States,Ca_pc,Ca,pc,0.11
+Sugar beet,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0025
+Sugar beet,Crop_products,USA,United States,S_pc,S,pc,0.03
+Sugar beet,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0001
+Sugar beet,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.18
+Sugar beet,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.001
+Sugar beet,Crop_residues,USA,United States,N_pc,N,pc,0.43
+Sugar beet,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.0002
+Sugar beet,Crop_residues,USA,United States,P_pc,P,pc,0.04
+Sugar beet,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.19
+Sugar beet,Crop_residues,USA,United States,K_pc,K,pc,1.03
+Sugar beet,Crop_residues,USA,United States,S_pc,S,pc,0.1
+Sugar cane,Crop_products,USA,United States,K_pc,K,pc,0.37
+Sugar cane,Crop_products,USA,United States,P_pc,P,pc,0.04
+Sugar cane,Crop_products,USA,United States,Mg_pc,Mg,pc,0.04
+Sugar cane,Crop_products,USA,United States,Ca_pc,Ca,pc,0.05
+Sugar cane,Crop_products,USA,United States,S_pc,S,pc,0.04
+Sugar cane,Crop_products,USA,United States,N_pc,N,pc,0.16
+Sunflower seed,Crop_residues,USA,United States,N_pc,N,pc,1.5
+Sunflower seed,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.09
+Sunflower seed,Crop_products,USA,United States,K_pc,K,pc,1.11
+Sunflower seed,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0022
+Sunflower seed,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0241
+Sunflower seed,Crop_products,USA,United States,HI,HI,,0.27
+Sunflower seed,Crop_products,USA,United States,HI,HI,,0.4
+Sunflower seed,Crop_products,USA,United States,N_pc,N,pc,3.57
+Sunflower seed,Crop_residues,USA,United States,K_pc,K,pc,2.92
+Sunflower seed,Crop_residues,USA,United States,Ca_pc,Ca,pc,1.73
+Sunflower seed,Crop_products,USA,United States,Mg_pc,Mg,pc,0.34
+Sunflower seed,Crop_residues,USA,United States,S_pc,S,pc,0.04
+Sunflower seed,Crop_products,USA,United States,Ca_pc,Ca,pc,0.18
+Sunflower seed,Crop_residues,USA,United States,P_pc,P,pc,0.18
+Sunflower seed,Crop_products,USA,United States,S_pc,S,pc,0.17
+Sunflower seed,Crop_products,USA,United States,P_pc,P,pc,1.71
+Maize,Crop_products,USA,United States,P_pc,P,pc,0.24
+Maize,Crop_products,USA,United States,Mg_pc,Mg,pc,0.07
+Maize,Crop_products,USA,United States,K_pc,K,pc,0.58
+Maize,Crop_products,USA,United States,S_pc,S,pc,0.06
+Maize,Crop_products,USA,United States,N_pc,N,pc,0.89
+Sweet potatoes,Crop_products,USA,United States,Mg_pc,Mg,pc,0.06
+Sweet potatoes,Crop_products,USA,United States,N_pc,N,pc,0.3
+Sweet potatoes,Crop_products,USA,United States,Ca_pc,Ca,pc,0.03
+Sweet potatoes,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0002
+Sweet potatoes,Crop_products,USA,United States,S_pc,S,pc,0.04
+Sweet potatoes,Crop_products,USA,United States,K_pc,K,pc,0.42
+Sweet potatoes,Crop_products,USA,United States,P_pc,P,pc,0.04
+Sweet potatoes,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0004
+Sweet potatoes,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0002
+Switchgrass,Crop_products,USA,United States,N_pc,N,pc,1.15
+Switchgrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.28
+Switchgrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.25
+Switchgrass,Crop_products,USA,United States,K_pc,K,pc,1.9
+Switchgrass,Crop_products,USA,United States,P_pc,P,pc,0.1
+Sugar beet,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0007
+Sugar beet,Crop_products,USA,United States,N_pc,N,pc,0.26
+Sugar beet,Crop_products,USA,United States,K_pc,K,pc,0.28
+Sugar beet,Crop_products,USA,United States,S_pc,S,pc,0.02
+Sugar beet,Crop_products,USA,United States,P_pc,P,pc,0.04
+Sugar beet,Crop_products,USA,United States,Mg_pc,Mg,pc,0.02
+Sugar beet,Crop_products,USA,United States,Ca_pc,Ca,pc,0.03
+Tall fescue,Crop_products,USA,United States,N_pc,N,pc,1.97
+Tall fescue,Crop_products,USA,United States,Ca_pc,Ca,pc,0.3
+Tall fescue,Crop_products,USA,United States,P_pc,P,pc,0.2
+Tall fescue,Crop_products,USA,United States,K_pc,K,pc,2.0
+Tall fescue,Crop_products,USA,United States,Mg_pc,Mg,pc,0.19
+Timothy,Crop_products,USA,United States,Zn_pc,Zn,pc,0.004
+Timothy,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0006
+Timothy,Crop_products,USA,United States,S_pc,S,pc,0.1
+Timothy,Crop_products,USA,United States,N_pc,N,pc,1.2
+Timothy,Crop_products,USA,United States,Mg_pc,Mg,pc,0.12
+Timothy,Crop_products,USA,United States,Ca_pc,Ca,pc,0.36
+Timothy,Crop_products,USA,United States,P_pc,P,pc,0.22
+Timothy,Crop_products,USA,United States,K_pc,K,pc,1.58
+Timothy,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0062
+"Tobacco, unmanufactured",Crop_products,USA,United States,S_pc,S,pc,0.7
+"Tobacco, unmanufactured",Crop_products,USA,United States,P_pc,P,pc,0.33
+"Tobacco, unmanufactured",Crop_products,USA,United States,Cu_pc,Cu,pc,0.0015
+"Tobacco, unmanufactured",Crop_products,USA,United States,N_pc,N,pc,3.75
+"Tobacco, unmanufactured",Crop_products,USA,United States,Mn_pc,Mn,pc,0.0275
+"Tobacco, unmanufactured",Crop_products,USA,United States,K_pc,K,pc,4.98
+"Tobacco, unmanufactured",Crop_products,USA,United States,Mg_pc,Mg,pc,0.9
+"Tobacco, unmanufactured",Crop_products,USA,United States,Ca_pc,Ca,pc,3.75
+"Tobacco, unmanufactured",Crop_products,USA,United States,Zn_pc,Zn,pc,0.0035
+Tomatoes,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0003
+Tomatoes,Crop_products,USA,United States,K_pc,K,pc,0.33
+Tomatoes,Crop_products,USA,United States,S_pc,S,pc,0.04
+Tomatoes,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0002
+Tomatoes,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0001
+Tomatoes,Crop_products,USA,United States,P_pc,P,pc,0.04
+Tomatoes,Crop_products,USA,United States,Mg_pc,Mg,pc,0.03
+Tomatoes,Crop_products,USA,United States,Ca_pc,Ca,pc,0.02
+Tomatoes,Crop_products,USA,United States,N_pc,N,pc,0.3
+Water hyacinth,Crop_products,USA,United States,P_pc,P,pc,3.65
+Water hyacinth,Crop_products,USA,United States,Ca_pc,Ca,pc,3.12
+Water hyacinth,Crop_products,USA,United States,K_pc,K,pc,0.87
+Wheat,Crop_products,USA,United States,P_pc,P,pc,0.62
+Wheat,Crop_products,USA,United States,S_pc,S,pc,0.13
+Wheat,Crop_products,USA,United States,Cu_pc,Cu,pc,0.0013
+Wheat,Crop_products,USA,United States,HI,HI,,0.45
+Wheat,Crop_products,USA,United States,HI,HI,,0.5
+Wheat,Crop_products,USA,United States,N_pc,N,pc,2.08
+Wheat,Crop_products,USA,United States,Mn_pc,Mn,pc,0.0038
+Wheat,Crop_residues,USA,United States,P_pc,P,pc,0.07
+Wheat,Crop_products,USA,United States,Mg_pc,Mg,pc,0.25
+Wheat,Crop_products,USA,United States,Zn_pc,Zn,pc,0.0058
+Wheat,Crop_residues,USA,United States,Mg_pc,Mg,pc,0.1
+Wheat,Crop_products,USA,United States,Ca_pc,Ca,pc,0.04
+Wheat,Crop_residues,USA,United States,N_pc,N,pc,0.67
+Wheat,Crop_residues,USA,United States,Zn_pc,Zn,pc,0.0017
+Wheat,Crop_residues,USA,United States,Mn_pc,Mn,pc,0.0053
+Wheat,Crop_products,USA,United States,K_pc,K,pc,0.52
+Wheat,Crop_residues,USA,United States,Cu_pc,Cu,pc,0.0003
+Wheat,Crop_residues,USA,United States,Ca_pc,Ca,pc,0.2
+Wheat,Crop_residues,USA,United States,S_pc,S,pc,0.17
+Wheat,Crop_residues,USA,United States,K_pc,K,pc,0.97
+Wheatgrass,Crop_products,USA,United States,Mg_pc,Mg,pc,0.24
+Wheatgrass,Crop_products,USA,United States,S_pc,S,pc,0.11
+Wheatgrass,Crop_products,USA,United States,P_pc,P,pc,0.27
+Wheatgrass,Crop_products,USA,United States,N_pc,N,pc,1.42
+Wheatgrass,Crop_products,USA,United States,K_pc,K,pc,2.68
+Wheatgrass,Crop_products,USA,United States,Ca_pc,Ca,pc,0.36
