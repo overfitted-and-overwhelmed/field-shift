@@ -1,0 +1,871 @@
+group,crop,variant,plant_date,region,variable,value
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_dev,50.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_dev_max,50.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_dev_min,50.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_ini,20.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_ini_max,20.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_ini_min,20.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_late,30.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_late_max,30.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_late_min,30.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_mid,60.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_mid_max,60.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_mid_min,60.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_total,160.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_total_max,160.0
+Cereals,Barley/Oats/Wheat,,Dec,"Calif. Desert, USA",L_total_min,160.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_dev,40.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_dev_max,40.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_dev_min,40.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_ini,30.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_ini_max,30.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_ini_min,30.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_late,50.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_late_max,50.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_late_min,50.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_mid,50.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_mid_max,50.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_mid_min,50.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_total,170.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_total_max,170.0
+Cereals,Maize (grain),,April,"Idaho, USA",L_total_min,170.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_dev,40.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_dev_max,40.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_dev_min,40.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_ini,30.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_ini_max,30.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_ini_min,30.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_late,30.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_late_max,30.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_late_min,30.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_mid,50.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_mid_max,50.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_mid_min,50.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_total,150.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_total_max,150.0
+Cereals,Maize (grain),,April,"Spain (spr, sum.); Calif.",L_total_min,150.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_dev,40.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_dev_max,40.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_dev_min,40.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_ini,20.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_ini_max,20.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_ini_min,20.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_late,10.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_late_max,10.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_late_min,10.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_mid,70.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_mid_max,70.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_mid_min,70.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_total,140.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_total_max,140.0
+Cereals,Maize (sweet),,Jan,"Calif. Desert, USA",L_total_min,140.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_dev,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_dev_max,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_dev_min,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_ini,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_ini_max,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_ini_min,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_late,10.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_late_max,10.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_late_min,10.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_mid,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_mid_max,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_mid_min,30.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_total,110.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_total_max,110.0
+Cereals,Maize (sweet),,April,"Idaho, USA",L_total_min,110.0
+Cereals,Millet,,April,Central USA,L_dev,30.0
+Cereals,Millet,,April,Central USA,L_dev_max,30.0
+Cereals,Millet,,April,Central USA,L_dev_min,30.0
+Cereals,Millet,,April,Central USA,L_ini,20.0
+Cereals,Millet,,April,Central USA,L_ini_max,20.0
+Cereals,Millet,,April,Central USA,L_ini_min,20.0
+Cereals,Millet,,April,Central USA,L_late,35.0
+Cereals,Millet,,April,Central USA,L_late_max,35.0
+Cereals,Millet,,April,Central USA,L_late_min,35.0
+Cereals,Millet,,April,Central USA,L_mid,55.0
+Cereals,Millet,,April,Central USA,L_mid_max,55.0
+Cereals,Millet,,April,Central USA,L_mid_min,55.0
+Cereals,Millet,,April,Central USA,L_total,140.0
+Cereals,Millet,,April,Central USA,L_total_max,140.0
+Cereals,Millet,,April,Central USA,L_total_min,140.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_dev,35.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_dev_max,35.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_dev_min,35.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_ini,20.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_ini_max,20.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_ini_min,20.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_late,30.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_late_max,30.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_late_min,30.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_mid,40.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_mid_max,40.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_mid_min,40.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_total,130.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_total_max,130.0
+Cereals,Sorghum,,May/June,"USA, Pakis., Med.",L_total_min,130.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_dev,60.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_dev_max,60.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_dev_min,60.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_ini,20.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_ini_max,20.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_ini_min,20.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_late,30.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_late_max,30.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_late_min,30.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_mid,70.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_mid_max,70.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_mid_min,70.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_total,180.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_total_max,180.0
+Cereals,Winter Wheat,,December,"Calif., USA",L_total_min,180.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_dev,75.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_dev_max,75.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_dev_min,75.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_ini,160.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_ini_max,160.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_ini_min,160.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_late,25.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_late_max,25.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_late_min,25.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_mid,75.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_mid_max,75.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_mid_min,75.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_total,335.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_total_max,335.0
+Cereals,Winter Wheat,,October,"Idaho, USA",L_total_min,335.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_dev,90.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_dev_max,90.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_dev_min,90.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_ini,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_ini_max,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_ini_min,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_late,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_late_max,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_late_min,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_mid,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_mid_max,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_mid_min,45.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_total,225.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_total_max,225.0
+Fibre Crops,Cotton,,Mar,"Calif. Desert, USA",L_total_min,225.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_dev,50.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_dev_max,50.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_dev_min,50.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_ini,30.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_ini_max,30.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_ini_min,30.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_late,55.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_late_max,55.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_late_min,55.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_mid,60.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_mid_max,60.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_mid_min,60.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_total,195.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_total_max,195.0
+Fibre Crops,Cotton,,Mar-May,Egypt; Pakistan; Calif.,L_total_min,195.0
+Fibre Crops,Cotton,,April,Texas,L_dev,50.0
+Fibre Crops,Cotton,,April,Texas,L_dev_max,50.0
+Fibre Crops,Cotton,,April,Texas,L_dev_min,50.0
+Fibre Crops,Cotton,,April,Texas,L_ini,30.0
+Fibre Crops,Cotton,,April,Texas,L_ini_max,30.0
+Fibre Crops,Cotton,,April,Texas,L_ini_min,30.0
+Fibre Crops,Cotton,,April,Texas,L_late,45.0
+Fibre Crops,Cotton,,April,Texas,L_late_max,45.0
+Fibre Crops,Cotton,,April,Texas,L_late_min,45.0
+Fibre Crops,Cotton,,April,Texas,L_mid,55.0
+Fibre Crops,Cotton,,April,Texas,L_mid_max,55.0
+Fibre Crops,Cotton,,April,Texas,L_mid_min,55.0
+Fibre Crops,Cotton,,April,Texas,L_total,180.0
+Fibre Crops,Cotton,,April,Texas,L_total_max,180.0
+Fibre Crops,Cotton,,April,Texas,L_total_min,180.0
+Fibre Crops,Flax,,October,Arizona,L_dev,40.0
+Fibre Crops,Flax,,October,Arizona,L_dev_max,40.0
+Fibre Crops,Flax,,October,Arizona,L_dev_min,40.0
+Fibre Crops,Flax,,October,Arizona,L_ini,30.0
+Fibre Crops,Flax,,October,Arizona,L_ini_max,30.0
+Fibre Crops,Flax,,October,Arizona,L_ini_min,30.0
+Fibre Crops,Flax,,October,Arizona,L_late,50.0
+Fibre Crops,Flax,,October,Arizona,L_late_max,50.0
+Fibre Crops,Flax,,October,Arizona,L_late_min,50.0
+Fibre Crops,Flax,,October,Arizona,L_mid,100.0
+Fibre Crops,Flax,,October,Arizona,L_mid_max,100.0
+Fibre Crops,Flax,,October,Arizona,L_mid_min,100.0
+Fibre Crops,Flax,,October,Arizona,L_total,220.0
+Fibre Crops,Flax,,October,Arizona,L_total_max,220.0
+Fibre Crops,Flax,,October,Arizona,L_total_min,220.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_dev,20.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_dev_max,20.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_dev_min,20.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_ini,10.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_ini_max,10.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_ini_min,10.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_late,10.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_late_max,10.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_late_min,10.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_mid,20.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_mid_max,20.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_mid_min,20.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_total,60.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_total_max,60.0
+Forages,Alfalfa 1 cutting cycle,,Jan Apr (last - 4°C),"Calif., USA.",L_total_min,60.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_dev,30.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_dev_max,30.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_dev_min,30.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_ini,10.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_ini_max,10.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_ini_min,10.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_late,10.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_late_max,10.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_late_min,10.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_mid,25.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_mid_max,25.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_mid_min,25.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_total,75.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_total_max,75.0
+Forages,Alfalfa 1 cutting cycle,,,"Idaho, USA.",L_total_min,75.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_dev,10.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_dev_max,10.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_dev_min,10.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_ini,5.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_ini_max,5.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_ini_min,5.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_late,5.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_late_max,5.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_late_min,5.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_mid,10.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_mid_max,10.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_mid_min,10.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_total,30.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_total_max,30.0
+Forages,"Alfalfa, other cutting cycles",,Mar,"Calif., USA.",L_total_min,30.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_dev,20.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_dev_max,20.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_dev_min,20.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_ini,5.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_ini_max,5.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_ini_min,5.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_late,10.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_late_max,10.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_late_min,10.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_mid,10.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_mid_max,10.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_mid_min,10.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_total,45.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_total_max,45.0
+Forages,"Alfalfa, other cutting cycles",,Jun,"Idaho, USA.",L_total_min,45.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_dev,15.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_dev_max,15.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_dev_min,15.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_ini,10.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_ini_max,10.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_ini_min,10.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_late,35.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_late_max,35.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_late_min,35.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_mid,75.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_mid_max,75.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_mid_min,75.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_total,135.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_total_max,135.0
+Forages,Bermuda for hay (several cuttings),,---,"Calif. Desert, USA",L_total_min,135.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_dev,25.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_dev_max,25.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_dev_min,25.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_ini,10.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_ini_max,10.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_ini_min,10.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_late,35.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_late_max,35.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_late_min,35.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_mid,35.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_mid_max,35.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_mid_min,35.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_total,105.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_total_max,105.0
+Forages,Bermuda for seed,,March,"Calif. Desert, USA",L_total_min,105.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_dev,25.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_dev_max,25.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_dev_min,25.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_ini,25.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_ini_max,25.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_ini_min,25.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_late,10.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_late_max,10.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_late_min,10.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_mid,15.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_mid_max,15.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_mid_min,15.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_total,75.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_total_max,75.0
+Forages,"Sudan, 1 cutting cycle",,Apr,"Calif. Desert, USA",L_total_min,75.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_dev,15.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_dev_max,15.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_dev_min,15.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_ini,3.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_ini_max,3.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_ini_min,3.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_late,7.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_late_max,7.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_late_min,7.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_mid,12.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_mid_max,12.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_mid_min,12.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_total,37.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_total_max,37.0
+Forages,"Sudan, other cutting cycles",,June,"Calif. Desert, USA",L_total_min,37.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_dev,50.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_dev_max,50.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_dev_min,50.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_ini,30.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_ini_max,30.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_ini_min,30.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_late,30.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_late_max,30.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_late_min,30.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_mid,130.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_mid_max,130.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_mid_min,130.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_total,240.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_total_max,240.0
+Fruit Trees,Deciduous Orchard,,March,"Calif., USA",L_total_min,240.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_dev,10.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_dev_max,10.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_dev_min,10.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_ini,20.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_ini_max,20.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_ini_min,20.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_late,30.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_late_max,30.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_late_min,30.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_mid,130.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_mid_max,130.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_mid_min,130.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_total,190.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_total_max,190.0
+Fruit Trees,Walnuts,,April,"Utah, USA",L_total_min,190.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_dev,50.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_dev_max,50.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_dev_min,50.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_ini,20.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_ini_max,20.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_ini_min,20.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_late,60.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_late_max,60.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_late_min,60.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_mid,75.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_mid_max,75.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_mid_min,75.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_total,205.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_total_max,205.0
+Grapes and Berries,Grapes,,Mar,"Calif., USA",L_total_min,205.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_dev,40.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_dev_max,40.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_dev_min,40.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_ini,25.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_ini_max,25.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_ini_min,25.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_late,10.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_late_max,10.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_late_min,10.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_mid,80.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_mid_max,80.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_mid_min,80.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_total,155.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_total_max,155.0
+Grapes and Berries,Hops,,April,"Idaho, USA",L_total_min,155.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_dev,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_dev_max,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_dev_min,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_ini,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_ini_max,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_ini_min,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_late,20.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_late_max,20.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_late_min,20.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_mid,30.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_mid_max,30.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_mid_min,30.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_total,100.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_total_max,100.0
+Legumes (Leguminosae),Beans (dry),,June,"Idaho, USA",L_total_min,100.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_dev,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_dev_max,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_dev_min,25.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_ini,15.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_ini_max,15.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_ini_min,15.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_late,20.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_late_max,20.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_late_min,20.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_mid,35.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_mid_max,35.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_mid_min,35.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_total,95.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_total_max,95.0
+Legumes (Leguminosae),Beans (dry),,June,"Pakistan, Calif.",L_total_min,95.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_dev,25.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_dev_max,25.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_dev_min,25.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_ini,15.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_ini_max,15.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_ini_min,15.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_late,10.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_late_max,10.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_late_min,10.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_mid,25.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_mid_max,25.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_mid_min,25.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_total,75.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_total_max,75.0
+Legumes (Leguminosae),Beans (green),,Aug/Sep,"Calif., Egypt, Lebanon",L_total_min,75.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_dev,30.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_dev_max,30.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_dev_min,30.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_ini,20.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_ini_max,20.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_ini_min,20.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_late,10.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_late_max,10.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_late_min,10.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_mid,30.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_mid_max,30.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_mid_min,30.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_total,90.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_total_max,90.0
+Legumes (Leguminosae),Beans (green),,Feb/Mar,"Calif., Mediterranean",L_total_min,90.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_dev,25.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_dev_max,25.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_dev_min,25.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_ini,35.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_ini_max,35.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_ini_min,35.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_late,20.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_late_max,20.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_late_min,20.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_mid,30.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_mid_max,30.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_mid_min,30.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_total,110.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_total_max,110.0
+Legumes (Leguminosae),Peas,,April,"Idaho, USA",L_total_min,110.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_dev,32.5
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_dev_max,35.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_dev_min,30.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_ini,20.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_ini_max,20.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_ini_min,20.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_late,25.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_late_max,25.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_late_min,25.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_mid,60.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_mid_max,60.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_mid_min,60.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_total,140.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_total_max,140.0
+Legumes (Leguminosae),Soybeans,,May,Central USA,L_total_min,140.0
+Oil Crops,Safflower,,April,"California, USA",L_dev,35.0
+Oil Crops,Safflower,,April,"California, USA",L_dev_max,35.0
+Oil Crops,Safflower,,April,"California, USA",L_dev_min,35.0
+Oil Crops,Safflower,,April,"California, USA",L_ini,20.0
+Oil Crops,Safflower,,April,"California, USA",L_ini_max,20.0
+Oil Crops,Safflower,,April,"California, USA",L_ini_min,20.0
+Oil Crops,Safflower,,April,"California, USA",L_late,25.0
+Oil Crops,Safflower,,April,"California, USA",L_late_max,25.0
+Oil Crops,Safflower,,April,"California, USA",L_late_min,25.0
+Oil Crops,Safflower,,April,"California, USA",L_mid,45.0
+Oil Crops,Safflower,,April,"California, USA",L_mid_max,45.0
+Oil Crops,Safflower,,April,"California, USA",L_mid_min,45.0
+Oil Crops,Safflower,,April,"California, USA",L_total,125.0
+Oil Crops,Safflower,,April,"California, USA",L_total_max,125.0
+Oil Crops,Safflower,,April,"California, USA",L_total_min,125.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_dev,35.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_dev_max,35.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_dev_min,35.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_ini,25.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_ini_max,25.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_ini_min,25.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_late,25.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_late_max,25.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_late_min,25.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_mid,45.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_mid_max,45.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_mid_min,45.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_total,130.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_total_max,130.0
+Oil Crops,Sunflower,,April/May,Medit.; California,L_total_min,130.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_dev,40.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_dev_max,40.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_dev_min,40.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_ini,40.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_ini_max,40.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_ini_min,40.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_late,30.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_late_max,30.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_late_min,30.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_mid,250.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_mid_max,250.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_mid_min,250.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_total,360.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_total_max,360.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichoke,,Apr (1 yr),California,L_total_min,360.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_dev,35.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_dev_max,35.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_dev_min,35.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_ini,30.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_ini_max,30.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_ini_min,30.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_late,25.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_late_max,25.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_late_min,25.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_mid,50.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_mid_max,50.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_mid_min,50.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_total,140.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_total_max,140.0
+Roots and Tubers,Potato,,Dec,"Calif. Desert, USA",L_total_min,140.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_dev,30.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_dev_max,30.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_dev_min,30.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_ini,45.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_ini_max,45.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_ini_min,45.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_late,20.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_late_max,20.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_late_min,20.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_mid,70.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_mid_max,70.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_mid_min,70.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_total,165.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_total_max,165.0
+Roots and Tubers,Potato,,Apr/May,"Idaho, USA",L_total_min,165.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_dev,65.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_dev_max,65.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_dev_min,65.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_ini,25.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_ini_max,25.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_ini_min,25.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_late,65.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_late_max,65.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_late_min,65.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_mid,100.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_mid_max,100.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_mid_min,100.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_total,255.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_total_max,255.0
+Roots and Tubers,Sugarbeet,,Sept,"Calif. Desert, USA",L_total_min,255.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_dev,30.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_dev_max,30.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_dev_min,30.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_ini,25.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_ini_max,25.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_ini_min,25.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_late,10.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_late_max,10.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_late_min,10.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_mid,90.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_mid_max,90.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_mid_min,90.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_total,155.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_total_max,155.0
+Roots and Tubers,Sugarbeet,,June,"Calif., USA",L_total_min,155.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_dev,45.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_dev_max,45.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_dev_min,45.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_ini,30.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_ini_max,30.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_ini_min,30.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_late,15.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_late_max,15.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_late_min,15.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_mid,90.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_mid_max,90.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_mid_min,90.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_total,180.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_total_max,180.0
+Roots and Tubers,Sugarbeet,,March,"Calif., USA",L_total_min,180.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_dev,40.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_dev_max,40.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_dev_min,40.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_ini,50.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_ini_max,50.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_ini_min,50.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_late,40.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_late_max,40.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_late_min,40.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_mid,50.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_mid_max,50.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_mid_min,50.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_total,180.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_total_max,180.0
+Roots and Tubers,Sugarbeet,,April,"Idaho, USA",L_total_min,180.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_dev,45.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_dev_max,45.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_dev_min,45.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_ini,35.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_ini_max,35.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_ini_min,35.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_late,15.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_late_max,15.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_late_min,15.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_mid,40.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_mid_max,40.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_mid_min,40.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_total,135.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_total_max,135.0
+Small Vegetables,Broccoli,,Sept,"Calif. Desert, USA",L_total_min,135.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_dev,60.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_dev_max,60.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_dev_min,60.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_ini,40.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_ini_max,40.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_ini_min,40.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_late,15.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_late_max,15.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_late_min,15.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_mid,50.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_mid_max,50.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_mid_min,50.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_total,165.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_total_max,165.0
+Small Vegetables,Cabbage,,Sept,"Calif. Desert, USA",L_total_min,165.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_dev,50.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_dev_max,50.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_dev_min,50.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_ini,30.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_ini_max,30.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_ini_min,30.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_late,30.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_late_max,30.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_late_min,30.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_mid,90.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_mid_max,90.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_mid_min,90.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_total,200.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_total_max,200.0
+Small Vegetables,Carrots,,Oct,"Calif. Desert, USA",L_total_min,200.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_dev,50.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_dev_max,50.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_dev_min,50.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_ini,35.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_ini_max,35.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_ini_min,35.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_late,15.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_late_max,15.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_late_min,15.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_mid,40.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_mid_max,40.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_mid_min,40.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_total,140.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_total_max,140.0
+Small Vegetables,Cauliflower,,Sept,"Calif. Desert, USA",L_total_min,140.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_dev,35.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_dev_max,35.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_dev_min,35.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_ini,20.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_ini_max,20.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_ini_min,20.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_late,45.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_late_max,45.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_late_min,45.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_mid,110.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_mid_max,110.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_mid_min,110.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_total,210.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_total_max,210.0
+Small Vegetables,Onion (dry),,Oct; Jan.,Arid Region; Calif.,L_total_min,210.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_dev,55.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_dev_max,55.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_dev_min,55.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_ini,30.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_ini_max,30.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_ini_min,30.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_late,40.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_late_max,40.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_late_min,40.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_mid,55.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_mid_max,55.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_mid_min,55.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_total,180.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_total_max,180.0
+Small Vegetables,Onion (green),,March,"Calif., USA",L_total_min,180.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_dev,45.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_dev_max,45.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_dev_min,45.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_ini,20.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_ini_max,20.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_ini_min,20.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_late,45.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_late_max,45.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_late_min,45.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_mid,165.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_mid_max,165.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_mid_min,165.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_total,275.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_total_max,275.0
+Small Vegetables,Onion (seed),,Sept,"Calif. Desert, USA",L_total_min,275.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_dev,105.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_dev_max,105.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_dev_min,105.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_ini,35.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_ini_max,35.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_ini_min,35.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_late,70.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_late_max,70.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_late_min,70.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_mid,210.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_mid_max,210.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_mid_min,210.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_total,420.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_total_max,420.0
+Sugar Cane,"Sugarcane, ratoon",,,"Hawaii, USA",L_total_min,420.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_dev,105.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_dev_max,105.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_dev_min,105.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_ini,75.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_ini_max,75.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_ini_min,75.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_late,210.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_late_max,210.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_late_min,210.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_mid,330.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_mid_max,330.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_mid_min,330.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_total,720.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_total_max,720.0
+Sugar Cane,"Sugarcane, virgin",,,"Hawaii, USA",L_total_min,720.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_dev,120.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_dev_max,120.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_dev_min,120.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_ini,60.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_ini_max,60.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_ini_min,60.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_late,10.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_late_max,10.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_late_min,10.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_mid,600.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_mid_max,600.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_mid_min,600.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_total,790.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_total_max,790.0
+Tropical Fruits and Trees,Pineapple,,,"Hawaii, USA",L_total_min,790.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_dev,60.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_dev_max,60.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_dev_min,60.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_ini,10.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_ini_max,10.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_ini_min,10.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_late,25.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_late_max,25.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_late_min,25.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_mid,25.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_mid_max,25.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_mid_min,25.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_total,120.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_total_max,120.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Aug,"Calif., USA",L_total_min,120.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_dev,45.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_dev_max,45.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_dev_min,45.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_ini,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_ini_max,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_ini_min,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_late,10.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_late_max,10.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_late_min,10.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_mid,35.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_mid_max,35.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_mid_min,35.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_total,120.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_total_max,120.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,Jan,"Calif., USA",L_total_min,120.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_dev,40.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_dev_max,40.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_dev_min,40.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_ini,15.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_ini_max,15.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_ini_min,15.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_late,15.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_late_max,15.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_late_min,15.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_mid,65.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_mid_max,65.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_mid_min,65.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_total,135.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_total_max,135.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,Aug,"Calif. Desert, USA",L_total_min,135.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_dev,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_dev_max,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_dev_min,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_ini,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_ini_max,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_ini_min,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_late,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_late_max,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_late_min,30.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_mid,50.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_mid_max,50.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_mid_min,50.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_total,140.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_total_max,140.0
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet melons,,March,"Calif., USA",L_total_min,140.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_dev,40.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_dev_max,40.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_dev_min,40.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_ini,25.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_ini_max,25.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_ini_min,25.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_late,30.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_late_max,30.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_late_min,30.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_mid,60.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_mid_max,60.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_mid_min,60.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_total,155.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_total_max,155.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Jan,"Calif. Desert, USA",L_total_min,155.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_dev,40.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_dev_max,40.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_dev_min,40.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_ini,35.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_ini_max,35.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_ini_min,35.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_late,30.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_late_max,30.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_late_min,30.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_mid,50.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_mid_max,50.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_mid_min,50.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_total,155.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_total_max,155.0
+Vegetables - Solanum Family (Solanaceae),Tomato,,Apr/May,"Calif., USA",L_total_min,155.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_dev,60.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_dev_max,60.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_dev_min,60.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_ini,180.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_ini_max,180.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_ini_min,180.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_late,35.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_late_max,35.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_late_min,35.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_mid,90.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_mid_max,90.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_mid_min,90.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_total,365.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_total_max,365.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,November,"Florida, USA",L_total_min,365.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_dev,30.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_dev_max,30.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_dev_min,30.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_ini,10.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_ini_max,10.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_ini_min,10.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_late,20.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_late_max,20.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_late_min,20.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_mid,80.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_mid_max,80.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_mid_min,80.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_total,140.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_total_max,140.0
+Wetlands - Temperate Climate,"Wetlands (Cattails, Bulrush)",,May,"Utah, USA; killing frost",L_total_min,140.0

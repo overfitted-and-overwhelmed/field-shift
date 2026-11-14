@@ -1,0 +1,12 @@
+lat,lon,attribute,value,unit
+38.02511,-101.126084,component,Ulysses,
+38.02511,-101.126084,component_share,65,%
+38.02511,-101.126084,taxonomic_class,"Fine-silty, mixed, superactive, mesic Torriorthentic Haplustolls",
+38.02511,-101.126084,hydrologic_group,C,
+38.02511,-101.126084,drainage_class,Well drained,
+38.02511,-101.126084,irrigated_capability_class,2,1-8
+38.02511,-101.126084,nonirrigated_capability_class,3,1-8
+38.02511,-101.126084,restrictive_layer_depth_cm,none_within_200,cm
+38.02511,-101.126084,texture_0_cm,Silty clay loam,
+38.02511,-101.126084,texture_23_cm,Silt loam,
+38.02511,-101.126084,texture_69_cm,Silt loam,

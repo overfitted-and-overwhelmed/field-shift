@@ -1,0 +1,1474 @@
+group,crop,variant,kc_ini_source,variable,value
+Cereals,Barley,,group,kc_end,0.25
+Cereals,Barley,,group,kc_end_max,0.25
+Cereals,Barley,,group,kc_end_min,0.25
+Cereals,Barley,,group,kc_ini,0.3
+Cereals,Barley,,group,kc_ini_max,0.3
+Cereals,Barley,,group,kc_ini_min,0.3
+Cereals,Barley,,group,kc_mid,1.15
+Cereals,Barley,,group,kc_mid_max,1.15
+Cereals,Barley,,group,kc_mid_min,1.15
+Cereals,Barley,,group,max_height_m,1.0
+Cereals,Barley,,group,max_height_m_max,1.0
+Cereals,Barley,,group,max_height_m_min,1.0
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_end,0.475
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_end_max,0.6
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_end_min,0.35
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_ini,0.3
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_ini_max,0.3
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_ini_min,0.3
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_mid,1.2
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_mid_max,1.2
+Cereals,"Maize, Field (grain) (field corn)",,group,kc_mid_min,1.2
+Cereals,"Maize, Field (grain) (field corn)",,group,max_height_m,2.0
+Cereals,"Maize, Field (grain) (field corn)",,group,max_height_m_max,2.0
+Cereals,"Maize, Field (grain) (field corn)",,group,max_height_m_min,2.0
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_end,1.05
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_end_max,1.05
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_end_min,1.05
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_ini,0.3
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_ini_max,0.3
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_ini_min,0.3
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_mid,1.15
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_mid_max,1.15
+Cereals,"Maize, Sweet (sweet corn)",,group,kc_mid_min,1.15
+Cereals,"Maize, Sweet (sweet corn)",,group,max_height_m,1.5
+Cereals,"Maize, Sweet (sweet corn)",,group,max_height_m_max,1.5
+Cereals,"Maize, Sweet (sweet corn)",,group,max_height_m_min,1.5
+Cereals,Millet,,group,kc_end,0.3
+Cereals,Millet,,group,kc_end_max,0.3
+Cereals,Millet,,group,kc_end_min,0.3
+Cereals,Millet,,group,kc_ini,0.3
+Cereals,Millet,,group,kc_ini_max,0.3
+Cereals,Millet,,group,kc_ini_min,0.3
+Cereals,Millet,,group,kc_mid,1.0
+Cereals,Millet,,group,kc_mid_max,1.0
+Cereals,Millet,,group,kc_mid_min,1.0
+Cereals,Millet,,group,max_height_m,1.5
+Cereals,Millet,,group,max_height_m_max,1.5
+Cereals,Millet,,group,max_height_m_min,1.5
+Cereals,Oats,,group,kc_end,0.25
+Cereals,Oats,,group,kc_end_max,0.25
+Cereals,Oats,,group,kc_end_min,0.25
+Cereals,Oats,,group,kc_ini,0.3
+Cereals,Oats,,group,kc_ini_max,0.3
+Cereals,Oats,,group,kc_ini_min,0.3
+Cereals,Oats,,group,kc_mid,1.15
+Cereals,Oats,,group,kc_mid_max,1.15
+Cereals,Oats,,group,kc_mid_min,1.15
+Cereals,Oats,,group,max_height_m,1.0
+Cereals,Oats,,group,max_height_m_max,1.0
+Cereals,Oats,,group,max_height_m_min,1.0
+Cereals,Rice,,crop,kc_end,0.75
+Cereals,Rice,,crop,kc_end_max,0.9
+Cereals,Rice,,crop,kc_end_min,0.6
+Cereals,Rice,,crop,kc_ini,1.05
+Cereals,Rice,,crop,kc_ini_max,1.05
+Cereals,Rice,,crop,kc_ini_min,1.05
+Cereals,Rice,,crop,kc_mid,1.2
+Cereals,Rice,,crop,kc_mid_max,1.2
+Cereals,Rice,,crop,kc_mid_min,1.2
+Cereals,Rice,,crop,max_height_m,1.0
+Cereals,Rice,,crop,max_height_m_max,1.0
+Cereals,Rice,,crop,max_height_m_min,1.0
+Cereals,Sorghum,grain,group,kc_end,0.55
+Cereals,Sorghum,grain,group,kc_end_max,0.55
+Cereals,Sorghum,grain,group,kc_end_min,0.55
+Cereals,Sorghum,grain,group,kc_ini,0.3
+Cereals,Sorghum,grain,group,kc_ini_max,0.3
+Cereals,Sorghum,grain,group,kc_ini_min,0.3
+Cereals,Sorghum,grain,group,kc_mid,1.05
+Cereals,Sorghum,grain,group,kc_mid_max,1.1
+Cereals,Sorghum,grain,group,kc_mid_min,1.0
+Cereals,Sorghum,grain,group,max_height_m,1.5
+Cereals,Sorghum,grain,group,max_height_m_max,2.0
+Cereals,Sorghum,grain,group,max_height_m_min,1.0
+Cereals,Sorghum,sweet,group,kc_end,1.05
+Cereals,Sorghum,sweet,group,kc_end_max,1.05
+Cereals,Sorghum,sweet,group,kc_end_min,1.05
+Cereals,Sorghum,sweet,group,kc_ini,0.3
+Cereals,Sorghum,sweet,group,kc_ini_max,0.3
+Cereals,Sorghum,sweet,group,kc_ini_min,0.3
+Cereals,Sorghum,sweet,group,kc_mid,1.2
+Cereals,Sorghum,sweet,group,kc_mid_max,1.2
+Cereals,Sorghum,sweet,group,kc_mid_min,1.2
+Cereals,Sorghum,sweet,group,max_height_m,3.0
+Cereals,Sorghum,sweet,group,max_height_m_max,4.0
+Cereals,Sorghum,sweet,group,max_height_m_min,2.0
+Cereals,Spring Wheat,,group,kc_end,0.325
+Cereals,Spring Wheat,,group,kc_end_max,0.4
+Cereals,Spring Wheat,,group,kc_end_min,0.25
+Cereals,Spring Wheat,,group,kc_ini,0.3
+Cereals,Spring Wheat,,group,kc_ini_max,0.3
+Cereals,Spring Wheat,,group,kc_ini_min,0.3
+Cereals,Spring Wheat,,group,kc_mid,1.15
+Cereals,Spring Wheat,,group,kc_mid_max,1.15
+Cereals,Spring Wheat,,group,kc_mid_min,1.15
+Cereals,Spring Wheat,,group,max_height_m,1.0
+Cereals,Spring Wheat,,group,max_height_m_max,1.0
+Cereals,Spring Wheat,,group,max_height_m_min,1.0
+Cereals,Winter Wheat,with frozen soils,crop,kc_end,0.325
+Cereals,Winter Wheat,with frozen soils,crop,kc_end_max,0.4
+Cereals,Winter Wheat,with frozen soils,crop,kc_end_min,0.25
+Cereals,Winter Wheat,with frozen soils,crop,kc_ini,0.4
+Cereals,Winter Wheat,with frozen soils,crop,kc_ini_max,0.4
+Cereals,Winter Wheat,with frozen soils,crop,kc_ini_min,0.4
+Cereals,Winter Wheat,with frozen soils,crop,kc_mid,1.15
+Cereals,Winter Wheat,with frozen soils,crop,kc_mid_max,1.15
+Cereals,Winter Wheat,with frozen soils,crop,kc_mid_min,1.15
+Cereals,Winter Wheat,with frozen soils,crop,max_height_m,1.0
+Cereals,Winter Wheat,with frozen soils,crop,max_height_m_max,1.0
+Cereals,Winter Wheat,with frozen soils,crop,max_height_m_min,1.0
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_end,0.325
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_end_max,0.4
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_end_min,0.25
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_ini,0.7
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_ini_max,0.7
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_ini_min,0.7
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_mid,1.15
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_mid_max,1.15
+Cereals,Winter Wheat,with non-frozen soils,crop,kc_mid_min,1.15
+Fibre Crops,Cotton,,group,kc_end,0.6
+Fibre Crops,Cotton,,group,kc_end_max,0.7
+Fibre Crops,Cotton,,group,kc_end_min,0.5
+Fibre Crops,Cotton,,group,kc_ini,0.35
+Fibre Crops,Cotton,,group,kc_ini_max,0.35
+Fibre Crops,Cotton,,group,kc_ini_min,0.35
+Fibre Crops,Cotton,,group,kc_mid,1.1749999999999998
+Fibre Crops,Cotton,,group,kc_mid_max,1.2
+Fibre Crops,Cotton,,group,kc_mid_min,1.15
+Fibre Crops,Cotton,,group,max_height_m,1.35
+Fibre Crops,Cotton,,group,max_height_m_max,1.5
+Fibre Crops,Cotton,,group,max_height_m_min,1.2
+Fibre Crops,Flax,,group,kc_end,0.25
+Fibre Crops,Flax,,group,kc_end_max,0.25
+Fibre Crops,Flax,,group,kc_end_min,0.25
+Fibre Crops,Flax,,group,kc_ini,0.35
+Fibre Crops,Flax,,group,kc_ini_max,0.35
+Fibre Crops,Flax,,group,kc_ini_min,0.35
+Fibre Crops,Flax,,group,kc_mid,1.1
+Fibre Crops,Flax,,group,kc_mid_max,1.1
+Fibre Crops,Flax,,group,kc_mid_min,1.1
+Fibre Crops,Flax,,group,max_height_m,1.2
+Fibre Crops,Flax,,group,max_height_m_max,1.2
+Fibre Crops,Flax,,group,max_height_m_min,1.2
+Fibre Crops,Sisal,,group,kc_end,0.55
+Fibre Crops,Sisal,,group,kc_end_max,0.7
+Fibre Crops,Sisal,,group,kc_end_min,0.4
+Fibre Crops,Sisal,,group,kc_ini,0.35
+Fibre Crops,Sisal,,group,kc_ini_max,0.35
+Fibre Crops,Sisal,,group,kc_ini_min,0.35
+Fibre Crops,Sisal,,group,kc_mid,0.55
+Fibre Crops,Sisal,,group,kc_mid_max,0.7
+Fibre Crops,Sisal,,group,kc_mid_min,0.4
+Fibre Crops,Sisal,,group,max_height_m,1.5
+Fibre Crops,Sisal,,group,max_height_m_max,1.5
+Fibre Crops,Sisal,,group,max_height_m_min,1.5
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_end,0.9
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_end_max,0.9
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_end_min,0.9
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_ini,0.4
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_ini_max,0.4
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_ini_min,0.4
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_mid,0.95
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_mid_max,0.95
+Forages,Alfalfa Hay,averaged cutting effects,crop,kc_mid_min,0.95
+Forages,Alfalfa Hay,averaged cutting effects,crop,max_height_m,0.7
+Forages,Alfalfa Hay,averaged cutting effects,crop,max_height_m_max,0.7
+Forages,Alfalfa Hay,averaged cutting effects,crop,max_height_m_min,0.7
+Forages,Alfalfa Hay,for seed,crop,kc_end,0.5
+Forages,Alfalfa Hay,for seed,crop,kc_end_max,0.5
+Forages,Alfalfa Hay,for seed,crop,kc_end_min,0.5
+Forages,Alfalfa Hay,for seed,crop,kc_ini,0.4
+Forages,Alfalfa Hay,for seed,crop,kc_ini_max,0.4
+Forages,Alfalfa Hay,for seed,crop,kc_ini_min,0.4
+Forages,Alfalfa Hay,for seed,crop,kc_mid,0.5
+Forages,Alfalfa Hay,for seed,crop,kc_mid_max,0.5
+Forages,Alfalfa Hay,for seed,crop,kc_mid_min,0.5
+Forages,Alfalfa Hay,for seed,crop,max_height_m,0.7
+Forages,Alfalfa Hay,for seed,crop,max_height_m_max,0.7
+Forages,Alfalfa Hay,for seed,crop,max_height_m_min,0.7
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_end,1.15
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_end_max,1.15
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_end_min,1.15
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_ini,0.4
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_ini_max,0.4
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_ini_min,0.4
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_mid,1.2
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_mid_max,1.2
+Forages,Alfalfa Hay,individual cutting periods,crop,kc_mid_min,1.2
+Forages,Alfalfa Hay,individual cutting periods,crop,max_height_m,0.7
+Forages,Alfalfa Hay,individual cutting periods,crop,max_height_m_max,0.7
+Forages,Alfalfa Hay,individual cutting periods,crop,max_height_m_min,0.7
+Forages,Bermuda hay,Spring crop for seed,crop,kc_end,0.65
+Forages,Bermuda hay,Spring crop for seed,crop,kc_end_max,0.65
+Forages,Bermuda hay,Spring crop for seed,crop,kc_end_min,0.65
+Forages,Bermuda hay,Spring crop for seed,crop,kc_ini,0.35
+Forages,Bermuda hay,Spring crop for seed,crop,kc_ini_max,0.35
+Forages,Bermuda hay,Spring crop for seed,crop,kc_ini_min,0.35
+Forages,Bermuda hay,Spring crop for seed,crop,kc_mid,0.9
+Forages,Bermuda hay,Spring crop for seed,crop,kc_mid_max,0.9
+Forages,Bermuda hay,Spring crop for seed,crop,kc_mid_min,0.9
+Forages,Bermuda hay,Spring crop for seed,crop,max_height_m,0.4
+Forages,Bermuda hay,Spring crop for seed,crop,max_height_m_max,0.4
+Forages,Bermuda hay,Spring crop for seed,crop,max_height_m_min,0.4
+Forages,Bermuda hay,averaged cutting effects,crop,kc_end,0.85
+Forages,Bermuda hay,averaged cutting effects,crop,kc_end_max,0.85
+Forages,Bermuda hay,averaged cutting effects,crop,kc_end_min,0.85
+Forages,Bermuda hay,averaged cutting effects,crop,kc_ini,0.55
+Forages,Bermuda hay,averaged cutting effects,crop,kc_ini_max,0.55
+Forages,Bermuda hay,averaged cutting effects,crop,kc_ini_min,0.55
+Forages,Bermuda hay,averaged cutting effects,crop,kc_mid,1.0
+Forages,Bermuda hay,averaged cutting effects,crop,kc_mid_max,1.0
+Forages,Bermuda hay,averaged cutting effects,crop,kc_mid_min,1.0
+Forages,Bermuda hay,averaged cutting effects,crop,max_height_m,0.35
+Forages,Bermuda hay,averaged cutting effects,crop,max_height_m_max,0.35
+Forages,Bermuda hay,averaged cutting effects,crop,max_height_m_min,0.35
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_end,0.85
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_end_max,0.85
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_end_min,0.85
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_ini,0.4
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_ini_max,0.4
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_ini_min,0.4
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_mid,0.9
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_mid_max,0.9
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,kc_mid_min,0.9
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,max_height_m,0.6
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,max_height_m_max,0.6
+Forages,"Clover hay, Berseem",averaged cutting effects,crop,max_height_m_min,0.6
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_end,1.1
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_end_max,1.1
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_end_min,1.1
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_ini,0.4
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_ini_max,0.4
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_ini_min,0.4
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_mid,1.15
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_mid_max,1.15
+Forages,"Clover hay, Berseem",individual cutting periods,crop,kc_mid_min,1.15
+Forages,"Clover hay, Berseem",individual cutting periods,crop,max_height_m,0.6
+Forages,"Clover hay, Berseem",individual cutting periods,crop,max_height_m_max,0.6
+Forages,"Clover hay, Berseem",individual cutting periods,crop,max_height_m_min,0.6
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_end,0.75
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_end_max,0.75
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_end_min,0.75
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_ini,0.3
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_ini_max,0.3
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_ini_min,0.3
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_mid,0.75
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_mid_max,0.75
+Forages,Grazing Pasture,Extensive Grazing,crop,kc_mid_min,0.75
+Forages,Grazing Pasture,Extensive Grazing,crop,max_height_m,0.1
+Forages,Grazing Pasture,Extensive Grazing,crop,max_height_m_max,0.1
+Forages,Grazing Pasture,Extensive Grazing,crop,max_height_m_min,0.1
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_end,0.85
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_end_max,0.85
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_end_min,0.85
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_ini,0.4
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_ini_max,0.4
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_ini_min,0.4
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_mid,0.95
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_mid_max,1.05
+Forages,Grazing Pasture,Rotated Grazing,crop,kc_mid_min,0.85
+Forages,Grazing Pasture,Rotated Grazing,crop,max_height_m,0.22499999999999998
+Forages,Grazing Pasture,Rotated Grazing,crop,max_height_m_max,0.3
+Forages,Grazing Pasture,Rotated Grazing,crop,max_height_m_min,0.15
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_end,1.0
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_end_max,1.0
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_end_min,1.0
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_ini,0.95
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_ini_max,0.95
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_ini_min,0.95
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_mid,1.05
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_mid_max,1.05
+Forages,Rye Grass hay,averaged cutting effects,crop,kc_mid_min,1.05
+Forages,Rye Grass hay,averaged cutting effects,crop,max_height_m,0.3
+Forages,Rye Grass hay,averaged cutting effects,crop,max_height_m_max,0.3
+Forages,Rye Grass hay,averaged cutting effects,crop,max_height_m_min,0.3
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_end,0.85
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_end_max,0.85
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_end_min,0.85
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_ini,0.5
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_ini_max,0.5
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_ini_min,0.5
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_mid,0.9
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_mid_max,0.9
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,kc_mid_min,0.9
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,max_height_m,1.2
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,max_height_m_max,1.2
+Forages,Sudan Grass hay (annual),averaged cutting effects,crop,max_height_m_min,1.2
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_end,1.1
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_end_max,1.1
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_end_min,1.1
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_ini,0.5
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_ini_max,0.5
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_ini_min,0.5
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_mid,1.15
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_mid_max,1.15
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,kc_mid_min,1.15
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,max_height_m,1.2
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,max_height_m_max,1.2
+Forages,Sudan Grass hay (annual),individual cutting periods,crop,max_height_m_min,1.2
+Forages,Turf grass,cool season,crop,kc_end,0.95
+Forages,Turf grass,cool season,crop,kc_end_max,0.95
+Forages,Turf grass,cool season,crop,kc_end_min,0.95
+Forages,Turf grass,cool season,crop,kc_ini,0.9
+Forages,Turf grass,cool season,crop,kc_ini_max,0.9
+Forages,Turf grass,cool season,crop,kc_ini_min,0.9
+Forages,Turf grass,cool season,crop,kc_mid,0.95
+Forages,Turf grass,cool season,crop,kc_mid_max,0.95
+Forages,Turf grass,cool season,crop,kc_mid_min,0.95
+Forages,Turf grass,cool season,crop,max_height_m,0.1
+Forages,Turf grass,cool season,crop,max_height_m_max,0.1
+Forages,Turf grass,cool season,crop,max_height_m_min,0.1
+Forages,Turf grass,warm season,crop,kc_end,0.85
+Forages,Turf grass,warm season,crop,kc_end_max,0.85
+Forages,Turf grass,warm season,crop,kc_end_min,0.85
+Forages,Turf grass,warm season,crop,kc_ini,0.8
+Forages,Turf grass,warm season,crop,kc_ini_max,0.8
+Forages,Turf grass,warm season,crop,kc_ini_min,0.8
+Forages,Turf grass,warm season,crop,kc_mid,0.85
+Forages,Turf grass,warm season,crop,kc_mid_max,0.85
+Forages,Turf grass,warm season,crop,kc_mid_min,0.85
+Forages,Turf grass,warm season,crop,max_height_m,0.1
+Forages,Turf grass,warm season,crop,max_height_m_max,0.1
+Forages,Turf grass,warm season,crop,max_height_m_min,0.1
+Fruit Trees,"Almonds, no ground cover",,crop,kc_end,0.65
+Fruit Trees,"Almonds, no ground cover",,crop,kc_end_max,0.65
+Fruit Trees,"Almonds, no ground cover",,crop,kc_end_min,0.65
+Fruit Trees,"Almonds, no ground cover",,crop,kc_ini,0.4
+Fruit Trees,"Almonds, no ground cover",,crop,kc_ini_max,0.4
+Fruit Trees,"Almonds, no ground cover",,crop,kc_ini_min,0.4
+Fruit Trees,"Almonds, no ground cover",,crop,kc_mid,0.9
+Fruit Trees,"Almonds, no ground cover",,crop,kc_mid_max,0.9
+Fruit Trees,"Almonds, no ground cover",,crop,kc_mid_min,0.9
+Fruit Trees,"Almonds, no ground cover",,crop,max_height_m,5.0
+Fruit Trees,"Almonds, no ground cover",,crop,max_height_m_max,5.0
+Fruit Trees,"Almonds, no ground cover",,crop,max_height_m_min,5.0
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_end,0.95
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_end_max,0.95
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_end_min,0.95
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_ini,0.5
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_ini_max,0.5
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_ini_min,0.5
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_mid,1.2
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_mid_max,1.2
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,kc_mid_min,1.2
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,max_height_m,4.0
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,max_height_m_max,4.0
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",crop,max_height_m_min,4.0
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_end,0.85
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_end_max,0.85
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_end_min,0.85
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_ini,0.8
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_ini_max,0.8
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_ini_min,0.8
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_mid,1.2
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_mid_max,1.2
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,kc_mid_min,1.2
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,max_height_m,4.0
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,max_height_m_max,4.0
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",crop,max_height_m_min,4.0
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_end,0.7
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_end_max,0.7
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_end_min,0.7
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_ini,0.45
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_ini_max,0.45
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_ini_min,0.45
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_mid,0.95
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_mid_max,0.95
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,kc_mid_min,0.95
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,max_height_m,4.0
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,max_height_m_max,4.0
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",crop,max_height_m_min,4.0
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_end,0.75
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_end_max,0.75
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_end_min,0.75
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_ini,0.6
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_ini_max,0.6
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_ini_min,0.6
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_mid,0.95
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_mid_max,0.95
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,kc_mid_min,0.95
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,max_height_m,4.0
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,max_height_m_max,4.0
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",crop,max_height_m_min,4.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_end,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_end_max,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_end_min,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_ini,0.5
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_ini_max,0.5
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_ini_min,0.5
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_mid,1.15
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_mid_max,1.15
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,kc_mid_min,1.15
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,max_height_m,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,max_height_m_max,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",crop,max_height_m_min,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_end,0.85
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_end_max,0.85
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_end_min,0.85
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_ini,0.8
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_ini_max,0.8
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_ini_min,0.8
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_mid,1.15
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_mid_max,1.15
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,kc_mid_min,1.15
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,max_height_m,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,max_height_m_max,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",crop,max_height_m_min,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_end,0.65
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_end_max,0.65
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_end_min,0.65
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_ini,0.45
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_ini_max,0.45
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_ini_min,0.45
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_mid,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_mid_max,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,kc_mid_min,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,max_height_m,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,max_height_m_max,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",crop,max_height_m_min,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_end,0.65
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_end_max,0.65
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_end_min,0.65
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_ini,0.55
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_ini_max,0.55
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_ini_min,0.55
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_mid,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_mid_max,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,kc_mid_min,0.9
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,max_height_m,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,max_height_m_max,3.0
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",crop,max_height_m_min,3.0
+Fruit Trees,"Avocado, no ground cover",,crop,kc_end,0.75
+Fruit Trees,"Avocado, no ground cover",,crop,kc_end_max,0.75
+Fruit Trees,"Avocado, no ground cover",,crop,kc_end_min,0.75
+Fruit Trees,"Avocado, no ground cover",,crop,kc_ini,0.6
+Fruit Trees,"Avocado, no ground cover",,crop,kc_ini_max,0.6
+Fruit Trees,"Avocado, no ground cover",,crop,kc_ini_min,0.6
+Fruit Trees,"Avocado, no ground cover",,crop,kc_mid,0.85
+Fruit Trees,"Avocado, no ground cover",,crop,kc_mid_max,0.85
+Fruit Trees,"Avocado, no ground cover",,crop,kc_mid_min,0.85
+Fruit Trees,"Avocado, no ground cover",,crop,max_height_m,3.0
+Fruit Trees,"Avocado, no ground cover",,crop,max_height_m_max,3.0
+Fruit Trees,"Avocado, no ground cover",,crop,max_height_m_min,3.0
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_end,0.55
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_end_max,0.55
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_end_min,0.55
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_ini,0.5
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_ini_max,0.5
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_ini_min,0.5
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_mid,0.45
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_mid_max,0.45
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,kc_mid_min,0.45
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,max_height_m,2.0
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,max_height_m_max,2.0
+Fruit Trees,"Citrus, no ground cover",20% canopy,crop,max_height_m_min,2.0
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_end,0.65
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_end_max,0.65
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_end_min,0.65
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_ini,0.65
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_ini_max,0.65
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_ini_min,0.65
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_mid,0.6
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_mid_max,0.6
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,kc_mid_min,0.6
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,max_height_m,3.0
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,max_height_m_max,3.0
+Fruit Trees,"Citrus, no ground cover",50% canopy,crop,max_height_m_min,3.0
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_end,0.7
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_end_max,0.7
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_end_min,0.7
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_ini,0.7
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_ini_max,0.7
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_ini_min,0.7
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_mid,0.65
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_mid_max,0.65
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,kc_mid_min,0.65
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,max_height_m,4.0
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,max_height_m_max,4.0
+Fruit Trees,"Citrus, no ground cover",70% canopy,crop,max_height_m_min,4.0
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_end,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_end_max,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_end_min,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_ini,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_ini_max,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_ini_min,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_mid,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_mid_max,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,kc_mid_min,0.85
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,max_height_m,2.0
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,max_height_m_max,2.0
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,crop,max_height_m_min,2.0
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_end,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_end_max,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_end_min,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_ini,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_ini_max,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_ini_min,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_mid,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_mid_max,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,kc_mid_min,0.8
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,max_height_m,3.0
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,max_height_m_max,3.0
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,crop,max_height_m_min,3.0
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_end,0.75
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_end_max,0.75
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_end_min,0.75
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_ini,0.75
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_ini_max,0.75
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_ini_min,0.75
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_mid,0.7
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_mid_max,0.7
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,kc_mid_min,0.7
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,max_height_m,4.0
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,max_height_m_max,4.0
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,crop,max_height_m_min,4.0
+Fruit Trees,Conifer Trees,,crop,kc_end,1.0
+Fruit Trees,Conifer Trees,,crop,kc_end_max,1.0
+Fruit Trees,Conifer Trees,,crop,kc_end_min,1.0
+Fruit Trees,Conifer Trees,,crop,kc_ini,1.0
+Fruit Trees,Conifer Trees,,crop,kc_ini_max,1.0
+Fruit Trees,Conifer Trees,,crop,kc_ini_min,1.0
+Fruit Trees,Conifer Trees,,crop,kc_mid,1.0
+Fruit Trees,Conifer Trees,,crop,kc_mid_max,1.0
+Fruit Trees,Conifer Trees,,crop,kc_mid_min,1.0
+Fruit Trees,Conifer Trees,,crop,max_height_m,10.0
+Fruit Trees,Conifer Trees,,crop,max_height_m_max,10.0
+Fruit Trees,Conifer Trees,,crop,max_height_m_min,10.0
+Fruit Trees,Kiwi,,crop,kc_end,1.05
+Fruit Trees,Kiwi,,crop,kc_end_max,1.05
+Fruit Trees,Kiwi,,crop,kc_end_min,1.05
+Fruit Trees,Kiwi,,crop,kc_ini,0.4
+Fruit Trees,Kiwi,,crop,kc_ini_max,0.4
+Fruit Trees,Kiwi,,crop,kc_ini_min,0.4
+Fruit Trees,Kiwi,,crop,kc_mid,1.05
+Fruit Trees,Kiwi,,crop,kc_mid_max,1.05
+Fruit Trees,Kiwi,,crop,kc_mid_min,1.05
+Fruit Trees,Kiwi,,crop,max_height_m,3.0
+Fruit Trees,Kiwi,,crop,max_height_m_max,3.0
+Fruit Trees,Kiwi,,crop,max_height_m_min,3.0
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_end,0.7
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_end_max,0.7
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_end_min,0.7
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_ini,0.65
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_ini_max,0.65
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_ini_min,0.65
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_mid,0.7
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_mid_max,0.7
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,kc_mid_min,0.7
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,max_height_m,4.0
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,max_height_m_max,5.0
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,crop,max_height_m_min,3.0
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_end,0.45
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_end_max,0.45
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_end_min,0.45
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_ini,0.4
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_ini_max,0.4
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_ini_min,0.4
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_mid,1.1
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_mid_max,1.1
+Fruit Trees,"Pistachios, no ground cover",,crop,kc_mid_min,1.1
+Fruit Trees,"Pistachios, no ground cover",,crop,max_height_m,4.0
+Fruit Trees,"Pistachios, no ground cover",,crop,max_height_m_max,5.0
+Fruit Trees,"Pistachios, no ground cover",,crop,max_height_m_min,3.0
+Fruit Trees,Walnut Orchard,,crop,kc_end,0.6518
+Fruit Trees,Walnut Orchard,,crop,kc_end_max,0.6518
+Fruit Trees,Walnut Orchard,,crop,kc_end_min,0.6518
+Fruit Trees,Walnut Orchard,,crop,kc_ini,0.5
+Fruit Trees,Walnut Orchard,,crop,kc_ini_max,0.5
+Fruit Trees,Walnut Orchard,,crop,kc_ini_min,0.5
+Fruit Trees,Walnut Orchard,,crop,kc_mid,1.1
+Fruit Trees,Walnut Orchard,,crop,kc_mid_max,1.1
+Fruit Trees,Walnut Orchard,,crop,kc_mid_min,1.1
+Fruit Trees,Walnut Orchard,,crop,max_height_m,4.5
+Fruit Trees,Walnut Orchard,,crop,max_height_m_max,5.0
+Fruit Trees,Walnut Orchard,,crop,max_height_m_min,4.0
+Grapes and Berries,Berries (bushes),,crop,kc_end,0.5
+Grapes and Berries,Berries (bushes),,crop,kc_end_max,0.5
+Grapes and Berries,Berries (bushes),,crop,kc_end_min,0.5
+Grapes and Berries,Berries (bushes),,crop,kc_ini,0.3
+Grapes and Berries,Berries (bushes),,crop,kc_ini_max,0.3
+Grapes and Berries,Berries (bushes),,crop,kc_ini_min,0.3
+Grapes and Berries,Berries (bushes),,crop,kc_mid,1.05
+Grapes and Berries,Berries (bushes),,crop,kc_mid_max,1.05
+Grapes and Berries,Berries (bushes),,crop,kc_mid_min,1.05
+Grapes and Berries,Berries (bushes),,crop,max_height_m,1.5
+Grapes and Berries,Berries (bushes),,crop,max_height_m_max,1.5
+Grapes and Berries,Berries (bushes),,crop,max_height_m_min,1.5
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_end,0.45
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_end_max,0.45
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_end_min,0.45
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_ini,0.3
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_ini_max,0.3
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_ini_min,0.3
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_mid,0.85
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_mid_max,0.85
+Grapes and Berries,Grapes,Table or Raisin,crop,kc_mid_min,0.85
+Grapes and Berries,Grapes,Table or Raisin,crop,max_height_m,2.0
+Grapes and Berries,Grapes,Table or Raisin,crop,max_height_m_max,2.0
+Grapes and Berries,Grapes,Table or Raisin,crop,max_height_m_min,2.0
+Grapes and Berries,Grapes,Wine,crop,kc_end,0.45
+Grapes and Berries,Grapes,Wine,crop,kc_end_max,0.45
+Grapes and Berries,Grapes,Wine,crop,kc_end_min,0.45
+Grapes and Berries,Grapes,Wine,crop,kc_ini,0.3
+Grapes and Berries,Grapes,Wine,crop,kc_ini_max,0.3
+Grapes and Berries,Grapes,Wine,crop,kc_ini_min,0.3
+Grapes and Berries,Grapes,Wine,crop,kc_mid,0.7
+Grapes and Berries,Grapes,Wine,crop,kc_mid_max,0.7
+Grapes and Berries,Grapes,Wine,crop,kc_mid_min,0.7
+Grapes and Berries,Grapes,Wine,crop,max_height_m,1.75
+Grapes and Berries,Grapes,Wine,crop,max_height_m_max,2.0
+Grapes and Berries,Grapes,Wine,crop,max_height_m_min,1.5
+Grapes and Berries,Hops,,crop,kc_end,0.85
+Grapes and Berries,Hops,,crop,kc_end_max,0.85
+Grapes and Berries,Hops,,crop,kc_end_min,0.85
+Grapes and Berries,Hops,,crop,kc_ini,0.3
+Grapes and Berries,Hops,,crop,kc_ini_max,0.3
+Grapes and Berries,Hops,,crop,kc_ini_min,0.3
+Grapes and Berries,Hops,,crop,kc_mid,1.05
+Grapes and Berries,Hops,,crop,kc_mid_max,1.05
+Grapes and Berries,Hops,,crop,kc_mid_min,1.05
+Grapes and Berries,Hops,,crop,max_height_m,5.0
+Grapes and Berries,Hops,,crop,max_height_m_max,5.0
+Grapes and Berries,Hops,,crop,max_height_m_min,5.0
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_end,0.35
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_end_max,0.35
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_end_min,0.35
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_ini,0.4
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_ini_max,0.4
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_ini_min,0.4
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_mid,1.15
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_mid_max,1.15
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,kc_mid_min,1.15
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,max_height_m,0.4
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,max_height_m_max,0.4
+Legumes (Leguminosae),"Beans, dry and Pulses",,crop,max_height_m_min,0.4
+Legumes (Leguminosae),"Beans, green",,crop,kc_end,0.9
+Legumes (Leguminosae),"Beans, green",,crop,kc_end_max,0.9
+Legumes (Leguminosae),"Beans, green",,crop,kc_end_min,0.9
+Legumes (Leguminosae),"Beans, green",,crop,kc_ini,0.5
+Legumes (Leguminosae),"Beans, green",,crop,kc_ini_max,0.5
+Legumes (Leguminosae),"Beans, green",,crop,kc_ini_min,0.5
+Legumes (Leguminosae),"Beans, green",,crop,kc_mid,1.05
+Legumes (Leguminosae),"Beans, green",,crop,kc_mid_max,1.05
+Legumes (Leguminosae),"Beans, green",,crop,kc_mid_min,1.05
+Legumes (Leguminosae),"Beans, green",,crop,max_height_m,0.4
+Legumes (Leguminosae),"Beans, green",,crop,max_height_m_max,0.4
+Legumes (Leguminosae),"Beans, green",,crop,max_height_m_min,0.4
+Legumes (Leguminosae),Chick pea,,group,kc_end,0.35
+Legumes (Leguminosae),Chick pea,,group,kc_end_max,0.35
+Legumes (Leguminosae),Chick pea,,group,kc_end_min,0.35
+Legumes (Leguminosae),Chick pea,,group,kc_ini,0.4
+Legumes (Leguminosae),Chick pea,,group,kc_ini_max,0.4
+Legumes (Leguminosae),Chick pea,,group,kc_ini_min,0.4
+Legumes (Leguminosae),Chick pea,,group,kc_mid,1.0
+Legumes (Leguminosae),Chick pea,,group,kc_mid_max,1.0
+Legumes (Leguminosae),Chick pea,,group,kc_mid_min,1.0
+Legumes (Leguminosae),Chick pea,,group,max_height_m,0.4
+Legumes (Leguminosae),Chick pea,,group,max_height_m_max,0.4
+Legumes (Leguminosae),Chick pea,,group,max_height_m_min,0.4
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_end,0.3
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_end_max,0.3
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_end_min,0.3
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_ini,0.5
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_ini_max,0.5
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_ini_min,0.5
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_mid,1.15
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_mid_max,1.15
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,kc_mid_min,1.15
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,max_height_m,0.8
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,max_height_m_max,0.8
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,crop,max_height_m_min,0.8
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_end,1.1
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_end_max,1.1
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_end_min,1.1
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_ini,0.5
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_ini_max,0.5
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_ini_min,0.5
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_mid,1.15
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_mid_max,1.15
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,kc_mid_min,1.15
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,max_height_m,0.8
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,max_height_m_max,0.8
+Legumes (Leguminosae),Fababean (broad bean),Fresh,crop,max_height_m_min,0.8
+Legumes (Leguminosae),Grabanzo,,crop,kc_end,0.35
+Legumes (Leguminosae),Grabanzo,,crop,kc_end_max,0.35
+Legumes (Leguminosae),Grabanzo,,crop,kc_end_min,0.35
+Legumes (Leguminosae),Grabanzo,,crop,kc_ini,0.4
+Legumes (Leguminosae),Grabanzo,,crop,kc_ini_max,0.4
+Legumes (Leguminosae),Grabanzo,,crop,kc_ini_min,0.4
+Legumes (Leguminosae),Grabanzo,,crop,kc_mid,1.15
+Legumes (Leguminosae),Grabanzo,,crop,kc_mid_max,1.15
+Legumes (Leguminosae),Grabanzo,,crop,kc_mid_min,1.15
+Legumes (Leguminosae),Grabanzo,,crop,max_height_m,0.8
+Legumes (Leguminosae),Grabanzo,,crop,max_height_m_max,0.8
+Legumes (Leguminosae),Grabanzo,,crop,max_height_m_min,0.8
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_end,0.475
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_end_max,0.6
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_end_min,0.35
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_ini,0.4
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_ini_max,0.4
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_ini_min,0.4
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_mid,1.05
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_mid_max,1.05
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,kc_mid_min,1.05
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,max_height_m,0.4
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,max_height_m_max,0.4
+Legumes (Leguminosae),Green Gram and Cowpeas,,group,max_height_m_min,0.4
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_end,0.6
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_end_max,0.6
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_end_min,0.6
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_ini,0.4
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_ini_max,0.4
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_ini_min,0.4
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_mid,1.15
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_mid_max,1.15
+Legumes (Leguminosae),Groundnut (Peanut),,group,kc_mid_min,1.15
+Legumes (Leguminosae),Groundnut (Peanut),,group,max_height_m,0.4
+Legumes (Leguminosae),Groundnut (Peanut),,group,max_height_m_max,0.4
+Legumes (Leguminosae),Groundnut (Peanut),,group,max_height_m_min,0.4
+Legumes (Leguminosae),Lentil,,group,kc_end,0.3
+Legumes (Leguminosae),Lentil,,group,kc_end_max,0.3
+Legumes (Leguminosae),Lentil,,group,kc_end_min,0.3
+Legumes (Leguminosae),Lentil,,group,kc_ini,0.4
+Legumes (Leguminosae),Lentil,,group,kc_ini_max,0.4
+Legumes (Leguminosae),Lentil,,group,kc_ini_min,0.4
+Legumes (Leguminosae),Lentil,,group,kc_mid,1.1
+Legumes (Leguminosae),Lentil,,group,kc_mid_max,1.1
+Legumes (Leguminosae),Lentil,,group,kc_mid_min,1.1
+Legumes (Leguminosae),Lentil,,group,max_height_m,0.5
+Legumes (Leguminosae),Lentil,,group,max_height_m_max,0.5
+Legumes (Leguminosae),Lentil,,group,max_height_m_min,0.5
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_end,0.3
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_end_max,0.3
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_end_min,0.3
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_ini,0.4
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_ini_max,0.4
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_ini_min,0.4
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_mid,1.15
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_mid_max,1.15
+Legumes (Leguminosae),Peas,Dry/Seed,group,kc_mid_min,1.15
+Legumes (Leguminosae),Peas,Dry/Seed,group,max_height_m,0.5
+Legumes (Leguminosae),Peas,Dry/Seed,group,max_height_m_max,0.5
+Legumes (Leguminosae),Peas,Dry/Seed,group,max_height_m_min,0.5
+Legumes (Leguminosae),Peas,Fresh,crop,kc_end,1.1
+Legumes (Leguminosae),Peas,Fresh,crop,kc_end_max,1.1
+Legumes (Leguminosae),Peas,Fresh,crop,kc_end_min,1.1
+Legumes (Leguminosae),Peas,Fresh,crop,kc_ini,0.5
+Legumes (Leguminosae),Peas,Fresh,crop,kc_ini_max,0.5
+Legumes (Leguminosae),Peas,Fresh,crop,kc_ini_min,0.5
+Legumes (Leguminosae),Peas,Fresh,crop,kc_mid,1.15
+Legumes (Leguminosae),Peas,Fresh,crop,kc_mid_max,1.15
+Legumes (Leguminosae),Peas,Fresh,crop,kc_mid_min,1.15
+Legumes (Leguminosae),Peas,Fresh,crop,max_height_m,0.5
+Legumes (Leguminosae),Peas,Fresh,crop,max_height_m_max,0.5
+Legumes (Leguminosae),Peas,Fresh,crop,max_height_m_min,0.5
+Legumes (Leguminosae),Soybeans,,group,kc_end,0.5
+Legumes (Leguminosae),Soybeans,,group,kc_end_max,0.5
+Legumes (Leguminosae),Soybeans,,group,kc_end_min,0.5
+Legumes (Leguminosae),Soybeans,,group,kc_ini,0.4
+Legumes (Leguminosae),Soybeans,,group,kc_ini_max,0.4
+Legumes (Leguminosae),Soybeans,,group,kc_ini_min,0.4
+Legumes (Leguminosae),Soybeans,,group,kc_mid,1.15
+Legumes (Leguminosae),Soybeans,,group,kc_mid_max,1.15
+Legumes (Leguminosae),Soybeans,,group,kc_mid_min,1.15
+Legumes (Leguminosae),Soybeans,,group,max_height_m,0.75
+Legumes (Leguminosae),Soybeans,,group,max_height_m_max,1.0
+Legumes (Leguminosae),Soybeans,,group,max_height_m_min,0.5
+Oil Crops,Castorbean (Ricinus),,group,kc_end,0.55
+Oil Crops,Castorbean (Ricinus),,group,kc_end_max,0.55
+Oil Crops,Castorbean (Ricinus),,group,kc_end_min,0.55
+Oil Crops,Castorbean (Ricinus),,group,kc_ini,0.35
+Oil Crops,Castorbean (Ricinus),,group,kc_ini_max,0.35
+Oil Crops,Castorbean (Ricinus),,group,kc_ini_min,0.35
+Oil Crops,Castorbean (Ricinus),,group,kc_mid,1.15
+Oil Crops,Castorbean (Ricinus),,group,kc_mid_max,1.15
+Oil Crops,Castorbean (Ricinus),,group,kc_mid_min,1.15
+Oil Crops,Castorbean (Ricinus),,group,max_height_m,0.3
+Oil Crops,Castorbean (Ricinus),,group,max_height_m_max,0.3
+Oil Crops,Castorbean (Ricinus),,group,max_height_m_min,0.3
+Oil Crops,"Rapeseed, Canola",,group,kc_end,0.35
+Oil Crops,"Rapeseed, Canola",,group,kc_end_max,0.35
+Oil Crops,"Rapeseed, Canola",,group,kc_end_min,0.35
+Oil Crops,"Rapeseed, Canola",,group,kc_ini,0.35
+Oil Crops,"Rapeseed, Canola",,group,kc_ini_max,0.35
+Oil Crops,"Rapeseed, Canola",,group,kc_ini_min,0.35
+Oil Crops,"Rapeseed, Canola",,group,kc_mid,1.075
+Oil Crops,"Rapeseed, Canola",,group,kc_mid_max,1.15
+Oil Crops,"Rapeseed, Canola",,group,kc_mid_min,1.0
+Oil Crops,"Rapeseed, Canola",,group,max_height_m,0.6
+Oil Crops,"Rapeseed, Canola",,group,max_height_m_max,0.6
+Oil Crops,"Rapeseed, Canola",,group,max_height_m_min,0.6
+Oil Crops,Safflower,,group,kc_end,0.25
+Oil Crops,Safflower,,group,kc_end_max,0.25
+Oil Crops,Safflower,,group,kc_end_min,0.25
+Oil Crops,Safflower,,group,kc_ini,0.35
+Oil Crops,Safflower,,group,kc_ini_max,0.35
+Oil Crops,Safflower,,group,kc_ini_min,0.35
+Oil Crops,Safflower,,group,kc_mid,1.075
+Oil Crops,Safflower,,group,kc_mid_max,1.15
+Oil Crops,Safflower,,group,kc_mid_min,1.0
+Oil Crops,Safflower,,group,max_height_m,0.8
+Oil Crops,Safflower,,group,max_height_m_max,0.8
+Oil Crops,Safflower,,group,max_height_m_min,0.8
+Oil Crops,Sesame,,group,kc_end,0.25
+Oil Crops,Sesame,,group,kc_end_max,0.25
+Oil Crops,Sesame,,group,kc_end_min,0.25
+Oil Crops,Sesame,,group,kc_ini,0.35
+Oil Crops,Sesame,,group,kc_ini_max,0.35
+Oil Crops,Sesame,,group,kc_ini_min,0.35
+Oil Crops,Sesame,,group,kc_mid,1.1
+Oil Crops,Sesame,,group,kc_mid_max,1.1
+Oil Crops,Sesame,,group,kc_mid_min,1.1
+Oil Crops,Sesame,,group,max_height_m,1.0
+Oil Crops,Sesame,,group,max_height_m_max,1.0
+Oil Crops,Sesame,,group,max_height_m_min,1.0
+Oil Crops,Sunflower,,group,kc_end,0.35
+Oil Crops,Sunflower,,group,kc_end_max,0.35
+Oil Crops,Sunflower,,group,kc_end_min,0.35
+Oil Crops,Sunflower,,group,kc_ini,0.35
+Oil Crops,Sunflower,,group,kc_ini_max,0.35
+Oil Crops,Sunflower,,group,kc_ini_min,0.35
+Oil Crops,Sunflower,,group,kc_mid,1.075
+Oil Crops,Sunflower,,group,kc_mid_max,1.15
+Oil Crops,Sunflower,,group,kc_mid_min,1.0
+Oil Crops,Sunflower,,group,max_height_m,2.0
+Oil Crops,Sunflower,,group,max_height_m_max,2.0
+Oil Crops,Sunflower,,group,max_height_m_min,2.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_end,0.95
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_end_max,0.95
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_end_min,0.95
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_ini,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_ini_max,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_ini_min,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_mid,1.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_mid_max,1.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,kc_mid_min,1.0
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,max_height_m,0.7
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,max_height_m_max,0.7
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,crop,max_height_m_min,0.7
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_end,0.3
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_end_max,0.3
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_end_min,0.3
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_ini,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_ini_max,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_ini_min,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_mid,0.95
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_mid_max,0.95
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,kc_mid_min,0.95
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,max_height_m,0.5
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,max_height_m_max,0.8
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,crop,max_height_m_min,0.2
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_end,1.1
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_end_max,1.1
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_end_min,1.1
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_ini,0.6
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_ini_max,0.6
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_ini_min,0.6
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_mid,1.15
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_mid_max,1.15
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,kc_mid_min,1.15
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,max_height_m,0.7
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,max_height_m_max,0.8
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,crop,max_height_m_min,0.6
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_end,0.75
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_end_max,0.75
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_end_min,0.75
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_ini,0.4
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_ini_max,0.4
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_ini_min,0.4
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_mid,0.85
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_mid_max,0.85
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,kc_mid_min,0.85
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,max_height_m,0.2
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,max_height_m_max,0.2
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,crop,max_height_m_min,0.2
+Roots and Tubers,"Beets, table",,group,kc_end,0.95
+Roots and Tubers,"Beets, table",,group,kc_end_max,0.95
+Roots and Tubers,"Beets, table",,group,kc_end_min,0.95
+Roots and Tubers,"Beets, table",,group,kc_ini,0.5
+Roots and Tubers,"Beets, table",,group,kc_ini_max,0.5
+Roots and Tubers,"Beets, table",,group,kc_ini_min,0.5
+Roots and Tubers,"Beets, table",,group,kc_mid,1.05
+Roots and Tubers,"Beets, table",,group,kc_mid_max,1.05
+Roots and Tubers,"Beets, table",,group,kc_mid_min,1.05
+Roots and Tubers,"Beets, table",,group,max_height_m,0.4
+Roots and Tubers,"Beets, table",,group,max_height_m_max,0.4
+Roots and Tubers,"Beets, table",,group,max_height_m_min,0.4
+Roots and Tubers,Cassava,year,crop,kc_end,0.3
+Roots and Tubers,Cassava,year,crop,kc_end,0.5
+Roots and Tubers,Cassava,year,crop,kc_end_max,0.3
+Roots and Tubers,Cassava,year,crop,kc_end_max,0.5
+Roots and Tubers,Cassava,year,crop,kc_end_min,0.3
+Roots and Tubers,Cassava,year,crop,kc_end_min,0.5
+Roots and Tubers,Cassava,year,crop,kc_ini,0.3
+Roots and Tubers,Cassava,year,crop,kc_ini,0.3
+Roots and Tubers,Cassava,year,crop,kc_ini_max,0.3
+Roots and Tubers,Cassava,year,crop,kc_ini_max,0.3
+Roots and Tubers,Cassava,year,crop,kc_ini_min,0.3
+Roots and Tubers,Cassava,year,crop,kc_ini_min,0.3
+Roots and Tubers,Cassava,year,crop,kc_mid,0.8
+Roots and Tubers,Cassava,year,crop,kc_mid,1.1
+Roots and Tubers,Cassava,year,crop,kc_mid_max,0.8
+Roots and Tubers,Cassava,year,crop,kc_mid_max,1.1
+Roots and Tubers,Cassava,year,crop,kc_mid_min,0.8
+Roots and Tubers,Cassava,year,crop,kc_mid_min,1.1
+Roots and Tubers,Cassava,year,crop,max_height_m,1.0
+Roots and Tubers,Cassava,year,crop,max_height_m,1.5
+Roots and Tubers,Cassava,year,crop,max_height_m_max,1.0
+Roots and Tubers,Cassava,year,crop,max_height_m_max,1.5
+Roots and Tubers,Cassava,year,crop,max_height_m_min,1.0
+Roots and Tubers,Cassava,year,crop,max_height_m_min,1.5
+Roots and Tubers,Parsnip,,crop,kc_end,0.95
+Roots and Tubers,Parsnip,,crop,kc_end_max,0.95
+Roots and Tubers,Parsnip,,crop,kc_end_min,0.95
+Roots and Tubers,Parsnip,,crop,kc_ini,0.5
+Roots and Tubers,Parsnip,,crop,kc_ini_max,0.5
+Roots and Tubers,Parsnip,,crop,kc_ini_min,0.5
+Roots and Tubers,Parsnip,,crop,kc_mid,1.05
+Roots and Tubers,Parsnip,,crop,kc_mid_max,1.05
+Roots and Tubers,Parsnip,,crop,kc_mid_min,1.05
+Roots and Tubers,Parsnip,,crop,max_height_m,0.4
+Roots and Tubers,Parsnip,,crop,max_height_m_max,0.4
+Roots and Tubers,Parsnip,,crop,max_height_m_min,0.4
+Roots and Tubers,Potato,,group,kc_end,0.75
+Roots and Tubers,Potato,,group,kc_end_max,0.75
+Roots and Tubers,Potato,,group,kc_end_min,0.75
+Roots and Tubers,Potato,,group,kc_ini,0.5
+Roots and Tubers,Potato,,group,kc_ini_max,0.5
+Roots and Tubers,Potato,,group,kc_ini_min,0.5
+Roots and Tubers,Potato,,group,kc_mid,1.15
+Roots and Tubers,Potato,,group,kc_mid_max,1.15
+Roots and Tubers,Potato,,group,kc_mid_min,1.15
+Roots and Tubers,Potato,,group,max_height_m,0.6
+Roots and Tubers,Potato,,group,max_height_m_max,0.6
+Roots and Tubers,Potato,,group,max_height_m_min,0.6
+Roots and Tubers,Sugar Beet,,crop,kc_end,0.7
+Roots and Tubers,Sugar Beet,,crop,kc_end_max,0.7
+Roots and Tubers,Sugar Beet,,crop,kc_end_min,0.7
+Roots and Tubers,Sugar Beet,,crop,kc_ini,0.35
+Roots and Tubers,Sugar Beet,,crop,kc_ini_max,0.35
+Roots and Tubers,Sugar Beet,,crop,kc_ini_min,0.35
+Roots and Tubers,Sugar Beet,,crop,kc_mid,1.2
+Roots and Tubers,Sugar Beet,,crop,kc_mid_max,1.2
+Roots and Tubers,Sugar Beet,,crop,kc_mid_min,1.2
+Roots and Tubers,Sugar Beet,,crop,max_height_m,0.5
+Roots and Tubers,Sugar Beet,,crop,max_height_m_max,0.5
+Roots and Tubers,Sugar Beet,,crop,max_height_m_min,0.5
+Roots and Tubers,Sweet Potato,,group,kc_end,0.65
+Roots and Tubers,Sweet Potato,,group,kc_end_max,0.65
+Roots and Tubers,Sweet Potato,,group,kc_end_min,0.65
+Roots and Tubers,Sweet Potato,,group,kc_ini,0.5
+Roots and Tubers,Sweet Potato,,group,kc_ini_max,0.5
+Roots and Tubers,Sweet Potato,,group,kc_ini_min,0.5
+Roots and Tubers,Sweet Potato,,group,kc_mid,1.15
+Roots and Tubers,Sweet Potato,,group,kc_mid_max,1.15
+Roots and Tubers,Sweet Potato,,group,kc_mid_min,1.15
+Roots and Tubers,Sweet Potato,,group,max_height_m,0.4
+Roots and Tubers,Sweet Potato,,group,max_height_m_max,0.4
+Roots and Tubers,Sweet Potato,,group,max_height_m_min,0.4
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_end,0.95
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_end_max,0.95
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_end_min,0.95
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_ini,0.5
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_ini_max,0.5
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_ini_min,0.5
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_mid,1.1
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_mid_max,1.1
+Roots and Tubers,Turnip (and Rutabaga),,group,kc_mid_min,1.1
+Roots and Tubers,Turnip (and Rutabaga),,group,max_height_m,0.6
+Roots and Tubers,Turnip (and Rutabaga),,group,max_height_m_max,0.6
+Roots and Tubers,Turnip (and Rutabaga),,group,max_height_m_min,0.6
+Small Vegetables,Broccoli,,group,kc_end,0.95
+Small Vegetables,Broccoli,,group,kc_end_max,0.95
+Small Vegetables,Broccoli,,group,kc_end_min,0.95
+Small Vegetables,Broccoli,,group,kc_ini,0.7
+Small Vegetables,Broccoli,,group,kc_ini_max,0.7
+Small Vegetables,Broccoli,,group,kc_ini_min,0.7
+Small Vegetables,Broccoli,,group,kc_mid,1.05
+Small Vegetables,Broccoli,,group,kc_mid_max,1.05
+Small Vegetables,Broccoli,,group,kc_mid_min,1.05
+Small Vegetables,Broccoli,,group,max_height_m,0.3
+Small Vegetables,Broccoli,,group,max_height_m_max,0.3
+Small Vegetables,Broccoli,,group,max_height_m_min,0.3
+Small Vegetables,Brussel Sprouts,,group,kc_end,0.95
+Small Vegetables,Brussel Sprouts,,group,kc_end_max,0.95
+Small Vegetables,Brussel Sprouts,,group,kc_end_min,0.95
+Small Vegetables,Brussel Sprouts,,group,kc_ini,0.7
+Small Vegetables,Brussel Sprouts,,group,kc_ini_max,0.7
+Small Vegetables,Brussel Sprouts,,group,kc_ini_min,0.7
+Small Vegetables,Brussel Sprouts,,group,kc_mid,1.05
+Small Vegetables,Brussel Sprouts,,group,kc_mid_max,1.05
+Small Vegetables,Brussel Sprouts,,group,kc_mid_min,1.05
+Small Vegetables,Brussel Sprouts,,group,max_height_m,0.4
+Small Vegetables,Brussel Sprouts,,group,max_height_m_max,0.4
+Small Vegetables,Brussel Sprouts,,group,max_height_m_min,0.4
+Small Vegetables,Cabbage,,group,kc_end,0.95
+Small Vegetables,Cabbage,,group,kc_end_max,0.95
+Small Vegetables,Cabbage,,group,kc_end_min,0.95
+Small Vegetables,Cabbage,,group,kc_ini,0.7
+Small Vegetables,Cabbage,,group,kc_ini_max,0.7
+Small Vegetables,Cabbage,,group,kc_ini_min,0.7
+Small Vegetables,Cabbage,,group,kc_mid,1.05
+Small Vegetables,Cabbage,,group,kc_mid_max,1.05
+Small Vegetables,Cabbage,,group,kc_mid_min,1.05
+Small Vegetables,Cabbage,,group,max_height_m,0.4
+Small Vegetables,Cabbage,,group,max_height_m_max,0.4
+Small Vegetables,Cabbage,,group,max_height_m_min,0.4
+Small Vegetables,Carrots,,group,kc_end,0.95
+Small Vegetables,Carrots,,group,kc_end_max,0.95
+Small Vegetables,Carrots,,group,kc_end_min,0.95
+Small Vegetables,Carrots,,group,kc_ini,0.7
+Small Vegetables,Carrots,,group,kc_ini_max,0.7
+Small Vegetables,Carrots,,group,kc_ini_min,0.7
+Small Vegetables,Carrots,,group,kc_mid,1.05
+Small Vegetables,Carrots,,group,kc_mid_max,1.05
+Small Vegetables,Carrots,,group,kc_mid_min,1.05
+Small Vegetables,Carrots,,group,max_height_m,0.3
+Small Vegetables,Carrots,,group,max_height_m_max,0.3
+Small Vegetables,Carrots,,group,max_height_m_min,0.3
+Small Vegetables,Cauliflower,,group,kc_end,0.95
+Small Vegetables,Cauliflower,,group,kc_end_max,0.95
+Small Vegetables,Cauliflower,,group,kc_end_min,0.95
+Small Vegetables,Cauliflower,,group,kc_ini,0.7
+Small Vegetables,Cauliflower,,group,kc_ini_max,0.7
+Small Vegetables,Cauliflower,,group,kc_ini_min,0.7
+Small Vegetables,Cauliflower,,group,kc_mid,1.05
+Small Vegetables,Cauliflower,,group,kc_mid_max,1.05
+Small Vegetables,Cauliflower,,group,kc_mid_min,1.05
+Small Vegetables,Cauliflower,,group,max_height_m,0.4
+Small Vegetables,Cauliflower,,group,max_height_m_max,0.4
+Small Vegetables,Cauliflower,,group,max_height_m_min,0.4
+Small Vegetables,Celery,,group,kc_end,1.0
+Small Vegetables,Celery,,group,kc_end_max,1.0
+Small Vegetables,Celery,,group,kc_end_min,1.0
+Small Vegetables,Celery,,group,kc_ini,0.7
+Small Vegetables,Celery,,group,kc_ini_max,0.7
+Small Vegetables,Celery,,group,kc_ini_min,0.7
+Small Vegetables,Celery,,group,kc_mid,1.05
+Small Vegetables,Celery,,group,kc_mid_max,1.05
+Small Vegetables,Celery,,group,kc_mid_min,1.05
+Small Vegetables,Celery,,group,max_height_m,0.6
+Small Vegetables,Celery,,group,max_height_m_max,0.6
+Small Vegetables,Celery,,group,max_height_m_min,0.6
+Small Vegetables,Garlic,,group,kc_end,0.7
+Small Vegetables,Garlic,,group,kc_end_max,0.7
+Small Vegetables,Garlic,,group,kc_end_min,0.7
+Small Vegetables,Garlic,,group,kc_ini,0.7
+Small Vegetables,Garlic,,group,kc_ini_max,0.7
+Small Vegetables,Garlic,,group,kc_ini_min,0.7
+Small Vegetables,Garlic,,group,kc_mid,1.0
+Small Vegetables,Garlic,,group,kc_mid_max,1.0
+Small Vegetables,Garlic,,group,kc_mid_min,1.0
+Small Vegetables,Garlic,,group,max_height_m,0.3
+Small Vegetables,Garlic,,group,max_height_m_max,0.3
+Small Vegetables,Garlic,,group,max_height_m_min,0.3
+Small Vegetables,Lettuce,,group,kc_end,0.95
+Small Vegetables,Lettuce,,group,kc_end_max,0.95
+Small Vegetables,Lettuce,,group,kc_end_min,0.95
+Small Vegetables,Lettuce,,group,kc_ini,0.7
+Small Vegetables,Lettuce,,group,kc_ini_max,0.7
+Small Vegetables,Lettuce,,group,kc_ini_min,0.7
+Small Vegetables,Lettuce,,group,kc_mid,1.0
+Small Vegetables,Lettuce,,group,kc_mid_max,1.0
+Small Vegetables,Lettuce,,group,kc_mid_min,1.0
+Small Vegetables,Lettuce,,group,max_height_m,0.3
+Small Vegetables,Lettuce,,group,max_height_m_max,0.3
+Small Vegetables,Lettuce,,group,max_height_m_min,0.3
+Small Vegetables,Onions,dry,group,kc_end,0.75
+Small Vegetables,Onions,dry,group,kc_end_max,0.75
+Small Vegetables,Onions,dry,group,kc_end_min,0.75
+Small Vegetables,Onions,dry,group,kc_ini,0.7
+Small Vegetables,Onions,dry,group,kc_ini_max,0.7
+Small Vegetables,Onions,dry,group,kc_ini_min,0.7
+Small Vegetables,Onions,dry,group,kc_mid,1.05
+Small Vegetables,Onions,dry,group,kc_mid_max,1.05
+Small Vegetables,Onions,dry,group,kc_mid_min,1.05
+Small Vegetables,Onions,dry,group,max_height_m,0.4
+Small Vegetables,Onions,dry,group,max_height_m_max,0.4
+Small Vegetables,Onions,dry,group,max_height_m_min,0.4
+Small Vegetables,Onions,green,group,kc_end,1.0
+Small Vegetables,Onions,green,group,kc_end_max,1.0
+Small Vegetables,Onions,green,group,kc_end_min,1.0
+Small Vegetables,Onions,green,group,kc_ini,0.7
+Small Vegetables,Onions,green,group,kc_ini_max,0.7
+Small Vegetables,Onions,green,group,kc_ini_min,0.7
+Small Vegetables,Onions,green,group,kc_mid,1.0
+Small Vegetables,Onions,green,group,kc_mid_max,1.0
+Small Vegetables,Onions,green,group,kc_mid_min,1.0
+Small Vegetables,Onions,green,group,max_height_m,0.3
+Small Vegetables,Onions,green,group,max_height_m_max,0.3
+Small Vegetables,Onions,green,group,max_height_m_min,0.3
+Small Vegetables,Onions,seed,group,kc_end,0.8
+Small Vegetables,Onions,seed,group,kc_end_max,0.8
+Small Vegetables,Onions,seed,group,kc_end_min,0.8
+Small Vegetables,Onions,seed,group,kc_ini,0.7
+Small Vegetables,Onions,seed,group,kc_ini_max,0.7
+Small Vegetables,Onions,seed,group,kc_ini_min,0.7
+Small Vegetables,Onions,seed,group,kc_mid,1.05
+Small Vegetables,Onions,seed,group,kc_mid_max,1.05
+Small Vegetables,Onions,seed,group,kc_mid_min,1.05
+Small Vegetables,Onions,seed,group,max_height_m,0.5
+Small Vegetables,Onions,seed,group,max_height_m_max,0.5
+Small Vegetables,Onions,seed,group,max_height_m_min,0.5
+Small Vegetables,Radish,,group,kc_end,0.85
+Small Vegetables,Radish,,group,kc_end_max,0.85
+Small Vegetables,Radish,,group,kc_end_min,0.85
+Small Vegetables,Radish,,group,kc_ini,0.7
+Small Vegetables,Radish,,group,kc_ini_max,0.7
+Small Vegetables,Radish,,group,kc_ini_min,0.7
+Small Vegetables,Radish,,group,kc_mid,0.9
+Small Vegetables,Radish,,group,kc_mid_max,0.9
+Small Vegetables,Radish,,group,kc_mid_min,0.9
+Small Vegetables,Radish,,group,max_height_m,0.3
+Small Vegetables,Radish,,group,max_height_m_max,0.3
+Small Vegetables,Radish,,group,max_height_m_min,0.3
+Small Vegetables,Spinach,,group,kc_end,0.95
+Small Vegetables,Spinach,,group,kc_end_max,0.95
+Small Vegetables,Spinach,,group,kc_end_min,0.95
+Small Vegetables,Spinach,,group,kc_ini,0.7
+Small Vegetables,Spinach,,group,kc_ini_max,0.7
+Small Vegetables,Spinach,,group,kc_ini_min,0.7
+Small Vegetables,Spinach,,group,kc_mid,1.0
+Small Vegetables,Spinach,,group,kc_mid_max,1.0
+Small Vegetables,Spinach,,group,kc_mid_min,1.0
+Small Vegetables,Spinach,,group,max_height_m,0.3
+Small Vegetables,Spinach,,group,max_height_m_max,0.3
+Small Vegetables,Spinach,,group,max_height_m_min,0.3
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,kc_end,1.05
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,kc_end_max,1.05
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,kc_end_min,1.05
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,kc_mid,1.05
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,kc_mid_max,1.05
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,kc_mid_min,1.05
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,kc_end,1.2525
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,kc_end_max,1.2525
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,kc_end_min,1.2525
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,kc_mid,0.6525
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,kc_mid_max,0.6525
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,kc_mid_min,0.6525
+Tropical Fruits and Trees,Banana,1 year,crop,kc_end,1.0
+Tropical Fruits and Trees,Banana,1 year,crop,kc_end_max,1.0
+Tropical Fruits and Trees,Banana,1 year,crop,kc_end_min,1.0
+Tropical Fruits and Trees,Banana,1 year,crop,kc_ini,0.5
+Tropical Fruits and Trees,Banana,1 year,crop,kc_ini_max,0.5
+Tropical Fruits and Trees,Banana,1 year,crop,kc_ini_min,0.5
+Tropical Fruits and Trees,Banana,1 year,crop,kc_mid,1.1
+Tropical Fruits and Trees,Banana,1 year,crop,kc_mid_max,1.1
+Tropical Fruits and Trees,Banana,1 year,crop,kc_mid_min,1.1
+Tropical Fruits and Trees,Banana,1 year,crop,max_height_m,3.0
+Tropical Fruits and Trees,Banana,1 year,crop,max_height_m_max,3.0
+Tropical Fruits and Trees,Banana,1 year,crop,max_height_m_min,3.0
+Tropical Fruits and Trees,Banana,2 year,crop,kc_end,1.1
+Tropical Fruits and Trees,Banana,2 year,crop,kc_end_max,1.1
+Tropical Fruits and Trees,Banana,2 year,crop,kc_end_min,1.1
+Tropical Fruits and Trees,Banana,2 year,crop,kc_ini,1.0
+Tropical Fruits and Trees,Banana,2 year,crop,kc_ini_max,1.0
+Tropical Fruits and Trees,Banana,2 year,crop,kc_ini_min,1.0
+Tropical Fruits and Trees,Banana,2 year,crop,kc_mid,1.2
+Tropical Fruits and Trees,Banana,2 year,crop,kc_mid_max,1.2
+Tropical Fruits and Trees,Banana,2 year,crop,kc_mid_min,1.2
+Tropical Fruits and Trees,Banana,2 year,crop,max_height_m,4.0
+Tropical Fruits and Trees,Banana,2 year,crop,max_height_m_max,4.0
+Tropical Fruits and Trees,Banana,2 year,crop,max_height_m_min,4.0
+Tropical Fruits and Trees,Cacao,,crop,kc_end,1.05
+Tropical Fruits and Trees,Cacao,,crop,kc_end_max,1.05
+Tropical Fruits and Trees,Cacao,,crop,kc_end_min,1.05
+Tropical Fruits and Trees,Cacao,,crop,kc_ini,1.0
+Tropical Fruits and Trees,Cacao,,crop,kc_ini_max,1.0
+Tropical Fruits and Trees,Cacao,,crop,kc_ini_min,1.0
+Tropical Fruits and Trees,Cacao,,crop,kc_mid,1.05
+Tropical Fruits and Trees,Cacao,,crop,kc_mid_max,1.05
+Tropical Fruits and Trees,Cacao,,crop,kc_mid_min,1.05
+Tropical Fruits and Trees,Cacao,,crop,max_height_m,3.0
+Tropical Fruits and Trees,Cacao,,crop,max_height_m_max,3.0
+Tropical Fruits and Trees,Cacao,,crop,max_height_m_min,3.0
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_end,0.95
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_end_max,0.95
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_end_min,0.95
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_ini,0.9
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_ini_max,0.9
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_ini_min,0.9
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_mid,0.95
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_mid_max,0.95
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,kc_mid_min,0.95
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,max_height_m,2.5
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,max_height_m_max,3.0
+Tropical Fruits and Trees,Coffee,bare ground cover,crop,max_height_m_min,2.0
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_end,1.1
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_end_max,1.1
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_end_min,1.1
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_ini,1.05
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_ini_max,1.05
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_ini_min,1.05
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_mid,1.1
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_mid_max,1.1
+Tropical Fruits and Trees,Coffee,with weeds,crop,kc_mid_min,1.1
+Tropical Fruits and Trees,Coffee,with weeds,crop,max_height_m,2.5
+Tropical Fruits and Trees,Coffee,with weeds,crop,max_height_m_max,3.0
+Tropical Fruits and Trees,Coffee,with weeds,crop,max_height_m_min,2.0
+Tropical Fruits and Trees,Date Palms,,crop,kc_end,0.95
+Tropical Fruits and Trees,Date Palms,,crop,kc_end_max,0.95
+Tropical Fruits and Trees,Date Palms,,crop,kc_end_min,0.95
+Tropical Fruits and Trees,Date Palms,,crop,kc_ini,0.9
+Tropical Fruits and Trees,Date Palms,,crop,kc_ini_max,0.9
+Tropical Fruits and Trees,Date Palms,,crop,kc_ini_min,0.9
+Tropical Fruits and Trees,Date Palms,,crop,kc_mid,0.95
+Tropical Fruits and Trees,Date Palms,,crop,kc_mid_max,0.95
+Tropical Fruits and Trees,Date Palms,,crop,kc_mid_min,0.95
+Tropical Fruits and Trees,Date Palms,,crop,max_height_m,8.0
+Tropical Fruits and Trees,Date Palms,,crop,max_height_m_max,8.0
+Tropical Fruits and Trees,Date Palms,,crop,max_height_m_min,8.0
+Tropical Fruits and Trees,Palm Trees,,crop,kc_end,1.0
+Tropical Fruits and Trees,Palm Trees,,crop,kc_end_max,1.0
+Tropical Fruits and Trees,Palm Trees,,crop,kc_end_min,1.0
+Tropical Fruits and Trees,Palm Trees,,crop,kc_ini,0.95
+Tropical Fruits and Trees,Palm Trees,,crop,kc_ini_max,0.95
+Tropical Fruits and Trees,Palm Trees,,crop,kc_ini_min,0.95
+Tropical Fruits and Trees,Palm Trees,,crop,kc_mid,1.0
+Tropical Fruits and Trees,Palm Trees,,crop,kc_mid_max,1.0
+Tropical Fruits and Trees,Palm Trees,,crop,kc_mid_min,1.0
+Tropical Fruits and Trees,Palm Trees,,crop,max_height_m,8.0
+Tropical Fruits and Trees,Palm Trees,,crop,max_height_m_max,8.0
+Tropical Fruits and Trees,Palm Trees,,crop,max_height_m_min,8.0
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_end,0.3
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_end_max,0.3
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_end_min,0.3
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_ini,0.5
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_ini_max,0.5
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_ini_min,0.5
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_mid,0.3
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_mid_max,0.3
+Tropical Fruits and Trees,Pineapple,bare soil,crop,kc_mid_min,0.3
+Tropical Fruits and Trees,Pineapple,bare soil,crop,max_height_m,0.8999999999999999
+Tropical Fruits and Trees,Pineapple,bare soil,crop,max_height_m_max,1.2
+Tropical Fruits and Trees,Pineapple,bare soil,crop,max_height_m_min,0.6
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_end,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_end_max,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_end_min,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_ini,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_ini_max,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_ini_min,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_mid,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_mid_max,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,kc_mid_min,0.5
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,max_height_m,0.8999999999999999
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,max_height_m_max,1.2
+Tropical Fruits and Trees,Pineapple,with grass cover,crop,max_height_m_min,0.6
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_end,1.0
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_end_max,1.0
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_end_min,1.0
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_ini,0.95
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_ini_max,0.95
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_ini_min,0.95
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_mid,1.0
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_mid_max,1.0
+Tropical Fruits and Trees,Rubber Trees,,crop,kc_mid_min,1.0
+Tropical Fruits and Trees,Rubber Trees,,crop,max_height_m,10.0
+Tropical Fruits and Trees,Rubber Trees,,crop,max_height_m_max,10.0
+Tropical Fruits and Trees,Rubber Trees,,crop,max_height_m_min,10.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_end,1.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_end_max,1.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_end_min,1.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_ini,0.95
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_ini_max,0.95
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_ini_min,0.95
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_mid,1.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_mid_max,1.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,kc_mid_min,1.0
+Tropical Fruits and Trees,Tea,non-shaded,crop,max_height_m,1.5
+Tropical Fruits and Trees,Tea,non-shaded,crop,max_height_m_max,1.5
+Tropical Fruits and Trees,Tea,non-shaded,crop,max_height_m_min,1.5
+Tropical Fruits and Trees,Tea,shaded,crop,kc_end,1.15
+Tropical Fruits and Trees,Tea,shaded,crop,kc_end_max,1.15
+Tropical Fruits and Trees,Tea,shaded,crop,kc_end_min,1.15
+Tropical Fruits and Trees,Tea,shaded,crop,kc_ini,1.1
+Tropical Fruits and Trees,Tea,shaded,crop,kc_ini_max,1.1
+Tropical Fruits and Trees,Tea,shaded,crop,kc_ini_min,1.1
+Tropical Fruits and Trees,Tea,shaded,crop,kc_mid,1.15
+Tropical Fruits and Trees,Tea,shaded,crop,kc_mid_max,1.15
+Tropical Fruits and Trees,Tea,shaded,crop,kc_mid_min,1.15
+Tropical Fruits and Trees,Tea,shaded,crop,max_height_m,2.0
+Tropical Fruits and Trees,Tea,shaded,crop,max_height_m_max,2.0
+Tropical Fruits and Trees,Tea,shaded,crop,max_height_m_min,2.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_end,0.6
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_end_max,0.6
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_end_min,0.6
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_ini,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_ini_max,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_ini_min,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_mid,0.85
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_mid_max,0.85
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,kc_mid_min,0.85
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,max_height_m,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,max_height_m_max,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,crop,max_height_m_min,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_end,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_end_max,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_end_min,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_ini,0.6
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_ini_max,0.6
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_ini_min,0.6
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_mid,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_mid_max,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,kc_mid_min,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,max_height_m,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,max_height_m_max,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,crop,max_height_m_min,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_end,0.9
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_end_max,0.9
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_end_min,0.9
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_ini,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_ini_max,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_ini_min,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_mid,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_mid_max,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,kc_mid_min,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,max_height_m,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,max_height_m_max,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,crop,max_height_m_min,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_end,0.8
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_end_max,0.8
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_end_min,0.8
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_ini,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_ini_max,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_ini_min,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_mid,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_mid_max,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,kc_mid_min,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,max_height_m,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,max_height_m_max,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,group,max_height_m_min,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_end,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_end_max,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_end_min,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_ini,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_ini_max,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_ini_min,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_mid,0.95
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_mid_max,0.95
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,kc_mid_min,0.95
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,max_height_m,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,max_height_m_max,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,group,max_height_m_min,0.3
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_end,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_end_max,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_end_min,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_ini,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_ini_max,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_ini_min,0.5
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_mid,1.05
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_mid_max,1.05
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,kc_mid_min,1.05
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,max_height_m,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,max_height_m_max,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,group,max_height_m_min,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_end,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_end_max,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_end_min,0.75
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_ini,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_ini_max,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_ini_min,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_mid,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_mid_max,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,kc_mid_min,1.0
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,max_height_m,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,max_height_m_max,0.4
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,crop,max_height_m_min,0.4
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_end,0.9
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_end_max,0.9
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_end_min,0.9
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_ini,0.6
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_ini_max,0.6
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_ini_min,0.6
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_mid,1.05
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_mid_max,1.05
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,kc_mid_min,1.05
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,max_height_m,0.8
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,max_height_m_max,0.8
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,group,max_height_m_min,0.8
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_end,0.9
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_end_max,0.9
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_end_min,0.9
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_ini,0.6
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_ini_max,0.6
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_ini_min,0.6
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_mid,1.05
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_mid_max,1.05
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,kc_mid_min,1.05
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,max_height_m,0.7
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,max_height_m_max,0.7
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,group,max_height_m_min,0.7
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_end,0.8
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_end_max,0.9
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_end_min,0.7
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_ini,0.6
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_ini_max,0.6
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_ini_min,0.6
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_mid,1.15
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_mid_max,1.15
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,kc_mid_min,1.15
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,max_height_m,0.6
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,max_height_m_max,0.6
+Vegetables - Solanum Family (Solanaceae),Tomato,,group,max_height_m_min,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_end,0.3
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_end_max,0.3
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_end_min,0.3
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_ini,0.3
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_ini_max,0.3
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_ini_min,0.3
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_mid,1.2
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_mid_max,1.2
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,kc_mid_min,1.2
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,max_height_m,2.0
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,max_height_m_max,2.0
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,crop,max_height_m_min,2.0
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_end,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_end_max,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_end_min,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_ini,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_ini_max,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_ini_min,0.6
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_mid,1.2
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_mid_max,1.2
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,kc_mid_min,1.2
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,max_height_m,2.0
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,max_height_m_max,2.0
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,crop,max_height_m_min,2.0
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_end,0.7
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_end_max,0.7
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_end_min,0.7
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_ini,0.9
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_ini_max,0.9
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_ini_min,0.9
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_mid,1.2
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_mid_max,1.2
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,kc_mid_min,1.2
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,max_height_m,2.0
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,max_height_m_max,3.0
+Wetlands - temperate climate,"Reed Swamp, moist soil",,crop,max_height_m_min,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_end,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_end_max,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_end_min,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_ini,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_ini_max,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_ini_min,1.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_mid,1.2
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_mid_max,1.2
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,kc_mid_min,1.2
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,max_height_m,2.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,max_height_m_max,3.0
+Wetlands - temperate climate,"Reed Swamp, standing water",,crop,max_height_m_min,1.0
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_end,1.1
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_end_max,1.1
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_end_min,1.1
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_ini,1.05
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_ini_max,1.05
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_ini_min,1.05
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_mid,1.1
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_mid_max,1.1
+Wetlands - temperate climate,"Short Veg., no frost",,crop,kc_mid_min,1.1
+Wetlands - temperate climate,"Short Veg., no frost",,crop,max_height_m,0.3
+Wetlands - temperate climate,"Short Veg., no frost",,crop,max_height_m_max,0.3
+Wetlands - temperate climate,"Short Veg., no frost",,crop,max_height_m_min,0.3

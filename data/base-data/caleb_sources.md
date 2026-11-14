@@ -1,0 +1,12 @@
+## Data sources (Caleb, 2026-11-14)
+
+File (base-data → processed) | Source | Content
+--- | --- | ---
+cdl/cdl_history_long.csv → field_data/cdl/cdl_history_clean.csv | USDA NASS Cropland Data Layer via CropScape GetCDLValue, https://nassgeodata.gmu.edu/CropScape/ | crop class per year 2008–2025 at the field point (30 m pixel): corn every year. Field center only; the service timed out for more points
+ksu/ksu_mf2586_n_recommendations_long.csv → crop_data/ksu/ksu_n_recommendations_clean.csv | K-State MF2586, Ruiz Diaz, Jan 2024, https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf | N recommendation equations for corn, sorghum, winter wheat, sunflower (yield factors ie, efficiencies fe/se, SOM credit, default profile N, min/max N, irrigation-water N). No N recommendation for soybean or triticale in MF2586
+ksu/ksu_mf2586_previous_crop_adjustments.csv → crop_data/ksu/ksu_previous_crop_adjustments_clean.csv | K-State MF2586, pages 3–4 | previous-crop N adjustments for warm-season crops (corn, sorghum, sunflower) and cool-season crops (wheat)
+literature/rotation_effects_long.csv → crop_data/literature/rotation_effects_clean.csv | Seifert et al. 2017 Agron. J. 109:541 (https://cropwatch.unl.edu/2020/yield-penalties-continuous-corn-and-soybean-midwest-us/); Salvagiotti et al. 2008 via Ciampitti & Salvagiotti 2018 (https://doi.org/10.2134/agronj2017.06.0348); https://www.nature.com/articles/s44264-026-00126-z; K-State SWRC Tribune (https://www.wkrec.org/about/locations/swrc-tribune/dryland_cropping_systems.html); K-State MF2384 (https://www.sunflowernsa.com/uploads/3/high_plains_production_handoobk_mf2384.pdf); NDSU Sunflower Production Guide | previous-crop effects: continuous corn/soybean yield penalties, soybean N fixation share, dryland west-Kansas sequence effects, sunflower subsoil water use and rotation interval
+literature/crop_units.csv → crop_data/literature/crop_units_clean.csv | USDA ERS AH-697 (bushel weights), K-State MF2586 Table 1 (moisture basis) | lb per bushel and moisture basis, e.g. to turn Dryad N % into lb N per bushel
+
+Crop IDs follow the NASS calendar (corn, sorghum, soybean, sunflower, winter_wheat) plus triticale.
+Cleaning scripts: data/cleaning-scripts/cdl.py, ksu.py, literature.py (pass-through, values kept verbatim).
