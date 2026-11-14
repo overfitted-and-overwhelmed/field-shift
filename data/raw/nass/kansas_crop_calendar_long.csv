@@ -1,0 +1,41 @@
+crop_de,parameter,value,unit,source_name
+Mais,planting_begin,95,day_of_year,Corn for Grain
+Mais,planting_most_active_start,105,day_of_year,Corn for Grain
+Mais,planting_most_active_end,135,day_of_year,Corn for Grain
+Mais,planting_end,145,day_of_year,Corn for Grain
+Mais,harvest_begin,244,day_of_year,Corn for Grain
+Mais,harvest_most_active_start,253,day_of_year,Corn for Grain
+Mais,harvest_most_active_end,298,day_of_year,Corn for Grain
+Mais,harvest_end,314,day_of_year,Corn for Grain
+Sorghum,planting_begin,125,day_of_year,Sorghum for Grain
+Sorghum,planting_most_active_start,135,day_of_year,Sorghum for Grain
+Sorghum,planting_most_active_end,171,day_of_year,Sorghum for Grain
+Sorghum,planting_end,196,day_of_year,Sorghum for Grain
+Sorghum,harvest_begin,253,day_of_year,Sorghum for Grain
+Sorghum,harvest_most_active_start,268,day_of_year,Sorghum for Grain
+Sorghum,harvest_most_active_end,314,day_of_year,Sorghum for Grain
+Sorghum,harvest_end,329,day_of_year,Sorghum for Grain
+Soja,planting_begin,125,day_of_year,Soybean
+Soja,planting_most_active_start,135,day_of_year,Soybean
+Soja,planting_most_active_end,171,day_of_year,Soybean
+Soja,planting_end,182,day_of_year,Soybean
+Soja,harvest_begin,263,day_of_year,Soybean
+Soja,harvest_most_active_start,274,day_of_year,Soybean
+Soja,harvest_most_active_end,305,day_of_year,Soybean
+Soja,harvest_end,319,day_of_year,Soybean
+Sonnenblume,planting_begin,135,day_of_year,All Sunflower
+Sonnenblume,planting_most_active_start,145,day_of_year,All Sunflower
+Sonnenblume,planting_most_active_end,181,day_of_year,All Sunflower
+Sonnenblume,planting_end,191,day_of_year,All Sunflower
+Sonnenblume,harvest_begin,258,day_of_year,All Sunflower
+Sonnenblume,harvest_most_active_start,274,day_of_year,All Sunflower
+Sonnenblume,harvest_most_active_end,319,day_of_year,All Sunflower
+Sonnenblume,harvest_end,334,day_of_year,All Sunflower
+Winterweizen,planting_begin,253,day_of_year,Winter Wheat
+Winterweizen,planting_most_active_start,258,day_of_year,Winter Wheat
+Winterweizen,planting_most_active_end,293,day_of_year,Winter Wheat
+Winterweizen,planting_end,305,day_of_year,Winter Wheat
+Winterweizen,harvest_begin,166,day_of_year,Winter Wheat
+Winterweizen,harvest_most_active_start,171,day_of_year,Winter Wheat
+Winterweizen,harvest_most_active_end,186,day_of_year,Winter Wheat
+Winterweizen,harvest_end,196,day_of_year,Winter Wheat
