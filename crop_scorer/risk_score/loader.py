@@ -73,7 +73,7 @@ def load_temperature_data(
             "tmax": pivoted["air_temperature_max"].astype(float),
             "tmean": pivoted["air_temperature_mean"].astype(float),
             "year": pivoted["date"].dt.year.astype(int),
-            "doy": pivoted["date"].dt.dayofyear.astype(int),
+            "doy": pivoted["date"].dt.day_of_year.astype(int),
             "month": pivoted["date"].dt.month.astype(int),
             "day": pivoted["date"].dt.day.astype(int),
         }

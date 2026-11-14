@@ -14,7 +14,6 @@ SEVERITY_COLUMNS = [
     "frost_severity",
     "heat_severity",
     "kill_cold",
-    "kill_heat",
     "kill",
     "stress_flag",
     "comfort_deviation",
@@ -43,11 +42,14 @@ def in_winter_rest(
     return (md >= start) | (md <= end)
 
 
-def _linear_severity(distance: pd.Series, span: float) -> pd.Series:
-    """Linear 0..1 severity for a positive distance beyond a threshold."""
+def _linear_severity(distance: pd.Series, span: float, cap: float | None = 1.0) -> pd.Series:
+    """Linear severity for a positive distance beyond a threshold (1.0 after ``span``).
+
+    ``cap`` limits the severity (default 1.0); ``cap=None`` leaves it unbounded.
+    """
     if span <= 0:
         raise ValueError(f"Severity span must be > 0, got {span}")
-    return (distance / span).clip(lower=0.0, upper=1.0)
+    return (distance / span).clip(lower=0.0, upper=cap)
 
 
 def compute_daily_risk(
@@ -60,9 +62,11 @@ def compute_daily_risk(
     """Compute daily temperature stress for one crop (independent of the growing season).
 
     Rules (see risk-score-plan.md):
-    - heat_severity: 0 at ``temp_opt_max`` rising linearly to 1 at ``temp_abs_max`` (on Tmax).
-    - frost_severity: 0 at ``temp_opt_min`` rising linearly to 1 at ``temp_abs_min`` (on Tmin).
-    - kill_heat: Tmax > ``kill_temp_upper``. kill_cold: Tmin < ``kill_temp_lower``.
+    - heat_severity: 0 at ``temp_opt_max`` rising linearly, reaching 1 at ``temp_abs_max`` and
+      continuing to rise above it (no cap, no heat kill) (on Tmax).
+    - frost_severity: 0 at ``temp_opt_min`` rising linearly to 1 at ``temp_abs_min`` (on Tmin),
+      capped at 1.
+    - kill_cold: Tmin < ``kill_temp_lower``. There is no heat kill.
     - Winter wheat only: in the dormancy window kill_cold uses ``kill_temp_rest`` and
       frost_severity is 0. Heat is unchanged.
     - daily_score: ``kill_penalty`` on kill days, otherwise frost_severity + heat_severity.
@@ -86,10 +90,9 @@ def compute_daily_risk(
     cold_span = crop.temp_opt_min - crop.temp_abs_min
     heat_span = crop.temp_abs_max - crop.temp_opt_max
 
-    heat_severity = _linear_severity(tmax - crop.temp_opt_max, heat_span)
+    heat_severity = _linear_severity(tmax - crop.temp_opt_max, heat_span, cap=None)
     frost_severity = _linear_severity(crop.temp_opt_min - tmin, cold_span)
 
-    kill_heat = tmax > crop.kill_temp_upper
     kill_cold = tmin < crop.kill_temp_lower
 
     # Dormancy only applies to winter crops (Ecocrop also lists a rest value for sunflower,
@@ -99,7 +102,7 @@ def compute_daily_risk(
         kill_cold = pd.Series(np.where(rest, tmin < crop.kill_temp_rest, kill_cold), index=temps.index)
         frost_severity = frost_severity.where(~rest, 0.0)
 
-    kill = kill_cold | kill_heat
+    kill = kill_cold
     severity_sum = frost_severity + heat_severity
     stress_flag = (severity_sum > 0) & ~kill
     daily_score = severity_sum.where(~kill, float(kill_penalty))
@@ -121,7 +124,6 @@ def compute_daily_risk(
             "frost_severity": frost_severity,
             "heat_severity": heat_severity,
             "kill_cold": kill_cold.astype(bool),
-            "kill_heat": kill_heat.astype(bool),
             "kill": kill.astype(bool),
             "stress_flag": stress_flag.astype(bool),
             "comfort_deviation": comfort_deviation,
