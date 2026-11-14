@@ -39,6 +39,10 @@ STAGES = ["ini", "dev", "mid", "late"]
 # initial stage ET is mostly soil evaporation. Overestimates fallow losses once the topsoil is dry.
 FALLOW_KC = 0.3
 
+# ASSUMPTION: bucket 30 % full on Jan 1 of the start year = mean Jan 1 fill level of our own
+# simulation after a few years of replay (~0.31-0.33 for several rotations, median ~0.27)
+INITIAL_FILL = 0.3
+
 # FAO-56 rows per crop: (Table 11 crop, Table 11 region), (Table 12/22 crop, Table 12 variant)
 FAO_ROWS = {
     "corn": (("Maize (grain)", "Idaho, USA"), ("Maize, Field (grain) (field corn)", "")),
@@ -150,7 +154,7 @@ def build_timeline(params: pd.DataFrame, rotation: list[str], start_year: int) -
         crop = rotation[i % len(rotation)]
         p = params.loc[crop]
         sow = pd.Timestamp(earliest.year, 1, 1) + pd.Timedelta(days=int(p["sow_doy"]) - 1)
-        if sow <= earliest:
+        if sow < earliest:  # sowing on the harvest day is allowed
             sow = pd.Timestamp(earliest.year + 1, 1, 1) + pd.Timedelta(days=int(p["sow_doy"]) - 1)
         harvest = sow + pd.Timedelta(days=int(p["season_days"]))
         if harvest > end_of_data:
@@ -201,7 +205,7 @@ def soil_water_balance(daily: pd.DataFrame) -> pd.DataFrame:
     raw = p * taw
 
     eta = np.zeros(n)
-    depletion = 0.0  # bucket full at the start of the replay
+    depletion = (1 - INITIAL_FILL) * taw[0]
     for i in range(n):
         if i > 0 and taw[i] != taw[i - 1]:
             depletion *= taw[i] / taw[i - 1]  # keep the fill level when the root zone changes

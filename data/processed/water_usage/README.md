@@ -41,6 +41,8 @@ Season total: sum `irrigation_need` per `crop` and `harvest_year`.
 
 ## Known gaps / assumptions
 
+- Start: the bucket is 30 % full on Jan 1 of each start year (mean Jan 1 fill level of the simulation itself;
+  only affects the first crop of a run).
 - Fallow: bare soil evaporates `0.3 × ET0` (assumption, not an FAO value) from the whole bucket, so the bucket
   is too empty at sowing and the need early in the season is overestimated.
 - Irrigation need is the daily deficit of a field that is never irrigated. A field that is watered keeps more water
