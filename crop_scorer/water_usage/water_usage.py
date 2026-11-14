@@ -205,18 +205,20 @@ def soil_water_balance(daily: pd.DataFrame) -> pd.DataFrame:
     raw = p * taw
 
     eta = np.zeros(n)
+    drainage = np.zeros(n)
     depletion = (1 - INITIAL_FILL) * taw[0]
     for i in range(n):
         if i > 0 and taw[i] != taw[i - 1]:
             depletion *= taw[i] / taw[i - 1]  # keep the fill level when the root zone changes
-        depletion = max(0.0, depletion - rain[i])  # rain above field capacity percolates
+        drainage[i] = max(0.0, rain[i] - depletion)  # rain above field capacity percolates (FAO-56 eq. 85, DP)
+        depletion = max(0.0, depletion - rain[i])
         # FAO-56 eq. 84: below the threshold the crop gets only a share Ks of ETc
         ks = 1.0 if depletion <= raw[i] else max(0.0, (taw[i] - depletion) / ((1 - p[i]) * taw[i]))
         eta[i] = ks * etc[i]
         depletion += eta[i]
 
     in_crop = daily["crop"] != "fallow"
-    return daily.assign(eta=eta, irrigation_need=np.where(in_crop, daily["etc"] - eta, 0.0))
+    return daily.assign(eta=eta, drainage=drainage, irrigation_need=np.where(in_crop, daily["etc"] - eta, 0.0))
 
 
 def simulate(rotation: list[str], start_year: int) -> tuple[pd.DataFrame, list]:
