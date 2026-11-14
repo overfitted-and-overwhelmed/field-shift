@@ -1,0 +1,125 @@
+group,crop,variant,kc_ini,kc_ini_source,kc_mid,kc_end,max_height_m,footnotes
+Small Vegetables,Broccoli,,0.7,group,1.05,0.95,0.3,
+Small Vegetables,Brussel Sprouts,,0.7,group,1.05,0.95,0.4,
+Small Vegetables,Cabbage,,0.7,group,1.05,0.95,0.4,
+Small Vegetables,Carrots,,0.7,group,1.05,0.95,0.3,
+Small Vegetables,Cauliflower,,0.7,group,1.05,0.95,0.4,
+Small Vegetables,Celery,,0.7,group,1.05,1.00,0.6,
+Small Vegetables,Garlic,,0.7,group,1.00,0.70,0.3,
+Small Vegetables,Lettuce,,0.7,group,1.00,0.95,0.3,
+Small Vegetables,Onions,dry,0.7,group,1.05,0.75,0.4,
+Small Vegetables,Onions,green,0.7,group,1.00,1.00,0.3,
+Small Vegetables,Onions,seed,0.7,group,1.05,0.80,0.5,
+Small Vegetables,Spinach,,0.7,group,1.00,0.95,0.3,
+Small Vegetables,Radish,,0.7,group,0.90,0.85,0.3,
+Vegetables - Solanum Family (Solanaceae),Egg Plant,,0.6,group,1.05,0.90,0.8,
+Vegetables - Solanum Family (Solanaceae),Sweet Peppers (bell),,0.6,group,1.05,0.90,0.7,2
+Vegetables - Solanum Family (Solanaceae),Tomato,,0.6,group,1.15,0.70-0.90,0.6,2
+Vegetables - Cucumber Family (Cucurbitaceae),Cantaloupe,,0.5,crop,0.85,0.60,0.3,
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Fresh Market,0.6,crop,1.00,0.75,0.3,2
+Vegetables - Cucumber Family (Cucurbitaceae),Cucumber,Machine harvest,0.5,crop,1.00,0.90,0.3,
+Vegetables - Cucumber Family (Cucurbitaceae),"Pumpkin, Winter Squash",,0.5,group,1.00,0.80,0.4,
+Vegetables - Cucumber Family (Cucurbitaceae),"Squash, Zucchini",,0.5,group,0.95,0.75,0.3,
+Vegetables - Cucumber Family (Cucurbitaceae),Sweet Melons,,0.5,group,1.05,0.75,0.4,
+Vegetables - Cucumber Family (Cucurbitaceae),Watermelon,,0.4,crop,1.00,0.75,0.4,
+Roots and Tubers,"Beets, table",,0.5,group,1.05,0.95,0.4,
+Roots and Tubers,Cassava,year,0.3,crop,0.80,0.30,1.0,1;3
+Roots and Tubers,Cassava,year,0.3,crop,1.10,0.50,1.5,2
+Roots and Tubers,Parsnip,,0.5,crop,1.05,0.95,0.4,
+Roots and Tubers,Potato,,0.5,group,1.15,0.75,0.6,4
+Roots and Tubers,Sweet Potato,,0.5,group,1.15,0.65,0.4,
+Roots and Tubers,Turnip (and Rutabaga),,0.5,group,1.10,0.95,0.6,
+Roots and Tubers,Sugar Beet,,0.35,crop,1.20,0.70,0.5,5
+Legumes (Leguminosae),"Beans, green",,0.5,crop,1.05,0.90,0.4,2
+Legumes (Leguminosae),"Beans, dry and Pulses",,0.4,crop,1.15,0.35,0.4,2
+Legumes (Leguminosae),Chick pea,,0.4,group,1.00,0.35,0.4,
+Legumes (Leguminosae),Fababean (broad bean),Fresh,0.5,crop,1.15,1.10,0.8,2
+Legumes (Leguminosae),Fababean (broad bean),Dry/Seed,0.5,crop,1.15,0.30,0.8,2
+Legumes (Leguminosae),Grabanzo,,0.4,crop,1.15,0.35,0.8,
+Legumes (Leguminosae),Green Gram and Cowpeas,,0.4,group,1.05,0.60-0.35,0.4,6
+Legumes (Leguminosae),Groundnut (Peanut),,0.4,group,1.15,0.60,0.4,
+Legumes (Leguminosae),Lentil,,0.4,group,1.10,0.30,0.5,
+Legumes (Leguminosae),Peas,Fresh,0.5,crop,1.15,1.10,0.5,2
+Legumes (Leguminosae),Peas,Dry/Seed,0.4,group,1.15,0.30,0.5,
+Legumes (Leguminosae),Soybeans,,0.4,group,1.15,0.50,0.5-1.0,
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Artichokes,,0.5,crop,1.00,0.95,0.7,
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Asparagus,,0.5,crop,0.95,0.30,0.2-0.8,7
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Mint,,0.60,crop,1.15,1.10,0.6-0.8,
+Perennial Vegetables (with winter dormancy and initially bare or mulched soil),Strawberries,,0.40,crop,0.85,0.75,0.2,
+Fibre Crops,Cotton,,0.35,group,1.15-1.20,0.70-0.50,1.2-1.5,
+Fibre Crops,Flax,,0.35,group,1.10,0.25,1.2,
+Fibre Crops,Sisal,,0.35,group,0.4-0.7,0.4-0.7,1.5,8
+Oil Crops,Castorbean (Ricinus),,0.35,group,1.15,0.55,0.3,
+Oil Crops,"Rapeseed, Canola",,0.35,group,1.0-1.15,0.35,0.6,9
+Oil Crops,Safflower,,0.35,group,1.0-1.15,0.25,0.8,9
+Oil Crops,Sesame,,0.35,group,1.10,0.25,1.0,
+Oil Crops,Sunflower,,0.35,group,1.0-1.15,0.35,2.0,9
+Cereals,Barley,,0.3,group,1.15,0.25,1,
+Cereals,Oats,,0.3,group,1.15,0.25,1,
+Cereals,Spring Wheat,,0.3,group,1.15,0.25-0.4,1,10
+Cereals,Winter Wheat,with frozen soils,0.4,crop,1.15,0.25-0.4,1,10
+Cereals,Winter Wheat,with non-frozen soils,0.7,crop,1.15,0.25-0.4,,10
+Cereals,"Maize, Field (grain) (field corn)",,0.3,group,1.20,0.60-0.35,2,11
+Cereals,"Maize, Sweet (sweet corn)",,0.3,group,1.15,1.05,1.5,12
+Cereals,Millet,,0.3,group,1.00,0.30,1.5,
+Cereals,Sorghum,grain,0.3,group,1.00-1.10,0.55,1-2,
+Cereals,Sorghum,sweet,0.3,group,1.20,1.05,2-4,
+Cereals,Rice,,1.05,crop,1.20,0.90-0.60,1,
+Forages,Alfalfa Hay,averaged cutting effects,0.40,crop,0.95,0.90,0.7,13
+Forages,Alfalfa Hay,individual cutting periods,0.40,crop,1.20,1.15,0.7,14
+Forages,Alfalfa Hay,for seed,0.40,crop,0.50,0.50,0.7,
+Forages,Bermuda hay,averaged cutting effects,0.55,crop,1.00,0.85,0.35,13
+Forages,Bermuda hay,Spring crop for seed,0.35,crop,0.90,0.65,0.4,
+Forages,"Clover hay, Berseem",averaged cutting effects,0.40,crop,0.90,0.85,0.6,13
+Forages,"Clover hay, Berseem",individual cutting periods,0.40,crop,1.15,1.10,0.6,14
+Forages,Rye Grass hay,averaged cutting effects,0.95,crop,1.05,1.00,0.3,
+Forages,Sudan Grass hay (annual),averaged cutting effects,0.50,crop,0.90,0.85,1.2,14
+Forages,Sudan Grass hay (annual),individual cutting periods,0.50,crop,1.15,1.10,1.2,14
+Forages,Grazing Pasture,Rotated Grazing,0.40,crop,0.85-1.05,0.85,0.15-0.30,
+Forages,Grazing Pasture,Extensive Grazing,0.30,crop,0.75,0.75,0.10,
+Forages,Turf grass,cool season,0.90,crop,0.95,0.95,0.10,15
+Forages,Turf grass,warm season,0.80,crop,0.85,0.85,0.10,15
+Tropical Fruits and Trees,Banana,1 year,0.50,crop,1.10,1.00,3,st
+Tropical Fruits and Trees,Banana,2 year,1.00,crop,1.20,1.10,4,nd
+Tropical Fruits and Trees,Cacao,,1.00,crop,1.05,1.05,3,
+Tropical Fruits and Trees,Coffee,bare ground cover,0.90,crop,0.95,0.95,2-3,
+Tropical Fruits and Trees,Coffee,with weeds,1.05,crop,1.10,1.10,2-3,
+Tropical Fruits and Trees,Date Palms,,0.90,crop,0.95,0.95,8,
+Tropical Fruits and Trees,Palm Trees,,0.95,crop,1.00,1.00,8,
+Tropical Fruits and Trees,Pineapple,bare soil,0.50,crop,0.30,0.30,0.6-1.2,16
+Tropical Fruits and Trees,Pineapple,with grass cover,0.50,crop,0.50,0.50,0.6-1.2,16
+Tropical Fruits and Trees,Rubber Trees,,0.95,crop,1.00,1.00,10,
+Tropical Fruits and Trees,Tea,non-shaded,0.95,crop,1.00,1.00,1.5,
+Tropical Fruits and Trees,Tea,shaded,1.10,crop,1.15,1.15,2,17
+Grapes and Berries,Berries (bushes),,0.30,crop,1.05,0.50,1.5,
+Grapes and Berries,Grapes,Table or Raisin,0.30,crop,0.85,0.45,2,
+Grapes and Berries,Grapes,Wine,0.30,crop,0.70,0.45,1.5-2,
+Grapes and Berries,Hops,,0.3,crop,1.05,0.85,5,
+Fruit Trees,"Almonds, no ground cover",,0.40,crop,0.90,0.65,5,18
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, killing frost",0.45,crop,0.95,0.70,4,19;18
+Fruit Trees,"Apples, Cherries, Pears","no ground cover, no frosts",0.60,crop,0.95,0.75,4,19;18
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, killing frost",0.50,crop,1.20,0.95,4,19;18
+Fruit Trees,"Apples, Cherries, Pears","active ground cover, no frosts",0.80,crop,1.20,0.85,4,19;18
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, killing frost",0.45,crop,0.90,0.65,3,"19, 20;18"
+Fruit Trees,"Apricots, Peaches, Stone Fruit","no ground cover, no frosts",0.55,crop,0.90,0.65,3,"19, 20;18"
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, killing frost",0.50,crop,1.15,0.90,3,"19, 20;18"
+Fruit Trees,"Apricots, Peaches, Stone Fruit","active ground cover, no frosts",0.80,crop,1.15,0.85,3,"19, 20;18"
+Fruit Trees,"Avocado, no ground cover",,0.60,crop,0.85,0.75,3,
+Fruit Trees,"Citrus, no ground cover",70% canopy,0.70,crop,0.65,0.70,4,21
+Fruit Trees,"Citrus, no ground cover",50% canopy,0.65,crop,0.60,0.65,3,21
+Fruit Trees,"Citrus, no ground cover",20% canopy,0.50,crop,0.45,0.55,2,21
+Fruit Trees,"Citrus, with active ground cover or weeds",70% canopy,0.75,crop,0.70,0.75,4,22
+Fruit Trees,"Citrus, with active ground cover or weeds",50% canopy,0.80,crop,0.80,0.80,3,22
+Fruit Trees,"Citrus, with active ground cover or weeds",20% canopy,0.85,crop,0.85,0.85,2,22
+Fruit Trees,Conifer Trees,,1.00,crop,1.00,1.00,10,23
+Fruit Trees,Kiwi,,0.40,crop,1.05,1.05,3,
+Fruit Trees,Olives (40 to 60% ground coverage by canopy),,0.65,crop,0.70,0.70,3-5,24
+Fruit Trees,"Pistachios, no ground cover",,0.40,crop,1.10,0.45,3-5,
+Fruit Trees,Walnut Orchard,,0.50,crop,1.10,0.6518,4-5,19
+Wetlands - temperate climate,"Cattails, Bulrushes, killing frost",,0.30,crop,1.20,0.30,2,
+Wetlands - temperate climate,"Cattails, Bulrushes, no frost",,0.60,crop,1.20,0.60,2,
+Wetlands - temperate climate,"Short Veg., no frost",,1.05,crop,1.10,1.10,0.3,
+Wetlands - temperate climate,"Reed Swamp, standing water",,1.00,crop,1.20,1.00,1-3,
+Wetlands - temperate climate,"Reed Swamp, moist soil",,0.90,crop,1.20,0.70,1-3,
+Special,"Open Water, < 2 m depth or in subhumid climates or tropics",,,,1.05,1.05,,
+Special,"Open Water, > 5 m depth, clear of turbidity, temperate climate",,,,0.6525,1.2525,,
