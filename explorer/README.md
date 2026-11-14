@@ -31,6 +31,8 @@ Conventions:
   Everything is in US units except temperature thresholds (°C, e.g. `heat_days_ge_35`). No unit toggle in the UI.
 - All averages over the weather years are means: `monthly` (typical year) and the season values
   `irr_in` / `yield` (`v`, plus 10th–90th percentile `p10`, `p90`). So months add up to the season.
+- Dates are ISO strings `YYYY-MM-DD` (`plant_date`, `harvest_date`). A season's `year` is its harvest
+  year, so winter wheat for 2029 has a `plant_date` in autumn 2028.
 - Every per-year list in `climate` is aligned to `climate.weather_years`.
 - `provenance` says what kind of number a field is (`measured | modeled | rule | assumption`)
   and which entry in `sources` it comes from.

@@ -52,6 +52,11 @@ def test_yield_is_written_as_yield():
     assert "yield" in season and "yield_" not in season
 
 
+def test_dates_are_written_as_iso_strings():
+    season = load_explorer(EXAMPLES / "explorer.json").model_dump(mode="json")["rotations"][0]["sequence"][0]
+    assert season["plant_date"] == "2027-04-30"  # continuous corn, first season
+
+
 # Each case: (what we break, function that breaks a copy of the valid example, expected error text)
 # r = the rotation "opt_cswg" (index 1), which has reduced irrigation in every season.
 CASES = [
@@ -64,6 +69,8 @@ CASES = [
     ("water on dryland", lambda d, r: r["sequence"][0].update(irrigation="none"), "irrigation 'none'"),
     ("p10 above mean", lambda d, r: r["sequence"][0].update(irr_in={"v": 5, "p10": 6, "p90": 7}), "p10 <= v <= p90"),
     ("bare month with crop", lambda d, r: r["monthly"][0].update(kind="bare", crop="corn"), "must have crop null"),
+    ("harvest outside harvest year", lambda d, r: r["sequence"][0].update(harvest_date="2028-10-02"), "harvest year"),
+    ("planted after harvest", lambda d, r: r["sequence"][0].update(plant_date="2027-11-01"), "not before harvest_date"),
 ]
 
 

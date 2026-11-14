@@ -1,5 +1,5 @@
 {
-  "contract_version": "3.0.0-draft",
+  "contract_version": "4.0.0-draft",
   "generated_at": "2026-11-14T21:15:15+00:00",
   "field": {
     "id": "ks-kearny-01",
@@ -371,8 +371,8 @@
           "crop": "corn",
           "irrigation": "full",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2027-04-30",
+          "harvest_date": "2027-10-02",
           "irr_in": {
             "v": 15.39,
             "p10": 11.19,
@@ -400,8 +400,8 @@
           "crop": "corn",
           "irrigation": "full",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2028-04-30",
+          "harvest_date": "2028-10-02",
           "irr_in": {
             "v": 15.39,
             "p10": 11.19,
@@ -429,8 +429,8 @@
           "crop": "corn",
           "irrigation": "full",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2029-04-30",
+          "harvest_date": "2029-10-02",
           "irr_in": {
             "v": 15.39,
             "p10": 11.19,
@@ -458,8 +458,8 @@
           "crop": "corn",
           "irrigation": "full",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2030-04-30",
+          "harvest_date": "2030-10-02",
           "irr_in": {
             "v": 15.39,
             "p10": 11.19,
@@ -1356,8 +1356,8 @@
           "crop": "corn",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2027-04-30",
+          "harvest_date": "2027-10-02",
           "irr_in": {
             "v": 9.37,
             "p10": 7.41,
@@ -1385,8 +1385,8 @@
           "crop": "soybean",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 153,
-          "harvest_doy": 289,
+          "plant_date": "2028-06-02",
+          "harvest_date": "2028-10-16",
           "irr_in": {
             "v": 8.58,
             "p10": 6.79,
@@ -1408,8 +1408,8 @@
           "crop": "winter_wheat",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 292,
-          "harvest_doy": 178,
+          "plant_date": "2028-10-19",
+          "harvest_date": "2029-06-27",
           "irr_in": {
             "v": 6.61,
             "p10": 5.23,
@@ -1437,8 +1437,8 @@
           "crop": "sorghum",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 153,
-          "harvest_doy": 291,
+          "plant_date": "2030-06-02",
+          "harvest_date": "2030-10-18",
           "irr_in": {
             "v": 7.95,
             "p10": 6.29,
@@ -2335,8 +2335,8 @@
           "crop": "sorghum",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 153,
-          "harvest_doy": 291,
+          "plant_date": "2027-06-02",
+          "harvest_date": "2027-10-18",
           "irr_in": {
             "v": 7.95,
             "p10": 5.87,
@@ -2358,8 +2358,8 @@
           "crop": "sunflower",
           "irrigation": "none",
           "cover": null,
-          "plant_doy": 163,
-          "harvest_doy": 296,
+          "plant_date": "2028-06-12",
+          "harvest_date": "2028-10-23",
           "irr_in": {
             "v": 0.0,
             "p10": 0.0,
@@ -2381,8 +2381,8 @@
           "crop": "winter_wheat",
           "irrigation": "none",
           "cover": null,
-          "plant_doy": 299,
-          "harvest_doy": 178,
+          "plant_date": "2028-10-26",
+          "harvest_date": "2029-06-27",
           "irr_in": {
             "v": 0.0,
             "p10": 0.0,
@@ -2410,8 +2410,8 @@
           "crop": "sorghum",
           "irrigation": "reduced",
           "cover": null,
-          "plant_doy": 153,
-          "harvest_doy": 291,
+          "plant_date": "2030-06-02",
+          "harvest_date": "2030-10-18",
           "irr_in": {
             "v": 7.95,
             "p10": 5.87,
@@ -3308,8 +3308,8 @@
           "crop": "corn",
           "irrigation": "full",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2027-04-30",
+          "harvest_date": "2027-10-02",
           "irr_in": {
             "v": 15.39,
             "p10": 11.36,
@@ -3337,8 +3337,8 @@
           "crop": "soybean",
           "irrigation": "reduced",
           "cover": "triticale",
-          "plant_doy": 153,
-          "harvest_doy": 289,
+          "plant_date": "2028-06-02",
+          "harvest_date": "2028-10-16",
           "irr_in": {
             "v": 8.35,
             "p10": 6.16,
@@ -3360,8 +3360,8 @@
           "crop": "corn",
           "irrigation": "full",
           "cover": null,
-          "plant_doy": 120,
-          "harvest_doy": 275,
+          "plant_date": "2029-04-30",
+          "harvest_date": "2029-10-02",
           "irr_in": {
             "v": 15.39,
             "p10": 11.36,
@@ -3394,8 +3394,8 @@
           "crop": "soybean",
           "irrigation": "reduced",
           "cover": "triticale",
-          "plant_doy": 153,
-          "harvest_doy": 289,
+          "plant_date": "2030-06-02",
+          "harvest_date": "2030-10-16",
           "irr_in": {
             "v": 8.35,
             "p10": 6.16,
@@ -4294,10 +4294,6 @@
       "label": "assumption",
       "source": "mockup"
     },
-    "sequence.plant_doy": {
-      "label": "rule",
-      "source": "nass_calendar"
-    },
     "sequence.yield": {
       "label": "assumption",
       "source": "nass_quickstats"
@@ -4309,6 +4305,10 @@
     "summary.*": {
       "label": "assumption",
       "source": "mockup"
+    },
+    "sequence.plant_date": {
+      "label": "rule",
+      "source": "nass_calendar"
     }
   },
   "sources": {

@@ -28,13 +28,14 @@ export fails here, in our tests, and not later as a blank chart in the frontend.
 
 from __future__ import annotations
 
+from datetime import date
 from pathlib import Path
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "3.0.0-draft"
+CONTRACT_VERSION = "4.0.0-draft"
 
 N_SEASONS = 4
 N_MONTHS = N_SEASONS * 12
@@ -219,9 +220,10 @@ class SeasonDetail(SequenceStep):
     # back to "yield" in the JSON. serialize_by_alias makes model_dump() write "yield" too.
     model_config = ConfigDict(extra="forbid", populate_by_name=True, serialize_by_alias=True)
 
-    # doy = day of year. harvest_doy is in `year`; for winter crops plant_doy is in `year - 1`.
-    plant_doy: int = Field(ge=1, le=366)
-    harvest_doy: int = Field(ge=1, le=366)
+    # Real dates, written as "YYYY-MM-DD" in the JSON. Winter wheat for 2029 simply has a
+    # plant_date in 2028, so the frontend needs no extra rule for winter crops.
+    plant_date: date
+    harvest_date: date
     irr_in: Spread  # from the scorer (adapted)
     yield_: YieldSpread = Field(alias="yield")
     n_lb: float = Field(ge=0)
@@ -230,7 +232,11 @@ class SeasonDetail(SequenceStep):
     effects: list[Effect]
 
     @model_validator(mode="after")
-    def _no_water_without_irrigation(self) -> SeasonDetail:
+    def _check(self) -> SeasonDetail:
+        if self.harvest_date.year != self.year:
+            raise ValueError(f"season {self.year}: harvest_date {self.harvest_date} is not in the harvest year")
+        if self.plant_date >= self.harvest_date:
+            raise ValueError(f"season {self.year}: plant_date {self.plant_date} is not before harvest_date")
         if self.irrigation == "none" and self.irr_in.p90 > 0:
             raise ValueError(f"season {self.year}: irrigation 'none' but irr_in.p90 = {self.irr_in.p90}")
         return self
