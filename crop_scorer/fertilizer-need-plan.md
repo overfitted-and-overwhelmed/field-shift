@@ -20,7 +20,7 @@
 - `build_timeline` ist laut [`rotation-scoring-plan.md`](rotation-scoring-plan.md) die Quelle der Wahrheit für Saisons. Brachephasen sind dort die Lücken zwischen Ernte und nächster Aussaat.
 - Die Wasserbilanz in `soil_water_balance` kennt Regen, der über Feldkapazität hinausgeht ("rain above field capacity percolates", Zeile 212). Dieses **Sickerwasser wird heute nicht ausgegeben**. Es ist die Grundlage für N-Auswaschung.
 - [`Combined_crop_data.csv`](../data/base-data/dryad/Combined_crop_data.csv) enthält N/P/K-Gehalte (`N_pc_fresh`, `HI`) und für Leguminosen `Fixed_N_kg_N_metric_t_fresh_crop_product` (z. B. Erbse 32, Ackerbohne 23, Wicke 21, Lupine 18 und **Soja 45 kg N pro t Korn**, Quelle IFA 2020 / IPNI).
-- Bodendaten: `organic_matter` aus `soil_ssurgo_long.csv` (Oberboden-Mittel in `field_profile.json`: 1,31 %, also niedrig, die Mineralisierung bleibt klein), `Ntot_…` und `CNrat_d-2_N` aus [`soil_layers_merged.csv`](../data/base-data/soil/soil_layers_merged.md) (nur 2017er Profile).
+- Bodendaten: `organic_matter` aus `soil_ssurgo_long.csv` (`soil_ssurgo_long.csv`: 1,5 % in 0–23 cm, 0,7 % in 23–69 cm, 0,3 % in 69–200 cm. `field_profile.json` nennt 1,31 %, wie dieser Wert gemittelt ist, steht dort nicht. Niedrig in jedem Fall), `Ntot_…` und `CNrat_d-2_N` aus [`soil_layers_merged.csv`](../data/base-data/soil/soil_layers_merged.md) (nur 2017er Profile).
 - Es gibt **keine** Erträge, keine Düngegaben, keinen Boden-P und keine Zwischenfrucht-Daten im Repo.
 
 **Ansatz (einfache N-Bilanz pro Saison, ohne Neuerfindung der Saisons):**
@@ -106,7 +106,10 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
 | Bewässerung | Unbewässert | entschieden |
 | Brache | Eigene Phasen im N-Modell mit Mineralisierung und Auswaschung, kein Entzug | entschieden |
 | Zwischenfrucht | Zweiter Schritt, ändert die Brache-Phasen | entschieden |
-| Mineralisierung | Feste Rate aus organischer Substanz (Vorschlag) | nicht bestätigt |
+| Mineralisierung | Feste Rate aus organischer Substanz (SSURGO 0–23 cm, 1,5 %, `derived`); Rate zitiert, Quelle offen | Bodenwert entschieden, Rate offen |
+| Auswaschung | Aus `drainage`, Mischungsmodell (N-Pool × Sickerwasser ÷ Bodenwasservolumen); Quelle offen | entschieden, Beleg offen |
+| Soja-Fixierung | 45 kg N/t als Korn-Wert, Netto-Gutschrift ≤ 0 auf 0 begrenzt | entschieden |
+| Harvest-Index | Prince et al. (2001), Johnson et al. (2006) als Spanne in der README | entschieden |
 | Richtung | Kleiner ist besser (weniger Dünger nötig) | wie bei den anderen Kriterien |
 | Aggregation | Mittel und 90. Perzentil über Startjahre, pro Jahr der Fruchtfolge | wie in `rotation-scoring-plan.md` |
 | Ort | Neues Paket `crop_scorer/fertilizer_need/` | Vorschlag |
@@ -122,7 +125,7 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   2. `git switch -c feat/fertilizer-need`.
   3. Diesen Plan committen.
 - **Relevant Context:** Aktueller Branch `feat/crop-scorer`. Branch-Namen im Repo: `feat/data`, `feat/explorer`, `feat/frontend`.
-- **Status:** `[ ] pending`
+- **Status:** `[x] done` (Branch `feat/fertilizer-need` existiert; Plan noch nicht committet)
 
 ### 1. Datenbasis: N-Koeffizienten je Kultur (mit Quellen)
 
@@ -139,7 +142,7 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   3. Koeffizienten-Tabelle und Quellen-Datei schreiben, kurz im README beschreiben.
   4. Kontrolle: Entzug pro Kultur in kg N/ha ist in realistischer Größe (Größenordnung gegen eine belegte Quelle prüfen).
 - **Relevant Context:** [`Combined_crop_data.csv`](../data/base-data/dryad/Combined_crop_data.csv) (Spalten `original_crop`, `crop_component`, `variable`, `value`, `reference_where_data_were_collated`, `primary_reference_of_dataset`, `original_region`). [`kansas_crop_calendar_long.csv`](../data/base-data/nass/kansas_crop_calendar_long.csv) und [`felix_sources.md`](../data/base-data/felix_sources.md) als Vorbild für NASS-Quellen. [`risk_score/config.py`](risk_score/config.py) als Vorbild für eine Konfig-Tabelle.
-- **Status:** `[ ] pending`
+- **Status:** `[-] teilweise` — Koeffizienten-Schema und Werte für Korn-N, Rest-N, Harvest-Index, Sojafixierung stehen in [`fertilizer_need/config.py`](fertilizer_need/config.py), jeweils mit Zitierfeldern; Quellen in [`fertilizer_need_sources.md`](../data/base-data/fertilizer_need_sources.md). Geprüft: alle Werte stimmen mit den Zeilen in `Combined_crop_data.csv` überein; Entzug 12/13/19/55/27 kg N/t Korn (Mais/Sorghum/Weizen/Soja/Sonnenblume). **Offen:** Referenzerträge (NASS-Datei fehlt, `value=None`), Umrechnung bu/acre → t/ha, Bezug auf Frischmasse. Hinweis: `Combined_crop_data.csv` ist cp1252, nicht UTF-8. Harvest-Index: Prince et al. (2001) gewählt; Johnson et al. (2006) liefert abweichende Werte (Sorghum 0.47, Soja 0.46, Sonnenblume 0.40, Weizen 0.45).
 
 ### 2. Sickerwasser aus der Wasserbilanz verfügbar machen
 
@@ -147,13 +150,13 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
 - **Expected Outcomes:**
   - `soil_water_balance` liefert zusätzlich eine Spalte `drainage` (mm/Tag, Regen über Feldkapazität).
   - Alle bisherigen Ergebnisse von `water_usage` bleiben identisch (Vergleich von `data/processed/water_usage/irrigation_need_daily_long.csv` vor und nach der Änderung).
-  - Falls die Änderung zu invasiv wäre: Sickerwasser wird in der neuen Datei nachgerechnet oder weggelassen (dann nur Auswaschung grob über Niederschlag). Das bleibt die Rückfalloption laut Auftrag "sonst weglassen".
+  - Die Änderung war nicht invasiv (eine Zeile); die frühere Rückfalloption (Auswaschung grob über Niederschlag) entfällt.
 - **Todo List:**
   1. Prüfen, ob `water_usage` importierbar ist (`rotation-scoring-plan.md`, Sub-Task 1, behandelt dieselbe Frage).
   2. Eine Zeile Sickerwasser in `soil_water_balance` ergänzen, ohne die Rechenlogik zu verändern.
   3. Vorher und nachher `main()` laufen lassen und die Ausgabedatei vergleichen.
 - **Relevant Context:** [`water_usage.py`](water_usage/water_usage.py): `soil_water_balance` (Zeilen 198–219, Regenzeile 212), `simulate`.
-- **Status:** `[ ] pending`
+- **Status:** `[x] done` — Spalte `drainage` ergänzt, `irrigation_need_daily_long.csv` und Konsolenausgabe von `main()` bleiben byte-identisch. **Befund:** Sickerwasser ist selten. Bei der Testfruchtfolge (Winterweizen, Mais, Sorghum) tritt es nur in 9 von 34 Startjahren auf (99 Tage, 682 mm gesamt, v. a. 1996, 2007, 2019; max. 23,1 mm/Tag). Auswaschung als "Anteil des N-Pools an Sickertagen" wäre meist ≈ 0. **Entschieden:** Auswaschung wird aus `drainage` gerechnet (Mischungsmodell, siehe Sub-Task 3). Dass in Kansas bei ca. 490 mm Jahresniederschlag kaum etwas ausgewaschen wird, ist ein Befund, kein Fehler. Das 90. Perzentil über die Startjahre erfasst die nassen Jahre. Die Rückfalloption "grob aus dem Niederschlag" entfällt.
 
 ### 3. N-Bilanz entlang der Fruchtfolge (ohne Zwischenfrucht)
 
@@ -167,8 +170,8 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   - Bezug pro Jahr der Fruchtfolge (kg N/ha/Jahr), Mittel und 90. Perzentil über Startjahre.
 - **Todo List:**
   1. Neues Paket `crop_scorer/fertilizer_need/` mit kleinen Dateien (z. B. `config.py`, `balance.py`, `run.py`), im Stil von `risk_score/`.
-  2. Mineralisierung als einfache Rate aus organischer Substanz (SSURGO) und Saison-/Brachetagen. Rate und Quelle in die Koeffizienten-Tabelle (`kind` ehrlich setzen).
-  3. Auswaschung als Anteil des mineralischen N-Pools an Tagen mit Sickerwasser.
+  2. Mineralisierung als einfache Rate aus organischer Substanz und Saison-/Brachetagen. Organische Substanz aus `soil_ssurgo_long.csv`, aktive obere Schicht 0–23 cm (1,5 %), `kind="derived"`; die 1,31 % aus `field_profile.json` werden nicht genutzt, weil nicht nachvollziehbar ist, wie sie gemittelt wurden. Die Rate braucht eine zitierte Quelle (Offene Frage 7) und kommt mit Sensitivität (niedrig, mittel, hoch) in die Koeffizienten-Tabelle (`kind` ehrlich setzen).
+  3. Auswaschung aus `drainage` (Sub-Task 2) als Mischungsmodell: Verlust = N-Pool × Sickerwasser ÷ Bodenwasservolumen. Das Modell ist **nicht gegen eine Quelle geprüft**, die Quelle wird vor dem Einbau gesucht (Offene Frage 6). Kein Pauschalansatz aus dem Niederschlag, weil das eine zusätzliche Annahme wäre und dem Wassermodell widerspräche.
   4. Wiederholungen von Kulturen und Brache vor der ersten Saison eines Laufs behandeln, wie in `rotation_irrigation_need` (Läufe mit zu wenigen Saisons auslassen).
   5. Plausibilität: Testfolge Winterweizen, Mais, Hirse liefert Werte in realistischer Größe. Eine Fruchtfolge mit Soja wird gegen die Netto-Rechnung geprüft.
   6. Brache-Dauer aus `erosion.rotation_timeline` gegenprüfen (gleiche Phasen).
@@ -211,10 +214,13 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
 ## Offene Fragen
 
 1. **NASS-Abdeckung:** Gibt es für alle 5 Kulturen (vor allem Sonnenblume) unbewässerte Kansas-Erträge in Quick Stats für 1991–2025? Das zeigt sich erst beim Abruf in Sub-Task 1. Dann entscheidet das Team über einen Rückfall.
-2. **Bedeutung der 45 kg N/t bei Soja:** Meint der IFA/IPNI-Wert die ganze Pflanze oder nur das Korn? Davon hängt die Netto-Rechnung ab. In der Quelle prüfen.
-3. **Negative Netto-Gutschrift:** Soll sie auf 0 gesetzt werden (kein Abzug für die Folgefrucht) oder als Entzug stehen bleiben? Vorschlag: ausweisen und für den Düngebedarf auf 0 begrenzen, das muss das Team bestätigen.
+2. **Bedeutung der 45 kg N/t bei Soja:** Meint der IFA/IPNI-Wert die ganze Pflanze oder nur das Korn? Das Dryad-Feld heißt `Fixed_N_kg_N_metric_t_fresh_crop_product`, was aufs Korn hindeutet. Das Team hat das so akzeptiert (nicht in der IFA-Quelle geprüft).
+3. **Negative Netto-Gutschrift:** Entschieden: ausweisen und für den Düngebedarf auf 0 begrenzen.
 4. **Zwischenfrucht-Indikator für Bodengesundheit:** Welche Größe (Bare Days, organische Substanz)?
 5. **Mineralisierung und Temperatur:** Reicht eine feste Rate pro Tag, oder soll Temperatur/Feuchte eingehen? Erst bei Bedarf. Die Rate braucht eine Quelle.
+6. **Quelle für das Mischungsmodell der Auswaschung (offen, vor Sub-Task 3):** Verlust = N-Pool × Sickerwasser ÷ Bodenwasservolumen. Das ist Allgemeinwissen und **nicht gegen eine Quelle geprüft**. Eine Quelle suchen (z. B. Extension-Literatur oder Lehrbuch zu Nitratauswaschung), bevor die Formel eingebaut wird. Ohne Beleg wird sie als `kind="assumption"` geführt.
+7. **Quelle für die Mineralisierungsrate (offen, vor Sub-Task 3):** Zu suchen ist eine zitierte Faustzahl aus der Extension-Literatur (z. B. K-State). Als **unverifizierte Erinnerung** ohne Beleg: etwa 20 lb N/acre pro 1 % organischer Substanz und Jahr. Diese Zahl darf erst in `config.py`, wenn die Quelle gefunden und geprüft ist. Zusätzlich eine Sensitivität (niedrig, mittel, hoch) rechnen und in der README zeigen.
+8. **Harvest-Index:** Prince et al. (2001) ist gewählt. Johnson et al. (2006) wird in der README als Spanne dokumentiert, gerechnet wird mit Prince.
 
 ## Nicht Teil dieses Plans
 
