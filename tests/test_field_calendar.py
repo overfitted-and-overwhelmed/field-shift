@@ -14,10 +14,12 @@ from explorer.field_calendar import (
     CalendarConflict,
     daily_calendar,
     load_nass_calendar,
+    monthly_view,
     schedule,
     season_dates,
+    summarize,
 )
-from explorer.schema import SequenceStep, load_explorer
+from explorer.schema import MonthDetail, SequenceStep, Summary, load_explorer
 
 MAIN_CROPS = ["corn", "sorghum", "soybean", "winter_wheat", "sunflower"]
 EXAMPLE = load_explorer(Path(__file__).resolve().parents[1] / "explorer" / "examples" / "explorer.json")
@@ -64,6 +66,12 @@ def test_wheat_after_summer_crop_fits_into_full_planting_window(previous):
     # schedule() moves wheat planting later; this checks that the full NASS window allows it.
     calendar = load_nass_calendar()
     assert calendar[previous].harvest_doy < calendar["winter_wheat"].planting_full.last
+
+
+def test_nass_day_is_same_calendar_date_in_leap_years():
+    # Soybean harvest (day 289) must be 16 October in 2028 (leap year) as in other years.
+    harvests = {season_dates(_step("soybean", y))[1] for y in (2027, 2028)}
+    assert {(d.month, d.day) for d in harvests} == {(10, 16)}
 
 
 def test_calendar_is_read_only():
@@ -142,3 +150,64 @@ def test_soybean_then_wheat_in_calendar():
     assert cal.loc["2028-08-01", "crop"] == "soybean"
     assert cal.loc["2028-12-01", "crop"] == "winter_wheat"
     assert cal.loc["2029-08-01", "kind"] == "bare"  # after wheat harvest in June
+
+
+# --- Step 3: months and summary ------------------------------------------------------
+
+
+def _calendar(rotation_id: str):
+    seasons = schedule(MOCKUP_ROTATIONS[rotation_id], PREVIOUS_CROP)
+    return daily_calendar(seasons, first_year=2027), seasons
+
+
+ABBREV = {"corn": "C", "soybean": "S", "winter_wheat": "W", "sorghum": "G", "sunflower": "F"}
+
+# Expected monthly view (Jan..Dec per year, 2027-2030; "." = bare). Compare with the mockup:
+#   current  ....CCCCCC.. ...   our summer crops stand a bit later (NASS window middle)
+# Pinned on purpose: if NASS data or the rules change, this test shows exactly what moved.
+EXPECTED_MONTHS = {
+    "current": "....CCCCC... ....CCCCC... ....CCCCC... ....CCCCC...",
+    "opt_cswg": "....CCCCC... .....SSSSSWW WWWWWW...... .....GGGGG..",
+    "opt_sfw": ".....GGGGG.. .....FFFFFWW WWWWWW...... .....GGGGG..",
+    "opt_cst": "....CCCCC... .....SSSSS.. ....CCCCC... .....SSSSS..",  # cover crops: step 4
+}
+
+
+@pytest.mark.parametrize("rotation_id", EXPECTED_MONTHS)
+def test_monthly_view_matches_expected_pattern(rotation_id):
+    months = monthly_view(_calendar(rotation_id)[0])
+    letters = "".join(ABBREV[m["crop"]] if m["kind"] != "bare" else "." for m in months)
+    assert " ".join(letters[i : i + 12] for i in range(0, 48, 12)) == EXPECTED_MONTHS[rotation_id]
+
+
+def test_monthly_view_fits_the_contract():
+    # Every entry must be valid as the calendar part of schema.MonthDetail.
+    zeros = dict.fromkeys(
+        ["et_in", "rain_in", "irr_in", "heat_risk_pct", "frost_risk_pct", "n_fert_lb", "n_uptake_lb",
+         "n_fix_lb", "n_credit_lb", "n_pool_lb", "n_loss_lb", "n_short_lb"], 0)
+    months = monthly_view(_calendar("opt_cswg")[0])
+    assert [m["m"] for m in months][:2] == ["2027-01", "2027-02"] and len(months) == 48
+    for m in months:
+        MonthDetail(**m, **zeros)
+
+
+def test_summary_continuous_corn():
+    cal, seasons = _calendar("current")
+    summary = summarize(cal, seasons, PREVIOUS_CROP)
+    assert summary["same_crop_repeats"] == 4
+    # corn stands 30 Apr - 2 Oct = 156 days -> 209 bare days -> about 6.9 months
+    assert summary["bare_months"] == pytest.approx(12 * 209 / 365, abs=0.05)
+    Summary(**summary, n_loss_lb=0)  # fits the contract
+
+
+@pytest.mark.parametrize("rotation_id, repeats", [("opt_cswg", 1), ("opt_sfw", 0), ("opt_cst", 1)])
+def test_same_crop_repeats_like_mockup(rotation_id, repeats):
+    # opt_cswg / opt_cst start with corn after corn (= 1), opt_sfw starts with sorghum.
+    cal, seasons = _calendar(rotation_id)
+    assert summarize(cal, seasons, PREVIOUS_CROP)["same_crop_repeats"] == repeats
+
+
+def test_wheat_rotation_has_fewer_bare_months_than_continuous_corn():
+    corn = summarize(*_calendar("current"), PREVIOUS_CROP)["bare_months"]
+    wheat = summarize(*_calendar("opt_cswg"), PREVIOUS_CROP)["bare_months"]
+    assert wheat < corn

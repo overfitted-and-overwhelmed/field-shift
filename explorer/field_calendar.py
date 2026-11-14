@@ -4,6 +4,8 @@ Step 1: target planting and harvest date per season, from the USDA NASS crop pro
         calendar for Kansas (``season_dates``).
 Step 2: plan the 4 seasons one after another, move a planting later if the field is still
         occupied, and build a calendar with one row per day (``schedule``, ``daily_calendar``).
+Step 3: condense the daily calendar into the 48 months of the frontend view and the summary
+        numbers (``monthly_view``, ``summarize``).
 
 Rules:
 * Target date = middle of NASS's "most active" window, i.e. roughly the date by which half of
@@ -110,9 +112,13 @@ def load_nass_calendar(path: Path = NASS_CALENDAR) -> Mapping[str, CropWindow]:
 
 
 def _from_doy(year: int, doy: int) -> date:
-    # Day of year counts from 1. In leap years dates after February shift by one day,
-    # which does not matter at this level of detail.
-    return date(year, 1, 1) + timedelta(days=doy - 1)
+    """NASS day of year -> calendar date, the SAME calendar date in every year.
+
+    Counting from 1 January directly would move every date after February one day earlier in
+    leap years (day 289 = 16 Oct, but 15 Oct in 2028). That can flip a month in the monthly
+    view, so we read the day in a non-leap year (2001) and only swap the year.
+    """
+    return (date(2001, 1, 1) + timedelta(days=min(doy, 365) - 1)).replace(year=year)
 
 
 def _window_for(crop: str, calendar: Mapping[str, CropWindow]) -> CropWindow:
@@ -213,3 +219,42 @@ def daily_calendar(seasons: Sequence[PlannedSeason], first_year: int, n_years: i
             raise CalendarConflict(f"season {s.index} overlaps another season")
         cal.loc[span.index, ["crop", "kind", "season"]] = [s.crop, "crop", s.index]
     return cal
+
+
+# --------------------------------------------------------------------------------------
+# Step 3: months and summary
+# --------------------------------------------------------------------------------------
+
+
+def monthly_view(cal: pd.DataFrame) -> list[dict]:
+    """One entry per month: ``{"m": "YYYY-MM", "kind": ..., "crop": ...}``.
+
+    A month shows what covers the field on MORE than half of its days. Otherwise it is "bare".
+    Example: corn harvested on 2 October -> October is bare (2 of 31 days).
+    """
+    months = []
+    for period, days in cal.groupby(cal.index.to_period("M")):
+        covered = days[days["kind"] != "bare"]
+        if len(covered) * 2 > len(days):
+            kind = covered["kind"].mode().iloc[0]  # mode = most frequent value
+            crop = covered.loc[covered["kind"] == kind, "crop"].mode().iloc[0]
+        else:
+            kind, crop = "bare", None
+        months.append({"m": str(period), "kind": kind, "crop": crop})
+    return months
+
+
+def summarize(cal: pd.DataFrame, seasons: Sequence[PlannedSeason], previous_crop: str) -> dict:
+    """Summary numbers of the rotation (the part of ``schema.Summary`` that WP5 owns).
+
+    * ``bare_months``: days without crop or cover, converted to months, mean per year.
+      Counted per day, not per month, so a half-bare month counts as 0.5.
+    * ``same_crop_repeats``: seasons with the same crop as the season before
+      (season 1 compares to ``previous_crop``). Continuous corn after corn = 4.
+    """
+    bare_share = (cal["kind"] == "bare").groupby(cal.index.year).mean()  # share of bare days per year
+    crops = [previous_crop] + [s.crop for s in seasons]
+    return {
+        "bare_months": float(bare_share.mean() * 12),
+        "same_crop_repeats": sum(a == b for a, b in zip(crops, crops[1:])),
+    }
