@@ -61,7 +61,7 @@ def compute_daily_risk(
 ) -> pd.DataFrame:
     """Compute daily temperature stress for one crop (independent of the growing season).
 
-    Rules (see risk-score-plan.md):
+    Rules (see README.md):
     - heat_severity: 0 at ``temp_opt_max`` rising linearly, reaching 1 at ``temp_abs_max`` and
       continuing to rise above it (no cap, no heat kill) (on Tmax).
     - frost_severity: 0 at ``temp_opt_min`` rising linearly to 1 at ``temp_abs_min`` (on Tmin),

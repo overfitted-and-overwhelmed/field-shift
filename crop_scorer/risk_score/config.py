@@ -74,7 +74,6 @@ class CropConfig:
 
     # Effective kill thresholds (°C)
     kill_temp_lower: float
-    kill_temp_upper: float
     kill_temp_rest: float | None
 
     # NASS Calendar windows (day of year)
@@ -143,7 +142,6 @@ def load_crop_configs(
 
         # Lower kill threshold: killing_temp_early_growth if present, otherwise fallback (0 °C)
         kill_temp_lower = early_kill if early_kill is not None else default_kill_lower
-        kill_temp_upper = temp_abs_max
         kill_temp_rest = winter_wheat_rest_kill if is_winter_crop else rest_kill
 
         # Match NASS calendar parameters
@@ -177,7 +175,6 @@ def load_crop_configs(
             killing_temp_early_growth=early_kill,
             killing_temp_during_rest=rest_kill,
             kill_temp_lower=kill_temp_lower,
-            kill_temp_upper=kill_temp_upper,
             kill_temp_rest=kill_temp_rest,
             planting_begin=int(nass_dict["planting_begin"]),
             planting_most_active_start=int(nass_dict["planting_most_active_start"]),

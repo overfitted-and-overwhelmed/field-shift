@@ -1,57 +1,61 @@
 # risk_score
 
-Temperatur-Risikoscore für 5 Crops (Winterweizen, Mais, Hirse, Soja, Sonnenblume), Standort Kearny County, Kansas, 1991–2025. Nur Temperatur (NASA POWER Tmin/Tmax/Tmean), keine Niederschlags-, Boden- oder Lichtwerte.
+Temperature risk score for 5 crops (winter wheat, corn, sorghum, soybean, sunflower) at one field (Kearny County, Kansas), 1991–2025. Temperature only.
 
-## So funktioniert es
+**Score: 0 = no risk, higher = riskier.**
 
-1. **Saison:** Jeder Saattag im NASS-Saatfenster (`planting_begin` bis `planting_end`) startet eine Saison bis `harvest_begin`. Winterweizen endet im Folgejahr. Nur Saisontage werden bewertet.
-2. **Tageswert** (Grenzen aus Ecocrop):
-   - Hitze: Tmax, 0 bei `temp_opt_max`, 1 bei `temp_abs_max`, darüber weiter steigend (kein Deckel, kein Hitze-Kill).
-   - Frost: Tmin, 0 bei `temp_opt_min`, 1 bei `temp_abs_min`, dort gedeckelt.
-   - Kälte-Kill: Tmin < `killing_temp_early_growth`, wenn Ecocrop ihn kennt (Winterweizen, Sonnenblume: 0 °C), sonst Annahme 0 °C (Mais, Hirse, Soja). Ein Kill-Tag zählt +100 und ersetzt den Stresswert.
-   - Winterweizen, Ruhephase 1. Nov. bis 31. März: kein Frost-Stress, Kill erst unter −20 °C. Davor (Okt., junge Saat) und danach (ab April) gilt wieder 0 °C.
-3. **Saison-Score:** Mittel der Tageswerte über die Saison. Score 0 = kein Risiko, höher = riskanter.
-4. **Hauptkennzahl** (`risk_score`, pro Crop und Saatjahr): Mittel der Saison-Scores im Hauptsaatfenster (`planting_most_active_*`). Zusätzlich `score_full_window`, `score_min`, `score_max` und Zähler für Frost-, Hitze- und Kill-Tage.
+## Inputs
 
-## Dateien
-
-| Datei | Inhalt |
+| Source | Used for |
 |---|---|
-| `config.py` | `CropConfig` pro Crop (Ecocrop + NASS) und Parameter (Kill-Strafe 100, Kill-Fallback 0 °C, Ruhephase, −20 °C) |
-| `loader.py` | `load_temperature_data()`: Tmin/Tmax/Tmean pro Tag, mit Prüfung auf Lücken und Ausreißer |
-| `severity.py` | `compute_daily_risk()`: Tageswerte und Kill-Flags für einen Crop |
-| `seasons.py` | `simulate_seasons()`, `aggregate_yearly()`, `check_season_lengths()` |
-| `run.py` | Einstiegspunkt: rechnet alles, schreibt 3 CSVs, druckt Zusammenfassung und Sanity-Checks |
+| NASA POWER daily Tmin / Tmax / Tmean (`power_daily_long.csv`) | daily temperatures |
+| Ecocrop (`ecocrop_selected_crops.csv`) | optimum / absolute temperature limits, kill temperatures |
+| NASS Kansas crop calendar | sowing window and harvest start per crop |
+| FAO-56 table 11, Ecocrop crop cycle | plausibility check of season length only |
 
-## Ausführen
+## How it works
+
+1. **Season:** every sowing day in the NASS window (`planting_begin`..`planting_end`) starts one season, ending at `harvest_begin`. Winter wheat ends in the next year. Only season days are scored.
+2. **Daily score:**
+   - **Heat:** on Tmax. 0 at `temp_opt_max`, 1 at `temp_abs_max`, keeps rising above (no cap, no heat kill).
+   - **Frost:** on Tmin. 0 at `temp_opt_min`, 1 at `temp_abs_min` (capped).
+   - **Cold kill:** Tmin < 0 °C. Day scores +100 and replaces the stress value.
+   - **Winter wheat dormancy** (1 Nov – 31 Mar): no frost stress, kill only below −20 °C.
+3. **Season score:** mean of the daily scores.
+4. **Yearly score** (`risk_score`, per crop and sowing year): mean of the season scores over the main sowing window (`planting_most_active_*`). Also `score_full_window`, `score_min`, `score_max` and counts of frost / heat / kill days.
+
+## Run
 
 ```bash
 uv run python -m crop_scorer.risk_score.run
 ```
 
-Schreibt nach `data/processed/crop_risk_score/` (in `.gitignore`, wird bei jedem Lauf neu erzeugt):
-- `risk_score_annual.csv`: pro Crop und Saatjahr, `risk_score` ist die Hauptkennzahl
-- `risk_score_seasons.csv`: pro Crop, Saatjahr und Saattag
-- `risk_score_daily.csv`: pro Crop und Kalendertag mit Flags (`kill`, `stress_flag`, `in_season_any`)
+Writes to `data/processed/crop_risk_score/` (git-ignored): `risk_score_annual.csv` (main result), `risk_score_seasons.csv` (per sowing day), `risk_score_daily.csv` (per calendar day with `kill`, `stress_flag`, `in_season_any`). Also prints summary, sanity checks and season lengths.
 
-## Beispiel
+## Files
 
-```python
-import pandas as pd
-from crop_scorer.risk_score import (
-    aggregate_yearly, load_crop_configs, load_temperature_data, simulate_seasons,
-)
+`config.py` crop limits + parameters · `loader.py` temperature loading and checks · `severity.py` daily score · `seasons.py` seasons and yearly aggregation · `run.py` entry point
 
-crops, temps = load_crop_configs(), load_temperature_data()
-seasons = pd.concat([simulate_seasons(temps, c) for c in crops.values()], ignore_index=True)
-print(aggregate_yearly(seasons))
-```
+## Result (mean over all years)
 
-## Was es nicht kann / Grenzen
+| Crop | `risk_score` | Kill days / season |
+|---|---|---|
+| Sunflower | 0.19 | 0.0 |
+| Sorghum | 0.47 | 0.0 |
+| Corn | 0.60 | 0.3 |
+| Soybean | 0.60 | 0.0 |
+| Winter wheat | 3.24 | 6.8 |
 
-- Ecocrop-Grenzen gelten für die Tagesmitteltemperatur, wir wenden sie auf Tmin/Tmax an (Näherung).
-- Mais, Hirse, Soja: 0 °C als Kill-Grenze ist eine Annahme, Ecocrop hat keinen Wert.
-- Winterruhe-Zeitraum (1. Nov. bis 31. März) ist eine Näherung, änderbar über `DEFAULT_WINTER_REST_START/END` in `config.py`. Die restlichen Winterweizen-Kill-Tage liegen im Oktober und April (Tmin < 0 °C), `risk_score` ist mit ca. 3 weiter der höchste der 5 Crops.
-- NASS-Kalender ist für alle Jahre gleich, die Saatdaten variieren nicht pro Jahr.
-- NASA POWER hat ca. 50 km Auflösung, die Werte sind nicht feldgenau.
-- Winterweizen-Saatjahre nur 1991–2024 (Saison 2025/26 fehlt in den Daten).
+Corn: earlier sowing (DOY 95–104) has 71 % of seasons with kill days (late frost in April), sowing from DOY 125 has none. Winter wheat kill days are in October (young crop) and April (after dormancy).
+
+## Limits and missing data
+
+- **Temperature only:** no precipitation, soil moisture, soil, light or disease.
+- **Ecocrop limits are for mean temperature,** we apply them to Tmin / Tmax (approximation).
+- **Kill temperature is an assumption for corn, sorghum and soybean** (Ecocrop has none): 0 °C. Winter wheat and sunflower use Ecocrop's 0 °C. Sunflower's Ecocrop dormancy value (−10 °C) is ignored (it does not overwinter).
+- **Dormancy window is an approximation** and drives the winter wheat score strongly (1 Dec – 28 Feb gave 15.07, 1 Nov – 31 Mar gives 3.24). Change via `DEFAULT_WINTER_REST_START/END` in `config.py`.
+- **No heat kill:** heat is only penalised through the uncapped severity.
+- **Season length comes from NASS** and is the same every year (no year-specific sowing dates). Winter wheat mean 253 d is slightly above Ecocrop's max (250 d, warning only). FAO-56 has no Central-USA entry for corn.
+- **Ecocrop has no triticale:** rye is in the file but not used.
+- **Winter wheat has no 2025 value** (season 2025/26 is not finished). Sowing years 1991–2024.
+- **NASA POWER is ~50 km resolution,** not field-exact. No yield data, so the score is not validated against real losses.
