@@ -1,5 +1,5 @@
 {
-  "contract_version": "2.0.0-draft",
+  "contract_version": "3.0.0-draft",
   "generated_at": "2026-11-14T21:15:15+00:00",
   "field": {
     "id": "ks-kearny-01",
@@ -1338,7 +1338,6 @@
       ],
       "summary": {
         "bare_months": 6.0,
-        "spring_bare_months": 3.0,
         "same_crop_repeats": 4,
         "n_loss_lb": 32
       }
@@ -2318,7 +2317,6 @@
       ],
       "summary": {
         "bare_months": 5.5,
-        "spring_bare_months": 2.2,
         "same_crop_repeats": 1,
         "n_loss_lb": 27
       }
@@ -3292,7 +3290,6 @@
       ],
       "summary": {
         "bare_months": 5.8,
-        "spring_bare_months": 2.5,
         "same_crop_repeats": 0,
         "n_loss_lb": 25
       }
@@ -4271,7 +4268,6 @@
       ],
       "summary": {
         "bare_months": 4.0,
-        "spring_bare_months": 2.2,
         "same_crop_repeats": 1,
         "n_loss_lb": 17
       }

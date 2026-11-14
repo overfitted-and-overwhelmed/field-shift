@@ -34,7 +34,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "2.0.0-draft"
+CONTRACT_VERSION = "3.0.0-draft"
 
 N_SEASONS = 4
 N_MONTHS = N_SEASONS * 12
@@ -268,8 +268,7 @@ class MonthDetail(_Strict):
 
 
 class Summary(_Strict):
-    bare_months: float = Field(ge=0, le=12)  # mean per year
-    spring_bare_months: float = Field(ge=0, le=3)  # March-May, mean per year
+    bare_months: float = Field(ge=0, le=12)  # months per year without crop or cover, mean
     # Seasons whose crop equals the crop before it; season 1 compares to field.previous_crop.
     # Continuous corn after corn = 4.
     same_crop_repeats: int = Field(ge=0, le=N_SEASONS)
