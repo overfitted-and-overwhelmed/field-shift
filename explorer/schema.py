@@ -62,7 +62,10 @@ class _Strict(BaseModel):
 
 
 class Spread(_Strict):
-    """Median ``v`` with 10th and 90th percentile over all weather years."""
+    """Mean ``v`` with 10th and 90th percentile over all weather years.
+
+    Mean (not median), so that the 12 monthly means add up exactly to the season value.
+    """
 
     v: float
     p10: float
@@ -152,7 +155,7 @@ class Climate(_Strict):
 
 
 class SequenceStep(_Strict):
-    year: int
+    year: int  # harvest year; winter crops (winter wheat) are planted in the autumn before
     crop: CropId
     irrigation: Irrigation
     cover: CropId | None = None
@@ -215,8 +218,9 @@ class SeasonDetail(SequenceStep):
     # back to "yield" in the JSON. serialize_by_alias makes model_dump() write "yield" too.
     model_config = ConfigDict(extra="forbid", populate_by_name=True, serialize_by_alias=True)
 
-    plant_doy: int = Field(ge=1, le=366)  # doy = day of year
-    harvest_doy: int = Field(ge=1, le=366)  # winter crops: day of year in the following year
+    # doy = day of year. harvest_doy is in `year`; for winter crops plant_doy is in `year - 1`.
+    plant_doy: int = Field(ge=1, le=366)
+    harvest_doy: int = Field(ge=1, le=366)
     irr_in: Spread  # from the scorer (adapted)
     yield_: YieldSpread = Field(alias="yield")
     n_lb: float = Field(ge=0)

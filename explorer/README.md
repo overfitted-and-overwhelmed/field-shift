@@ -29,8 +29,8 @@ explorer/examples/
 Conventions:
 - Units are in the field name: `_in` = inches of water, `_lb` = lb N per acre, `_pct` = 0–100.
   We always deliver these units; an "inches / mm" toggle in the UI converts for display.
-- `monthly` is a typical year: per month the mean over all weather years.
-  Season values (`irr_in`, `yield`) are a median with 10th–90th percentile (`v`, `p10`, `p90`).
+- All averages over the weather years are means: `monthly` (typical year) and the season values
+  `irr_in` / `yield` (`v`, plus 10th–90th percentile `p10`, `p90`). So months add up to the season.
 - Every per-year list in `climate` is aligned to `climate.weather_years`.
 - `provenance` says what kind of number a field is (`measured | modeled | rule | assumption`)
   and which entry in `sources` it comes from.

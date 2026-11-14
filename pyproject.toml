@@ -17,4 +17,6 @@ dev = [
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
-testpaths = ["tests"]
+testpaths = ["tests", "explorer"]
+# also run the examples in docstrings (>>> ...), so they cannot go stale
+addopts = "--doctest-modules"
