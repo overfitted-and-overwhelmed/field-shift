@@ -18,7 +18,7 @@ import pandas as pd
 
 DATA_DIR = Path(__file__).resolve().parents[1]
 SRC_DIR = DATA_DIR / "base-data" / "fao56"
-OUT_DIR = DATA_DIR / "processed" / SRC_DIR.name
+OUT_DIR = DATA_DIR / "processed" / "crop_data" / SRC_DIR.name
 
 MISSING = {"var", "--", "-", ""}
 

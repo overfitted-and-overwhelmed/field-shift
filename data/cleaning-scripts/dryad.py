@@ -14,7 +14,7 @@ import pandas as pd
 
 DATA_DIR = Path(__file__).resolve().parents[1]
 SRC = DATA_DIR / "base-data" / "dryad" / "Combined_crop_data.csv"
-OUT_DIR = DATA_DIR / "processed" / SRC.parent.name
+OUT_DIR = DATA_DIR / "processed" / "crop_data" / SRC.parent.name
 
 COUNTRY = "United States"
 DROP_COLS = [
