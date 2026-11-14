@@ -46,11 +46,11 @@ DAILY_COLUMNS = [
 
 
 def _in_season_any(dates: pd.Series, seasons: pd.DataFrame) -> pd.Series:
-    """True for days that lie in at least one simulated season (earliest sowing to harvest)."""
+    """True for days that lie in at least one simulated season (sowing day up to, not incl., harvest day)."""
     mask = pd.Series(False, index=dates.index)
     spans = seasons.groupby("season_year").agg(start=("sow_date", "min"), end=("harvest_date", "max"))
     for start, end in zip(spans["start"], spans["end"], strict=True):
-        mask |= (dates >= start) & (dates <= end)
+        mask |= (dates >= start) & (dates < end)
     return mask
 
 
@@ -132,10 +132,9 @@ def main(output_dir: Path | str = DEFAULT_OUTPUT_DIR, kill_penalty: float = DEFA
     summary = annual.groupby("crop_key").agg(
         years=("season_year", "nunique"),
         risk_score=("risk_score", "mean"),
-        score_full_window=("score_full_window", "mean"),
-        kill_days_mean=("kill_days_mean", "mean"),
+        kill_days_mean=("kill_days", "mean"),
     )
-    print("\nMittel über alle Jahre (Hauptsaatfenster):")
+    print("\nMittel über alle Jahre (Mitte Saatfenster bis Mitte Erntefenster):")
     print(summary.round(2).to_string())
     kill_in_season = daily_all[daily_all["in_season_any"] & daily_all["kill"]].groupby("crop_key").size()
     print("\nKill-Tage in Saisons (Kalendertage, alle Jahre):")

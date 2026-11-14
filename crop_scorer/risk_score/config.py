@@ -82,8 +82,8 @@ class CropConfig:
     planting_most_active_end: int
     planting_end: int
     harvest_begin: int
-    harvest_most_active_start: int | None = None
-    harvest_most_active_end: int | None = None
+    harvest_most_active_start: int
+    harvest_most_active_end: int
     harvest_end: int | None = None
 
 
@@ -157,6 +157,8 @@ def load_crop_configs(
             "planting_most_active_end",
             "planting_end",
             "harvest_begin",
+            "harvest_most_active_start",
+            "harvest_most_active_end",
         ]
         for param in required_params:
             if param not in nass_dict:
@@ -181,16 +183,8 @@ def load_crop_configs(
             planting_most_active_end=int(nass_dict["planting_most_active_end"]),
             planting_end=int(nass_dict["planting_end"]),
             harvest_begin=int(nass_dict["harvest_begin"]),
-            harvest_most_active_start=(
-                int(nass_dict["harvest_most_active_start"])
-                if "harvest_most_active_start" in nass_dict
-                else None
-            ),
-            harvest_most_active_end=(
-                int(nass_dict["harvest_most_active_end"])
-                if "harvest_most_active_end" in nass_dict
-                else None
-            ),
+            harvest_most_active_start=int(nass_dict["harvest_most_active_start"]),
+            harvest_most_active_end=int(nass_dict["harvest_most_active_end"]),
             harvest_end=int(nass_dict["harvest_end"]) if "harvest_end" in nass_dict else None,
         )
         configs[crop_key] = config

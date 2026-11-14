@@ -1,4 +1,4 @@
-"""Season simulation: score every sowing day from sowing until harvest begin, then aggregate."""
+"""Season simulation: one season per crop and year, from the middle of the sowing window to the middle of the harvest window."""
 
 import re
 import warnings
@@ -37,7 +37,6 @@ SEASON_COLUMNS = [
     "sow_doy",
     "harvest_date",
     "season_days",
-    "in_main_window",
     "frost_days",
     "heat_days",
     "kill_days",
@@ -56,12 +55,14 @@ def simulate_seasons(
     rest_start: tuple[int, int] = DEFAULT_WINTER_REST_START,
     rest_end: tuple[int, int] = DEFAULT_WINTER_REST_END,
 ) -> pd.DataFrame:
-    """Score one season per sowing day (``planting_begin`` .. ``planting_end``) and year.
+    """Score one season per crop and sowing year (same season definition as ``water_usage``).
 
-    A season runs from the sowing day to the day of ``harvest_begin`` (both inclusive). If
-    ``harvest_begin`` lies before ``planting_begin`` in the year (winter wheat), the season ends
-    in the following year. ``season_year`` is the sowing year. Seasons that are not fully covered
-    by ``temps`` are dropped.
+    Sowing day = middle of the NASS most-active planting window, harvest day = middle of the
+    most-active harvest window (``(start + end) // 2``). The season covers ``season_days =
+    (harvest_doy - sow_doy) % 365`` days from the sowing day on; the harvest day itself is not
+    scored. If the harvest day lies before the sowing day in the year (winter wheat), the season
+    ends in the following year. ``season_year`` is the sowing year. Seasons that are not fully
+    covered by ``temps`` are dropped.
 
     ``season_score`` is the MEAN of the daily scores over all season days (sum / season_days).
     Counters (days): frost_days / heat_days count stress days with frost / heat severity > 0 on
@@ -75,7 +76,7 @@ def simulate_seasons(
         rest_end: (month, day) end of the dormancy window (winter crops).
 
     Returns:
-        DataFrame with the columns in ``SEASON_COLUMNS``, one row per sowing day.
+        DataFrame with the columns in ``SEASON_COLUMNS``, one row per sowing year.
     """
     dates = pd.DatetimeIndex(temps["date"])
     risk = compute_daily_risk(temps, crop, kill_penalty, rest_start, rest_end)
@@ -92,70 +93,48 @@ def simulate_seasons(
     cum = np.vstack([np.zeros(daily.shape[1]), daily.to_numpy().cumsum(axis=0)])
     cols = {name: i for i, name in enumerate(daily.columns)}
 
-    harvest_next_year = crop.harvest_begin < crop.planting_begin
+    sow_doy = (crop.planting_most_active_start + crop.planting_most_active_end) // 2
+    harvest_doy = (crop.harvest_most_active_start + crop.harvest_most_active_end) // 2
+    season_days = (harvest_doy - sow_doy) % 365
+
     rows = []
     for year in range(dates[0].year, dates[-1].year + 1):
-        harvest_date = _doy_to_date(year + int(harvest_next_year), crop.harvest_begin)
-        if harvest_date > dates[-1]:
+        sow_date = _doy_to_date(year, sow_doy)
+        harvest_date = sow_date + pd.Timedelta(days=season_days)
+        if sow_date < dates[0] or harvest_date - pd.Timedelta(days=1) > dates[-1]:
             continue
-        for doy in range(crop.planting_begin, crop.planting_end + 1):
-            sow_date = _doy_to_date(year, doy)
-            if sow_date < dates[0]:
-                continue
-            i0 = dates.get_loc(sow_date)
-            i1 = dates.get_loc(harvest_date)
-            total = cum[i1 + 1] - cum[i0]
-            season_days = i1 - i0 + 1
-            rows.append(
-                {
-                    "crop_key": crop.crop_key,
-                    "season_year": year,
-                    "sow_date": sow_date,
-                    "sow_doy": doy,
-                    "harvest_date": harvest_date,
-                    "season_days": season_days,
-                    "in_main_window": crop.planting_most_active_start <= doy <= crop.planting_most_active_end,
-                    "frost_days": int(total[cols["frost"]]),
-                    "heat_days": int(total[cols["heat"]]),
-                    "kill_days": int(total[cols["kill"]]),
-                    "season_score": total[cols["score"]] / season_days,
-                }
-            )
+        i0 = dates.get_loc(sow_date)
+        total = cum[i0 + season_days] - cum[i0]
+        rows.append(
+            {
+                "crop_key": crop.crop_key,
+                "season_year": year,
+                "sow_date": sow_date,
+                "sow_doy": sow_doy,
+                "harvest_date": harvest_date,
+                "season_days": season_days,
+                "frost_days": int(total[cols["frost"]]),
+                "heat_days": int(total[cols["heat"]]),
+                "kill_days": int(total[cols["kill"]]),
+                "season_score": total[cols["score"]] / season_days,
+            }
+        )
     return pd.DataFrame(rows, columns=SEASON_COLUMNS)
 
 
 def aggregate_yearly(seasons: pd.DataFrame) -> pd.DataFrame:
-    """Condense season scores to one row per crop and sowing year.
+    """Condense seasons to one row per crop and sowing year.
 
-    Columns:
-        risk_score: MEAN of ``season_score`` over the sowing days in the main (most active) window.
-        score_full_window: mean over all sowing days (planting_begin..planting_end).
-        score_min / score_max: min / max season score over all sowing days.
-        frost_days_mean / heat_days_mean / kill_days_mean: mean counters over the main window.
-        n_sowing_days_main / n_sowing_days_full: number of seasons behind the means.
+    Columns: ``risk_score`` (= ``season_score``) and the counters ``frost_days`` / ``heat_days`` /
+    ``kill_days`` of that season.
     """
     if seasons.empty:
         raise ValueError("No seasons to aggregate")
 
-    out = []
-    for (crop_key, year), grp in seasons.groupby(["crop_key", "season_year"], sort=True):
-        main = grp[grp["in_main_window"]]
-        out.append(
-            {
-                "crop_key": crop_key,
-                "season_year": year,
-                "risk_score": main["season_score"].mean() if not main.empty else float("nan"),
-                "score_full_window": grp["season_score"].mean(),
-                "score_min": grp["season_score"].min(),
-                "score_max": grp["season_score"].max(),
-                "frost_days_mean": main["frost_days"].mean() if not main.empty else float("nan"),
-                "heat_days_mean": main["heat_days"].mean() if not main.empty else float("nan"),
-                "kill_days_mean": main["kill_days"].mean() if not main.empty else float("nan"),
-                "n_sowing_days_main": len(main),
-                "n_sowing_days_full": len(grp),
-            }
-        )
-    return pd.DataFrame(out)
+    out = seasons.rename(columns={"season_score": "risk_score"})
+    return out[["crop_key", "season_year", "risk_score", "frost_days", "heat_days", "kill_days"]].sort_values(
+        ["crop_key", "season_year"], ignore_index=True
+    )
 
 
 def _fao56_l_total(crop_key: str, fao56_path: Path | str) -> str:
