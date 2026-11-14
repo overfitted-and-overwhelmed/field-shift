@@ -1,0 +1,32 @@
+season_type,previous_crop,n_adjustment_lb_a,condition,pdf_page,source,source_url
+cool_season,corn,0,,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,winter_wheat,0,,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,sorghum,30,,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,sunflower,30,,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,soybean,0,,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,fallow,-20,without profile N test,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,fallow,0,with profile N test,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,alfalfa,-60,excellent stand >5 plants/ft2,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,alfalfa,-40,good stand 2-5,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,alfalfa,-20,fair stand 1-2,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,alfalfa,0,poor stand <1,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,red_clover,-40,excellent stand,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,red_clover,-20,good stand,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+cool_season,red_clover,0,poor stand,3,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,corn,0,,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,winter_wheat,0,,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,sorghum,0,,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,sunflower,0,,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,soybean,-40,,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,fallow,-20,without profile N test,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,fallow,0,with profile N test,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,alfalfa,-120,excellent stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,alfalfa,-80,good stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,alfalfa,-40,fair stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,alfalfa,0,poor stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,red_clover,-80,excellent stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,red_clover,-40,good stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,red_clover,0,poor stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,sweet_clover,-110,excellent stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,sweet_clover,-60,good stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
+warm_season,sweet_clover,0,poor stand,4,"K-State MF2586 (Ruiz Diaz, Jan 2024)",https://bookstore.ksre.ksu.edu/pubs/soil-test-interpretations-and-fertilizer-recommendations_MF2586.pdf
