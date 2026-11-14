@@ -15,6 +15,7 @@ from crop_scorer.risk_score.config import (
     load_crop_configs,
 )
 from crop_scorer.risk_score.loader import load_temperature_data, validate_temperature_data
+from crop_scorer.risk_score.rotation import ROTATION_SEASON_COLUMNS, rotation_daily_risk, rotation_season_risk
 from crop_scorer.risk_score.seasons import (
     SEASON_COLUMNS,
     aggregate_yearly,
@@ -35,6 +36,7 @@ __all__ = [
     "DEFAULT_WINTER_REST_END",
     "DEFAULT_WINTER_REST_START",
     "DEFAULT_WINTER_WHEAT_REST_KILL_TEMP",
+    "ROTATION_SEASON_COLUMNS",
     "SEASON_COLUMNS",
     "SEVERITY_COLUMNS",
     "aggregate_yearly",
@@ -43,6 +45,8 @@ __all__ = [
     "in_winter_rest",
     "load_crop_configs",
     "load_temperature_data",
+    "rotation_daily_risk",
+    "rotation_season_risk",
     "simulate_seasons",
     "validate_temperature_data",
 ]

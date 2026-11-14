@@ -34,7 +34,7 @@ Writes to `data/processed/crop_risk_score/` (git-ignored): `risk_score_annual.cs
 
 ## Files
 
-`config.py` crop limits + parameters · `loader.py` temperature loading and checks · `severity.py` daily score · `seasons.py` seasons and yearly aggregation · `run.py` entry point
+`config.py` crop limits + parameters · `loader.py` temperature loading and checks · `severity.py` daily score · `seasons.py` seasons and yearly aggregation · `rotation.py` risk on the seasons of a crop rotation (from `water_usage.build_timeline`, incl. shifted sowing) · `run.py` entry point
 
 ## Result (mean over all years)
 
