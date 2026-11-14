@@ -18,7 +18,7 @@ from crop_scorer.risk_score.config import (
 )
 from crop_scorer.risk_score.severity import compute_daily_risk
 
-DEFAULT_FAO56_STAGE_PATH = DEFAULT_DATA_DIR / "raw" / "fao56" / "fao56_table11_stage_lengths.csv"
+DEFAULT_FAO56_STAGE_PATH = DEFAULT_DATA_DIR / "base-data" / "fao56" / "fao56_table11_stage_lengths.csv"
 
 # crop_key -> (FAO56 crop name, region substring or None = all rows).
 # Corn has no Central-USA row in Table 11, so it is not compared against FAO56.

@@ -8,9 +8,9 @@ import pandas as pd
 # Default project paths
 PACKAGE_DIR: Final[Path] = Path(__file__).resolve().parents[2]
 DEFAULT_DATA_DIR: Final[Path] = PACKAGE_DIR / "data"
-DEFAULT_ECOCROP_PATH: Final[Path] = DEFAULT_DATA_DIR / "raw" / "ecocrop" / "ecocrop_selected_crops.csv"
-DEFAULT_NASS_PATH: Final[Path] = DEFAULT_DATA_DIR / "raw" / "nass" / "kansas_crop_calendar_long.csv"
-DEFAULT_POWER_PATH: Final[Path] = DEFAULT_DATA_DIR / "processed" / "power_daily_long.csv"
+DEFAULT_ECOCROP_PATH: Final[Path] = DEFAULT_DATA_DIR / "base-data" / "ecocrop" / "ecocrop_selected_crops.csv"
+DEFAULT_NASS_PATH: Final[Path] = DEFAULT_DATA_DIR / "base-data" / "nass" / "kansas_crop_calendar_long.csv"
+DEFAULT_POWER_PATH: Final[Path] = DEFAULT_DATA_DIR / "processed" / "climate_data" / "power_daily_long.csv"
 
 # Default scoring and simulation parameters
 DEFAULT_KILL_PENALTY: Final[float] = 100.0
