@@ -1,0 +1,6 @@
+crop,yield_unit,lb_per_unit,moisture_basis_pct,source,source_url
+corn,bu,56,15.5,"USDA ERS AH-697 Weights, Measures and Conversion Factors (bushel weights); K-State MF2586 Table 1 (moisture basis)",https://www.ers.usda.gov/publications/pub-details?pubid=41881
+sorghum,bu,56,15.5,"USDA ERS AH-697 Weights, Measures and Conversion Factors (bushel weights); K-State MF2586 Table 1 (moisture basis)",https://www.ers.usda.gov/publications/pub-details?pubid=41881
+winter_wheat,bu,60,13.5,"USDA ERS AH-697 Weights, Measures and Conversion Factors (bushel weights); K-State MF2586 Table 1 (moisture basis)",https://www.ers.usda.gov/publications/pub-details?pubid=41881
+soybean,bu,60,13.0,"USDA ERS AH-697 Weights, Measures and Conversion Factors (bushel weights); K-State MF2586 Table 1 (moisture basis)",https://www.ers.usda.gov/publications/pub-details?pubid=41881
+sunflower,lb,1,10.0,"USDA ERS AH-697 Weights, Measures and Conversion Factors (bushel weights); K-State MF2586 Table 1 (moisture basis)",https://www.ers.usda.gov/publications/pub-details?pubid=41881
