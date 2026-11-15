@@ -5,8 +5,9 @@ sunflower:                    N = 0.075 x EY - SOM x 20 - ProfileN + PreviousCro
 then limited to the K-State minimum (and maximum for corn). No manure, no other N sources.
 After a cereal cover crop (triticale) the next crop needs COVER_N_LB more (residue ties up N).
 
-All factors come from the cleaned K-State tables (data/processed/crop_data/ksu). EY = expected yield from NASS,
-practice "all" at the most local level with 5 years (1.05 x mean, K-State rule; nass_quickstats/expected_yield_clean.csv).
+All factors come from the cleaned K-State tables (data/processed/crop_data/ksu). EY = expected yield = 1.05 x mean
+yield (K-State rule) at full irrigation, the level the explorer shows (yield_levels.py: NASS irrigated for corn and
+winter wheat, derived for sorghum and sunflower).
 SOM = organic matter of the top SSURGO layer (0-23 cm), ProfileN = K-State default (no soil sample).
 """
 
@@ -14,11 +15,11 @@ from functools import cache
 
 import pandas as pd
 
+from crop_scorer.scoring.yield_levels import yield_levels
 from crop_scorer.water_usage.water_usage import REPO, SOIL_FILE
 
 KSU_FILE = REPO / "data/processed/crop_data/ksu/ksu_n_recommendations_clean.csv"
 PREVIOUS_CROP_FILE = REPO / "data/processed/crop_data/ksu/ksu_previous_crop_adjustments_clean.csv"
-EXPECTED_YIELD_FILE = REPO / "data/processed/crop_data/nass_quickstats/expected_yield_clean.csv"
 LB_PER_AC_TO_KG_PER_HA = 0.45359237 / 0.40468564224
 
 SEASON_TYPE = {
@@ -30,13 +31,12 @@ SEASON_TYPE = {
 }
 FE_CONDITION = "default: broadcast, fall-applied pre-plant"
 SE_CONDITION = "low N-loss risk: medium texture or western KS"
-# ASSUMPTION: corn ie and max N of irrigated fields; the Kearny County corn yield (all practices, ~170 bu/ac)
-# is close to the irrigated level (213), far above dryland (85)
+# corn ie and max N of irrigated fields, like the irrigated expected yield
 CORN_CONDITION = "irrigated"
 # ASSUMPTION: MF2586 has no N recommendation for soybean; as a legume it fixes its own N, so no fertilizer
 NO_FORMULA_KG = {"soybean": 0.0}
 # Clark (ed.) 2007, Managing Cover Crops Profitably, 3rd ed., SARE, p. 46: after a high-residue cereal cover the cash
-# crop may need 25-30 lb N/ac more; middle of the range (cited in data/cover_crop_effects.csv on feat/fertilizer-need)
+# crop may need 25-30 lb N/ac more; middle of the range (data/base-data/literature/cover_crop_effects.csv, n_cereal_cover_extra_fert)
 COVER_N_LB = 27.5
 
 
@@ -56,10 +56,8 @@ def ksu(scope: str, parameter: str, condition: str | None = None) -> float:
 
 @cache
 def expected_yield(crop: str) -> float:
-    y = pd.read_csv(EXPECTED_YIELD_FILE)
-    row = y[(y["crop"] == crop) & (y["practice"] == "all")]
-    assert len(row) == 1, f"expected yield {crop}: {len(row)} rows"
-    return float(row["expected_yield"].iloc[0])
+    # the field is irrigated (continuous corn in the CDL, explorer assumes full irrigation): N for that yield level
+    return ksu("all", "expected_yield_rule") * yield_levels()[crop][0]
 
 
 @cache
@@ -86,6 +84,13 @@ def previous_crop_adjustment_lb(crop: str, previous: str | None) -> float:
     return float(d["n_adjustment_lb_a"].iloc[0])
 
 
+def season_n_adjustment_lb(crop: str, previous: str | None, after_cover: bool = False) -> float:
+    # PreviousCropAdj of the formula (negative = credit) plus the extra N after a cover crop; 0 without a formula
+    if crop in NO_FORMULA_KG:
+        return 0.0
+    return previous_crop_adjustment_lb(crop, previous) + (COVER_N_LB if after_cover else 0.0)
+
+
 @cache
 def season_n_need_kg(crop: str, previous: str | None, after_cover: bool = False) -> float:
     if crop in NO_FORMULA_KG:
@@ -94,7 +99,7 @@ def season_n_need_kg(crop: str, previous: str | None, after_cover: bool = False)
     ey = expected_yield(crop)
     som_credit = organic_matter_pct() * ksu(season, "som_credit")
     profile_n = ksu("all", "profile_n_default")
-    previous_adj = previous_crop_adjustment_lb(crop, previous) + (COVER_N_LB if after_cover else 0.0)
+    previous_adj = season_n_adjustment_lb(crop, previous, after_cover)
     if crop == "sunflower":
         n = ey * ksu("sunflower", "yield_factor") - som_credit - profile_n + previous_adj
     else:

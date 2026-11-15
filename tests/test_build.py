@@ -4,6 +4,7 @@ import pytest
 
 from explorer.build import build_explorer, scorer_response
 from explorer.field_calendar import place_seasons
+from explorer.nitrogen import season_nitrogen
 from explorer.schema import ScorerSeason
 
 WEIGHTS = {"water": 1, "risk": 1, "soil_health": 1}
@@ -54,10 +55,28 @@ def test_kpi_is_in_inches_without_the_scorers_frost_days(built):
         assert r.kpi["irrigation_in"] == pytest.approx(sum(s.irr_in.v for s in r.sequence), abs=0.05)
 
 
-def test_nitrogen_is_null_until_wp4(built):
+def test_kpi_per_year_is_the_pass_value_over_the_cycle_years(built):
     export, _ = built
-    r = export.rotations[0]
-    assert r.sequence[0].n_lb is None and r.monthly[0].nitrogen is None and r.summary.n_loss_lb is None
+    for r in export.rotations:
+        years = r.kpi["cycle_days"] / 365.25
+        assert r.kpi["irrigation_in_per_year"] == pytest.approx(r.kpi["irrigation_in"] / years)
+        assert r.kpi["n_lb_per_year"] == pytest.approx(r.kpi["n_lb"] / years)
+        assert r.kpi["n_lb"] == pytest.approx(sum(s.n_lb for s in r.sequence), abs=0.5)
+
+
+def test_continuous_corn_has_one_season_per_year(built):
+    export, _ = built
+    corn = export.rotations[0]  # corn-corn-corn
+    assert corn.kpi["cycle_days"] == pytest.approx(3 * 365.25, abs=1)
+    assert corn.kpi["n_lb_per_year"] == pytest.approx(corn.sequence[0].n_lb, abs=0.5)
+    assert corn.kpi["irrigation_in_per_year"] == pytest.approx(sum(s.irr_in.v for s in corn.sequence) / 3, abs=0.1)
+
+
+def test_nitrogen_per_season_is_the_scorers_and_the_monthly_balance_stays_null(built):
+    export, _ = built
+    for r in export.rotations:
+        assert [s.n_lb for s in r.sequence] == [n.n_lb for n in season_nitrogen(r.id)]
+        assert all(m.nitrogen is None for m in r.monthly) and r.summary.n_loss_lb is None
 
 
 def test_current_rotation_ignores_non_crop_years_in_history():

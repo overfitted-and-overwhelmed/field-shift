@@ -5,7 +5,6 @@ Run from the repo root:  ``uv run python -m crop_scorer.risk_score.run``
 
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 from crop_scorer.risk_score.config import (
@@ -77,18 +76,16 @@ def sanity_checks(
     bad = int((seasons["season_score"] < 0).sum() + seasons["season_score"].isna().sum())
     results.append(("season_scores_non_negative_and_complete", bad == 0, f"{bad} invalid season scores"))
 
-    # Heat must never create a kill: every kill day has tmin below the crop's (non-rest) kill limit,
-    # or, for winter wheat in the dormancy window, below the rest limit.
+    # Kill days only exist for winter wheat in the dormancy window, below the rest limit (never from heat).
     n_bad = 0
     for key, cfg in crops.items():
         d = daily[(daily["crop_key"] == key) & daily["kill"]]
         if cfg.is_winter_crop and cfg.kill_temp_rest is not None:
             rest = in_winter_rest(d["date"].dt.month, d["date"].dt.day, DEFAULT_WINTER_REST_START, DEFAULT_WINTER_REST_END)
-            limit = np.where(rest, cfg.kill_temp_rest, cfg.kill_temp_lower)
+            n_bad += int((~rest | (d["tmin"] >= cfg.kill_temp_rest)).sum())
         else:
-            limit = cfg.kill_temp_lower
-        n_bad += int((d["tmin"] >= limit).sum())
-    results.append(("kill_days_only_from_cold", n_bad == 0, f"{n_bad} kill days not explained by cold"))
+            n_bad += len(d)
+    results.append(("kill_days_only_in_rest_from_cold", n_bad == 0, f"{n_bad} kill days outside the rest window or not explained by cold"))
 
     # Kill days in-season should occur in the cold half of the year, not in Jun-Aug.
     summer_kill = int((season_days["kill"] & season_days["date"].dt.month.isin([6, 7, 8])).sum())

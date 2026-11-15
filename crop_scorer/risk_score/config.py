@@ -14,7 +14,6 @@ DEFAULT_POWER_PATH: Final[Path] = DEFAULT_DATA_DIR / "processed" / "climate_data
 
 # Default scoring and simulation parameters
 DEFAULT_KILL_PENALTY: Final[float] = 100.0
-DEFAULT_KILL_TEMP_FALLBACK: Final[float] = 0.0
 DEFAULT_WINTER_REST_START: Final[tuple[int, int]] = (11, 1)   # Nov 1 (month, day)
 DEFAULT_WINTER_REST_END: Final[tuple[int, int]] = (3, 31)     # Mar 31 (month, day)
 DEFAULT_WINTER_WHEAT_REST_KILL_TEMP: Final[float] = -20.0
@@ -72,8 +71,8 @@ class CropConfig:
     killing_temp_early_growth: float | None
     killing_temp_during_rest: float | None
 
-    # Effective kill thresholds (°C)
-    kill_temp_lower: float
+    # Effective kill threshold (°C), only during the winter rest of winter crops. Outside it no crop has a
+    # documented killing temperature for the whole season, so cold only counts as stress (see README).
     kill_temp_rest: float | None
 
     # NASS Calendar windows (day of year)
@@ -90,7 +89,6 @@ class CropConfig:
 def load_crop_configs(
     ecocrop_path: Path | str = DEFAULT_ECOCROP_PATH,
     nass_path: Path | str = DEFAULT_NASS_PATH,
-    default_kill_lower: float = DEFAULT_KILL_TEMP_FALLBACK,
     winter_wheat_rest_kill: float = DEFAULT_WINTER_WHEAT_REST_KILL_TEMP,
 ) -> dict[str, CropConfig]:
     """Load and combine Ecocrop limits and NASS calendar windows for the 5 target crops.
@@ -98,7 +96,6 @@ def load_crop_configs(
     Parameters:
         ecocrop_path: Path to ecocrop_selected_crops.csv.
         nass_path: Path to kansas_crop_calendar_long.csv.
-        default_kill_lower: Fallback lower kill threshold (°C) if not specified in Ecocrop.
         winter_wheat_rest_kill: Kill threshold (°C) for winter wheat during dormancy.
 
     Returns:
@@ -140,8 +137,8 @@ def load_crop_configs(
             else None
         )
 
-        # Lower kill threshold: killing_temp_early_growth if present, otherwise fallback (0 °C)
-        kill_temp_lower = early_kill if early_kill is not None else default_kill_lower
+        # No kill threshold outside the winter rest: Ecocrop has none for corn, sorghum and soybean, and its
+        # early-growth value (wheat, sunflower 0 °C) is for seedlings only, not for the whole season
         kill_temp_rest = winter_wheat_rest_kill if is_winter_crop else rest_kill
 
         # Match NASS calendar parameters
@@ -176,7 +173,6 @@ def load_crop_configs(
             temp_abs_max=temp_abs_max,
             killing_temp_early_growth=early_kill,
             killing_temp_during_rest=rest_kill,
-            kill_temp_lower=kill_temp_lower,
             kill_temp_rest=kill_temp_rest,
             planting_begin=int(nass_dict["planting_begin"]),
             planting_most_active_start=int(nass_dict["planting_most_active_start"]),
