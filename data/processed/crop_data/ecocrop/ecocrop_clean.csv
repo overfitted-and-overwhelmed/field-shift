@@ -1,0 +1,260 @@
+crop_en,variable,value
+Maize,altitude_abs_max,4000
+Maize,crop_cycle_max,365
+Maize,crop_cycle_min,65
+Maize,cropping_systems,"subsystem=ratoon cropping / companion_species=legumes ; subsystem=inter-cropping / companion_species=peanuts, okra, pumpkins, melons ; subsystem=alley cropping / companion_species=grain legumes (Vigna unguiculata), soybeans (Glycine max), Acacia auriculiformis, Cajanus cajan ; subsystem=normadism / companion_species=coconut, mango, mung bean, oil-palm, young rubber trees"
+Maize,latitude_abs_max,48
+Maize,latitude_abs_min,40
+Maize,light_abs_max,very bright
+Maize,light_abs_min,clear skies
+Maize,light_opt_max,very bright
+Maize,light_opt_min,very bright
+Maize,main_uses,food & beverage; animal food (feed); material; medicinal; fuels
+Maize,ph_abs_max,8.5
+Maize,ph_abs_min,4.5
+Maize,ph_opt_max,7.0
+Maize,ph_opt_min,5.0
+Maize,rain_abs_max,1800
+Maize,rain_abs_min,400
+Maize,rain_opt_max,1200
+Maize,rain_opt_min,600
+Maize,soil_depth_abs,shallow (20-50 cm)
+Maize,soil_depth_opt,medium (50-150 cm)
+Maize,soil_fertility_abs,low
+Maize,soil_fertility_opt,high
+Maize,soil_salinity_abs,medium (4-10 dS/m)
+Maize,soil_salinity_opt,low (<4 dS/m)
+Maize,temp_abs_max,47
+Maize,temp_abs_min,10
+Maize,temp_opt_max,33
+Maize,temp_opt_min,18
+Maize,used_parts,fruits; seeds; entire plant
+Maize,uses_detail,food & beverage / vitamins / fruits; food & beverage / starch / seeds; food & beverage / protein / seeds; food & beverage / lipids / seeds; animal food (feed) / minerals / entire plant; animal food (feed) / vitamins / entire plant; material / lipids/oil & fats / seeds; medicinal / skin applications / seeds; fuels / petroleum substitutes/alcohol / seeds; fuels / alcohol / seeds
+Rye,altitude_abs_max,4300
+Rye,category,"cereals & pseudocereals, forage/pasture, cover crop, environmental"
+Rye,climate_zone,"steppe or semiarid (Bs), temperate oceanic (Do), temperate continental (Dc)"
+Rye,crop_cycle_max,270
+Rye,crop_cycle_min,110
+Rye,cropping_systems,subsystem=sole cropping / level_of_mechanization=high / labour_intensity=low
+Rye,habit,erect
+Rye,killing_temp_during_rest,-18.0
+Rye,killing_temp_early_growth,-1.0
+Rye,latitude_abs_max,70
+Rye,latitude_abs_min,60
+Rye,latitude_opt_min,45.0
+Rye,life_form,grass
+Rye,life_span,annual
+Rye,light_abs_max,cloudy skies
+Rye,light_abs_min,very bright
+Rye,light_opt_max,very bright
+Rye,light_opt_min,very bright
+Rye,main_uses,food & beverage; animal food (feed); material; environmental
+Rye,ph_abs_max,8.2
+Rye,ph_abs_min,4.5
+Rye,ph_opt_max,6.0
+Rye,ph_opt_min,5.5
+Rye,photoperiod,"short day (<12 hours), neutral day (12-14 hours)"
+Rye,physiology,multi stem
+Rye,plant_attributes,grown on large scale
+Rye,production_system,large scale/commercial
+Rye,rain_abs_max,2000
+Rye,rain_abs_min,400
+Rye,rain_opt_max,1000
+Rye,rain_opt_min,600
+Rye,remark,Triticale ist nicht in ECOCROP enthalten; Roggen als Elternart ersatzweise
+Rye,soil_depth_abs,shallow (20-50 cm)
+Rye,soil_depth_opt,medium (50-150 cm)
+Rye,soil_drainage_abs,"poorly (saturated >50% of year), well (dry spells), excessive (dry/moderately dry)"
+Rye,soil_drainage_opt,well (dry spells)
+Rye,soil_fertility_abs,low
+Rye,soil_fertility_opt,moderate
+Rye,soil_salinity_abs,high (>10 dS/m)
+Rye,soil_salinity_opt,low (<4 dS/m)
+Rye,soil_texture_abs,"heavy, medium, light"
+Rye,soil_texture_opt,"heavy, medium, light"
+Rye,temp_abs_max,31
+Rye,temp_abs_min,3
+Rye,temp_opt_max,20
+Rye,temp_opt_min,15
+Rye,used_parts,seeds; entire plant; bark
+Rye,uses_detail,food & beverage / starch / seeds; food & beverage / vitamins / seeds; food & beverage / minerals / seeds; food & beverage / protein / seeds; animal food (feed) / vitamins / seeds; animal food (feed) / minerals / seeds; animal food (feed) / starch / seeds; animal food (feed) / protein / seeds; animal food (feed) / vitamins / entire plant; animal food (feed) / minerals / entire plant; material / paper / bark; material / fibres / bark; environmental / cover crop / entire plant; environmental / soil improvers / entire plant
+Sorghum,altitude_abs_max,2500
+Sorghum,category,"cereals & pseudocereals, forage/pasture, medicinals & aromatic"
+Sorghum,climate_zone,"tropical wet & dry (Aw), steppe or semiarid (Bs), subtropical dry summer (Cs)"
+Sorghum,crop_cycle_max,300
+Sorghum,crop_cycle_min,90
+Sorghum,cropping_systems,subsystem=ley cropping
+Sorghum,habit,erect
+Sorghum,latitude_abs_max,45
+Sorghum,latitude_abs_min,30
+Sorghum,latitude_opt_min,10.0
+Sorghum,life_form,grass
+Sorghum,life_span,annual
+Sorghum,light_abs_max,very bright
+Sorghum,light_abs_min,clear skies
+Sorghum,light_opt_max,very bright
+Sorghum,light_opt_min,very bright
+Sorghum,main_uses,food & beverage; animal food (feed); medicinal; fuels
+Sorghum,ph_abs_max,8.0
+Sorghum,ph_abs_min,5.0
+Sorghum,ph_opt_max,7.5
+Sorghum,ph_opt_min,5.5
+Sorghum,photoperiod,short day (<12 hours)
+Sorghum,physiology,single stem
+Sorghum,plant_attributes,"grown on large scale, grown on small scale"
+Sorghum,rain_abs_max,700
+Sorghum,rain_abs_min,300
+Sorghum,rain_opt_max,600
+Sorghum,rain_opt_min,400
+Sorghum,soil_depth_abs,medium (50-150 cm)
+Sorghum,soil_depth_opt,medium (50-150 cm)
+Sorghum,soil_drainage_abs,"well (dry spells), excessive (dry/moderately dry)"
+Sorghum,soil_drainage_opt,well (dry spells)
+Sorghum,soil_fertility_abs,low
+Sorghum,soil_fertility_opt,high
+Sorghum,soil_salinity_abs,medium (4-10 dS/m)
+Sorghum,soil_salinity_opt,low (<4 dS/m)
+Sorghum,soil_texture_abs,wide
+Sorghum,soil_texture_opt,"heavy, medium"
+Sorghum,temp_abs_max,40
+Sorghum,temp_abs_min,8
+Sorghum,temp_opt_max,35
+Sorghum,temp_opt_min,22
+Sorghum,used_parts,seeds; bark; leaves; flowers
+Sorghum,uses_detail,food & beverage / starch / seeds; animal food (feed) / minerals / bark; animal food (feed) / minerals / leaves; medicinal / blood system applications / flowers; medicinal / digestive system applications / flowers; fuels / non-wood fuel / bark; fuels / petroleum substitutes/alcohol / bark; fuels / alcohol / bark
+Soybean,altitude_abs_max,3000
+Soybean,category,pulses (grain legumes)
+Soybean,climate_zone,"tropical wet & dry (Aw), steppe or semiarid (Bs), subtropical dry summer (Cs)"
+Soybean,crop_cycle_max,180
+Soybean,crop_cycle_min,75
+Soybean,habit,erect
+Soybean,latitude_abs_max,52
+Soybean,latitude_abs_min,47
+Soybean,life_form,herb
+Soybean,life_span,annual
+Soybean,light_abs_max,clear skies
+Soybean,light_abs_min,very bright
+Soybean,light_opt_max,very bright
+Soybean,light_opt_min,very bright
+Soybean,main_uses,food & beverage; food additive; animal food (feed); material; environmental; fuels
+Soybean,ph_abs_max,8.4
+Soybean,ph_abs_min,4.5
+Soybean,ph_opt_max,6.5
+Soybean,ph_opt_min,5.5
+Soybean,photoperiod,short day (<12 hours)
+Soybean,plant_attributes,grown on large scale
+Soybean,rain_abs_max,1800
+Soybean,rain_abs_min,450
+Soybean,rain_opt_max,1500
+Soybean,rain_opt_min,600
+Soybean,soil_depth_abs,shallow (20-50 cm)
+Soybean,soil_depth_opt,medium (50-150 cm)
+Soybean,soil_drainage_abs,"poorly (saturated >50% of year), well (dry spells), excessive (dry/moderately dry)"
+Soybean,soil_drainage_opt,well (dry spells)
+Soybean,soil_fertility_abs,low
+Soybean,soil_fertility_opt,high
+Soybean,soil_salinity_abs,medium (4-10 dS/m)
+Soybean,soil_salinity_opt,low (<4 dS/m)
+Soybean,soil_texture_abs,"heavy, medium, light"
+Soybean,soil_texture_opt,"medium, organic"
+Soybean,temp_abs_max,38
+Soybean,temp_abs_min,10
+Soybean,temp_opt_max,33
+Soybean,temp_opt_min,20
+Soybean,used_parts,seeds; fruits; seedlings; leaves; entire plant
+Soybean,uses_detail,food & beverage / protein / seeds; food & beverage / vitamins / seeds; food & beverage / minerals / seeds; food & beverage / protein / fruits; food & beverage / vitamins / fruits; food & beverage / minerals / fruits; food & beverage / vitamins / seedlings; food & beverage / minerals / seedlings; food & beverage / vitamins / leaves; food & beverage / minerals / leaves; food additive / condiment/seasoning / fruits; food additive / stabiliser / seeds; animal food (feed) / vitamins / fruits; animal food (feed) / minerals / fruits; animal food (feed) / protein / fruits; animal food (feed) / vitamins / entire plant; animal food (feed) / minerals / entire plant; animal food (feed) / protein / entire plant; material / lipids/oil & fats / seeds; material / cosmetics & perfumery / seeds; material / fibres / entire plant; environmental / soil improvers / entire plant; environmental / agroforestry / entire plant; fuels / petroleum substitutes/alcohol / seeds
+Sunflower,altitude_abs_max,2600
+Sunflower,category,"materials, ornamentals/turf"
+Sunflower,climate_zone,"tropical wet & dry (Aw), steppe or semiarid (Bs), subtropical humid (Cf), subtropical dry summer (Cs), subtropical dry winter (Cw), temperate oceanic (Do), temperate continental (Dc), temperate with humid winters (Df), temperate with dry winters (Dw)"
+Sunflower,crop_cycle_max,200
+Sunflower,crop_cycle_min,70
+Sunflower,cropping_systems,subsystem=sole cropping / level_of_mechanization=high / labour_intensity=low
+Sunflower,habit,erect
+Sunflower,killing_temp_during_rest,-10.0
+Sunflower,killing_temp_early_growth,0.0
+Sunflower,latitude_abs_max,55
+Sunflower,latitude_abs_min,50
+Sunflower,latitude_opt_min,20.0
+Sunflower,life_form,herb
+Sunflower,life_span,annual
+Sunflower,light_abs_max,clear skies
+Sunflower,light_abs_min,very bright
+Sunflower,light_opt_max,very bright
+Sunflower,light_opt_min,very bright
+Sunflower,main_uses,material; animal food (feed); environmental; medicinal; fuels
+Sunflower,ph_abs_max,8.0
+Sunflower,ph_abs_min,5.5
+Sunflower,ph_opt_max,7.5
+Sunflower,ph_opt_min,6.0
+Sunflower,photoperiod,short day (<12 hours)
+Sunflower,physiology,"single stem, C3 photosynthesis"
+Sunflower,plant_attributes,grown on large scale
+Sunflower,production_system,large scale/commercial
+Sunflower,rain_abs_max,1600
+Sunflower,rain_abs_min,300
+Sunflower,rain_opt_max,1000
+Sunflower,rain_opt_min,600
+Sunflower,soil_depth_abs,medium (50-150 cm)
+Sunflower,soil_depth_opt,medium (50-150 cm)
+Sunflower,soil_drainage_abs,well (dry spells)
+Sunflower,soil_drainage_opt,well (dry spells)
+Sunflower,soil_fertility_abs,low
+Sunflower,soil_fertility_opt,high
+Sunflower,soil_salinity_abs,low (<4 dS/m)
+Sunflower,soil_salinity_opt,low (<4 dS/m)
+Sunflower,soil_texture_abs,"heavy, medium, light"
+Sunflower,soil_texture_opt,"medium, light"
+Sunflower,temp_abs_max,45
+Sunflower,temp_abs_min,5
+Sunflower,temp_opt_max,34
+Sunflower,temp_opt_min,17
+Sunflower,used_parts,seeds; entire plant; flowers
+Sunflower,uses_detail,material / essential oils / seeds; material / fibres / seeds; animal food (feed) / minerals / seeds; animal food (feed) / vitamins / seeds; environmental / ornamental/turf / entire plant; material / lipids/oil & fats / seeds; medicinal / digestive system applications / flowers; medicinal / digestive system applications / seeds; fuels / petroleum substitutes/alcohol / seeds
+Winter wheat,altitude_abs_max,4500
+Winter wheat,category,"cereals & pseudocereals, forage/pasture, medicinals & aromatic"
+Winter wheat,climate_zone,"tropical wet & dry (Aw), tropical wet (Ar), desert or arid (Bw), steppe or semiarid (Bs), subtropical humid (Cf), subtropical dry summer (Cs), subtropical dry winter (Cw), temperate oceanic (Do), temperate continental (Dc), temperate with humid winters (Df), temperate with dry winters (Dw)"
+Winter wheat,crop_cycle_max,250
+Winter wheat,crop_cycle_min,90
+Winter wheat,cropping_systems,subsystem=sole cropping
+Winter wheat,habit,erect
+Winter wheat,killing_temp_during_rest,-20.0
+Winter wheat,killing_temp_early_growth,0.0
+Winter wheat,latitude_abs_max,65
+Winter wheat,latitude_abs_min,60
+Winter wheat,latitude_opt_min,30.0
+Winter wheat,life_form,grass
+Winter wheat,life_span,annual
+Winter wheat,light_abs_max,very bright
+Winter wheat,light_abs_min,cloudy skies
+Winter wheat,light_opt_max,very bright
+Winter wheat,light_opt_min,very bright
+Winter wheat,main_uses,food & beverage; animal food (feed); material; fuels; medicinal
+Winter wheat,ph_abs_max,8.5
+Winter wheat,ph_abs_min,5.5
+Winter wheat,ph_opt_max,7.0
+Winter wheat,ph_opt_min,6.0
+Winter wheat,photoperiod,"neutral day (12-14 hours), long day (>14 hours)"
+Winter wheat,physiology,"single stem, C3 photosynthesis"
+Winter wheat,plant_attributes,grown on large scale
+Winter wheat,production_system,large scale/commercial
+Winter wheat,rain_abs_max,1600
+Winter wheat,rain_abs_min,300
+Winter wheat,rain_opt_max,900
+Winter wheat,rain_opt_min,750
+Winter wheat,remark,"ECOCROP hat keinen eigenen Winterweizen-Eintrag; Werte gelten fuer Weichweizen allgemein, Frosthaerte -20 °C laut Notizen fuer Winterweizen"
+Winter wheat,soil_depth_abs,shallow (20-50 cm)
+Winter wheat,soil_depth_opt,medium (50-150 cm)
+Winter wheat,soil_drainage_abs,well (dry spells)
+Winter wheat,soil_drainage_opt,well (dry spells)
+Winter wheat,soil_fertility_abs,moderate
+Winter wheat,soil_fertility_opt,high
+Winter wheat,soil_salinity_abs,medium (4-10 dS/m)
+Winter wheat,soil_salinity_opt,low (<4 dS/m)
+Winter wheat,soil_texture_abs,"heavy, medium"
+Winter wheat,soil_texture_opt,"medium, organic"
+Winter wheat,temp_abs_max,27
+Winter wheat,temp_abs_min,5
+Winter wheat,temp_opt_max,23
+Winter wheat,temp_opt_min,15
+Winter wheat,used_parts,seeds; leaves
+Winter wheat,uses_detail,food & beverage / starch / seeds; food & beverage / vitamins / seeds; food & beverage / minerals / seeds; food & beverage / protein / seeds; animal food (feed) / starch / seeds; animal food (feed) / vitamins / leaves; animal food (feed) / minerals / seeds; animal food (feed) / protein / seeds; animal food (feed) / minerals / leaves; animal food (feed) / vitamins / leaves; material / paper / leaves; material / gums/resins / leaves; fuels / non-wood fuel / leaves; medicinal / skin applications / seeds; medicinal / genitourinary system applications / seeds; medicinal / nervous system applications / seeds; medicinal / immune system applications / seeds; medicinal / digestive system applications / seeds

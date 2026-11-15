@@ -1,0 +1,12 @@
+crop,practice,level_used,area,years,n_years,mean_yield,expected_yield,unit,method
+corn,all,county,KEARNY,2011-2016,5,161.6,169.6,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+corn,irrigated,district,SOUTHWEST,2014-2018,5,203.2,213.4,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+corn,non_irrigated,district,SOUTHWEST,2014-2018,5,81.0,85.1,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+sorghum,all,county,KEARNY,2016-2023,5,67.4,70.7,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+soybean,all,district,SOUTHWEST,2015-2019,5,62.6,65.8,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+soybean,irrigated,state,KS,2014-2016,3,57.9,60.8,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+soybean,non_irrigated,state,KS,2014-2016,3,38.7,40.6,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+sunflower,all,state,KS,2021-2025,5,1265.6,1328.9,LB / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+winter_wheat,all,county,KEARNY,2017-2025,5,43.3,45.4,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+winter_wheat,irrigated,district,SOUTHWEST,2015-2019,5,64.3,67.6,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
+winter_wheat,non_irrigated,district,SOUTHWEST,2015-2019,5,44.0,46.2,BU / ACRE,1.05 x mean of last 5 available years (K-State MF2586)
