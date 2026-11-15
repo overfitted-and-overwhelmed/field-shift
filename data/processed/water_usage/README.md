@@ -50,8 +50,9 @@ exist twice in the file (e.g. winter wheat sown Oct 2 as first crop, Oct 21 afte
 
 - Start: the bucket is 30 % full on Jan 1 of each start year (mean Jan 1 fill level of the simulation itself;
   only affects the first crop of a run).
-- Fallow: bare soil evaporates `0.3 × ET0` (assumption, not an FAO value) from the whole bucket, so the bucket
-  is too empty at sowing and the need early in the season is overestimated.
+- Fallow: bare soil evaporates `0.25 × ET0` from the whole bucket (assumption, not an FAO value), calibrated so that
+  25 % of the fallow rain stays in the soil, inside the 20–35 % measured for fallow in western Kansas (K-State).
+  Real bare soil only dries the top 10–15 cm (FAO-56 ch. 7); that mechanism is not modelled.
 - Irrigation need is the daily deficit of a field that is never irrigated. A field that is watered keeps more water
   in the soil, so its real irrigation amount differs (in a test about +10 %).
 - Root depth at its maximum from sowing, no runoff, no capillary rise, no Kc climate correction, no year-specific sowing dates.

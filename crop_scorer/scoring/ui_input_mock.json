@@ -3,7 +3,8 @@
   "weights": {
     "water": 1,
     "risk": 1,
-    "soil_health": 1
+    "soil_health": 1,
+    "nitrogen": 1
   },
   "current_rotation": ["corn", "soybean", "soybean"]
 }
