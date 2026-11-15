@@ -36,7 +36,7 @@ export function InputForm({ prefill }: { prefill: FieldRequest | null }) {
         <form className="form" onSubmit={submit} noValidate>
           <fieldset>
             <legend><h2>Field location</h2></legend>
-            <p className="note">Click on the map where your field is.</p>
+            <p className="note">{req.location ? 'Hover or click the marker to see its coordinates; remove it from its menu to pick a new spot.' : 'Click on the map where your field is.'}</p>
             <LocationPicker value={req.location} onChange={(location) => setReq((r) => ({ ...r, location }))} />
             <p className="coords" aria-live="polite">
               {req.location ? <>Selected: <b>{req.location.lat.toFixed(4)}, {req.location.lon.toFixed(4)}</b></> : 'No location selected yet.'}

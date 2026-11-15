@@ -54,7 +54,7 @@ section { display: grid; gap: 20px; min-width: 0; }
 .detail ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 6px; font-size: 17px; } .detail .note { margin-top: 14px; }
 .chart { margin: 0; display: grid; gap: 8px; min-width: 0; } .chart figcaption { font-size: 15px; color: var(--mut); } .unit { font-size: 13px; color: var(--mut); }
 .scroll { overflow-x: auto; } .chart .scroll svg { min-width: 760px; }
-svg { display: block; width: 100%; height: auto; overflow: visible; } svg text { fill: var(--mut); font: 11px var(--sans); }
+svg:not(.leaflet-container svg) { display: block; width: 100%; height: auto; overflow: visible; } /* Leaflet sizes its own svg */ svg text { fill: var(--mut); font: 11px var(--sans); }
 svg .yr { fill: var(--ink); font-weight: 700; font-size: 12px; } svg .on { fill: #fff; font-weight: 600; font-size: 10.5px; } svg .dim { fill: var(--mut); font-size: 10.5px; } svg .mo { font-size: 10px; }
 svg .grid { stroke: var(--line); } svg .irr { fill: var(--water); } svg .rain { fill: none; stroke: var(--rain); stroke-width: 2; stroke-dasharray: 5 3; pointer-events: none; }
 details { border-top: 1px solid var(--line); padding-top: 14px; } details + details { margin-top: -6px; }
@@ -103,6 +103,19 @@ button.primary { font: 600 18px var(--sans); color: #fff; background: var(--acce
 
 /* location picker: isolate Leaflet's high z-indexes so they stay below page overlays */
 .map { height: 380px; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; isolation: isolate; }
-.map .leaflet-container { font: 13px var(--sans); cursor: crosshair; }
+.map .leaflet-container { font: 13px var(--sans); } .map.picking .leaflet-container { cursor: crosshair; }
+.map path.leaflet-interactive { cursor: pointer; }
+.pin-menu { display: grid; gap: 4px; font: 14px/1.4 var(--sans); color: var(--ink); } .pin-label { color: var(--mut); font-size: 12px; } .pin-menu b { font-weight: 600; }
+.pin-menu button { margin-top: 6px; font: 600 13px var(--sans); color: var(--bad); background: none; border: 1px solid var(--line); border-radius: 3px; padding: 4px 10px; cursor: pointer; justify-self: start; } .pin-menu button:hover { background: var(--tint); }
 .coords { font-size: 16px; color: var(--mut); } .coords b { color: var(--ink); font-weight: 600; }
 @media (max-width: 600px) { .map { height: 300px; } }
+
+/* confirm dialog (removing the field marker) */
+dialog.confirm { border: 0; border-radius: 6px; padding: 24px; max-width: min(26rem, calc(100vw - 32px)); color: var(--ink); background: var(--bg); box-shadow: 0 12px 40px rgb(0 0 0 / .25); display: grid; gap: 12px; }
+dialog.confirm:not([open]) { display: none; }
+dialog.confirm::backdrop { background: rgb(29 38 34 / .45); }
+dialog.confirm h2 { font-size: 22px; } dialog.confirm p { font-size: 16px; color: var(--mut); } dialog.confirm p b { color: var(--ink); font-weight: 600; }
+.confirm-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+.confirm-actions button { font: 600 15px var(--sans); padding: 8px 16px; border-radius: 4px; cursor: pointer; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.confirm-actions button:hover { background: var(--tint); }
+.confirm-actions button.danger { background: var(--bad); border-color: var(--bad); color: #fff; } .confirm-actions button.danger:hover { background: #8e3526; }

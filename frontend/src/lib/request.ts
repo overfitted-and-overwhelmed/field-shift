@@ -24,8 +24,11 @@ export const COUNT_MAX = 5;
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
+/** Preselected field position (Kearny County, Kansas). The user can click elsewhere on the map. */
+export const DEFAULT_LOCATION: LatLon = { lat: 38.02511, lon: -101.126084 };
+
 export const emptyRequest = (): FieldRequest => ({
-  location: null,
+  location: DEFAULT_LOCATION,
   crops: [],
   count: 3,
   weights: Object.fromEntries(PRIORITY_IDS.map((id) => [id, 3])),
