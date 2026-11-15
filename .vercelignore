@@ -1,0 +1,22 @@
+# Not needed at runtime: the chatbot only reads
+#   explorer/examples/explorer.json, data/processed/rotation_scores/rotation_scores.csv, advisor/glossary.json
+# Keep the deployment small: drop the raw data, the other processed data, tests and local files.
+.venv/
+.git/
+.env
+.pytest_cache/
+__pycache__/
+tests/
+data/base-data/
+data/fetch-scripts/
+data/cleaning-scripts/
+data/processed/climate_data/
+data/processed/crop_data/
+data/processed/crop_risk_score/
+data/processed/erosion/
+data/processed/field_data/
+data/processed/soil-data/
+data/processed/water_usage/
+data/processed/rotation_scores/rotation_seasons_by_year.csv
+data/processed/rotation_scores/rotation_monthly.csv
+data/processed/rotation_scores/top_rotations*.csv
