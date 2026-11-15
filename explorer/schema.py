@@ -297,7 +297,7 @@ class MonthDetail(_Strict):
     m: str = Field(pattern=r"^\d{4}-(0[1-9]|1[0-2])$")  # "YYYY-MM"
     kind: MonthKind
     crop: CropId | None  # what stands on most days of the month (the scorer's rule)
-    et_in: float = Field(ge=0)  # crop water use; on bare months evaporation from bare soil
+    et_in: float = Field(ge=0)  # crop water use without water stress (ETc); on bare months evaporation from bare soil
     rain_in: float = Field(ge=0)
     irr_in: float = Field(ge=0)
     # Temperature stress while a crop stands (see explorer/frost_heat.py): heat = Tmax above the crop's optimum;
