@@ -27,6 +27,7 @@ export interface ApiMonth {
   kind: 'crop' | 'cover' | 'bare';
   crop: string | null;
   et_in: number; rain_in: number; irr_in: number;
+  heat_days: number; cold_stress_days: number; kill_days: number; // mean stress days in the month
   heat_years_pct: number; cold_stress_years_pct: number; kill_years_pct: number; // share of weather years, 0-100
 }
 

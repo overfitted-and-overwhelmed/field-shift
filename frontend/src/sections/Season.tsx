@@ -7,8 +7,8 @@ import { pickLabel } from './helpers';
 import { SecHead } from './ui';
 
 const MON = 'JFMAMJJASOND';
+const FULL_STRESS_DAYS = 20; // risk cells are fully colored from this many stress days per month
 const nice = (v: number) => { const s = 10 ** Math.floor(Math.log10(Math.max(v, 1e-6))); return [1, 2, 2.5, 5, 10].map((k) => k * s).find((k) => k >= v) ?? 10 * s; };
-const pct = (v: number) => `${Math.round(v)} %`;
 const day = (iso: string) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
 /** Index of the season planted in month "YYYY-MM", if any. */
@@ -34,7 +34,7 @@ function Timeline({ r, units, metric }: { r: Rotation; units: Units; metric: 'wa
   for (let i = 0; i < n; ) { const key = M[i].kind + (M[i].crop ?? ''); let j = i; while (j + 1 < n && M[j + 1].kind + (M[j + 1].crop ?? '') === key) j++; segs.push({ i, j }); i = j + 1; }
   const years = M.map((m, k) => ({ k, year: m.m.slice(0, 4) })).filter(({ k }) => k === 0 || month(k) === 1);
   const unit = NV ? 'lb' : units;
-  const risks: [string, keyof ApiMonth, string][] = [['Heat', 'heat_years_pct', 'var(--heat)'], ['Cold stress', 'cold_stress_years_pct', 'var(--frost)']];
+  const risks: [string, keyof ApiMonth, string][] = [['Heat', 'heat_days', 'var(--heat)'], ['Cold stress', 'cold_stress_days', 'var(--frost)']];
   return (
     <svg viewBox={`0 0 ${w} ${h}`} role="img" aria-label={`Monthly view of ${r.name}`} style={{ minWidth: Math.min(w, 1400) }}>
       <defs>
@@ -90,8 +90,8 @@ function Timeline({ r, units, metric }: { r: Rotation; units: Units; metric: 'wa
           {M.map((m, k) => {
             const p = m.kind === 'bare' ? 0 : (m[key] as number);
             return <rect key={k} x={L + k * bw + 1} y={riskY + ri * 20} width={bw - 2} height={16} rx={2}
-              style={{ fill: p ? col : 'var(--surface-2)', opacity: p ? 0.2 + 0.8 * (p / 100) : 1 }}
-              data-tip={m.kind === 'bare' ? `${m.m}: bare soil, no crop at risk` : `${m.m}: ${nm.toLowerCase()} in ${pct(p)} of past years`} />;
+              style={{ fill: p ? col : 'var(--surface-2)', opacity: p ? 0.2 + 0.8 * Math.min(p / FULL_STRESS_DAYS, 1) : 1 }}
+              data-tip={m.kind === 'bare' ? `${m.m}: bare soil, no crop at risk` : `${m.m}: ${nm.toLowerCase()} on ${p.toFixed(1)} days on average`} />;
           })}
         </g>
       ))}
@@ -149,7 +149,7 @@ export function Season({ data, selected, onSelect, units }: { data: ExplorerData
           {metric === 'water'
             ? <><span><i style={{ background: 'var(--ink-3)', opacity: 0.4 }} />crop water use</span><span><i style={{ background: 'var(--accent)' }} />irrigation</span><span><i style={{ background: 'none', borderTop: '2px dashed var(--rain)', height: 0 }} />rain</span></>
             : <span><i style={{ background: 'var(--accent)' }} />N fertilizer for the season, at planting</span>}
-          <span className="muted">Risk rows: share of past years with a stress day in that month</span>
+          <span className="muted">Risk rows: average stress days per month</span>
         </div>
       </div>
       <div>
