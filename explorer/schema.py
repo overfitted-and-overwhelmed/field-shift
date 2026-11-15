@@ -42,7 +42,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "6.3.0-draft"
+CONTRACT_VERSION = "6.4.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -300,9 +300,15 @@ class MonthDetail(_Strict):
     et_in: float = Field(ge=0)  # crop water use; on bare months evaporation from bare soil
     rain_in: float = Field(ge=0)
     irr_in: float = Field(ge=0)
-    # Share of weather years with at least one stress day in this month (see explorer/frost_heat.py):
-    # heat = Tmax above the crop's optimum; cold stress = below the optimum for at least half the day;
-    # kill = below the crop's killing temperature (real frost damage).
+    # Temperature stress while a crop stands (see explorer/frost_heat.py): heat = Tmax above the crop's optimum;
+    # cold stress = below the crop's absolute minimum (no growth) for at least half the day; kill = below the
+    # crop's killing temperature (real frost damage).
+    # Mean number of stress days in this month: the values to show.
+    heat_days: float = Field(ge=0, le=31)
+    cold_stress_days: float = Field(ge=0, le=31)
+    kill_days: float = Field(ge=0, le=31)
+    # Share of weather years with at least one stress day in this month: ~100 in every summer month as soon as one
+    # day crosses the line, so it hardly tells months apart.
     heat_years_pct: float = Field(ge=0, le=100)
     cold_stress_years_pct: float = Field(ge=0, le=100)
     kill_years_pct: float = Field(ge=0, le=100)
