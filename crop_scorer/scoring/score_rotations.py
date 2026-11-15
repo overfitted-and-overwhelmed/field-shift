@@ -10,6 +10,9 @@ day, so rotations of different length compare:
 Every rotation is scored without and, if one fits, with a cover crop (triticale) in the gaps between its crops
 (key "a-b-c+triticale", see water_usage.cover_timeline): the cover uses soil water, is not bare and adds N to the next crop.
 Each score is min-max normalised over all these candidates (0 = best, 1 = worst).
+Rotation rule: at most one Sclerotinia host (sunflower, soybean) per pass and the pass lasts at least 3 years (NDSU
+A1995, see MIN_YEARS_BETWEEN_SCLEROTINIA_HOSTS). Rotations that break it are ranked behind all others, so they are never picked, but the
+farmer's own rotation can still be scored and shown.
 Weights and the farmer's rotation come from ui_input_mock.json until the UI exists; total = weighted mean.
 
 Output (data/processed/rotation_scores): for all rotations rotation_scores.csv (cache for the ranking),
@@ -45,6 +48,15 @@ CRITERIA = {
     "soil_health": "bare_share",
     "nitrogen": "n_fertilizer_kg_per_day",
 }
+
+# Kandel, Endres, Buetow (eds.) 2020, Sunflower Production Guide, NDSU Extension A1995, p. 46: "Rotations of at least
+# three- or four-year spacings between sunflower or other Sclerotinia-susceptible crops (e.g., canola, dry bean,
+# soybean) are recommended to help reduce disease risk." Also p. 26: "a minimum of three to four years' rotation between
+# successive sunflower crops". We use the lower bound (value_low in data/base-data/literature/rotation_effects_long.csv).
+# https://www.ndsu.edu/agriculture/sites/default/files/2023-12/a1995.pdf
+MIN_YEARS_BETWEEN_SCLEROTINIA_HOSTS = 3
+SCLEROTINIA_HOSTS = ("sunflower", "soybean")  # of our crops; canola and dry bean are not in the model
+DAYS_PER_YEAR = 365.25
 
 # daily export: internal column -> (parameter, unit); means over the start years
 DAILY_PARAMS = {
@@ -167,11 +179,20 @@ def normalize(scores: pd.DataFrame, reference: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def follows_rotation_rules(crops: list[str], cycle_days: float) -> bool:
+    # the pass repeats, so one host per pass comes back after one cycle; double crops make a cycle shorter
+    n_hosts = sum(crop in SCLEROTINIA_HOSTS for crop in crops)
+    return n_hosts == 0 or (n_hosts == 1 and round(cycle_days / DAYS_PER_YEAR) >= MIN_YEARS_BETWEEN_SCLEROTINIA_HOSTS)
+
+
 def rank(scores: pd.DataFrame, weights: dict[str, float]) -> pd.DataFrame:
     # a criterion without a weight is not counted (e.g. callers that do not know the nitrogen criterion yet)
     weights = {name: weights.get(name, 0) for name in CRITERIA}
     total = sum(weights[name] * scores[f"{name}_score"] for name in CRITERIA) / sum(weights.values())
-    ranked = scores.assign(total_score=total).sort_values("total_score", ignore_index=True)
+    follows_rules = [follows_rotation_rules(parse_key(r)[0], c) for r, c in zip(scores["rotation"], scores["cycle_days"])]
+    # rule breakers go behind all others: never picked, but still ranked (the farmer's rotation may break a rule)
+    ranked = scores.assign(total_score=total, follows_rules=follows_rules).sort_values(
+        ["follows_rules", "total_score"], ascending=[False, True], ignore_index=True)
     ranked.insert(0, "rank", range(1, len(ranked) + 1))
     return ranked
 
