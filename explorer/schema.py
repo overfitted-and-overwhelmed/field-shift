@@ -305,7 +305,9 @@ class MonthDetail(_Strict):
 
 
 class Summary(_Strict):
-    bare_months: float = Field(ge=0, le=12)  # months per year without crop or cover, mean over the window
+    # months per year without crop or cover INSIDE the window (first sowing to last harvest): the gap after the last
+    # harvest is not counted (team decision; the scorer sows no cover crop there). Not per cycle like kpi.*_per_year.
+    bare_months: float = Field(ge=0, le=12)
     # Seasons whose crop equals the crop before it; season 0 compares to field.previous_crop.
     same_crop_repeats: int = Field(ge=0)
     n_loss_lb: float | None = Field(default=None, ge=0)  # null: N losses are not modelled

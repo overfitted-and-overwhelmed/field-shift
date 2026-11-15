@@ -27,20 +27,12 @@ from typing import Literal, Sequence
 import numpy as np
 import pandas as pd
 
+from crop_scorer.scoring.yield_levels import yield_levels
 from explorer.field_calendar import rotation_key
 from explorer.paths import NASS_EXPECTED_YIELD, NASS_YIELDS, ROTATION_EFFECTS, SCORER_SEASONS_BY_YEAR
 from explorer.schema import Effect, Irrigation, ProvenanceEntry, SequenceStep, Source, YieldSpread
 
 UNCOVERED_DEFICIT: dict[str, float] = {"full": 0.0, "reduced": 0.5, "none": 1.0}  # reduced = 50 % of full
-
-# NASS splits sorghum by irrigation only until 2009 and sunflower never.
-# shortcut: SW Kansas sorghum, Quick Stats district SOUTHWEST, 2004-2007 and 2009 (2008 not published),
-# fetched 2026-11-15 outside the data pipeline. Move into nass_quickstats when the fetch covers years < 2010.
-SORGHUM_SW_2004_2009 = {
-    "irrigated": [108, 99, 89, 101, 105],
-    "non_irrigated": [51, 70, 43, 62, 79],
-    "all": [61, 75, 51, 67, 83],
-}
 
 UNITS = {"BU / ACRE": "bu", "LB / ACRE": "lb"}
 SPACING_YEARS_DEFAULT = 4
@@ -139,22 +131,9 @@ def crop_yields(
     mean_deficit = scorer_seasons(seasons_path).groupby("crop")["d"].mean()
     bands = _irrigated_band(yields_path)
 
-    def mean_yield(crop: str, practice: str) -> float:
-        return float(nass.loc[(crop, practice), "mean_yield"])
-
-    levels: dict[str, tuple[float, float, bool]] = {}
-    for crop in ("corn", "winter_wheat", "soybean"):
-        levels[crop] = (mean_yield(crop, "irrigated"), mean_yield(crop, "non_irrigated"), False)
-    sw = {k: float(np.mean(v)) for k, v in SORGHUM_SW_2004_2009.items()}
-    sorghum_none = mean_yield("sorghum", "all") / (sw["all"] / sw["non_irrigated"])
-    sorghum_gain = sw["irrigated"] / sw["non_irrigated"]
-    levels["sorghum"] = (sorghum_none * sorghum_gain, sorghum_none, True)
-    # assumption: Kansas sunflower 'all practices' counts as rain-fed, and it gains from water like sorghum
-    sunflower_none = mean_yield("sunflower", "all")
-    levels["sunflower"] = (sunflower_none * sorghum_gain, sunflower_none, True)
-
     out = {}
-    for crop, (full, none, derived) in levels.items():
+    # same levels as the scorer's N need (K-State expected yield), incl. the derived sorghum and sunflower levels
+    for crop, (full, none, derived) in yield_levels(expected_path).items():
         unit = UNITS[nass.loc[crop, "unit"].iloc[0]]
         d = float(mean_deficit[crop])
         out[crop] = CropYield(

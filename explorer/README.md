@@ -76,6 +76,10 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
   (`irrigation_in_per_year`, `n_lb_per_year` = pass value / (`cycle_days` / 365.25); `cycle_days` = first sowing
   to the first sowing of the next pass). Compare rotations per year: a pass is 2–3 years long and not the same
   for every rotation. The scorer's `frost_days` is left out (days below the optimum, not frost).
+- Two kinds of "per year": `summary.bare_months` is per year of the **window** (first sowing to last harvest;
+  the gap after the last harvest is not counted, e.g. continuous corn 5.7, over the full cycle about 6.9). The
+  `kpi.*_per_year` values are per year of the **cycle** (first sowing to the first sowing of the next pass).
+  In the UI say "bare months within the rotation", not just "per year".
 - `sequence[].irrigation` is an assumption (`full` for every season) until the farmer can choose it.
 - Every per-year list in `climate` is aligned to `climate.weather_years`.
 - `provenance` says what kind of number a field is (`measured | modeled | rule | assumption`)

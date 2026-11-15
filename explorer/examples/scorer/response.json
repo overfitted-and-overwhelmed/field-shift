@@ -34,12 +34,12 @@
           "harvest_date": "2029-10-02"
         }
       ],
-      "score": 0.6333,
+      "score": 0.6288,
       "score_parts": {
         "water": 0.4999,
         "risk": 0.2403,
         "soil_health": 0.8773,
-        "nitrogen": 0.9157
+        "nitrogen": 0.8977
       },
       "kpi": {
         "risk_per_crop_day": 0.409875,
@@ -50,10 +50,10 @@
         "kill_days": 0.0,
         "water_in_per_day": 0.06410196850393701,
         "irrigation_in": 56.762992125984255,
-        "n_lb": 597.0766022780414,
+        "n_lb": 797.5769084587591,
         "irrigation_in_per_year": 18.920997375328085,
-        "n_lb_per_year": 199.02553409268046,
-        "rank_all": 223,
+        "n_lb_per_year": 265.85896948625305,
+        "rank_all": 222,
         "n_rotations": 225
       }
     },
@@ -90,12 +90,12 @@
           "harvest_date": "2029-10-23"
         }
       ],
-      "score": 0.1227,
+      "score": 0.1602,
       "score_parts": {
         "water": 0.0707,
         "risk": 0.0,
         "soil_health": 0.1463,
-        "nitrogen": 0.2736
+        "nitrogen": 0.4238
       },
       "kpi": {
         "risk_per_crop_day": 0.297194,
@@ -106,9 +106,9 @@
         "kill_days": 0.0,
         "water_in_per_day": 0.04147165354330709,
         "irrigation_in": 35.81090551181102,
-        "n_lb": 174.0025862686126,
+        "n_lb": 367.1210023970489,
         "irrigation_in_per_year": 11.936968503937008,
-        "n_lb_per_year": 58.00086208953753,
+        "n_lb_per_year": 122.37366746568297,
         "rank_all": 1,
         "n_rotations": 225
       }
@@ -146,12 +146,12 @@
           "harvest_date": "2029-10-23"
         }
       ],
-      "score": 0.1753,
+      "score": 0.2044,
       "score_parts": {
         "water": 0.1927,
         "risk": 0.2527,
         "soil_health": 0.1463,
-        "nitrogen": 0.1096
+        "nitrogen": 0.2258
       },
       "kpi": {
         "risk_per_crop_day": 0.415679,
@@ -162,9 +162,9 @@
         "kill_days": 0.0,
         "water_in_per_day": 0.04790354330708662,
         "irrigation_in": 41.36496062992126,
-        "n_lb": 69.6675018520057,
+        "n_lb": 195.58083050410676,
         "irrigation_in_per_year": 13.788320209973755,
-        "n_lb_per_year": 23.222500617335232,
+        "n_lb_per_year": 65.19361016803559,
         "rank_all": 2,
         "n_rotations": 225
       }
@@ -202,12 +202,12 @@
           "harvest_date": "2029-10-23"
         }
       ],
-      "score": 0.1835,
+      "score": 0.2093,
       "score_parts": {
         "water": 0.1894,
         "risk": 0.249,
         "soil_health": 0.1444,
-        "nitrogen": 0.1511
+        "nitrogen": 0.2545
       },
       "kpi": {
         "risk_per_crop_day": 0.41395,
@@ -218,9 +218,9 @@
         "kill_days": 0.0,
         "water_in_per_day": 0.04773110236220472,
         "irrigation_in": 41.693307086614176,
-        "n_lb": 97.16722813560202,
+        "n_lb": 223.0804675697909,
         "irrigation_in_per_year": 13.897769028871393,
-        "n_lb_per_year": 32.389076045200675,
+        "n_lb_per_year": 74.36015585659696,
         "rank_all": 3,
         "n_rotations": 225
       }
