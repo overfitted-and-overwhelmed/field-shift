@@ -79,9 +79,12 @@ PROVENANCE: dict[str, ProvenanceEntry] = {
     "monthly.et_in": ProvenanceEntry(label="modeled", source="scorer_water"),
     "monthly.rain_in": ProvenanceEntry(label="measured", source="nasa_power"),
     "monthly.irr_in": ProvenanceEntry(label="modeled", source="scorer_water"),
+    "monthly.heat_days": ProvenanceEntry(label="modeled", source="scorer_risk"),
     "monthly.heat_years_pct": ProvenanceEntry(label="modeled", source="scorer_risk"),
-    # our rule on the scorer's thresholds: below the optimum for at least half the day (assumption)
+    # our rule on the Ecocrop limits: below the absolute minimum for at least half the day (assumption)
+    "monthly.cold_stress_days": ProvenanceEntry(label="assumption", source="scorer_risk"),
     "monthly.cold_stress_years_pct": ProvenanceEntry(label="assumption", source="scorer_risk"),
+    "monthly.kill_days": ProvenanceEntry(label="modeled", source="scorer_risk"),
     "monthly.kill_years_pct": ProvenanceEntry(label="modeled", source="scorer_risk"),
     "summary.bare_months": ProvenanceEntry(label="rule", source="scorer"),
 }
@@ -162,7 +165,7 @@ def explorer_rotation(sr: ScorerRotation, start_year: int, history: list[str], p
     water = {w["m"]: w for w in monthly_water(key, start_year, placed, irrigation)}
     stress = {x["m"]: x for x in monthly_stress(key, start_year)}
     monthly = [MonthDetail(**k, **{f: water[k["m"]][f] for f in ("et_in", "rain_in", "irr_in")},
-                           **{f: stress[k["m"]][f] for f in ("heat_years_pct", "cold_stress_years_pct", "kill_years_pct")})
+                           **{f: v for f, v in stress[k["m"]].items() if f != "m"})
                for k in kinds]
     s = summarize(key, previous_crop)
     summary = Summary(bare_months=round(s["bare_months"], 2), same_crop_repeats=s["same_crop_repeats"])
