@@ -1,321 +1,128 @@
-"""WP5 Field Calendar: what is on the field, and when.
+"""WP5 Field Calendar (adapter): what is on the field, and when, as decided by the scorer.
 
-Step 1: target planting and harvest date per season, from the USDA NASS crop progress
-        calendar for Kansas (``season_dates``).
-Step 2: plan the 4 seasons one after another, move a planting later if the field is still
-        occupied, and build a calendar with one row per day (``schedule``, ``daily_calendar``).
-Step 3: condense the daily calendar into the 48 months of the frontend view and the summary
-        numbers (``monthly_view``, ``summarize``).
-Step 4: cover crops (``SequenceStep.cover``) fill the gap after their season's harvest, until
-        shortly before the next main crop is planted. Done inside ``schedule``.
+The scorer (``crop_scorer/scoring/score_rotations.py``) is the single source of truth for seasons:
+it picks sowing and harvest dates (``water_usage.build_timeline``) and scores water, risk and soil
+health on exactly these days. We do NOT compute dates ourselves, so the explorer always shows the
+days the scores are about. Double crops (two harvests in one year) and skipped years come from the
+scorer as they are.
 
-Rules:
-* Target date = middle of NASS's "most active" window, i.e. roughly the date by which half of
-  Kansas farmers have planted (or harvested). A typical date, not an extreme one.
-* A season's ``year`` is its harvest year. Winter wheat for 2029 is planted in autumn 2028.
-  We detect this from the data: if harvest comes earlier in the year than planting, the crop
-  must cross New Year.
-* If the field is still occupied on the target planting date (typical: winter wheat after
-  soybean or sunflower), planting moves to harvest + GAP_AFTER_HARVEST_DAYS, as long as that
-  stays inside NASS's FULL planting window. Otherwise the rotation is impossible and we raise
-  CalendarConflict on purpose: a bad rotation should fail loudly, not produce wrong numbers.
-* A cover crop is planted GAP_AFTER_HARVEST_DAYS after its season's harvest, but not before
-  COVER_PLANTING_WINDOW opens (triticale is a winter cereal, sown in autumn), and terminated
-  COVER_END_BEFORE_PLANTING_DAYS before the next main crop is planted (after the last season:
-  it stays until the end of the rotation). Planting after the window closes or a cover that
-  stands less than MIN_COVER_DAYS -> CalendarConflict.
+What this module does:
+* ``place_seasons``: take one pass of a scorer rotation and move it to the display years, so the first
+  sowing falls into ``start_year`` (the scorer replays the rotation on past weather, 1991-2025).
+* ``monthly_kinds``: crop or bare per month, from the scorer's monthly table.
+* ``summarize``: bare months per year and same-crop repeats.
+
+A rotation is identified like the scorer does it: crops joined by "-", e.g. "winter_wheat-soybean-sorghum".
 """
 
 from __future__ import annotations
 
-import csv
-from dataclasses import dataclass, replace
-from datetime import date, timedelta
+from dataclasses import dataclass
+from datetime import date
 from functools import cache
 from pathlib import Path
-from types import MappingProxyType
-from typing import Mapping, Sequence
+from typing import Sequence
 
 import pandas as pd
 
-from explorer.paths import NASS_CALENDAR
-from explorer.schema import SequenceStep
+from explorer.paths import SCORER_MONTHLY, SCORER_SCORES, SCORER_SEASONS_BY_YEAR
 
-# Days between harvesting one crop and planting the next. Assumption: wheat after soybean is
-# often drilled right after harvest in Kansas.
-GAP_AFTER_HARVEST_DAYS = 3
-
-# Cover crops (assumptions): terminated about two weeks before the next crop is planted, so the
-# seedbed can settle. A cover that would stand less than a month is not worth planting.
-COVER_END_BEFORE_PLANTING_DAYS = 14
-MIN_COVER_DAYS = 30
-# Autumn sowing window for the cover crop, as (month, day). After wheat (harvest end of June)
-# the field stays bare until the window opens instead of being "covered" all summer.
-COVER_PLANTING_WINDOW = ((9, 1), (11, 30))
+FALLOW = "fallow"  # the scorer's name for a day or month without crop
 
 
-class CalendarConflict(ValueError):
-    """A crop cannot be planted because the field is still occupied by the crop before it."""
+def rotation_key(crops: Sequence[str]) -> str:
+    """Scorer id of a rotation: ``["corn", "soybean"]`` -> ``"corn-soybean"``."""
+    return "-".join(crops)
 
 
-# --------------------------------------------------------------------------------------
-# Step 1: NASS windows and target dates
-# --------------------------------------------------------------------------------------
-
-
-# frozen = read-only after creation, so nobody changes a window by accident.
-@dataclass(frozen=True)
-class DayWindow:
-    """A range of days of the year, ``first`` to ``last`` (inclusive)."""
-
-    first: int
-    last: int
-
-    @property
-    def mid(self) -> int:
-        return (self.first + self.last) // 2
-
-
-@dataclass(frozen=True)
-class CropWindow:
-    """NASS planting and harvest windows of one crop, as day of year."""
-
-    planting: DayWindow  # "most active" window
-    planting_full: DayWindow  # first to last planting
-    harvest: DayWindow  # "most active" window
-    harvest_full: DayWindow  # first to last harvest
-
-    @property
-    def plant_doy(self) -> int:
-        return self.planting.mid
-
-    @property
-    def harvest_doy(self) -> int:
-        return self.harvest.mid
-
-    @property
-    def crosses_new_year(self) -> bool:
-        return self.harvest_doy < self.plant_doy
-
-
-def _window(values: dict[str, int], crop: str, first: str, last: str) -> DayWindow:
-    try:
-        return DayWindow(values[first], values[last])
-    except KeyError as missing:
-        raise ValueError(f"NASS calendar: crop '{crop}' has no value for {missing}") from None
-
-
-# @cache: the file is read once, later calls get the same result without reading again.
-# Because every caller gets the SAME object, we return a read-only mapping (MappingProxyType).
+# @cache: each file is read once, later calls reuse the table.
 @cache
-def load_nass_calendar(path: Path = NASS_CALENDAR) -> Mapping[str, CropWindow]:
-    """Read the NASS calendar CSV (long format: crop, parameter, value) into one entry per crop."""
-    values: dict[str, dict[str, int]] = {}
-    with path.open(encoding="utf-8", newline="") as f:
-        for row in csv.DictReader(f):
-            values.setdefault(row["crop"], {})[row["parameter"]] = int(float(row["value"]))
-    calendar = {
-        crop: CropWindow(
-            planting=_window(v, crop, "planting_most_active_start", "planting_most_active_end"),
-            planting_full=_window(v, crop, "planting_begin", "planting_end"),
-            harvest=_window(v, crop, "harvest_most_active_start", "harvest_most_active_end"),
-            harvest_full=_window(v, crop, "harvest_begin", "harvest_end"),
-        )
-        for crop, v in values.items()
-    }
-    return MappingProxyType(calendar)
+def load_scorer_seasons(path: Path = SCORER_SEASONS_BY_YEAR) -> pd.DataFrame:
+    return pd.read_csv(path, parse_dates=["sow_date", "harvest_date"])
 
 
-def _from_doy(year: int, doy: int) -> date:
-    """NASS day of year -> calendar date, the SAME calendar date in every year.
-
-    Counting from 1 January directly would move every date after February one day earlier in
-    leap years (day 289 = 16 Oct, but 15 Oct in 2028). That can flip a month in the monthly
-    view, so we read the day in a non-leap year (2001) and only swap the year.
-    """
-    return (date(2001, 1, 1) + timedelta(days=min(doy, 365) - 1)).replace(year=year)
+@cache
+def load_scorer_monthly(path: Path = SCORER_MONTHLY) -> pd.DataFrame:
+    return pd.read_csv(path)
 
 
-def _window_for(crop: str, calendar: Mapping[str, CropWindow]) -> CropWindow:
-    window = calendar.get(crop)
-    if window is None:
-        raise ValueError(
-            f"no NASS calendar entry for main crop '{crop}'. "
-            f"Known crops: {sorted(calendar)}. Cover crops get their dates separately."
-        )
-    return window
+@cache
+def load_scorer_scores(path: Path = SCORER_SCORES) -> pd.DataFrame:
+    return pd.read_csv(path)
 
 
-def _target_dates(crop: str, harvest_year: int, calendar: Mapping[str, CropWindow]) -> tuple[date, date]:
-    window = _window_for(crop, calendar)
-    plant_year = harvest_year - 1 if window.crosses_new_year else harvest_year
-    return _from_doy(plant_year, window.plant_doy), _from_doy(harvest_year, window.harvest_doy)
-
-
-def season_dates(step: SequenceStep, calendar: Mapping[str, CropWindow] | None = None) -> tuple[date, date]:
-    """Target planting and harvest date of one season, ignoring the seasons around it.
-
-    >>> season_dates(SequenceStep(year=2027, crop="corn", irrigation="full"))
-    (datetime.date(2027, 4, 30), datetime.date(2027, 10, 2))
-    """
-    return _target_dates(step.crop, step.year, load_nass_calendar() if calendar is None else calendar)
-
-
-# --------------------------------------------------------------------------------------
-# Step 2: plan the seasons and build the daily calendar
-# --------------------------------------------------------------------------------------
+def scorer_rows(table: pd.DataFrame, rotation: str, file: str) -> pd.DataFrame:
+    rows = table[table["rotation"] == rotation]
+    if rows.empty:
+        raise KeyError(f"rotation '{rotation}' is not in the scorer's {file}")
+    return rows
 
 
 @dataclass(frozen=True)
-class PlannedCover:
-    """A cover crop after a season: from ``plant`` to ``end`` (termination), both inclusive."""
+class PlacedSeason:
+    """One season of the rotation, moved to the display years."""
 
+    index: int  # 0, 1, 2 ... position in the rotation (the scorer's "season")
     crop: str
-    plant: date
-    end: date
+    plant_date: date
+    harvest_date: date  # like the scorer: the harvest day itself is not part of the season
+
+    @property
+    def harvest_year(self) -> int:
+        return self.harvest_date.year
 
 
-@dataclass(frozen=True)
-class PlannedSeason:
-    """One season with its final dates, after checking the season before it."""
+def reference_start_year(rotation: str, start_year: int) -> int:
+    """The scorer run whose dates we show: the latest one with the same leap-year rhythm as ``start_year``.
 
-    index: int  # 0..3, position in the rotation
-    crop: str
-    plant: date
-    harvest: date
-    shifted_days: int  # > 0: planting had to wait for the previous harvest ("tight window")
-    cover: PlannedCover | None = None  # cover crop after this season's harvest
-
-
-def schedule(
-    sequence: Sequence[SequenceStep],
-    previous_crop: str,
-    calendar: Mapping[str, CropWindow] | None = None,
-) -> list[PlannedSeason]:
-    """Final planting and harvest dates for all seasons, in order.
-
-    ``previous_crop`` is what grew in the year before the rotation (``field.previous_crop``).
-    It matters when the first season is a winter crop planted in the autumn before.
-    Raises CalendarConflict if a crop cannot be planted inside its NASS window.
+    The scorer counts days from 1 January, so in leap years its dates sit one day earlier. A run that is
+    a multiple of 4 years before ``start_year`` has the same rhythm, so moving it keeps every date exact.
     """
-    calendar = load_nass_calendar() if calendar is None else calendar
-    _, field_free_from = _target_dates(previous_crop, sequence[0].year - 1, calendar)
-    before = f"previous crop '{previous_crop}'"
-
-    planned: list[PlannedSeason] = []
-    for i, step in enumerate(sequence):
-        plant, harvest = _target_dates(step.crop, step.year, calendar)
-        earliest = field_free_from + timedelta(days=GAP_AFTER_HARVEST_DAYS)
-        shifted = 0
-        if plant < earliest:
-            latest = _from_doy(plant.year, _window_for(step.crop, calendar).planting_full.last)
-            if earliest > latest or earliest >= harvest:
-                raise CalendarConflict(
-                    f"season {i} ({step.crop}, harvest {step.year}) cannot be planted: the field is "
-                    f"occupied by {before} until {field_free_from}, but {step.crop} must be planted "
-                    f"by {latest} at the latest (NASS planting window)."
-                )
-            shifted = (earliest - plant).days
-            plant = earliest
-        planned.append(PlannedSeason(i, step.crop, plant, harvest, shifted))
-        field_free_from = harvest
-        before = f"season {i} ({step.crop})"
-
-    # Cover crops need the FINAL planting date of the next season, so they come second.
-    for i, step in enumerate(sequence):
-        if step.cover is None:
-            continue
-        season = planned[i]
-        start = season.harvest + timedelta(days=GAP_AFTER_HARVEST_DAYS)
-        (m1, d1), (m2, d2) = COVER_PLANTING_WINDOW
-        window_opens, window_closes = date(start.year, m1, d1), date(start.year, m2, d2)
-        if start > window_closes:
-            raise CalendarConflict(
-                f"cover crop '{step.cover}' after season {i} ({step.crop}): the field is free only from "
-                f"{start}, after the cover planting window closes ({window_closes})."
-            )
-        start = max(start, window_opens)
-        if i + 1 < len(planned):
-            end = planned[i + 1].plant - timedelta(days=COVER_END_BEFORE_PLANTING_DAYS)
-        else:
-            end = date(sequence[-1].year, 12, 31)  # last season: cover stays until the rotation ends
-        if (end - start).days + 1 < MIN_COVER_DAYS:
-            raise CalendarConflict(
-                f"cover crop '{step.cover}' after season {i} ({step.crop}) would stand only "
-                f"{max((end - start).days + 1, 0)} days ({start} to {end}), less than {MIN_COVER_DAYS}."
-            )
-        planned[i] = replace(season, cover=PlannedCover(step.cover, start, end))
-    return planned
+    runs = scorer_rows(load_scorer_seasons(), rotation, "seasons table")["start_year"].unique()
+    same_rhythm = [int(y) for y in runs if (start_year - y) % 4 == 0]
+    if not same_rhythm:
+        raise ValueError(f"rotation '{rotation}': no scorer run with the leap-year rhythm of {start_year}")
+    return max(same_rhythm)
 
 
-def daily_calendar(seasons: Sequence[PlannedSeason], first_year: int, n_years: int = 4) -> pd.DataFrame:
-    """One row per day from 1 Jan ``first_year`` to 31 Dec of the last year.
+def place_seasons(rotation: str, start_year: int) -> list[PlacedSeason]:
+    """The seasons of one pass of ``rotation``, with the first sowing in ``start_year``."""
+    ref = reference_start_year(rotation, start_year)
+    rows = scorer_rows(load_scorer_seasons(), rotation, "seasons table")
+    rows = rows[rows["start_year"] == ref].sort_values("season")
+    shift = pd.DateOffset(years=start_year - ref)  # a multiple of 4 years, see reference_start_year
+    return [
+        PlacedSeason(int(r.season), r.crop, (r.sow_date + shift).date(), (r.harvest_date + shift).date())
+        for r in rows.itertuples()
+    ]
 
-    Columns: ``crop`` (None if bare), ``kind`` ("crop", "cover" or "bare"),
-    ``season`` (index of the season the day belongs to, also for its cover crop; <NA> if bare).
-    A winter crop planted before ``first_year`` shows up from 1 January.
 
-    To look at main crops only (e.g. frost/heat while the crop stands), filter on
-    ``kind == "crop"``. Filtering on ``season`` alone would include the cover crop days.
+def monthly_kinds(rotation: str, start_year: int) -> list[dict]:
+    """One entry per month of the window: ``{"m": "YYYY-MM", "kind": "crop" | "bare", "crop": ... | None}``.
+
+    The window is the scorer's: from the month of the first sowing to the month before the last
+    harvest. The crop of a month is what the scorer says stands there on most days.
     """
-    days = pd.date_range(f"{first_year}-01-01", f"{first_year + n_years - 1}-12-31", freq="D", name="date")
-    cal = pd.DataFrame(
+    rows = scorer_rows(load_scorer_monthly(), rotation, "monthly table").sort_values(["year_offset", "month"])
+    return [
         {
-            "crop": pd.Series(None, index=days, dtype="object"),
-            "kind": "bare",
-            "season": pd.Series(pd.NA, index=days, dtype="Int64"),  # Int64 = integer that allows <NA>
+            "m": f"{start_year + int(r.year_offset)}-{int(r.month):02d}",
+            "kind": "bare" if r.crop == FALLOW else "crop",
+            "crop": None if r.crop == FALLOW else r.crop,
         }
-    )
-    for s in seasons:
-        # .loc with two dates selects the range including both ends.
-        span = cal.loc[pd.Timestamp(s.plant) : pd.Timestamp(s.harvest)]
-        if span["season"].notna().any():  # cannot happen after schedule(); guards against misuse
-            raise CalendarConflict(f"season {s.index} overlaps another season")
-        cal.loc[span.index, ["crop", "kind", "season"]] = [s.crop, "crop", s.index]
-    for s in seasons:
-        if s.cover is None:
-            continue
-        span = cal.loc[pd.Timestamp(s.cover.plant) : pd.Timestamp(s.cover.end)]
-        if (span["kind"] != "bare").any():  # cannot happen after schedule(); guards against misuse
-            raise CalendarConflict(f"cover crop after season {s.index} overlaps a main crop")
-        cal.loc[span.index, ["crop", "kind", "season"]] = [s.cover.crop, "cover", s.index]
-    return cal
+        for r in rows.itertuples()
+    ]
 
 
-# --------------------------------------------------------------------------------------
-# Step 3: months and summary
-# --------------------------------------------------------------------------------------
+def summarize(rotation: str, previous_crop: str) -> dict:
+    """Calendar part of ``schema.Summary``.
 
-
-def monthly_view(cal: pd.DataFrame) -> list[dict]:
-    """One entry per month: ``{"m": "YYYY-MM", "kind": ..., "crop": ...}``.
-
-    A month shows what covers the field on MORE than half of its days. Otherwise it is "bare".
-    Example: corn harvested on 2 October -> October is bare (2 of 31 days).
+    * ``bare_months``: the scorer's bare share of the window (fallow days / window days), as months per year.
+    * ``same_crop_repeats``: seasons with the same crop as the one before (season 0 compares to ``previous_crop``).
     """
-    months = []
-    for period, days in cal.groupby(cal.index.to_period("M")):
-        covered = days[days["kind"] != "bare"]
-        if len(covered) * 2 > len(days):
-            kind = covered["kind"].mode().iloc[0]  # mode = most frequent value
-            crop = covered.loc[covered["kind"] == kind, "crop"].mode().iloc[0]
-        else:
-            kind, crop = "bare", None
-        months.append({"m": str(period), "kind": kind, "crop": crop})
-    return months
-
-
-def summarize(cal: pd.DataFrame, seasons: Sequence[PlannedSeason], previous_crop: str) -> dict:
-    """Summary numbers of the rotation (the part of ``schema.Summary`` that WP5 owns).
-
-    * ``bare_months``: days without crop or cover, converted to months, mean per year.
-      Counted per day, not per month, so a half-bare month counts as 0.5.
-    * ``same_crop_repeats``: seasons with the same crop as the season before
-      (season 1 compares to ``previous_crop``). Continuous corn after corn = 4.
-    """
-    bare_share = (cal["kind"] == "bare").groupby(cal.index.year).mean()  # share of bare days per year
-    crops = [previous_crop] + [s.crop for s in seasons]
+    bare_share = float(scorer_rows(load_scorer_scores(), rotation, "scores table")["bare_share"].iloc[0])
+    crops = [previous_crop, *rotation.split("-")]
     return {
-        "bare_months": float(bare_share.mean() * 12),
+        "bare_months": bare_share * 12,
         "same_crop_repeats": sum(a == b for a, b in zip(crops, crops[1:])),
     }
