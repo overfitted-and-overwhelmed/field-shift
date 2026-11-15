@@ -119,3 +119,14 @@ dialog.confirm h2 { font-size: 22px; } dialog.confirm p { font-size: 16px; color
 .confirm-actions button { font: 600 15px var(--sans); padding: 8px 16px; border-radius: 4px; cursor: pointer; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
 .confirm-actions button:hover { background: var(--tint); }
 .confirm-actions button.danger { background: var(--bad); border-color: var(--bad); color: #fff; } .confirm-actions button.danger:hover { background: #8e3526; }
+
+/* detail: score bars and season table */
+.scores dl { margin: 10px 0 0; display: grid; gap: 10px; }
+.scores dl div { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 4px 16px; align-items: center; }
+.scores dt { font-weight: 600; font-size: 16px; } .scores dt small { display: block; font-weight: 400; color: var(--mut); font-size: 13px; }
+.scores dd { margin: 0; display: grid; gap: 4px; }
+.bar { display: block; height: 8px; background: var(--tint); border-radius: 2px; overflow: hidden; } .bar i { display: block; height: 100%; }
+.bar.this i { background: var(--accent); } .bar.today i { background: var(--rain); }
+.legend { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; } .legend .bar { width: 24px; } .legend .bar i { width: 100%; }
+.seasons td, .seasons th { white-space: nowrap; } .dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 8px; }
+@media (max-width: 600px) { .scores dl div { grid-template-columns: 1fr; } }

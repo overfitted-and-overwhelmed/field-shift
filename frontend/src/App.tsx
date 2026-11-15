@@ -36,24 +36,25 @@ function Explorer({ data, req }: { data: ExplorerData; req: ResultsRequest }) {
   const [selectedId, setSelectedId] = useState(data.options[0]?.id ?? data.current.id);
   const [units, setUnits] = useState<Units>('in');
   const metrics = useMemo(() => activeMetrics(data), [data]);
-  const mctx = { units, seasons: data.seasons, capIn: data.cap_in, rotationYears: data.current.sequence.length, prices: data.prices };
+  const mctx = { units, nRotations: data.nRotations };
   const selected = data.rotations.find((r) => r.id === selectedId) ?? data.current;
   const f = data.field;
-  const given = (data.constraints ?? []).filter((c) => c.ok && c.id !== 'start').map((c) => c.label + (c.note && c.id === 'water_right' ? ` (${c.note})` : ''));
+  const placeholder = data.rotations.some((r) => r.placeholder);
 
   return (
     <>
       <header className="top"><div className="page head-row"><span className="brand">{CONTENT.brand}</span><button type="button" className="link" onClick={() => goForm(req)}>← Change inputs</button></div></header>
       <main className="page">
         <div className="intro">
-          <p className="where">{f.name}{f.start_year ? `, from ${f.start_year}` : ''}</p>
+          <p className="where">{f.name}, from {f.rotation_start_year}</p>
           <h1>{CONTENT.title}</h1>
           <p className="lead">{CONTENT.lead}</p>
           <dl className="facts">
-            <div><dt>Location</dt><dd>{req.location.lat.toFixed(4)}, {req.location.lon.toFixed(4)}</dd></div>
+            <div><dt>Location</dt><dd>{req.location.lat.toFixed(4)}, {req.location.lon.toFixed(4)}{f.lat.toFixed(2) !== req.location.lat.toFixed(2) || f.lon.toFixed(2) !== req.location.lon.toFixed(2) ? ` (data so far only for ${f.name}, ${f.lat.toFixed(4)}, ${f.lon.toFixed(4)})` : ''}</dd></div>
+            <div><dt>Field</dt><dd>{f.soil.texture}, {f.elevation_ft.toLocaleString('en-US')} ft, grown last: {cropLabel(f.previous_crop).toLowerCase()}</dd></div>
             <div><dt>Crops</dt><dd>{req.crops.map(cropLabel).join(', ')}</dd></div>
             <div><dt>Weighted for</dt><dd>{data.priorities.map((p) => `${priorityLabel(p.id).toLowerCase()} ${p.weight}/5`).join(', ')}</dd></div>
-            {given.length > 0 && <div><dt>Given</dt><dd>{given.join(', ')}</dd></div>}
+            {placeholder && <div><dt>Note</dt><dd>Some values are still placeholders.</dd></div>}
           </dl>
         </div>
         <Options data={data} metrics={metrics} mctx={mctx} selectedId={selectedId} onSelect={setSelectedId} units={units} onUnits={setUnits} />

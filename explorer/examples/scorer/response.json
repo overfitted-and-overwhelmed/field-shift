@@ -49,6 +49,7 @@
         "kill_days": 0.727273,
         "water_in_per_day": 0.06410196850393701,
         "irrigation_in": 56.762992125984255,
+        "n_fertilizer_lb": 597.076520886,
         "rank_all": 221,
         "n_rotations": 225
       }
@@ -101,6 +102,7 @@
         "kill_days": 1.48485,
         "water_in_per_day": 0.04790354330708662,
         "irrigation_in": 41.36496062992126,
+        "n_fertilizer_lb": 69.66749235510001,
         "rank_all": 1,
         "n_rotations": 225
       }
@@ -153,6 +155,7 @@
         "kill_days": 1.78788,
         "water_in_per_day": 0.04147165354330709,
         "irrigation_in": 35.81090551181102,
+        "n_fertilizer_lb": 174.002562549,
         "rank_all": 2,
         "n_rotations": 225
       }
@@ -205,6 +208,7 @@
         "kill_days": 1.48485,
         "water_in_per_day": 0.04773110236220472,
         "irrigation_in": 41.693307086614176,
+        "n_fertilizer_lb": 97.16721489,
         "rank_all": 3,
         "n_rotations": 225
       }

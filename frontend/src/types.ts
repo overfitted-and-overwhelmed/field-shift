@@ -1,64 +1,79 @@
 /**
- * Data contract between the scorer/backend and the frontend.
- * Required: field, weights, rotations (one with is_current, plus options). Everything else is optional:
- * the UI hides the matching part when it is missing. Unknown crop ids, priority ids and KPI keys are fine.
+ * Data contract with the backend: explorer.json as written by explorer/build.py and served by explorer/api.py.
+ * The source of truth is explorer/schema.py (ExplorerExport). Keep the Api* types in sync with it.
+ * Units are part of the field names: _in = inches of water, _lb = lb N per acre, _pct = 0-100.
  */
 
-/** A KPI value: a number, or a value with a spread (p10/p90 = percentile range, lo/hi = scenario range). */
-export type KpiValue = number | { v: number; p10?: number; p90?: number; lo?: number; hi?: number };
+/** Mean over the weather years with 10th and 90th percentile. */
+export interface Spread { v: number; p10: number; p90: number }
 
-export interface RawSeasonYear {
-  year: number;
+export interface ApiEffect { text: string; source: string | null; provenance: string }
+
+export interface ApiSeason {
+  year: number; // harvest year; winter crops are planted in the autumn before
   crop: string;
-  irrigation: string; // 'full' | 'reduced' | 'none' | other ids from config/irrigation.ts
-  cover?: string | null;
-  effects?: string[];
-  n_adj?: number;
-  yield_pct?: number;
-  n_usd?: number;
-  pump_usd?: number;
+  irrigation: string; // 'full' | 'reduced' | 'none'
+  cover: string | null; // cover crop in the gap after this season
+  plant_date: string; harvest_date: string; // 'YYYY-MM-DD'; the harvest day is not part of the season
+  irr_in: Spread;
+  yield: Spread & { unit: 'bu' | 'lb' };
+  n_lb: number | null; n_adj_lb: number | null; // null until WP4 nitrogen delivers
+  yield_pct_rotation: number;
+  effects: ApiEffect[];
 }
 
-export interface RawMonth {
+export interface ApiMonth {
   m: string; // 'YYYY-MM'
-  kind: 'crop' | 'cover' | 'bare' | string;
+  kind: 'crop' | 'cover' | 'bare';
   crop: string | null;
-  use: number; rain: number; irr: number; // mm
-  heat: number; frost: number; // 0..1 share of past years at risk
-  n_fert: number; n_up: number; n_fix: number; n_credit: number; n_pool: number; n_loss: number; // lb N / acre
+  et_in: number; rain_in: number; irr_in: number;
+  heat_years_pct: number; cold_stress_years_pct: number; kill_years_pct: number; // share of weather years, 0-100
 }
 
-export interface Explanation { title: string; why: string[]; evidence: string[]; benefits: string[]; gaps: string[]; risks: string[]; ask: string[] }
+/** Scores 0 = best, 1 = worst among all rotations the scorer ranked. */
+export type ScoreParts = Record<string, number>;
 
-export interface RawRotation {
-  id: string; name: string; short: string;
-  is_current?: boolean;
-  pick?: number; score?: number; score_parts?: Record<string, number>;
-  sequence: RawSeasonYear[];
-  kpi: Record<string, KpiValue>;
-  fits_by_year?: number[]; // 1 = stays within the water right in that weather year
-  monthly?: RawMonth[];
+export interface ApiRotation {
+  id: string; is_current: boolean; rank: number | null;
+  name: string; short: string; category: string | null;
+  sequence: ApiSeason[]; // one pass of the rotation; not one season per year
+  score: number | null; score_parts: ScoreParts | null;
+  kpi: Record<string, number> | null; // the scorer's values for the whole pass, US units
+  placeholder: boolean;
+  monthly: ApiMonth[];
+  summary: { bare_months: number; same_crop_repeats: number; n_loss_lb: number | null };
 }
 
-export interface RawExplorerData {
-  field: { name: string; lat: number; lon: number; previous_crop?: string; start_year?: number };
-  prices?: { pump?: number; n?: number; n_lo?: number; n_hi?: number };
-  weights: Record<string, number>; // priority id -> 1..5
-  rotations: RawRotation[];
-  climate?: { years: number[] };
-  cap_in?: number; // water right, inches per year
-  constraints?: { id?: string; ok: boolean; label: string; note?: string }[];
-  explanations?: Record<string, Explanation>;
+export interface ApiField {
+  id: string; name: string; lat: number; lon: number; elevation_ft: number; slope_pct: number;
+  soil: { texture: string; water_capacity_in: number; organic_matter_pct: number };
+  crop_history: { year: number; crop: string }[];
+  previous_crop: string; rotation_start_year: number;
+}
+
+export interface ApiExplorer {
+  contract_version: string; generated_at: string;
+  field: ApiField;
+  crops: Record<string, { label: string; yield_unit: 'bu' | 'lb' | null; season: string; legume: boolean; is_cover: boolean }>;
+  climate: { weather_years: number[]; rain_in: number[]; et0_apr_sep_in: number[]; deficit_apr_sep_in: number[]; heat_days_ge_35: number[] };
+  rotations: ApiRotation[];
+  provenance: Record<string, { label: string; source: string | null }>;
+  sources: Record<string, { title: string; url?: string | null; retrieved?: string | null }>;
 }
 
 /* ---------- normalized shape used by components ---------- */
 export interface Kpi { v: number; lo?: number; hi?: number }
-export interface Rotation extends Omit<RawRotation, 'kpi' | 'pick' | 'score' | 'score_parts'> {
-  is_current: boolean; pick: number | null; score: number | null; score_parts: Record<string, number>; kpi: Record<string, Kpi>;
+
+export interface Rotation extends Omit<ApiRotation, 'kpi' | 'rank' | 'score_parts'> {
+  pick: number | null; // 1 = best match; null for today's rotation
+  years: number; // length of the pass in years (window days / 365.25)
+  score_parts: ScoreParts;
+  raw: Record<string, number>; // the scorer's kpi as sent
+  kpi: Record<string, Kpi>; // derived values shown in the UI, keys in config/metrics.ts
 }
-export interface ExplorerData extends Omit<RawExplorerData, 'rotations' | 'prices' | 'cap_in'> {
+
+export interface ExplorerData extends Omit<ApiExplorer, 'rotations'> {
   rotations: Rotation[]; current: Rotation; options: Rotation[];
-  prices: { pump: number; n: number; n_lo: number; n_hi: number };
-  cap_in: number | null; seasons: number;
+  nRotations: number | null; // how many rotations the scorer ranked
   priorities: { id: string; weight: number }[]; // highest weight first
 }

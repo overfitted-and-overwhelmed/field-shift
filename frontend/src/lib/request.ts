@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CROP_LABELS } from '../config/crops';
-import { PRIORITY_LABELS } from '../config/priorities';
+import { PRIORITY_IDS } from '../config/priorities';
 
 /**
  * What the farmer enters on the start page. It lives in the URL hash (#/results?crops=…&n=…&w=…),
@@ -15,12 +15,13 @@ export interface FieldRequest {
   weights: Record<string, number>; // priority id -> 1..5
 }
 
-export const CROP_IDS = Object.keys(CROP_LABELS);
-export const PRIORITY_IDS = Object.keys(PRIORITY_LABELS);
+/** Main crops the scorer can rotate. Triticale is not offered: the scorer adds it as a cover crop where it fits. */
+export const CROP_IDS = Object.keys(CROP_LABELS).filter((id) => id !== 'triticale');
+export { PRIORITY_IDS };
 export const WEIGHT_MIN = 1;
 export const WEIGHT_MAX = 5;
 export const COUNT_MIN = 1;
-export const COUNT_MAX = 5;
+export const COUNT_MAX = 3; // the explorer returns at most 3 picks
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
@@ -55,7 +56,7 @@ export function fromQuery(qs: string): FieldRequest | null {
   for (const pair of (q.get('w') ?? '').split(',').filter(Boolean)) {
     const [id, w] = pair.split(':');
     const n = Number(w);
-    if (id && Number.isFinite(n)) weights[id] = clamp(Math.round(n), WEIGHT_MIN, WEIGHT_MAX);
+    if (id && PRIORITY_IDS.includes(id) && Number.isFinite(n)) weights[id] = clamp(Math.round(n), WEIGHT_MIN, WEIGHT_MAX);
   }
   if (!crops.length || !Number.isInteger(count) || count < COUNT_MIN) return null;
   if (!Object.keys(weights).length) return null;

@@ -67,7 +67,7 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
 - `score` and `score_parts` are the scorer's: **0 = best, 1 = worst** among all its rotations.
   `score_parts` has one value per scorer criterion: `water`, `risk`, `soil_health`, `nitrogen`.
   `rank`, `score` and `score_parts` are passed through unchanged. `kpi` holds the scorer's values for the
-  whole pass, converted to US units (`irrigation_in`, `water_in_per_day`). The scorer's `frost_days` is left
+  whole pass, converted to US units (`irrigation_in`, `water_in_per_day`, `n_fertilizer_lb` = lb N per acre for the pass). The scorer's `frost_days` is left
   out (days below the optimum, not frost).
 - `sequence[].irrigation` is an assumption (`full` for every season) until the farmer can choose it.
 - Every per-year list in `climate` is aligned to `climate.weather_years`.
@@ -78,6 +78,7 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
 
 ```bash
 uv run python -m explorer.build    # regenerate the examples from the scorer's data
+uv run python -m explorer.api      # API for the frontend on http://127.0.0.1:8000/api/explorer
 uv run pytest                      # examples match schema.py, every rule rejects bad data, adapters match the scorer
 ```
 
@@ -92,3 +93,4 @@ If you change a format: change `schema.py` first, bump `CONTRACT_VERSION`, then 
 | `field_calendar.py` | WP5 | the scorer's seasons placed in the display years, crop per month, bare months |
 | `frost_heat.py` | WP6 | heat / cold stress / kill per month (cold stress: at least half a day below the optimum) |
 | `build.py` | WP7 | puts everything together and writes the examples |
+| `api.py` | WP7 | HTTP API for the frontend: `build_explorer` for the farmer's weights, crops and number of picks |

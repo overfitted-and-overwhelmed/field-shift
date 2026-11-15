@@ -19,7 +19,7 @@ from __future__ import annotations
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import get_args
+from typing import Iterable, get_args
 
 from crop_scorer.scoring.score_rotations import UI_INPUT_FILE, rank
 
@@ -58,6 +58,8 @@ N_PICKS = 3
 # not frost (real frost = kill_days).
 KPI_COLUMNS = ["risk_per_crop_day", "bare_share", "window_days", "heat_days", "kill_days"]
 KPI_MM_COLUMNS = {"water_mm_per_day": "water_in_per_day", "irrigation_mm": "irrigation_in"}  # converted to inches
+LB_PER_ACRE_PER_KG_PER_HA = 0.892179
+KPI_KG_HA_COLUMNS = {"n_fertilizer_kg": "n_fertilizer_lb"}  # N need per pass, converted to lb N per acre
 
 PROVENANCE: dict[str, ProvenanceEntry] = {
     "rotations.*": ProvenanceEntry(label="modeled", source="scorer"),
@@ -101,8 +103,13 @@ def scorer_rotation(key: str, start_year: int, *, is_current: bool, pick: int | 
     )
 
 
-def scorer_response(field_history: list[str], start_year: int, weights: dict[str, float]) -> ScorerResponse:
-    """Current rotation + top picks, as the scorer would answer for these weights."""
+def scorer_response(field_history: list[str], start_year: int, weights: dict[str, float], *,
+                    crops: Iterable[str] | None = None, n_picks: int = N_PICKS) -> ScorerResponse:
+    """Current rotation + top picks, as the scorer would answer for these weights.
+
+    ``crops``: if given, picks only use these main crops (the farmer's choice). The current rotation is
+    always included, whatever its crops.
+    """
     ranked = rank(load_scorer_scores(), weights).set_index("rotation")
     length = len(parse_key(ranked.index[0])[0])
     # only main crops count: the CDL history can also contain e.g. "fallow/idle cropland"
@@ -110,12 +117,18 @@ def scorer_response(field_history: list[str], start_year: int, weights: dict[str
     if len(main_crops) < length:
         raise ValueError(f"field history has only {len(main_crops)} main crops, need {length} for the current rotation")
     current = rotation_key(main_crops[-length:])
-    picks = [r for r in ranked.index if r != current][:N_PICKS]
+    allowed = None if crops is None else set(crops)
+    candidates = [r for r in ranked.index
+                  if r != current and (allowed is None or set(parse_key(r)[0]) <= allowed)]
+    if not candidates:
+        raise ValueError(f"no scored rotation uses only the crops {sorted(allowed or [])}")
+    picks = candidates[:n_picks]
 
     def build(key: str, is_current: bool, pick: int | None) -> ScorerRotation:
         row = ranked.loc[key]
         kpi = ({c: float(row[c]) for c in KPI_COLUMNS}
                | {ours: float(row[mm]) / MM_PER_IN for mm, ours in KPI_MM_COLUMNS.items()}
+               | {ours: float(row[kg]) * LB_PER_ACRE_PER_KG_PER_HA for kg, ours in KPI_KG_HA_COLUMNS.items()}
                | {"rank_all": int(row["rank"]), "n_rotations": len(ranked)})
         parts = {name: row[f"{name}_score"] for name in ScoreParts.model_fields}  # one per scorer criterion
         return scorer_rotation(key, start_year, is_current=is_current, pick=pick,
@@ -150,11 +163,12 @@ def explorer_rotation(sr: ScorerRotation, start_year: int, history: list[str], p
                     monthly=monthly, summary=summary)
 
 
-def build_explorer(weights: dict[str, float]) -> tuple[ExplorerExport, ScorerResponse]:
+def build_explorer(weights: dict[str, float], *, crops: Iterable[str] | None = None,
+                   n_picks: int = N_PICKS) -> tuple[ExplorerExport, ScorerResponse]:
     field = field_climate.build_field()
     history = [h.crop for h in field.crop_history]
     start = field.rotation_start_year
-    response = scorer_response(history, start, weights)
+    response = scorer_response(history, start, weights, crops=crops, n_picks=n_picks)
     rotations = [explorer_rotation(r, start, history, field.previous_crop) for r in response.rotations]
     export = ExplorerExport(
         contract_version=CONTRACT_VERSION,

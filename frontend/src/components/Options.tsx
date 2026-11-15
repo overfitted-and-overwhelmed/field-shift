@@ -18,7 +18,7 @@ export function Options({ data, metrics, mctx, selectedId, onSelect, units, onUn
     const verdict = base && !r.is_current ? compare(m, k.v, base.v) : 'same';
     return (
       <span className="cell" data-l={m.label} key={m.key}>
-        <span className="v">{m.fmt(k.v, mctx)}{m.tag === 'assumption' ? '*' : ''}</span>
+        <span className="v">{m.fmt(k.v, mctx)}</span>
         {!r.is_current && diff !== 0 && <span className={`d ${verdict}`}>{m.delta(Math.abs(diff), diff < 0 ? -1 : 1, mctx)}</span>}
       </span>
     );
@@ -28,7 +28,7 @@ export function Options({ data, metrics, mctx, selectedId, onSelect, units, onUn
     <section aria-labelledby="options-h">
       <div className="head-row">
         <h2 id="options-h">{CONTENT.optionsTitle}</h2>
-        {data.cap_in != null && <div className="seg" role="group" aria-label="Units"><button aria-pressed={units === 'in'} onClick={() => onUnits('in')}>in</button><button aria-pressed={units === 'mm'} onClick={() => onUnits('mm')}>mm</button></div>}
+        <div className="seg" role="group" aria-label="Units"><button aria-pressed={units === 'in'} onClick={() => onUnits('in')}>in</button><button aria-pressed={units === 'mm'} onClick={() => onUnits('mm')}>mm</button></div>
       </div>
       <div className="rows" role="radiogroup" aria-label="Rotation options">
         <div className="row heads" style={gridCols} aria-hidden="true"><span />{cols.map((m) => <span key={m.key}>{m.label}</span>)}</div>
