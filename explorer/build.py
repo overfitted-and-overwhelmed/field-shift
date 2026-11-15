@@ -24,7 +24,14 @@ from typing import get_args
 from crop_scorer.scoring.score_rotations import UI_INPUT_FILE, rank
 
 from explorer import field_climate, yields
-from explorer.field_calendar import load_scorer_scores, monthly_kinds, place_seasons, rotation_key, summarize
+from explorer.field_calendar import (
+    load_scorer_scores,
+    monthly_kinds,
+    parse_key,
+    place_seasons,
+    rotation_key,
+    summarize,
+)
 from explorer.frost_heat import monthly_stress
 from explorer.schema import (
     CONTRACT_VERSION,
@@ -77,16 +84,16 @@ SOURCES: dict[str, Source] = {
 LABELS = {crop: c.label for crop, c in field_climate.CROPS.items()}
 
 
-def scorer_rotation(crops: list[str], start_year: int, *, is_current: bool, pick: int | None,
+def scorer_rotation(key: str, start_year: int, *, is_current: bool, pick: int | None,
                     total: float | None, parts: dict, kpi: dict) -> ScorerRotation:
     """The scorer's view of one rotation, with its seasons moved to the display years."""
-    key = rotation_key(crops)
+    crops, cover = parse_key(key)
     seasons = [
-        ScorerSeason(year=s.harvest_year, crop=s.crop, irrigation=DEFAULT_IRRIGATION,
+        ScorerSeason(year=s.harvest_year, crop=s.crop, irrigation=DEFAULT_IRRIGATION, cover=s.cover,
                      plant_date=s.plant_date, harvest_date=s.harvest_date)
         for s in place_seasons(key, start_year)
     ]
-    name = " · ".join(LABELS[c] for c in crops)
+    name = " · ".join(LABELS[c] for c in crops) + (f" + {cover} cover" if cover else "")
     return ScorerRotation(
         id=key, is_current=is_current, rank=pick, name=name,
         short="Your rotation" if is_current else f"Pick #{pick}",
@@ -97,7 +104,7 @@ def scorer_rotation(crops: list[str], start_year: int, *, is_current: bool, pick
 def scorer_response(field_history: list[str], start_year: int, weights: dict[str, float]) -> ScorerResponse:
     """Current rotation + top picks, as the scorer would answer for these weights."""
     ranked = rank(load_scorer_scores(), weights).set_index("rotation")
-    length = len(ranked.index[0].split("-"))
+    length = len(parse_key(ranked.index[0])[0])
     # only main crops count: the CDL history can also contain e.g. "fallow/idle cropland"
     main_crops = [c for c in field_history if c in get_args(MainCropId)]
     if len(main_crops) < length:
@@ -110,8 +117,8 @@ def scorer_response(field_history: list[str], start_year: int, weights: dict[str
         kpi = ({c: float(row[c]) for c in KPI_COLUMNS}
                | {ours: float(row[mm]) / MM_PER_IN for mm, ours in KPI_MM_COLUMNS.items()}
                | {"rank_all": int(row["rank"]), "n_rotations": len(ranked)})
-        parts = {"water": row["water_score"], "risk": row["risk_score"], "soil_health": row["soil_health_score"]}
-        return scorer_rotation(key.split("-"), start_year, is_current=is_current, pick=pick,
+        parts = {name: row[f"{name}_score"] for name in ScoreParts.model_fields}  # one per scorer criterion
+        return scorer_rotation(key, start_year, is_current=is_current, pick=pick,
                                total=round(float(row["total_score"]), 4),
                                parts={k: round(float(v), 4) for k, v in parts.items()}, kpi=kpi)
 

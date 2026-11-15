@@ -36,6 +36,18 @@ A rotation is **one pass** of the scorer's crops (3 today), from the first sowin
   the last harvest (e.g. harvest 2 October -> last month is October). The first and last month can be partial.
 - The first sowing is in `field.rotation_start_year` (2027).
 
+### Cover crops
+
+The scorer also has every rotation with a **triticale cover crop** where it fits: the `id` then ends in
+`+triticale` (e.g. `corn-soybean-sorghum+triticale`). The scorer sows it in every gap of the pass where it fits
+(after harvest, terminated before the next crop), so not every season gets one:
+
+- `sequence[].cover` is `"triticale"` for each season with a cover crop in the gap after it, else `null`
+  (never after the last season: that gap is outside the window).
+- `monthly[].kind` is `"cover"` (with `crop: "triticale"`) in months where the cover crop stands most days.
+- Cover crop days are not bare (`bare_months`) and are not irrigated. The cover takes soil water, so the
+  next crop's water need and rain-fed yield can change.
+
 ## Conventions
 
 - Units are in the field name: `_in` = inches of water, `_lb` = lb N per acre, `_ft` = feet, `_pct` = 0–100.
@@ -53,6 +65,7 @@ A rotation is **one pass** of the scorer's crops (3 today), from the first sowin
 - **`null` means "not computed yet"**: nitrogen (`n_lb`, `n_adj_lb`, `monthly.nitrogen`, `summary.n_loss_lb`)
   is null until WP4 Nitrogen is done.
 - `score` and `score_parts` are the scorer's: **0 = best, 1 = worst** among all its rotations.
+  `score_parts` has one value per scorer criterion: `water`, `risk`, `soil_health`, `nitrogen`.
   `rank`, `score` and `score_parts` are passed through unchanged. `kpi` holds the scorer's values for the
   whole pass, converted to US units (`irrigation_in`, `water_in_per_day`). The scorer's `frost_days` is left
   out (days below the optimum, not frost).

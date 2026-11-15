@@ -27,6 +27,7 @@ from typing import Literal, Sequence
 import numpy as np
 import pandas as pd
 
+from explorer.field_calendar import rotation_key
 from explorer.paths import NASS_EXPECTED_YIELD, NASS_YIELDS, ROTATION_EFFECTS, SCORER_SEASONS_BY_YEAR
 from explorer.schema import Effect, Irrigation, ProvenanceEntry, SequenceStep, Source, YieldSpread
 
@@ -252,7 +253,10 @@ def rotation_yields(
     seasons_path: Path = SCORER_SEASONS_BY_YEAR,
 ) -> list[SeasonYield]:
     """Yields of all seasons of a scorer rotation. ``history``: crops before the rotation, oldest first (CDL)."""
-    rotation = "-".join(step.crop for step in sequence)
+    # the scorer's key: crops joined by "-", plus "+triticale" if the scorer sowed a cover crop in the pass
+    # (the cover uses soil water, so the deficits of the variant with cover differ from the one without)
+    cover = next((s.cover for s in sequence if s.cover), None)
+    rotation = rotation_key([s.crop for s in sequence], cover)
     deficits = season_deficits(rotation, seasons_path)
     if len(deficits) != len(sequence):
         raise ValueError(f"rotation '{rotation}': {len(sequence)} seasons, scorer has {len(deficits)}")

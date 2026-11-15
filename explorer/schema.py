@@ -41,7 +41,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "6.0.0-draft"
+CONTRACT_VERSION = "6.1.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -193,13 +193,15 @@ class ScoreParts(_Strict):
     water: float
     risk: float
     soil_health: float
+    nitrogen: float  # N fertilizer need after K-State MF2586 (scorer criterion since crop-scorer #2)
 
 
 class ScorerRotation(_Strict):
     """One rotation as the scorer sends it: one pass of its crops, with dates."""
 
     # pattern = regex; ids are used as keys in the frontend, so keep them simple.
-    id: str = Field(pattern=r"^[a-z0-9_\-]+$")
+    # "+" for the scorer's cover crop variant, e.g. "corn-soybean-sorghum+triticale"
+    id: str = Field(pattern=r"^[a-z0-9_+\-]+$")
     is_current: bool
     rank: int | None = Field(default=None, ge=1, le=3)  # 1-3 for the picks, None for the current rotation
     name: str

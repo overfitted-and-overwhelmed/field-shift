@@ -64,3 +64,9 @@ def test_current_rotation_ignores_non_crop_years_in_history():
     history = ["corn"] * 16 + ["fallow/idle cropland", "corn"]
     current = scorer_response(history, 2027, WEIGHTS).rotations[0]
     assert current.id == "corn-corn-corn"
+
+
+def test_score_parts_cover_every_scorer_criterion(built):
+    from crop_scorer.scoring.score_rotations import CRITERIA
+    _, response = built
+    assert set(response.rotations[0].score_parts.model_dump()) == set(CRITERIA)

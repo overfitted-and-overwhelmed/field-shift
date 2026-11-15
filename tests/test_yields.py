@@ -8,6 +8,7 @@ import pandas as pd
 import pytest
 
 from explorer.paths import ROTATION_EFFECTS, SCORER_SEASONS_BY_YEAR
+from explorer.field_calendar import parse_key
 from explorer.schema import SequenceStep
 from explorer.yields import SOURCES, CropYield, crop_yields, rotation_yields, season_yield
 
@@ -84,10 +85,13 @@ def test_levels_from_nass():
 @needs_scorer
 def test_every_scorer_rotation_gets_valid_yields():
     rotations = pd.read_csv(SCORER_SEASONS_BY_YEAR)["rotation"].unique()
-    assert len(rotations) == 125
+    # 125 crop orders, plus a "+triticale" variant where a cover crop fits
+    assert sum("+" not in r for r in rotations) == 125
     for rotation in rotations:
+        crops, cover = parse_key(rotation)
         for irrigation in ("full", "reduced", "none"):
-            seq = [SequenceStep(year=2027 + i, crop=c, irrigation=irrigation) for i, c in enumerate(rotation.split("-"))]
+            seq = [SequenceStep(year=2027 + i, crop=c, irrigation=irrigation, cover=cover if i == 0 else None)
+                   for i, c in enumerate(crops)]
             for s in rotation_yields(seq, history=["corn"] * 18):
                 assert s.yield_.v > 0
                 assert all(e.source is None or e.source in SOURCES for e in s.effects)
