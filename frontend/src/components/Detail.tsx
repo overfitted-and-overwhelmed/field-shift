@@ -13,7 +13,7 @@ const yieldText = (s: ApiSeason) => `${Math.round(s.yield.v).toLocaleString('en-
 function ScoreBars({ data, r }: { data: ExplorerData; r: Rotation }) {
   const ids = data.priorities.map((p) => p.id).filter((id) => r.score_parts[id] != null);
   if (!ids.length) return null;
-  const bar = (v: number, cls: string) => <span className={`bar ${cls}`}><i style={{ width: `${Math.max(2, (1 - Math.min(1, Math.max(0, v))) * 100)}%` }} /></span>;
+  const bar = (v: number, cls: string) => <span className={`sbar ${cls}`}><i style={{ width: `${Math.max(2, (1 - Math.min(1, Math.max(0, v))) * 100)}%` }} /></span>;
   return (
     <div className="scores">
       <h3 className="first">How it scores</h3>
@@ -29,7 +29,7 @@ function ScoreBars({ data, r }: { data: ExplorerData; r: Rotation }) {
           );
         })}
       </dl>
-      {!r.is_current && <p className="note legend"><span className="bar this"><i /></span> this option <span className="bar today"><i /></span> today</p>}
+      {!r.is_current && <p className="note sbar-legend"><span className="sbar this"><i /></span> this option <span className="sbar today"><i /></span> today</p>}
     </div>
   );
 }
