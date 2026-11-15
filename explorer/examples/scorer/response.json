@@ -1,280 +1,212 @@
 {
-  "placeholder": true,
+  "placeholder": false,
   "rotations": [
     {
-      "id": "current",
+      "id": "corn-corn-corn",
       "is_current": true,
       "rank": null,
-      "name": "Your rotation",
-      "short": "Continuous corn",
+      "name": "Corn · Corn · Corn",
+      "short": "Your rotation",
       "category": null,
       "sequence": [
         {
           "year": 2027,
           "crop": "corn",
           "irrigation": "full",
-          "cover": null
+          "cover": null,
+          "plant_date": "2027-04-30",
+          "harvest_date": "2027-10-02"
         },
         {
           "year": 2028,
           "crop": "corn",
           "irrigation": "full",
-          "cover": null
+          "cover": null,
+          "plant_date": "2028-04-29",
+          "harvest_date": "2028-10-01"
         },
         {
           "year": 2029,
           "crop": "corn",
           "irrigation": "full",
-          "cover": null
-        },
+          "cover": null,
+          "plant_date": "2029-04-30",
+          "harvest_date": "2029-10-02"
+        }
+      ],
+      "score": 0.4601,
+      "score_parts": {
+        "water": 0.503,
+        "risk": 0.0,
+        "soil_health": 0.8773
+      },
+      "kpi": {
+        "water_mm_per_day": 1.66707,
+        "risk_per_crop_day": 0.564714,
+        "bare_share": 0.474882,
+        "window_days": 885.515,
+        "irrigation_mm": 1476.2,
+        "frost_days": 255.697,
+        "heat_days": 190.152,
+        "kill_days": 0.727273,
+        "rank_all": 65,
+        "n_rotations": 125
+      }
+    },
+    {
+      "id": "sunflower-sunflower-sunflower",
+      "is_current": false,
+      "rank": 1,
+      "name": "Sunflower · Sunflower · Sunflower",
+      "short": "Pick #1",
+      "category": null,
+      "sequence": [
         {
-          "year": 2030,
-          "crop": "corn",
+          "year": 2027,
+          "crop": "sunflower",
           "irrigation": "full",
-          "cover": null
-        }
-      ],
-      "score": 0.202,
-      "score_parts": {
-        "water": 0.0,
-        "profit": 0.202,
-        "soil": 0.0,
-        "erosion": 0.0
-      },
-      "kpi": {
-        "irrigation_in": {
-          "v": 16.1,
-          "p10": 11.7,
-          "p90": 19.3
-        },
-        "within_right": 31,
-        "profit": {
-          "v": 264,
-          "p10": 225,
-          "p90": 317
-        },
-        "bare_months": 6.0,
-        "spring_bare": 3.0,
-        "n_lb": 200,
-        "same_crop": 4,
-        "n_loss": 32,
-        "pump_cost": {
-          "v": 193,
-          "p10": 140,
-          "p90": 232
-        },
-        "n_cost": {
-          "v": 110,
-          "lo": 90,
-          "hi": 150
-        }
-      }
-    },
-    {
-      "id": "opt_cswg",
-      "is_current": false,
-      "rank": 3,
-      "name": "Corn · soybean · wheat · sorghum",
-      "short": "4-crop, limited water",
-      "category": null,
-      "sequence": [
-        {
-          "year": 2027,
-          "crop": "corn",
-          "irrigation": "reduced",
-          "cover": null
-        },
-        {
-          "year": 2028,
-          "crop": "soybean",
-          "irrigation": "reduced",
-          "cover": null
-        },
-        {
-          "year": 2029,
-          "crop": "winter_wheat",
-          "irrigation": "reduced",
-          "cover": null
-        },
-        {
-          "year": 2030,
-          "crop": "sorghum",
-          "irrigation": "reduced",
-          "cover": null
-        }
-      ],
-      "score": 0.49,
-      "score_parts": {
-        "water": 0.225,
-        "profit": 0.0,
-        "soil": 0.122,
-        "erosion": 0.143
-      },
-      "kpi": {
-        "irrigation_in": {
-          "v": 8.6,
-          "p10": 6.8,
-          "p90": 10.0
-        },
-        "within_right": 42,
-        "profit": {
-          "v": 211,
-          "p10": 194,
-          "p90": 233
-        },
-        "bare_months": 5.5,
-        "spring_bare": 2.2,
-        "n_lb": 95,
-        "same_crop": 1,
-        "n_loss": 27,
-        "pump_cost": {
-          "v": 103,
-          "p10": 81,
-          "p90": 120
-        },
-        "n_cost": {
-          "v": 52,
-          "lo": 43,
-          "hi": 71
-        }
-      }
-    },
-    {
-      "id": "opt_sfw",
-      "is_current": false,
-      "rank": 2,
-      "name": "Sorghum · sunflower · wheat",
-      "short": "Low-water dryland mix",
-      "category": null,
-      "sequence": [
-        {
-          "year": 2027,
-          "crop": "sorghum",
-          "irrigation": "reduced",
-          "cover": null
+          "cover": null,
+          "plant_date": "2027-06-12",
+          "harvest_date": "2027-10-23"
         },
         {
           "year": 2028,
           "crop": "sunflower",
-          "irrigation": "none",
-          "cover": null
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22"
         },
         {
           "year": 2029,
-          "crop": "winter_wheat",
-          "irrigation": "none",
-          "cover": null
-        },
-        {
-          "year": 2030,
-          "crop": "sorghum",
-          "irrigation": "reduced",
-          "cover": null
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23"
         }
       ],
-      "score": 0.599,
+      "score": 0.3504,
       "score_parts": {
-        "water": 0.357,
-        "profit": 0.015,
-        "soil": 0.138,
-        "erosion": 0.089
+        "water": 0.0,
+        "risk": 0.0547,
+        "soil_health": 0.9965
       },
       "kpi": {
-        "irrigation_in": {
-          "v": 4.2,
-          "p10": 3.1,
-          "p90": 5.2
-        },
-        "within_right": 42,
-        "profit": {
-          "v": 215,
-          "p10": 191,
-          "p90": 252
-        },
-        "bare_months": 5.8,
-        "spring_bare": 2.5,
-        "n_lb": 88,
-        "same_crop": 0,
-        "n_loss": 25,
-        "pump_cost": {
-          "v": 51,
-          "p10": 37,
-          "p90": 62
-        },
-        "n_cost": {
-          "v": 48,
-          "lo": 39,
-          "hi": 66
-        }
+        "water_mm_per_day": 1.0084,
+        "risk_per_crop_day": 0.740803,
+        "bare_share": 0.537935,
+        "window_days": 863.515,
+        "irrigation_mm": 870.758,
+        "frost_days": 170.121,
+        "heat_days": 143.545,
+        "kill_days": 1.78788,
+        "rank_all": 1,
+        "n_rotations": 125
       }
     },
     {
-      "id": "opt_cst",
+      "id": "sorghum-sunflower-sunflower",
       "is_current": false,
-      "rank": 1,
-      "name": "Corn · soybean + triticale cover",
-      "short": "Smallest change",
+      "rank": 2,
+      "name": "Sorghum · Sunflower · Sunflower",
+      "short": "Pick #2",
       "category": null,
       "sequence": [
         {
           "year": 2027,
-          "crop": "corn",
+          "crop": "sorghum",
           "irrigation": "full",
-          "cover": null
+          "cover": null,
+          "plant_date": "2027-06-02",
+          "harvest_date": "2027-10-18"
         },
         {
           "year": 2028,
-          "crop": "soybean",
-          "irrigation": "reduced",
-          "cover": "triticale"
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22"
         },
         {
           "year": 2029,
-          "crop": "corn",
+          "crop": "sunflower",
           "irrigation": "full",
-          "cover": null
-        },
-        {
-          "year": 2030,
-          "crop": "soybean",
-          "irrigation": "reduced",
-          "cover": "triticale"
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23"
         }
       ],
-      "score": 0.734,
+      "score": 0.3559,
       "score_parts": {
-        "water": 0.105,
-        "profit": 0.286,
-        "soil": 0.2,
-        "erosion": 0.143
+        "water": 0.0124,
+        "risk": 0.0596,
+        "soil_health": 0.9957
       },
       "kpi": {
-        "irrigation_in": {
-          "v": 12.6,
-          "p10": 9.3,
-          "p90": 15.2
+        "water_mm_per_day": 1.02462,
+        "risk_per_crop_day": 0.756608,
+        "bare_share": 0.537501,
+        "window_days": 873.515,
+        "irrigation_mm": 895.006,
+        "frost_days": 234.697,
+        "heat_days": 137.455,
+        "kill_days": 1.54545,
+        "rank_all": 2,
+        "n_rotations": 125
+      }
+    },
+    {
+      "id": "sunflower-sunflower-sorghum",
+      "is_current": false,
+      "rank": 3,
+      "name": "Sunflower · Sunflower · Sorghum",
+      "short": "Pick #3",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2027-06-12",
+          "harvest_date": "2027-10-23"
         },
-        "within_right": 25,
-        "profit": {
-          "v": 286,
-          "p10": 254,
-          "p90": 326
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22"
         },
-        "bare_months": 4.0,
-        "spring_bare": 2.2,
-        "n_lb": 90,
-        "same_crop": 1,
-        "n_loss": 17,
-        "pump_cost": {
-          "v": 151,
-          "p10": 111,
-          "p90": 183
-        },
-        "n_cost": {
-          "v": 50,
-          "lo": 40,
-          "hi": 68
+        {
+          "year": 2029,
+          "crop": "sorghum",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-02",
+          "harvest_date": "2029-10-18"
         }
+      ],
+      "score": 0.3562,
+      "score_parts": {
+        "water": 0.0286,
+        "risk": 0.0597,
+        "soil_health": 0.9804
+      },
+      "kpi": {
+        "water_mm_per_day": 1.0458,
+        "risk_per_crop_day": 0.757172,
+        "bare_share": 0.52942,
+        "window_days": 858.515,
+        "irrigation_mm": 897.825,
+        "frost_days": 234.97,
+        "heat_days": 137.606,
+        "kill_days": 1.54545,
+        "rank_all": 3,
+        "n_rotations": 125
       }
     }
   ]

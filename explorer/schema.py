@@ -1,21 +1,27 @@
-"""Explorer data contract (v1) as pydantic models.
+"""Explorer data contract as pydantic models.
 
 This module is the single source of truth for the JSON around the explorer backend.
 If a format changes, it changes here first.
 
-Input (from the scorer, a separate API that is still a black box, so this is an assumption):
+Input (from the scorer, ``crop_scorer/scoring/score_rotations.py``):
 
-* ``scorer/response.json`` -> :class:`ScorerResponse` (which rotations, rank, score, kpi)
+* ``scorer/response.json`` -> :class:`ScorerResponse` (which rotations, their seasons with dates, rank, scores)
 
-Output (what we hand to the frontend, one file, like the mockup's ``D`` object):
+Output (what we hand to the frontend, one file):
 
 * ``explorer.json``        -> :class:`ExplorerExport` (field, crops, climate, rotations, sources)
 
 Each rotation in ``explorer.json`` is the scorer rotation passed through unchanged, plus
-``placeholder``, and per season / month / summary the values we add (yield, N, calendar, ...).
+``placeholder``, and per season / month / summary the values we add (yield, calendar view, ...).
 
-Who computes what: water use comes from the scorer (we only adapt it), yield and the rest
-come from us. Placeholders are marked with ``placeholder=True``.
+A rotation is ONE PASS of the scorer: its crops in order (3 today), from the first sowing to the
+last harvest. Its length varies: two harvests can fall into one year (double crop) and a year can
+be skipped (the next crop missed its planting window). So the number of seasons and months is not
+fixed, and seasons are not one per year.
+
+Who computes what: the scorer decides the seasons (dates) and computes water and temperature risk;
+we take them over. Yield comes from us (WP3). Values nobody computes yet (nitrogen, WP4) are null.
+Placeholders are marked with ``placeholder=True``.
 
 Units are part of the field names: ``_in`` inches of water, ``_lb`` lb N per acre, ``_ft`` feet,
 ``_pct`` percent 0-100. Everything is in US units except temperature thresholds (°C, e.g.
@@ -28,17 +34,14 @@ export fails here, in our tests, and not later as a blank chart in the frontend.
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "4.0.0-draft"
-
-N_SEASONS = 4
-N_MONTHS = N_SEASONS * 12
+CONTRACT_VERSION = "5.0.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -46,7 +49,7 @@ MainCropId = Literal["corn", "sorghum", "soybean", "winter_wheat", "sunflower"]
 CoverCropId = Literal["triticale"]  # the only cover crop we support
 CropId = MainCropId | CoverCropId  # any crop that can be on the field (catalog, monthly view)
 Irrigation = Literal["full", "reduced", "none"]  # reduced = 50 % of full (assumption)
-MonthKind = Literal["crop", "cover", "bare", "fallow"]
+MonthKind = Literal["crop", "cover", "bare"]
 ProvenanceLabel = Literal["measured", "modeled", "rule", "assumption"]
 
 
@@ -154,7 +157,7 @@ class Climate(_Strict):
 
 
 # --------------------------------------------------------------------------------------
-# Scorer (our INPUT, assumed format)
+# Scorer (our INPUT)
 # --------------------------------------------------------------------------------------
 
 
@@ -165,30 +168,46 @@ class SequenceStep(_Strict):
     cover: CoverCropId | None = None  # and a main crop can never be a cover crop
 
 
+class ScorerSeason(SequenceStep):
+    """A season as the scorer plans it: crop, irrigation and its real dates.
+
+    Dates are written as "YYYY-MM-DD" in the JSON. Like the scorer, the harvest day itself is not
+    part of the season (the season runs from ``plant_date`` to the day before ``harvest_date``).
+    """
+
+    plant_date: date
+    harvest_date: date
+
+    @model_validator(mode="after")
+    def _dates(self) -> ScorerSeason:
+        if self.harvest_date.year != self.year:
+            raise ValueError(f"season {self.year}: harvest_date {self.harvest_date} is not in the harvest year")
+        if self.plant_date >= self.harvest_date:
+            raise ValueError(f"season {self.year}: plant_date {self.plant_date} is not before harvest_date")
+        return self
+
+
 class ScoreParts(_Strict):
+    """The scorer's normalised scores, 0 = best, 1 = worst among all its rotations."""
+
     water: float
-    profit: float
-    soil: float
-    erosion: float
+    risk: float
+    soil_health: float
 
 
 class ScorerRotation(_Strict):
-    """One rotation as we EXPECT the scorer to send it.
-
-    The scorer is a separate API and still a black box, so this is our assumption, derived
-    from the mockup. When the real API exists, only this class and ScorerResponse change.
-    Water use per season/month will also come from the scorer; its format is still unknown.
-    """
+    """One rotation as the scorer sends it: one pass of its crops, with dates."""
 
     # pattern = regex; ids are used as keys in the frontend, so keep them simple.
     id: str = Field(pattern=r"^[a-z0-9_\-]+$")
     is_current: bool
-    rank: int | None = Field(default=None, ge=1, le=3)
+    rank: int | None = Field(default=None, ge=1, le=3)  # 1-3 for the picks, None for the current rotation
     name: str
     short: str
     category: str | None = None
-    sequence: list[SequenceStep] = Field(min_length=N_SEASONS, max_length=N_SEASONS)
-    score: float | None = None
+    # One pass of the rotation. Not one season per year: double crops share a year, skipped years exist.
+    sequence: list[ScorerSeason] = Field(min_length=1)
+    score: float | None = None  # the scorer's weighted total, 0 = best
     score_parts: ScoreParts | None = None
     # The scorer owns the kpi format. We pass it through untouched instead of guessing a shape.
     kpi: dict[str, Any] | None = None
@@ -197,16 +216,19 @@ class ScorerRotation(_Strict):
     def _check(self) -> ScorerRotation:
         if self.is_current and self.rank is not None:
             raise ValueError(f"rotation {self.id}: the current rotation must not have a rank")
-        years = [s.year for s in self.sequence]
-        if years != list(range(years[0], years[0] + N_SEASONS)):
-            raise ValueError(f"rotation {self.id}: sequence years must be consecutive, got {years}")
+        for before, after in zip(self.sequence, self.sequence[1:]):
+            if after.plant_date < before.harvest_date:
+                raise ValueError(
+                    f"rotation {self.id}: {after.crop} planted {after.plant_date} "
+                    f"before {before.crop} is harvested ({before.harvest_date})"
+                )
         return self
 
 
 class ScorerResponse(_Strict):
-    """Assumed scorer output = our INPUT. Example: examples/scorer/response.json."""
+    """Scorer output = our INPUT. Example: examples/scorer/response.json."""
 
-    placeholder: bool  # true while we use mockup values instead of the real scorer
+    placeholder: bool  # true while values are not the scorer's real results
     rotations: list[ScorerRotation] = Field(min_length=1)
 
 
@@ -215,72 +237,78 @@ class ScorerResponse(_Strict):
 # --------------------------------------------------------------------------------------
 
 
-class SeasonDetail(SequenceStep):
-    """A scorer sequence step (year, crop, irrigation, cover) plus our values for that season."""
+class SeasonDetail(ScorerSeason):
+    """A scorer season (year, crop, irrigation, cover, dates) plus our values for that season."""
 
     # "yield" is a Python keyword, so the attribute is called yield_ and the alias maps it
     # back to "yield" in the JSON. serialize_by_alias makes model_dump() write "yield" too.
     model_config = ConfigDict(extra="forbid", populate_by_name=True, serialize_by_alias=True)
 
-    # Real dates, written as "YYYY-MM-DD" in the JSON. Winter wheat for 2029 simply has a
-    # plant_date in 2028, so the frontend needs no extra rule for winter crops.
-    plant_date: date
-    harvest_date: date
-    irr_in: Spread  # from the scorer (adapted)
+    irr_in: Spread  # from the scorer's water balance, with the season's irrigation level applied
     yield_: YieldSpread = Field(alias="yield")
-    n_lb: float = Field(ge=0)
-    n_adj_lb: float  # previous-crop adjustment, can be negative (e.g. after soybean)
+    n_lb: float | None = Field(default=None, ge=0)  # null until WP4 Nitrogen delivers
+    n_adj_lb: float | None = None  # previous-crop adjustment, can be negative (e.g. after soybean)
     yield_pct_rotation: float
     effects: list[Effect]
 
     @model_validator(mode="after")
-    def _check(self) -> SeasonDetail:
-        if self.harvest_date.year != self.year:
-            raise ValueError(f"season {self.year}: harvest_date {self.harvest_date} is not in the harvest year")
-        if self.plant_date >= self.harvest_date:
-            raise ValueError(f"season {self.year}: plant_date {self.plant_date} is not before harvest_date")
+    def _no_water_without_irrigation(self) -> SeasonDetail:
         if self.irrigation == "none" and self.irr_in.p90 > 0:
             raise ValueError(f"season {self.year}: irrigation 'none' but irr_in.p90 = {self.irr_in.p90}")
         return self
 
 
-class MonthDetail(_Strict):
-    """One month of the 'typical year' view: mean over all weather years.
+class MonthNitrogen(_Strict):
+    """Nitrogen balance of one month (WP4, not computed yet)."""
 
-    Mean (not median), so that months add up to the season and balances stay consistent.
+    fert_lb: float = Field(ge=0)
+    uptake_lb: float = Field(ge=0)
+    fix_lb: float = Field(ge=0)
+    credit_lb: float = Field(ge=0)
+    pool_lb: float = Field(ge=0)
+    loss_lb: float = Field(ge=0)
+    short_lb: float = Field(ge=0)
+
+
+class MonthDetail(_Strict):
+    """One calendar month of the rotation's window: mean over all weather years.
+
+    Mean (not median), so that months add up to the season. The first and the last month of the
+    window can be partial (the window starts at the first sowing and ends before the last harvest).
     """
 
     m: str = Field(pattern=r"^\d{4}-(0[1-9]|1[0-2])$")  # "YYYY-MM"
     kind: MonthKind
-    crop: CropId | None
-    et_in: float = Field(ge=0)
+    crop: CropId | None  # what stands on most days of the month (the scorer's rule)
+    et_in: float = Field(ge=0)  # crop water use; on bare months evaporation from bare soil
     rain_in: float = Field(ge=0)
     irr_in: float = Field(ge=0)
-    heat_risk_pct: float = Field(ge=0, le=100)
-    frost_risk_pct: float = Field(ge=0, le=100)
-    n_fert_lb: float = Field(ge=0)
-    n_uptake_lb: float = Field(ge=0)
-    n_fix_lb: float = Field(ge=0)
-    n_credit_lb: float = Field(ge=0)
-    n_pool_lb: float = Field(ge=0)
-    n_loss_lb: float = Field(ge=0)
-    n_short_lb: float = Field(ge=0)
+    # Share of weather years with at least one stress day in this month (see explorer/frost_heat.py):
+    # heat = Tmax above the crop's optimum; cold stress = below the optimum for at least half the day;
+    # kill = below the crop's killing temperature (real frost damage).
+    heat_years_pct: float = Field(ge=0, le=100)
+    cold_stress_years_pct: float = Field(ge=0, le=100)
+    kill_years_pct: float = Field(ge=0, le=100)
+    nitrogen: MonthNitrogen | None = None  # null until WP4 Nitrogen delivers
 
     @model_validator(mode="after")
     def _crop_matches_kind(self) -> MonthDetail:
-        if self.kind in ("bare", "fallow") and self.crop is not None:
-            raise ValueError(f"{self.m}: kind '{self.kind}' must have crop null")
+        if self.kind == "bare" and self.crop is not None:
+            raise ValueError(f"{self.m}: kind 'bare' must have crop null")
         if self.kind in ("crop", "cover") and self.crop is None:
             raise ValueError(f"{self.m}: kind '{self.kind}' needs a crop")
         return self
 
 
 class Summary(_Strict):
-    bare_months: float = Field(ge=0, le=12)  # months per year without crop or cover, mean
-    # Seasons whose crop equals the crop before it; season 1 compares to field.previous_crop.
-    # Continuous corn after corn = 4.
-    same_crop_repeats: int = Field(ge=0, le=N_SEASONS)
-    n_loss_lb: float = Field(ge=0)  # mean per year
+    bare_months: float = Field(ge=0, le=12)  # months per year without crop or cover, mean over the window
+    # Seasons whose crop equals the crop before it; season 0 compares to field.previous_crop.
+    same_crop_repeats: int = Field(ge=0)
+    n_loss_lb: float | None = Field(default=None, ge=0)  # null until WP4 Nitrogen delivers
+
+
+def _month(d: date) -> str:
+    return f"{d.year}-{d.month:02d}"
 
 
 class Rotation(ScorerRotation):
@@ -290,16 +318,23 @@ class Rotation(ScorerRotation):
     """
 
     placeholder: bool  # tells the frontend whether the values are still mockup values
-    sequence: list[SeasonDetail] = Field(min_length=N_SEASONS, max_length=N_SEASONS)
-    monthly: list[MonthDetail] = Field(min_length=N_MONTHS, max_length=N_MONTHS)
+    sequence: list[SeasonDetail] = Field(min_length=1)
+    monthly: list[MonthDetail] = Field(min_length=1)
     summary: Summary
 
     @model_validator(mode="after")
-    def _months_cover_sequence(self) -> Rotation:
-        first = self.sequence[0].year
-        expected = [f"{first + i // 12}-{i % 12 + 1:02d}" for i in range(N_MONTHS)]
-        if [m.m for m in self.monthly] != expected:
-            raise ValueError(f"rotation {self.id}: monthly must run {expected[0]}..{expected[-1]} without gaps")
+    def _months_cover_window(self) -> Rotation:
+        # window = month of the first sowing .. month of the day before the last harvest, no gaps
+        first = self.sequence[0].plant_date
+        last = self.sequence[-1].harvest_date - timedelta(days=1)
+        expected, y, m = [], first.year, first.month
+        while (y, m) <= (last.year, last.month):
+            expected.append(f"{y}-{m:02d}")
+            y, m = (y + 1, 1) if m == 12 else (y, m + 1)
+        if [x.m for x in self.monthly] != expected:
+            raise ValueError(
+                f"rotation {self.id}: monthly must run {_month(first)}..{_month(last)} without gaps"
+            )
         return self
 
 
