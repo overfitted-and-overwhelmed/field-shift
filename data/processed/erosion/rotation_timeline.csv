@@ -1,0 +1,6 @@
+status,start_date,end_date,days,rotation
+winter_wheat,1991-10-02,1992-06-25,268,winter_wheat-corn-sorghum
+fallow,1992-06-26,1993-04-29,308,winter_wheat-corn-sorghum
+corn,1993-04-30,1993-10-01,155,winter_wheat-corn-sorghum
+fallow,1993-10-02,1994-06-01,243,winter_wheat-corn-sorghum
+sorghum,1994-06-02,1994-10-17,138,winter_wheat-corn-sorghum
