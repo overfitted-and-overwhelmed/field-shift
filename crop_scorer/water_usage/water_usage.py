@@ -39,6 +39,10 @@ STAGES = ["ini", "dev", "mid", "late"]
 # initial stage ET is mostly soil evaporation. Overestimates fallow losses once the topsoil is dry.
 FALLOW_KC = 0.3
 
+# ASSUMPTION (same as explorer/field_calendar.py): days between harvest and the next sowing when the
+# field is still occupied on the target sowing date (e.g. wheat drilled right after soybean harvest)
+MIN_GAP_DAYS = 3
+
 # ASSUMPTION: bucket 30 % full on Jan 1 of the start year = mean Jan 1 fill level of our own
 # simulation after a few years of replay (~0.31-0.33 for several rotations, median ~0.27)
 INITIAL_FILL = 0.3
@@ -118,6 +122,7 @@ def load_crop_params() -> pd.DataFrame:
         rows.append({
             "crop": crop,
             "sow_doy": sow_doy,
+            "sow_end_doy": int(nass.loc[crop, "planting_end"]),
             "season_days": season_days,
             # FAO-56 stage shares, scaled to the local season length (FAO-56 ch. 6: Table 11 is only a guide)
             "stage_ends": np.round(np.cumsum(lengths) / sum(lengths) * season_days).astype(int),
@@ -145,7 +150,9 @@ def load_weather() -> pd.DataFrame:
 
 
 def build_timeline(params: pd.DataFrame, rotation: list[str], start_year: int) -> list[tuple[str, pd.Timestamp, pd.Timestamp]]:
-    # each crop goes in at its next sowing date after the previous harvest
+    # each crop goes in at its target sowing date; if the field is still occupied then, it goes in
+    # MIN_GAP_DAYS after the previous harvest as long as that is inside the full NASS planting window,
+    # otherwise at the target date of the next year. Harvest moves with sowing (fixed season length).
     seasons = []
     earliest = pd.Timestamp(start_year, 1, 1)
     end_of_data = pd.Timestamp(LAST_YEAR, 12, 31)
@@ -153,14 +160,18 @@ def build_timeline(params: pd.DataFrame, rotation: list[str], start_year: int) -
     while True:
         crop = rotation[i % len(rotation)]
         p = params.loc[crop]
-        sow = pd.Timestamp(earliest.year, 1, 1) + pd.Timedelta(days=int(p["sow_doy"]) - 1)
-        if sow < earliest:  # sowing on the harvest day is allowed
-            sow = pd.Timestamp(earliest.year + 1, 1, 1) + pd.Timedelta(days=int(p["sow_doy"]) - 1)
+        jan1 = pd.Timestamp(earliest.year, 1, 1)
+        sow = jan1 + pd.Timedelta(days=int(p["sow_doy"]) - 1)
+        if sow < earliest:
+            if earliest <= jan1 + pd.Timedelta(days=int(p["sow_end_doy"]) - 1):
+                sow = earliest
+            else:
+                sow = pd.Timestamp(earliest.year + 1, 1, 1) + pd.Timedelta(days=int(p["sow_doy"]) - 1)
         harvest = sow + pd.Timedelta(days=int(p["season_days"]))
         if harvest > end_of_data:
             return seasons
         seasons.append((crop, sow, harvest))
-        earliest = harvest
+        earliest = harvest + pd.Timedelta(days=MIN_GAP_DAYS)
         i += 1
 
 
@@ -178,12 +189,13 @@ def kc_curve(p: pd.Series) -> tuple[np.ndarray, np.ndarray]:
 
 
 def crop_calendar(params: pd.DataFrame, weather: pd.DataFrame, seasons: list) -> pd.DataFrame:
-    daily = weather.assign(crop="fallow", harvest_year=0, stage="", kc=FALLOW_KC)
+    daily = weather.assign(crop="fallow", harvest_year=0, sow_date=pd.NaT, stage="", kc=FALLOW_KC)
     for crop, sow, harvest in seasons:
         kc, stage = kc_curve(params.loc[crop])
         dates = pd.date_range(sow, periods=len(kc))
         daily.loc[dates, "crop"] = crop
         daily.loc[dates, "harvest_year"] = harvest.year
+        daily.loc[dates, "sow_date"] = sow
         daily.loc[dates, "stage"] = stage
         daily.loc[dates, "kc"] = kc
 
@@ -264,17 +276,22 @@ def main():
         if seasons:
             runs.append(daily[daily["crop"] != "fallow"])
 
-    # runs differ only in their history (start state of the bucket), so average them per crop season
+    # runs differ only in their history (start state of the bucket), so average them per crop season.
+    # A season is identified by its sowing date too: the first crop of a run is sown on its target date,
+    # the same crop later in the rotation may be shifted behind the previous harvest.
     daily_mean = (
         pd.concat(runs).rename_axis("date").reset_index()
-        .groupby(["crop", "harvest_year", "date", "stage"])[list(DAILY_PARAMS)].mean().reset_index()
+        .groupby(["crop", "harvest_year", "sow_date", "date", "stage"])[list(DAILY_PARAMS)].mean().reset_index()
     )
     location = json.loads(FIELD_FILE.read_text())["location"]
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    to_long(daily_mean, ["date", "crop", "harvest_year", "stage"], DAILY_PARAMS, location["lat"], location["lon"]).to_csv(
+    to_long(daily_mean, ["date", "crop", "harvest_year", "sow_date", "stage"], DAILY_PARAMS, location["lat"], location["lon"]).to_csv(
         OUT_DIR / "irrigation_need_daily_long.csv", index=False)
 
-    per_season = daily_mean.groupby(["harvest_year", "crop"])["irrigation_need"].sum().unstack()
+    per_season = (
+        daily_mean.groupby(["harvest_year", "crop", "sow_date"])["irrigation_need"].sum()
+        .groupby(["harvest_year", "crop"]).mean().unstack()
+    )
     print(f"\n[water] irrigation need per season (mm), mean over {len(runs)} start years")
     print(per_season.round(0).to_string())
     print(per_season.describe().loc[["mean", "min", "max"]].round(0).to_string())

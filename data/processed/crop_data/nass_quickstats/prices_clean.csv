@@ -1,0 +1,56 @@
+crop,year,value,unit,class
+corn,2015,3.69,$ / BU,ALL CLASSES
+corn,2016,3.2,$ / BU,ALL CLASSES
+corn,2017,3.28,$ / BU,ALL CLASSES
+corn,2018,3.58,$ / BU,ALL CLASSES
+corn,2019,3.56,$ / BU,ALL CLASSES
+corn,2020,4.35,$ / BU,ALL CLASSES
+corn,2021,6.02,$ / BU,ALL CLASSES
+corn,2022,7.04,$ / BU,ALL CLASSES
+corn,2023,4.73,$ / BU,ALL CLASSES
+corn,2024,4.28,$ / BU,ALL CLASSES
+corn,2025,4.0,$ / BU,ALL CLASSES
+sorghum,2015,5.57,$ / CWT,ALL CLASSES
+sorghum,2016,4.67,$ / CWT,ALL CLASSES
+sorghum,2017,5.58,$ / CWT,ALL CLASSES
+sorghum,2018,5.59,$ / CWT,ALL CLASSES
+sorghum,2019,5.7,$ / CWT,ALL CLASSES
+sorghum,2020,8.85,$ / CWT,ALL CLASSES
+sorghum,2021,10.8,$ / CWT,ALL CLASSES
+sorghum,2022,12.3,$ / CWT,ALL CLASSES
+sorghum,2023,8.51,$ / CWT,ALL CLASSES
+sorghum,2024,7.15,$ / CWT,ALL CLASSES
+sorghum,2025,6.02,$ / CWT,ALL CLASSES
+soybean,2015,8.56,$ / BU,ALL CLASSES
+soybean,2016,9.26,$ / BU,ALL CLASSES
+soybean,2017,9.0,$ / BU,ALL CLASSES
+soybean,2018,7.93,$ / BU,ALL CLASSES
+soybean,2019,8.28,$ / BU,ALL CLASSES
+soybean,2020,10.7,$ / BU,ALL CLASSES
+soybean,2021,12.9,$ / BU,ALL CLASSES
+soybean,2022,14.3,$ / BU,ALL CLASSES
+soybean,2023,12.3,$ / BU,ALL CLASSES
+soybean,2024,9.65,$ / BU,ALL CLASSES
+soybean,2025,10.1,$ / BU,ALL CLASSES
+sunflower,2015,20.5,$ / CWT,ALL CLASSES
+sunflower,2016,16.5,$ / CWT,ALL CLASSES
+sunflower,2017,17.7,$ / CWT,ALL CLASSES
+sunflower,2018,17.6,$ / CWT,ALL CLASSES
+sunflower,2019,18.5,$ / CWT,ALL CLASSES
+sunflower,2020,21.4,$ / CWT,ALL CLASSES
+sunflower,2021,28.1,$ / CWT,ALL CLASSES
+sunflower,2022,31.0,$ / CWT,ALL CLASSES
+sunflower,2023,19.2,$ / CWT,ALL CLASSES
+sunflower,2024,15.5,$ / CWT,ALL CLASSES
+sunflower,2025,20.7,$ / CWT,ALL CLASSES
+winter_wheat,2015,4.74,$ / BU,WINTER
+winter_wheat,2016,3.2,$ / BU,WINTER
+winter_wheat,2017,4.07,$ / BU,WINTER
+winter_wheat,2018,4.93,$ / BU,WINTER
+winter_wheat,2019,4.08,$ / BU,WINTER
+winter_wheat,2020,4.53,$ / BU,WINTER
+winter_wheat,2021,6.74,$ / BU,WINTER
+winter_wheat,2022,8.71,$ / BU,WINTER
+winter_wheat,2023,7.14,$ / BU,WINTER
+winter_wheat,2024,5.43,$ / BU,WINTER
+winter_wheat,2025,4.65,$ / BU,WINTER

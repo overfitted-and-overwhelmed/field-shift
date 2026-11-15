@@ -26,7 +26,8 @@ the same crop season.
 | `lat`, `lon` | field location |
 | `date` | day |
 | `crop` | `winter_wheat`, `corn`, `sorghum` |
-| `harvest_year` | identifies the crop season (winter wheat sown Oct 2011 → 2012) |
+| `harvest_year` | harvest year of the crop season (winter wheat sown Oct 2011 → 2012) |
+| `sow_date` | sowing day; with `crop` and `harvest_year` it identifies the season (see below) |
 | `stage` | FAO-56 growth stage: `ini`, `dev`, `mid`, `late` |
 | `parameter`, `value`, `unit` | see below |
 
@@ -36,8 +37,14 @@ the same crop season.
 | `precipitation` | mm/day | rain |
 | `irrigation_need` | mm/day | water the crop is missing (ETc − ETa) |
 
-Pivot: `df.pivot_table(index=["date", "crop", "harvest_year"], columns="parameter", values="value")`.
-Season total: sum `irrigation_need` per `crop` and `harvest_year`.
+Pivot: `df.pivot_table(index=["date", "crop", "harvest_year", "sow_date"], columns="parameter", values="value")`.
+Season total: sum `irrigation_need` per `crop`, `harvest_year` and `sow_date`.
+
+Sowing: each crop goes in at the middle of its NASS most-active planting window. If the previous crop is
+still on the field then, it goes in 3 days after that harvest (assumption, same as the explorer calendar),
+as long as this is inside the full NASS planting window; otherwise at the target date of the next year.
+Harvest moves with sowing (fixed season length). The first crop of a run is never shifted, so some seasons
+exist twice in the file (e.g. winter wheat sown Oct 2 as first crop, Oct 21 after sorghum).
 
 ## Known gaps / assumptions
 
@@ -47,5 +54,5 @@ Season total: sum `irrigation_need` per `crop` and `harvest_year`.
   is too empty at sowing and the need early in the season is overestimated.
 - Irrigation need is the daily deficit of a field that is never irrigated. A field that is watered keeps more water
   in the soil, so its real irrigation amount differs (in a test about +10 %).
-- Root depth at its maximum from sowing, no runoff, no capillary rise, no Kc climate correction, same sowing date every year.
+- Root depth at its maximum from sowing, no runoff, no capillary rise, no Kc climate correction, no year-specific sowing dates.
 - Soil from SSURGO dominant component (Ulysses), weather from one NASA POWER cell (~50 km).

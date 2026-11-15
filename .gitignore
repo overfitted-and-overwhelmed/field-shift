@@ -2,3 +2,8 @@
 .venv/
 .DS_Store
 __pycache__/
+field_shift.egg-info/
+# raw data is re-downloadable via src/fetch_power.py
+data/raw/power_daily_long.csv
+# optional SoilGrids cross-check, not part of the pipeline
+data/processed/soil_long.csv

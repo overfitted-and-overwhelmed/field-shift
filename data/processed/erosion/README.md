@@ -6,7 +6,8 @@ harvest, every crop once; the fallow after the last crop is not counted. Generat
 (`uv run python -m crop_scorer.erosion.erosion`, from the repo root).
 
 Uses the same season timeline as `water_usage` (`build_timeline`): sowing and harvest in the middle of the NASS
-"most active" windows, sowing on the harvest day allowed, each crop at its next possible sowing date. The timeline
+"most active" windows. If the field is still occupied, sowing moves to 3 days after the previous harvest
+while that is inside the full NASS planting window, otherwise to the next year; harvest moves with it. The timeline
 does not depend on weather, so every cycle of a rotation looks the same.
 
 | File | Content |
