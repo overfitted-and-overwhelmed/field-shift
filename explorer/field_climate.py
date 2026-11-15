@@ -15,12 +15,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from explorer.paths import CDL_HISTORY, CLIMATE_ANNUAL, FIELD_PROFILE
 from explorer.schema import Climate, Crop, CropId, FieldInfo, ProvenanceEntry, Source
-
-REPO = Path(__file__).resolve().parents[1]
-PROFILE_FILE = REPO / "data/processed/climate_data/field_profile.json"
-ANNUAL_FILE = REPO / "data/processed/climate_data/features_annual_long.csv"
-CDL_FILE = REPO / "data/processed/field_data/cdl/cdl_history_clean.csv"
 
 MM_PER_IN = 25.4
 M_PER_FT = 0.3048
@@ -77,7 +73,7 @@ SOURCES: dict[str, Source] = {
 }
 
 
-def build_field(profile_path: Path = PROFILE_FILE, cdl_path: Path = CDL_FILE) -> FieldInfo:
+def build_field(profile_path: Path = FIELD_PROFILE, cdl_path: Path = CDL_HISTORY) -> FieldInfo:
     profile = json.loads(profile_path.read_text(encoding="utf-8"))
     loc, terrain, soil = profile["location"], profile["terrain"], profile["soil"]
 
@@ -110,7 +106,7 @@ def build_crops() -> dict[CropId, Crop]:
     return dict(CROPS)
 
 
-def build_climate(annual_path: Path = ANNUAL_FILE) -> Climate:
+def build_climate(annual_path: Path = CLIMATE_ANNUAL) -> Climate:
     df = pd.read_csv(annual_path)
     df = df[df["parameter"].isin(CLIMATE_UNITS)]
     for param, unit in CLIMATE_UNITS.items():
