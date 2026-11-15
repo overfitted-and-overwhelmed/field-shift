@@ -21,7 +21,8 @@ from explorer.schema import Climate, Crop, CropId, FieldInfo, ProvenanceEntry, S
 MM_PER_IN = 25.4
 M_PER_FT = 0.3048
 
-# First harvest year of the explored rotations. CDL ends in 2025 and 2026 is already in the ground.
+# Year of the first sowing of the explored rotations (a winter wheat start is harvested the year after).
+# CDL ends in 2025 and 2026 is already in the ground.
 ROTATION_START_YEAR = 2027
 
 # CDL code -> our crop id (codes from the NASS CDL legend). Every other class, including

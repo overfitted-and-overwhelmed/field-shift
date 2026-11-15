@@ -100,8 +100,8 @@ def place_seasons(rotation: str, start_year: int) -> list[PlacedSeason]:
 def monthly_kinds(rotation: str, start_year: int) -> list[dict]:
     """One entry per month of the window: ``{"m": "YYYY-MM", "kind": "crop" | "bare", "crop": ... | None}``.
 
-    The window is the scorer's: from the month of the first sowing to the month before the last
-    harvest. The crop of a month is what the scorer says stands there on most days.
+    The window is the scorer's: from the month of the first sowing to the month of the day before the
+    last harvest. The crop of a month is what the scorer says stands there on most days.
     """
     rows = scorer_rows(load_scorer_monthly(), rotation, "monthly table").sort_values(["year_offset", "month"])
     return [
