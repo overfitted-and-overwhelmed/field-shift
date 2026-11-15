@@ -1,0 +1,9 @@
+variant,n_start_years,fertilizer_need_mean,fertilizer_need_p90,balance_unfloored_mean,ksu_formula_mean,leaching_mean,leaching_p90,leaching_charged_mean,removal_mean,unit
+cover_cereal_rye,30,59.26,59.23,59.26,62.5,0.03,0.0,0.03,36.67,kg N/ha/year of the rotation
+cover_forage_radish,30,36.15,36.13,36.15,62.5,0.03,0.01,0.03,36.67,kg N/ha/year of the rotation
+cover_hairy_vetch,30,9.03,9.02,-5.88,62.5,0.03,0.01,0.01,36.67,kg N/ha/year of the rotation
+no_cover,30,36.15,36.13,36.15,62.5,0.03,0.01,0.03,36.67,kg N/ha/year of the rotation
+no_cover_min_high,30,23.94,23.91,23.94,54.09,0.05,0.01,0.05,36.67,kg N/ha/year of the rotation
+no_cover_min_low,30,45.31,45.29,45.31,68.81,0.02,0.01,0.02,36.67,kg N/ha/year of the rotation
+no_cover_theta_high,30,36.19,36.14,36.19,62.5,0.08,0.03,0.08,36.67,kg N/ha/year of the rotation
+no_cover_theta_low,30,36.14,36.12,36.14,62.5,0.02,0.01,0.02,36.67,kg N/ha/year of the rotation

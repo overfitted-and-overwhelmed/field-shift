@@ -142,7 +142,7 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   3. Koeffizienten-Tabelle und Quellen-Datei schreiben, kurz im README beschreiben.
   4. Kontrolle: Entzug pro Kultur in kg N/ha ist in realistischer Größe (Größenordnung gegen eine belegte Quelle prüfen).
 - **Relevant Context:** [`Combined_crop_data.csv`](../data/base-data/dryad/Combined_crop_data.csv) (Spalten `original_crop`, `crop_component`, `variable`, `value`, `reference_where_data_were_collated`, `primary_reference_of_dataset`, `original_region`). [`kansas_crop_calendar_long.csv`](../data/base-data/nass/kansas_crop_calendar_long.csv) und [`felix_sources.md`](../data/base-data/felix_sources.md) als Vorbild für NASS-Quellen. [`risk_score/config.py`](risk_score/config.py) als Vorbild für eine Konfig-Tabelle.
-- **Status:** `[-] teilweise` — Koeffizienten-Schema und Werte für Korn-N, Rest-N, Harvest-Index, Sojafixierung stehen in [`fertilizer_need/config.py`](fertilizer_need/config.py), jeweils mit Zitierfeldern; Quellen in [`fertilizer_need_sources.md`](../data/base-data/fertilizer_need_sources.md). Geprüft: alle Werte stimmen mit den Zeilen in `Combined_crop_data.csv` überein; Entzug 12/13/19/55/27 kg N/t Korn (Mais/Sorghum/Weizen/Soja/Sonnenblume). **Offen:** Referenzerträge (NASS-Datei fehlt, `value=None`), Umrechnung bu/acre → t/ha, Bezug auf Frischmasse. Hinweis: `Combined_crop_data.csv` ist cp1252, nicht UTF-8. Harvest-Index: Prince et al. (2001) gewählt; Johnson et al. (2006) liefert abweichende Werte (Sorghum 0.47, Soja 0.46, Sonnenblume 0.40, Weizen 0.45).
+- **Status:** `[x] done mit Abweichung` — Koeffizienten stehen in [`data/fertilizer_n_coefficients.csv`](../data/fertilizer_n_coefficients.csv) (Team, alle Kandidaten mit `selected`-Flag) und gespiegelt in [`fertilizer_need/config.py`](fertilizer_need/config.py); `run.py` prüft, dass beide übereinstimmen. Erträge: **nicht** wie geplant Kansas gesamt unbewässert 1991–2025 (diese Datei fehlt, API-Key nötig), sondern die NASS-Daten von `origin/main` (`data/base-data/nass_quickstats/`): Distrikt Südwest unbewässert für Mais (9 Jahre) und Weizen (10 Jahre); **Sorghum, Soja, Sonnenblume: Kansas alle Anbauweisen (16 Jahre)**, weil dafür keine unbewässerte Distriktreihe existiert (Teamentscheidung). Das überschätzt den Ertrag eines unbewässerten Feldes. Umrechnung bu/acre → t/ha über [`crop_unit_conversion.csv`](../data/crop_unit_conversion.csv).
 
 ### 2. Sickerwasser aus der Wasserbilanz verfügbar machen
 
@@ -176,7 +176,7 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   5. Plausibilität: Testfolge Winterweizen, Mais, Hirse liefert Werte in realistischer Größe. Eine Fruchtfolge mit Soja wird gegen die Netto-Rechnung geprüft.
   6. Brache-Dauer aus `erosion.rotation_timeline` gegenprüfen (gleiche Phasen).
 - **Relevant Context:** Sub-Task 1 und 2. `water_usage.build_timeline`, `erosion.py` (Brache-Berechnung), `risk_score/run.py` (Aufbau und `sanity_checks`).
-- **Status:** `[ ] pending`
+- **Status:** `[x] done mit Abweichungen` — [`inputs.py`](fertilizer_need/inputs.py), [`balance.py`](fertilizer_need/balance.py), [`run.py`](fertilizer_need/run.py). Auswaschung nach SWAT+ (Frage 6 belegt, exakte Exponentialform statt linearer Näherung), Mineralisierung nach K-State (Frage 7 belegt). Abweichungen vom Plan: (a) Soja deckt einen Teil seines Entzugs durch Eigenfixierung (45 kg N/t Korn), sonst käme Soja auf ca. 200 kg N/ha; (b) der Entzug wird durch `fe` = 0,55 geteilt (K-State-Struktur), sonst hätte die Bilanz keinen Verlustfaktor; (c) Mineralisierung als Jahreswert pro Tag gerechnet, in der Brache mit der Warmseason-Rate (Annahme); (d) kein Tageslauf, sondern eine Zeile je Saison. **Befund:** Auswaschung ≈ 0,03 kg N/ha/Jahr, die Sensitivität θe 0,2/0,8 ändert sie nur auf 0,02–0,08. Der Düngebedarf hängt dagegen stark von der Mineralisierungsstufe ab (24/36/45 kg N/ha/Jahr). K-State-Formel als Gegenprobe liegt bei 62,5 gegen 36,2 der Bilanz.
 
 ### 4. Als Kriterium einhängen und dokumentieren
 
@@ -189,7 +189,7 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   1. Ausgabedatei(en) und Spaltenbeschreibung (Muster: `data/processed/water_usage/README.md`).
   2. Anbindung an das Register, sobald es existiert.
 - **Relevant Context:** [`rotation-scoring-plan.md`](rotation-scoring-plan.md) Sub-Tasks 4 und 5. [`data/processed/water_usage/README.md`](../data/processed/water_usage/README.md).
-- **Status:** `[ ] pending`
+- **Status:** `[-] teilweise` — README und Ausgabe unter [`data/processed/fertilizer_need/`](../data/processed/fertilizer_need/README.md) (Long-Format, Mittel und 90. Perzentil). Offen: Eintrag im Kriterien-Register (`rotation-scoring-plan.md` ist nicht umgesetzt). Das 90. Perzentil ist kaum vom Mittel verschieden, weil Erträge fest sind und die Startjahre nur die Wetter-Historie der Brache ändern.
 
 ### 5. Zwischenfrüchte (zweiter Schritt, startet erst nach Sub-Task 4)
 
@@ -209,17 +209,17 @@ Jeder Koeffizient steht in der Koeffizienten-Tabelle (Sub-Task 1) mit diesen Fel
   5. Vergleich Fruchtfolge mit und ohne Zwischenfrucht für die Testfolge.
   6. Entscheiden, ob und wie `erosion.py` und `water_usage` angepasst werden.
 - **Relevant Context:** Sub-Tasks 1 bis 4. [`erosion.py`](erosion/erosion.py) (Hinweis "No cover crops" in Zeile 6). `ecocrop_selected_crops.csv` enthält Zwischenfrüchte heute nicht.
-- **Status:** `[ ] pending`
+- **Status:** `[-] teilweise` — Arten: Winterroggen, Zottelwicke, Futterrettich (Teamauswahl; Sunn Hemp ohne belegte Daten ausgelassen). Umgesetzt: Lückenregel (Aussaatfenster aus `cover_crops.csv`, ≥ 28 Tage, Beendigung 35 Tage vor Saat, winterkillende Arten beim mittleren ersten Frost), Rückhalt und N-Effekt in der Bilanz, Vergleich mit und ohne (Testfolge: ohne 36,2, Roggen 59,3, Wicke 9,0, Rettich 36,2 kg N/ha/Jahr). **Nicht umgesetzt:** Wasserverbrauch der Zwischenfrucht (`water_usage`), Erosion (`erosion.py`, Bare Days), Bodengesundheits-Indikator (Frage 4). Rettich hat in SARE keine Netto-N-Zahl und bleibt bei 0.
 
 ## Offene Fragen
 
-1. **NASS-Abdeckung:** Gibt es für alle 5 Kulturen (vor allem Sonnenblume) unbewässerte Kansas-Erträge in Quick Stats für 1991–2025? Das zeigt sich erst beim Abruf in Sub-Task 1. Dann entscheidet das Team über einen Rückfall.
+1. **NASS-Abdeckung (beantwortet, teilweise):** Mit den Daten von `origin/main` fehlt für Sorghum, Soja und Sonnenblume eine unbewässerte Distriktreihe; Rückfall siehe Sub-Task 1. Ursprüngliche Frage: Gibt es für alle 5 Kulturen (vor allem Sonnenblume) unbewässerte Kansas-Erträge in Quick Stats für 1991–2025? Das zeigt sich erst beim Abruf in Sub-Task 1. Dann entscheidet das Team über einen Rückfall.
 2. **Bedeutung der 45 kg N/t bei Soja:** Meint der IFA/IPNI-Wert die ganze Pflanze oder nur das Korn? Das Dryad-Feld heißt `Fixed_N_kg_N_metric_t_fresh_crop_product`, was aufs Korn hindeutet. Das Team hat das so akzeptiert (nicht in der IFA-Quelle geprüft).
 3. **Negative Netto-Gutschrift:** Entschieden: ausweisen und für den Düngebedarf auf 0 begrenzen.
 4. **Zwischenfrucht-Indikator für Bodengesundheit:** Welche Größe (Bare Days, organische Substanz)?
 5. **Mineralisierung und Temperatur:** Reicht eine feste Rate pro Tag, oder soll Temperatur/Feuchte eingehen? Erst bei Bedarf. Die Rate braucht eine Quelle.
-6. **Quelle für das Mischungsmodell der Auswaschung (offen, vor Sub-Task 3):** Verlust = N-Pool × Sickerwasser ÷ Bodenwasservolumen. Das ist Allgemeinwissen und **nicht gegen eine Quelle geprüft**. Eine Quelle suchen (z. B. Extension-Literatur oder Lehrbuch zu Nitratauswaschung), bevor die Formel eingebaut wird. Ohne Beleg wird sie als `kind="assumption"` geführt.
-7. **Quelle für die Mineralisierungsrate (offen, vor Sub-Task 3):** Zu suchen ist eine zitierte Faustzahl aus der Extension-Literatur (z. B. K-State). Als **unverifizierte Erinnerung** ohne Beleg: etwa 20 lb N/acre pro 1 % organischer Substanz und Jahr. Diese Zahl darf erst in `config.py`, wenn die Quelle gefunden und geprüft ist. Zusätzlich eine Sensitivität (niedrig, mittel, hoch) rechnen und in der README zeigen.
+6. **Quelle für das Mischungsmodell der Auswaschung (beantwortet):** SWAT+ Theoretical Documentation, Nitrate Movement, Gl. 4:2.1.2 und 4:2.1.8 (siehe `data/fertilizer_model_references.csv`). Offen bleibt θe (`ANION_EXCL`): die SWAT+-Seite nennt keinen Standardwert, 0,5 ist eine Annahme mit Sensitivität 0,2/0,8. Ursprünglich: Verlust = N-Pool × Sickerwasser ÷ Bodenwasservolumen. Das ist Allgemeinwissen und **nicht gegen eine Quelle geprüft**. Eine Quelle suchen (z. B. Extension-Literatur oder Lehrbuch zu Nitratauswaschung), bevor die Formel eingebaut wird. Ohne Beleg wird sie als `kind="assumption"` geführt.
+7. **Quelle für die Mineralisierungsrate (beantwortet):** K-State MF2586 p. 3–5 (20 lb N/ac je 1 % OM warm season, 10 cool season) mit UNL 14/28 als Spanne. Es ist eine Gutschrift der Düngeempfehlung, keine gemessene Rate, und gilt für 6 in. Ursprünglich: Zu suchen ist eine zitierte Faustzahl aus der Extension-Literatur (z. B. K-State). Als **unverifizierte Erinnerung** ohne Beleg: etwa 20 lb N/acre pro 1 % organischer Substanz und Jahr. Diese Zahl darf erst in `config.py`, wenn die Quelle gefunden und geprüft ist. Zusätzlich eine Sensitivität (niedrig, mittel, hoch) rechnen und in der README zeigen.
 8. **Harvest-Index:** Prince et al. (2001) ist gewählt. Johnson et al. (2006) wird in der README als Spanne dokumentiert, gerechnet wird mit Prince.
 
 ## Nicht Teil dieses Plans
