@@ -1,7 +1,8 @@
 # AGRIscora
 
-**Team:** Overfitted and Overwhelmed  
-**NASA Space Apps Challenge:** Field Shift  
+**Team:** Overfitted and Overwhelmed
+**NASA Space Apps Challenge:** Field Shift
+**Live Demo:** [https://field-shift-beta.vercel.app](https://field-shift-beta.vercel.app)
 
 ## Overview
 **AGRIscora** is a crop rotation scoring and decision-support tool that helps farmers adapt their fields to a changing climate. It evaluates and ranks multi-year crop rotations across water demand, climate risk, nitrogen requirements, and soil health.
