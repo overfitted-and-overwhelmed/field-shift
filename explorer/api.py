@@ -17,13 +17,15 @@ GET /api/explorer?w=water:5,risk:3,soil_health:3,nitrogen:2&crops=corn,soybean,s
 
 Answer: ``explorer.json`` (``ExplorerExport`` in schema.py).
 Errors: 400 with ``{"error": "..."}``.
-Standard library only, so no extra dependency. It is meant for local development, not for production.
+Standard library only, so no extra dependency. ``main`` runs a local server; on Vercel the WSGI ``app`` below
+answers the same requests (``vercel.json``, service "backend").
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import get_args
 from urllib.parse import parse_qs, urlparse
@@ -88,6 +90,28 @@ def parse_request(query: str) -> dict:
     return {"weights": weights, "crops": crops, "n_picks": n_picks, "current": current}
 
 
+def answer(path: str, query: str) -> tuple[int, dict]:
+    """Status code and JSON body for a GET request, shared by the local server and the Vercel app."""
+    if path == "/api/health":
+        return 200, {"ok": True}
+    if path != "/api/explorer":
+        return 404, {"error": f"unknown path {path}"}
+    try:
+        export, _ = build_explorer(**parse_request(query))
+    except (BadRequest, ValueError) as e:
+        return 400, {"error": str(e)}
+    return 200, export.model_dump(mode="json")
+
+
+def app(environ: dict, start_response) -> list[bytes]:
+    """WSGI entry point for Vercel."""
+    status, body = answer(environ.get("PATH_INFO", ""), environ.get("QUERY_STRING", ""))
+    data = json.dumps(body, ensure_ascii=False).encode("utf-8")
+    start_response(f"{status} {HTTPStatus(status).phrase}",
+                   [("Content-Type", "application/json; charset=utf-8"), ("Content-Length", str(len(data)))])
+    return [data]
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, status: int, body: dict) -> None:
         data = json.dumps(body, ensure_ascii=False).encode("utf-8")
@@ -100,15 +124,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802 (name given by BaseHTTPRequestHandler)
         url = urlparse(self.path)
-        if url.path == "/api/health":
-            return self._send(200, {"ok": True})
-        if url.path != "/api/explorer":
-            return self._send(404, {"error": f"unknown path {url.path}"})
-        try:
-            export, _ = build_explorer(**parse_request(url.query))
-        except (BadRequest, ValueError) as e:
-            return self._send(400, {"error": str(e)})
-        self._send(200, export.model_dump(mode="json"))
+        self._send(*answer(url.path, url.query))
 
 
 def main() -> None:
