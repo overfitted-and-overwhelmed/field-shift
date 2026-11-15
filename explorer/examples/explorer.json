@@ -1,6 +1,6 @@
 {
   "contract_version": "6.3.0-draft",
-  "generated_at": "2026-11-15T10:13:52+00:00",
+  "generated_at": "2026-11-15T10:30:34+00:00",
   "field": {
     "id": "ks-kearny-01",
     "name": "Kearny County, KS",
@@ -437,7 +437,7 @@
         "n_lb": 797.5769084587591,
         "irrigation_in_per_year": 18.920997375328085,
         "n_lb_per_year": 265.85896948625305,
-        "rank_all": 127,
+        "rank_all": 138,
         "n_rotations": 225
       },
       "cover_variant": {

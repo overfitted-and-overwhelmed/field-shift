@@ -29,6 +29,6 @@ rank,rotation,season,crop,sow_month_day,harvest_month_day,sow_cycle_day,season_d
 10,sorghum-sunflower-corn+triticale,0,sorghum,06-02,10-18,0,138,296.6,0.5337,122,40.91,0,190.6,triticale,199.2,140.9
 10,sorghum-sunflower-corn+triticale,1,sunflower,06-11,10-22,375,133,319,0.2982,57.76,47.91,0,147.4,triticale,151.3,82.25
 10,sorghum-sunflower-corn+triticale,2,corn,04-30,10-02,698,155,505.6,0.4089,84.76,64.15,0,328.8,,0,0
-219,corn-soybean-soybean,0,corn,04-30,10-02,0,155,477.5,0.4094,85.91,62.58,0,298,,0,0
-219,corn-soybean-soybean,1,soybean,06-01,10-15,398,136,421.3,0.6484,94.24,59.24,0,0,,0,0
-219,corn-soybean-soybean,2,soybean,06-02,10-16,764,136,424.9,0.6472,93.18,60.03,0,0,,0,0
+223,corn-soybean-soybean,0,corn,04-30,10-02,0,155,477.5,0.4094,85.91,62.58,0,298,,0,0
+223,corn-soybean-soybean,1,soybean,06-01,10-15,398,136,421.3,0.6484,94.24,59.24,0,0,,0,0
+223,corn-soybean-soybean,2,soybean,06-02,10-16,764,136,424.9,0.6472,93.18,60.03,0,0,,0,0

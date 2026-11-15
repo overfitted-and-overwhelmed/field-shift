@@ -23,9 +23,8 @@ Both files are generated from real data: `uv run python -m explorer.build`.
 - **Frontend:** build against `explorer.json`. Ignore `scorer/`.
 - The formats are defined in [`schema.py`](schema.py). Every field and allowed value is listed there.
 - The rotations are the field's current rotation plus the scorer's top 3 for the weights in
-  `crop_scorer/scoring/ui_input_mock.json` (a mock until the UI sends weights). Picks never grow a Sclerotinia host
-  (sunflower, soybean) more often than every 3 years (scorer rotation rule, NDSU A1995 p. 46, see
-  `data/processed/rotation_scores/README.md`).
+  `crop_scorer/scoring/ui_input_mock.json` (a mock until the UI sends weights). Picks have at most one Sclerotinia host
+  (sunflower or soybean) per pass (scorer rotation rule, NDSU A1995 p. 46, see `data/processed/rotation_scores/README.md`).
 
 ## What a rotation looks like
 
