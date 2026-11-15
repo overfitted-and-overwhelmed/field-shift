@@ -20,7 +20,8 @@ be skipped (the next crop missed its planting window). So the number of seasons 
 fixed, and seasons are not one per year.
 
 Who computes what: the scorer decides the seasons (dates) and computes water and temperature risk;
-we take them over. Yield comes from us (WP3). Values nobody computes yet (nitrogen, WP4) are null.
+we take them over, also its N fertilizer need per season (K-State). Yield comes from us (WP3). What nobody
+computes (monthly N balance, N loss) is null.
 Placeholders are marked with ``placeholder=True``.
 
 Units are part of the field names: ``_in`` inches of water, ``_lb`` lb N per acre, ``_ft`` feet,
@@ -41,7 +42,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "6.1.0-draft"
+CONTRACT_VERSION = "6.2.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -248,8 +249,9 @@ class SeasonDetail(ScorerSeason):
 
     irr_in: Spread  # from the scorer's water balance, with the season's irrigation level applied
     yield_: YieldSpread = Field(alias="yield")
-    n_lb: float | None = Field(default=None, ge=0)  # null until WP4 Nitrogen delivers
-    n_adj_lb: float | None = None  # previous-crop adjustment, can be negative (e.g. after soybean)
+    n_lb: float = Field(ge=0)  # N fertilizer of the season after K-State MF2586, from the scorer
+    # previous-crop adjustment in that formula (+27.5 lb after a cover crop), negative = credit (e.g. after soybean)
+    n_adj_lb: float
     yield_pct_rotation: float
     effects: list[Effect]
 
@@ -261,7 +263,7 @@ class SeasonDetail(ScorerSeason):
 
 
 class MonthNitrogen(_Strict):
-    """Nitrogen balance of one month (WP4, not computed yet)."""
+    """Nitrogen balance of one month (not computed: K-State gives the need per season, no monthly balance)."""
 
     fert_lb: float = Field(ge=0)
     uptake_lb: float = Field(ge=0)
@@ -291,7 +293,7 @@ class MonthDetail(_Strict):
     heat_years_pct: float = Field(ge=0, le=100)
     cold_stress_years_pct: float = Field(ge=0, le=100)
     kill_years_pct: float = Field(ge=0, le=100)
-    nitrogen: MonthNitrogen | None = None  # null until WP4 Nitrogen delivers
+    nitrogen: MonthNitrogen | None = None  # null, see MonthNitrogen
 
     @model_validator(mode="after")
     def _crop_matches_kind(self) -> MonthDetail:
@@ -303,10 +305,12 @@ class MonthDetail(_Strict):
 
 
 class Summary(_Strict):
-    bare_months: float = Field(ge=0, le=12)  # months per year without crop or cover, mean over the window
+    # months per year without crop or cover INSIDE the window (first sowing to last harvest): the gap after the last
+    # harvest is not counted (team decision; the scorer sows no cover crop there). Not per cycle like kpi.*_per_year.
+    bare_months: float = Field(ge=0, le=12)
     # Seasons whose crop equals the crop before it; season 0 compares to field.previous_crop.
     same_crop_repeats: int = Field(ge=0)
-    n_loss_lb: float | None = Field(default=None, ge=0)  # null until WP4 Nitrogen delivers
+    n_loss_lb: float | None = Field(default=None, ge=0)  # null: N losses are not modelled
 
 
 def _month(d: date) -> str:

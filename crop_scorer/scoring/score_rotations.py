@@ -27,7 +27,7 @@ from pathlib import Path
 import pandas as pd
 
 from crop_scorer.risk_score import load_crop_configs, load_temperature_data, rotation_daily_risk
-from crop_scorer.scoring.nitrogen import rotation_n_need_kg, season_n_need_kg
+from crop_scorer.scoring.nitrogen import LB_PER_AC_TO_KG_PER_HA, rotation_n_need_kg, season_n_adjustment_lb, season_n_need_kg
 from crop_scorer.water_usage.water_usage import COVER_CROP, FIRST_YEAR, LAST_YEAR, REPO, load_crop_params, simulate
 
 OUT_DIR = REPO / "data/processed/rotation_scores"
@@ -80,6 +80,8 @@ def rotation_days(rotation: list[str], cover: bool = False) -> pd.DataFrame:
         daily, seasons = simulate(rotation, start_year, cover)
         if len(seasons) < len(rotation):
             continue  # the pass does not fit into the weather data
+        # the rotation repeats with the next pass: cycle = first sowing to its first sowing (NaN if past the data)
+        cycle_days = (seasons[len(rotation)][1] - seasons[0][1]).days if len(seasons) > len(rotation) else float("nan")
         seasons = seasons[: len(rotation)]
         all_seasons += seasons
         window = daily.loc[seasons[0][1] : seasons[-1][2] - pd.Timedelta(days=1)]
@@ -90,6 +92,7 @@ def rotation_days(rotation: list[str], cover: bool = False) -> pd.DataFrame:
         assert (in_crop == window["main_crop"].to_numpy()).all()
         windows.append(pd.DataFrame({
             "start_year": start_year,
+            "cycle_days": cycle_days,
             "date": window.index,
             "segment": 2 * season + (~in_crop).astype(int),
             "crop": window["crop"].to_numpy(),
@@ -121,6 +124,7 @@ def after_cover(rotation: list[str], days: pd.DataFrame, start_year: int) -> lis
 def score_days(rotation: list[str], days: pd.DataFrame, cover: bool = False) -> dict:
     per_year = days.assign(cover=days["crop"] == COVER_CROP, cover_eta=days["eta"].where(days["crop"] == COVER_CROP)).groupby("start_year").agg(
         window_days=("date", "size"),
+        cycle_days=("cycle_days", "first"),
         crop_days=("daily_score", "count"),
         cover_days=("cover", "sum"),
         cover_eta_mm=("cover_eta", "sum"),
@@ -143,7 +147,7 @@ def score_days(rotation: list[str], days: pd.DataFrame, cover: bool = False) -> 
         "cover": COVER_CROP if cover else "",
         "n_start_years": len(per_year),
         **{col: mean[col] for col in CRITERIA.values()},
-        **{col: mean[col] for col in ["window_days", "irrigation_mm", "n_fertilizer_kg", "cover_days", "cover_eta_mm",
+        **{col: mean[col] for col in ["window_days", "cycle_days", "irrigation_mm", "n_fertilizer_kg", "cover_days", "cover_eta_mm",
                                       "frost_days", "heat_days", "kill_days"]},
     }
 
@@ -244,12 +248,13 @@ def season_by_year(days: pd.DataFrame) -> pd.DataFrame:
     out["cover"] = out["cover"].fillna("")
     out[["cover_days", "cover_eta_mm"]] = out[["cover_days", "cover_eta_mm"]].fillna(0)
     out = out.sort_values(["start_year", "season"], ignore_index=True)
-    previous = out.groupby("start_year")["crop"].shift()
+    previous = [p if isinstance(p, str) else None for p in out.groupby("start_year")["crop"].shift()]
     previous_cover = out.groupby("start_year")["cover"].shift().fillna("") != ""
-    out["n_fertilizer_kg_ha"] = [season_n_need_kg(c, p if isinstance(p, str) else None, a) for c, p, a in zip(out["crop"], previous, previous_cover)]
+    out["n_fertilizer_kg_ha"] = [season_n_need_kg(c, p, a) for c, p, a in zip(out["crop"], previous, previous_cover)]
+    out["n_adjustment_kg_ha"] = [season_n_adjustment_lb(c, p, a) * LB_PER_AC_TO_KG_PER_HA for c, p, a in zip(out["crop"], previous, previous_cover)]
     return out[["season", "crop", "start_year", "sow_date", "harvest_date", "harvest_year", "season_days", "etc_mm", "eta_mm",
                 "precipitation_mm", "irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days", "n_fertilizer_kg_ha",
-                "cover", "cover_sow_date", "cover_end_date", "cover_days", "cover_eta_mm"]]
+                "n_adjustment_kg_ha", "cover", "cover_sow_date", "cover_end_date", "cover_days", "cover_eta_mm"]]
 
 
 def season_table(days: pd.DataFrame) -> pd.DataFrame:

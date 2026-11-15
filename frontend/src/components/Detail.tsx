@@ -38,7 +38,7 @@ function Seasons({ r, units }: { r: Rotation; units: Units }) {
   return (
     <div className="scroll">
       <table className="all seasons">
-        <thead><tr><th>Crop</th><th>Planted</th><th>Harvested</th><th>Irrigation need</th><th>Yield</th><th>After harvest</th></tr></thead>
+        <thead><tr><th>Crop</th><th>Planted</th><th>Harvested</th><th>Irrigation need</th><th>Yield</th><th>N fertilizer</th><th>After harvest</th></tr></thead>
         <tbody>
           {r.sequence.map((s, i) => (
             <tr key={i}>
@@ -47,6 +47,7 @@ function Seasons({ r, units }: { r: Rotation; units: Units }) {
               <td>{day(s.harvest_date)}</td>
               <td>{fmtWater(s.irr_in.v, units)}<small className="rng">{fmtWaterNum(s.irr_in.p10, units)}–{fmtWaterNum(s.irr_in.p90, units)}</small></td>
               <td data-tip={s.effects.map((e) => e.text).join(' · ') || undefined}>{yieldText(s)}<small className="rng">{Math.round(s.yield.p10).toLocaleString('en-US')}–{Math.round(s.yield.p90).toLocaleString('en-US')}</small></td>
+              <td data-tip={s.n_adj_lb ? `incl. previous-crop adjustment ${s.n_adj_lb > 0 ? '+' : ''}${Math.round(s.n_adj_lb)} lb` : undefined}>{s.n_lb != null ? `${Math.round(s.n_lb)} lb/ac` : '–'}</td>
               <td>{i === r.sequence.length - 1 ? '–' : s.cover ? `${cropLabel(s.cover)} cover` : 'bare'}</td>
             </tr>
           ))}

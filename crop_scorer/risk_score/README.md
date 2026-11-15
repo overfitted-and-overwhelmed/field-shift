@@ -9,7 +9,7 @@ Temperature risk score for 5 crops (winter wheat, corn, sorghum, soybean, sunflo
 | Source | Used for |
 |---|---|
 | NASA POWER daily Tmin / Tmax / Tmean (`power_daily_long.csv`) | daily temperatures |
-| Ecocrop (`ecocrop_selected_crops.csv`) | optimum / absolute temperature limits, kill temperatures |
+| Ecocrop (`ecocrop_selected_crops.csv`) | optimum / absolute temperature limits, kill temperature during rest (winter wheat) |
 | NASS Kansas crop calendar | most-active sowing and harvest window per crop |
 | FAO-56 table 11, Ecocrop crop cycle | plausibility check of season length only |
 
@@ -19,8 +19,8 @@ Temperature risk score for 5 crops (winter wheat, corn, sorghum, soybean, sunflo
 2. **Daily score:**
    - **Heat:** on Tmax. 0 at `temp_opt_max`, 1 at `temp_abs_max`, keeps rising above (no cap, no heat kill).
    - **Frost:** on Tmin. 0 at `temp_opt_min`, 1 at `temp_abs_min` (capped).
-   - **Cold kill:** Tmin < 0 °C. Day scores +100 and replaces the stress value.
-   - **Winter wheat dormancy** (1 Nov – 31 Mar): no frost stress, kill only below −20 °C.
+   - **Cold kill:** only winter wheat in its dormancy (1 Nov – 31 Mar): Tmin < −20 °C (Ecocrop, killing temperature during rest). Day scores 100 and replaces the stress value. No frost stress during dormancy.
+   - **No kill outside the dormancy:** no crop has a documented killing temperature for the whole season, so cold only counts as frost stress (see Limits).
 3. **Season score:** mean of the daily scores.
 4. **Yearly score** (`risk_score`, per crop and sowing year): the season score of that one season. Also counts of frost / heat / kill days (`frost_days`, `heat_days`, `kill_days`).
 
@@ -40,18 +40,18 @@ Writes to `data/processed/crop_risk_score/` (git-ignored): `risk_score_annual.cs
 
 | Crop | `risk_score` | Kill days / season |
 |---|---|---|
-| Corn | 0.55 | 0.23 |
-| Sorghum | 0.78 | 0.34 |
-| Soybean | 0.85 | 0.29 |
-| Sunflower | 0.72 | 0.57 |
-| Winter wheat | 3.23 | 6.85 |
+| Corn | 0.41 | 0 |
+| Sorghum | 0.53 | 0 |
+| Soybean | 0.64 | 0 |
+| Sunflower | 0.29 | 0 |
+| Winter wheat | 0.75 | 0.15 |
 
 ## Limits and missing data
 
 - **Temperature only:** no precipitation, soil moisture, soil, light or disease.
 - **Ecocrop limits are for mean temperature,** we apply them to Tmin / Tmax (approximation).
-- **Kill temperature is an assumption for corn, sorghum and soybean** (Ecocrop has none): 0 °C. Winter wheat and sunflower use Ecocrop's 0 °C. Sunflower's Ecocrop dormancy value (−10 °C) is ignored (it does not overwinter).
-- **Dormancy window is an approximation** and drives the winter wheat score strongly (1 Dec – 28 Feb gave 15.07, 1 Nov – 31 Mar gives 3.23). Change via `DEFAULT_WINTER_REST_START/END` in `config.py`.
+- **No kill temperature outside the winter wheat dormancy.** Ecocrop has none for corn, sorghum and soybean. For winter wheat and sunflower it gives 0 °C for *early growth* only (seedlings), not for the whole season; applied to the whole season it made every night below 0 °C in April and October a kill day for wheat (6.85 per season, 97 % of years). K-State puts the injurious temperature of wheat much lower (about −11 °C at tillering, −4 °C at jointing, for 2 hours; K-State C646 *Spring Freeze Injury to Kansas Wheat*, https://bookstore.ksre.ksu.edu/pubs/C646.PDF), but using it needs the wheat growth stages, which we do not model. Frost below the optimum still counts as stress. Sunflower's Ecocrop dormancy value (−10 °C) is ignored (it does not overwinter).
+- **Dormancy window is an approximation.** Change via `DEFAULT_WINTER_REST_START/END` in `config.py`.
 - **No heat kill:** heat is only penalised through the uncapped severity.
 - **Season length comes from NASS** and is the same every year (no year-specific sowing dates). One fixed sowing day per crop (middle of the most-active window), so the score does not show the effect of early vs. late sowing. Winter wheat 268 d is above Ecocrop's max (250 d, warning only). FAO-56 has no Central-USA entry for corn.
 - **Ecocrop has no triticale:** rye is in the file but not used.

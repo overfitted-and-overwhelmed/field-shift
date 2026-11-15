@@ -75,6 +75,7 @@ CASES = [
     ("planted after harvest", lambda d, r: r["sequence"][0].update(plant_date="2027-11-01"), "not before harvest_date"),
     ("seasons overlap", lambda d, r: r["sequence"][1].update(plant_date=r["sequence"][0]["plant_date"]), "before .* is harvested"),
     ("window misses its last month", lambda d, r: r["monthly"].pop(), "without gaps"),
+    ("nitrogen missing", lambda d, r: r["sequence"][0].pop("n_lb"), "n_lb"),
 ]
 
 

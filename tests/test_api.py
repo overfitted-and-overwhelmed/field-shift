@@ -31,4 +31,4 @@ def test_picks_use_only_the_chosen_crops():
     assert [r.rank for r in picks] == [1, 2]
     for r in picks:
         assert {s.crop for s in r.sequence} <= {"corn", "soybean"}
-    assert all(r.kpi["n_fertilizer_lb"] >= 0 for r in export.rotations)
+    assert all(r.kpi["n_lb_per_year"] >= 0 for r in export.rotations)

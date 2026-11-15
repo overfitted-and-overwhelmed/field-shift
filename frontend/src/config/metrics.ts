@@ -34,7 +34,7 @@ export const METRICS: MetricDef[] = [
     fmt: (v) => `${num(v)} d`, delta: (a, s) => `${num(a)} d ${fewerMore(s)}` },
   { key: 'heat_days', group: 'risk', label: 'Heat stress days', short: 'heat', sub: () => 'per year, days above the crop’s optimum', tag: 'modeled', better: 'lower',
     fmt: (v) => `${Math.round(v)} d`, delta: (a, s) => `${Math.round(a)} d ${fewerMore(s)}` },
-  { key: 'bare_months', group: 'soil_health', label: 'Bare-soil months', short: 'bare soil', sub: () => 'per year without crop or cover', tag: 'rule', better: 'lower',
+  { key: 'bare_months', group: 'soil_health', label: 'Bare-soil months', short: 'bare soil', sub: () => 'per year within the rotation (first sowing to last harvest), without crop or cover', tag: 'rule', better: 'lower',
     fmt: (v) => `${num(v)} mo`, delta: (a, s) => `${num(a)} mo ${fewerMore(s)}` },
   { key: 'cover_seasons', group: 'soil_health', label: 'Cover crop gaps', short: 'cover crop', sub: () => 'gaps between crops with a triticale cover', tag: 'rule', better: 'higher',
     fmt: (v) => String(v), delta: (a, s) => `${a} ${s > 0 ? 'more' : 'fewer'}` },

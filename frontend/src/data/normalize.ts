@@ -15,11 +15,13 @@ function windowDays(r: ApiRotation): number {
  */
 function deriveKpis(r: ApiRotation, years: number): Record<string, Kpi> {
   const k = r.kpi ?? {};
-  const perYear = (v: number) => v / years;
+  // per year of the cycle (first sowing to the next pass's first sowing), like the scorer's *_per_year values
+  const cycleYears = k.cycle_days != null ? k.cycle_days / DAYS_PER_YEAR : years;
+  const perYear = (v: number) => v / cycleYears;
   const out: Record<string, Kpi> = {};
   const irr = r.sequence.reduce((a, s) => ({ v: a.v + s.irr_in.v, lo: a.lo + s.irr_in.p10, hi: a.hi + s.irr_in.p90 }), { v: 0, lo: 0, hi: 0 });
-  out.irrigation_in = { v: perYear(k.irrigation_in ?? irr.v), lo: perYear(irr.lo), hi: perYear(irr.hi) };
-  if (k.n_fertilizer_lb != null) out.n_lb = { v: perYear(k.n_fertilizer_lb) };
+  out.irrigation_in = { v: k.irrigation_in_per_year ?? perYear(k.irrigation_in ?? irr.v), lo: perYear(irr.lo), hi: perYear(irr.hi) };
+  if (k.n_lb_per_year != null) out.n_lb = { v: k.n_lb_per_year };
   if (k.risk_per_crop_day != null) out.risk = { v: k.risk_per_crop_day };
   if (k.kill_days != null) out.kill_days = { v: perYear(k.kill_days) };
   if (k.heat_days != null) out.heat_days = { v: perYear(k.heat_days) };
