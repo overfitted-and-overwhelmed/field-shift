@@ -55,6 +55,63 @@
         "n_lb_per_year": 265.85896948625305,
         "rank_all": 222,
         "n_rotations": 225
+      },
+      "cover_variant": {
+        "id": "corn-corn-corn+triticale",
+        "is_current": true,
+        "rank": null,
+        "name": "Corn · Corn · Corn + triticale cover",
+        "short": "Your rotation",
+        "category": null,
+        "sequence": [
+          {
+            "year": 2027,
+            "crop": "corn",
+            "irrigation": "full",
+            "cover": "triticale",
+            "plant_date": "2027-04-30",
+            "harvest_date": "2027-10-02"
+          },
+          {
+            "year": 2028,
+            "crop": "corn",
+            "irrigation": "full",
+            "cover": "triticale",
+            "plant_date": "2028-04-29",
+            "harvest_date": "2028-10-01"
+          },
+          {
+            "year": 2029,
+            "crop": "corn",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2029-04-30",
+            "harvest_date": "2029-10-02"
+          }
+        ],
+        "score": 0.4729,
+        "score_parts": {
+          "water": 0.5496,
+          "risk": 0.2403,
+          "soil_health": 0.1422,
+          "nitrogen": 0.9597
+        },
+        "kpi": {
+          "risk_per_crop_day": 0.409875,
+          "bare_share": 0.0858258,
+          "window_days": 885.515,
+          "cycle_days": 1095.75,
+          "heat_days": 190.152,
+          "kill_days": 0.0,
+          "water_in_per_day": 0.06672244094488189,
+          "irrigation_in": 59.08346456692914,
+          "n_lb": 852.577074769249,
+          "irrigation_in_per_year": 19.69448818897638,
+          "n_lb_per_year": 284.1923582564163,
+          "rank_all": 111,
+          "n_rotations": 225
+        },
+        "cover_variant": null
       }
     },
     {
@@ -111,6 +168,63 @@
         "n_lb_per_year": 122.37366746568297,
         "rank_all": 1,
         "n_rotations": 225
+      },
+      "cover_variant": {
+        "id": "sunflower-sunflower-sunflower",
+        "is_current": false,
+        "rank": 1,
+        "name": "Sunflower · Sunflower · Sunflower",
+        "short": "Pick #1",
+        "category": null,
+        "sequence": [
+          {
+            "year": 2027,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2027-06-12",
+            "harvest_date": "2027-10-23"
+          },
+          {
+            "year": 2028,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2028-06-11",
+            "harvest_date": "2028-10-22"
+          },
+          {
+            "year": 2029,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2029-06-12",
+            "harvest_date": "2029-10-23"
+          }
+        ],
+        "score": 0.3392,
+        "score_parts": {
+          "water": 0.0,
+          "risk": 0.0,
+          "soil_health": 0.9965,
+          "nitrogen": 0.3603
+        },
+        "kpi": {
+          "risk_per_crop_day": 0.297194,
+          "bare_share": 0.537935,
+          "window_days": 863.515,
+          "cycle_days": 1095.75,
+          "heat_days": 143.545,
+          "kill_days": 0.0,
+          "water_in_per_day": 0.037746653543307085,
+          "irrigation_in": 32.59437007874016,
+          "n_lb": 312.12172826568064,
+          "irrigation_in_per_year": 10.864790026246721,
+          "n_lb_per_year": 104.04057608856021,
+          "rank_all": 39,
+          "n_rotations": 225
+        },
+        "cover_variant": null
       }
     },
     {
@@ -167,6 +281,63 @@
         "n_lb_per_year": 65.19361016803559,
         "rank_all": 2,
         "n_rotations": 225
+      },
+      "cover_variant": {
+        "id": "sunflower-soybean-sunflower",
+        "is_current": false,
+        "rank": 2,
+        "name": "Sunflower · Soybean · Sunflower",
+        "short": "Pick #2",
+        "category": null,
+        "sequence": [
+          {
+            "year": 2027,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2027-06-12",
+            "harvest_date": "2027-10-23"
+          },
+          {
+            "year": 2028,
+            "crop": "soybean",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2028-06-01",
+            "harvest_date": "2028-10-15"
+          },
+          {
+            "year": 2029,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2029-06-12",
+            "harvest_date": "2029-10-23"
+          }
+        ],
+        "score": 0.3913,
+        "score_parts": {
+          "water": 0.1286,
+          "risk": 0.2527,
+          "soil_health": 0.9899,
+          "nitrogen": 0.194
+        },
+        "kpi": {
+          "risk_per_crop_day": 0.415679,
+          "bare_share": 0.534461,
+          "window_days": 863.515,
+          "cycle_days": 1095.75,
+          "heat_days": 154.879,
+          "kill_days": 0.0,
+          "water_in_per_day": 0.044525984251968506,
+          "irrigation_in": 38.448228346456695,
+          "n_lb": 168.08119343842262,
+          "irrigation_in_per_year": 12.816076115485565,
+          "n_lb_per_year": 56.027064479474205,
+          "rank_all": 62,
+          "n_rotations": 225
+        },
+        "cover_variant": null
       }
     },
     {
@@ -223,6 +394,63 @@
         "n_lb_per_year": 74.36015585659696,
         "rank_all": 3,
         "n_rotations": 225
+      },
+      "cover_variant": {
+        "id": "soybean-sunflower-sunflower",
+        "is_current": false,
+        "rank": 3,
+        "name": "Soybean · Sunflower · Sunflower",
+        "short": "Pick #3",
+        "category": null,
+        "sequence": [
+          {
+            "year": 2027,
+            "crop": "soybean",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2027-06-02",
+            "harvest_date": "2027-10-16"
+          },
+          {
+            "year": 2028,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2028-06-11",
+            "harvest_date": "2028-10-22"
+          },
+          {
+            "year": 2029,
+            "crop": "sunflower",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2029-06-12",
+            "harvest_date": "2029-10-23"
+          }
+        ],
+        "score": 0.3901,
+        "score_parts": {
+          "water": 0.1195,
+          "risk": 0.249,
+          "soil_health": 1.0,
+          "nitrogen": 0.1918
+        },
+        "kpi": {
+          "risk_per_crop_day": 0.41395,
+          "bare_share": 0.53979,
+          "window_days": 873.515,
+          "cycle_days": 1095.75,
+          "heat_days": 154.848,
+          "kill_days": 0.0,
+          "water_in_per_day": 0.04404566929133858,
+          "irrigation_in": 38.47417322834646,
+          "n_lb": 168.08119343842262,
+          "irrigation_in_per_year": 12.82472440944882,
+          "n_lb_per_year": 56.027064479474205,
+          "rank_all": 58,
+          "n_rotations": 225
+        },
+        "cover_variant": null
       }
     }
   ]
