@@ -53,7 +53,7 @@
         "n_lb": 797.5769084587591,
         "irrigation_in_per_year": 18.920997375328085,
         "n_lb_per_year": 265.85896948625305,
-        "rank_all": 222,
+        "rank_all": 138,
         "n_rotations": 225
       },
       "cover_variant": {
@@ -108,35 +108,35 @@
           "n_lb": 852.577074769249,
           "irrigation_in_per_year": 19.69448818897638,
           "n_lb_per_year": 284.1923582564163,
-          "rank_all": 111,
+          "rank_all": 51,
           "n_rotations": 225
         },
         "cover_variant": null
       }
     },
     {
-      "id": "sunflower-sunflower-sunflower+triticale",
+      "id": "sorghum-sorghum-sunflower+triticale",
       "is_current": false,
       "rank": 1,
-      "name": "Sunflower · Sunflower · Sunflower + triticale cover",
+      "name": "Sorghum · Sorghum · Sunflower + triticale cover",
       "short": "Pick #1",
       "category": null,
       "sequence": [
         {
           "year": 2027,
-          "crop": "sunflower",
+          "crop": "sorghum",
           "irrigation": "full",
           "cover": "triticale",
-          "plant_date": "2027-06-12",
-          "harvest_date": "2027-10-23"
+          "plant_date": "2027-06-02",
+          "harvest_date": "2027-10-18"
         },
         {
           "year": 2028,
-          "crop": "sunflower",
+          "crop": "sorghum",
           "irrigation": "full",
           "cover": "triticale",
-          "plant_date": "2028-06-11",
-          "harvest_date": "2028-10-22"
+          "plant_date": "2028-06-01",
+          "harvest_date": "2028-10-17"
         },
         {
           "year": 2029,
@@ -147,43 +147,156 @@
           "harvest_date": "2029-10-23"
         }
       ],
-      "score": 0.1602,
+      "score": 0.2902,
       "score_parts": {
-        "water": 0.0707,
-        "risk": 0.0,
-        "soil_health": 0.1463,
-        "nitrogen": 0.4238
+        "water": 0.1054,
+        "risk": 0.3415,
+        "soil_health": 0.1444,
+        "nitrogen": 0.5695
       },
       "kpi": {
-        "risk_per_crop_day": 0.297194,
-        "bare_share": 0.0880124,
-        "window_days": 863.515,
+        "risk_per_crop_day": 0.457315,
+        "bare_share": 0.0870048,
+        "window_days": 873.515,
         "cycle_days": 1095.75,
-        "heat_days": 143.545,
+        "heat_days": 131.455,
         "kill_days": 0.0,
-        "water_in_per_day": 0.04147165354330709,
-        "irrigation_in": 35.81090551181102,
-        "n_lb": 367.1210023970489,
-        "irrigation_in_per_year": 11.936968503937008,
-        "n_lb_per_year": 122.37366746568297,
+        "water_in_per_day": 0.04330472440944882,
+        "irrigation_in": 37.82677165354331,
+        "n_lb": 499.0546665439276,
+        "irrigation_in_per_year": 12.608923884514438,
+        "n_lb_per_year": 166.35155551464254,
         "rank_all": 1,
         "n_rotations": 225
       },
       "cover_variant": {
-        "id": "sunflower-sunflower-sunflower",
+        "id": "sorghum-sorghum-sunflower",
         "is_current": false,
         "rank": 1,
-        "name": "Sunflower · Sunflower · Sunflower",
+        "name": "Sorghum · Sorghum · Sunflower",
         "short": "Pick #1",
         "category": null,
         "sequence": [
           {
             "year": 2027,
+            "crop": "sorghum",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2027-06-02",
+            "harvest_date": "2027-10-18"
+          },
+          {
+            "year": 2028,
+            "crop": "sorghum",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2028-06-01",
+            "harvest_date": "2028-10-17"
+          },
+          {
+            "year": 2029,
             "crop": "sunflower",
             "irrigation": "full",
             "cover": null,
-            "plant_date": "2027-06-12",
-            "harvest_date": "2027-10-23"
+            "plant_date": "2029-06-12",
+            "harvest_date": "2029-10-23"
+          }
+        ],
+        "score": 0.4678,
+        "score_parts": {
+          "water": 0.0382,
+          "risk": 0.3415,
+          "soil_health": 0.9849,
+          "nitrogen": 0.5067
+        },
+        "kpi": {
+          "risk_per_crop_day": 0.457315,
+          "bare_share": 0.531777,
+          "window_days": 873.515,
+          "cycle_days": 1095.75,
+          "heat_days": 131.455,
+          "kill_days": 0.0,
+          "water_in_per_day": 0.03976141732283465,
+          "irrigation_in": 34.731889763779535,
+          "n_lb": 444.05539241255934,
+          "irrigation_in_per_year": 11.577296587926512,
+          "n_lb_per_year": 148.01846413751977,
+          "rank_all": 46,
+          "n_rotations": 225
+        },
+        "cover_variant": null
+      }
+    },
+    {
+      "id": "sorghum-sunflower-sorghum+triticale",
+      "is_current": false,
+      "rank": 2,
+      "name": "Sorghum · Sunflower · Sorghum + triticale cover",
+      "short": "Pick #2",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sorghum",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-02",
+          "harvest_date": "2027-10-18"
+        },
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22"
+        },
+        {
+          "year": 2029,
+          "crop": "sorghum",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-02",
+          "harvest_date": "2029-10-18"
+        }
+      ],
+      "score": 0.2918,
+      "score_parts": {
+        "water": 0.1078,
+        "risk": 0.3412,
+        "soil_health": 0.1454,
+        "nitrogen": 0.5727
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.45718,
+        "bare_share": 0.0875057,
+        "window_days": 868.515,
+        "cycle_days": 1095.75,
+        "heat_days": 131.515,
+        "kill_days": 0.0,
+        "water_in_per_day": 0.043429921259842526,
+        "irrigation_in": 37.719173228346456,
+        "n_lb": 499.0546665439276,
+        "irrigation_in_per_year": 12.573057742782153,
+        "n_lb_per_year": 166.35155551464254,
+        "rank_all": 2,
+        "n_rotations": 225
+      },
+      "cover_variant": {
+        "id": "sorghum-sunflower-sorghum",
+        "is_current": false,
+        "rank": 2,
+        "name": "Sorghum · Sunflower · Sorghum",
+        "short": "Pick #2",
+        "category": null,
+        "sequence": [
+          {
+            "year": 2027,
+            "crop": "sorghum",
+            "irrigation": "full",
+            "cover": null,
+            "plant_date": "2027-06-02",
+            "harvest_date": "2027-10-18"
           },
           {
             "year": 2028,
@@ -195,44 +308,44 @@
           },
           {
             "year": 2029,
-            "crop": "sunflower",
+            "crop": "sorghum",
             "irrigation": "full",
             "cover": null,
-            "plant_date": "2029-06-12",
-            "harvest_date": "2029-10-23"
+            "plant_date": "2029-06-02",
+            "harvest_date": "2029-10-18"
           }
         ],
-        "score": 0.3392,
+        "score": 0.4673,
         "score_parts": {
-          "water": 0.0,
-          "risk": 0.0,
-          "soil_health": 0.9965,
-          "nitrogen": 0.3603
+          "water": 0.0385,
+          "risk": 0.3412,
+          "soil_health": 0.9798,
+          "nitrogen": 0.5096
         },
         "kpi": {
-          "risk_per_crop_day": 0.297194,
-          "bare_share": 0.537935,
-          "window_days": 863.515,
+          "risk_per_crop_day": 0.45718,
+          "bare_share": 0.529081,
+          "window_days": 868.515,
           "cycle_days": 1095.75,
-          "heat_days": 143.545,
+          "heat_days": 131.515,
           "kill_days": 0.0,
-          "water_in_per_day": 0.037746653543307085,
-          "irrigation_in": 32.59437007874016,
-          "n_lb": 312.12172826568064,
-          "irrigation_in_per_year": 10.864790026246721,
-          "n_lb_per_year": 104.04057608856021,
-          "rank_all": 39,
+          "water_in_per_day": 0.039777165354330714,
+          "irrigation_in": 34.5465748031496,
+          "n_lb": 444.05539241255934,
+          "irrigation_in_per_year": 11.515524934383201,
+          "n_lb_per_year": 148.01846413751977,
+          "rank_all": 45,
           "n_rotations": 225
         },
         "cover_variant": null
       }
     },
     {
-      "id": "sunflower-soybean-sunflower+triticale",
+      "id": "sunflower-sorghum-sorghum+triticale",
       "is_current": false,
-      "rank": 2,
-      "name": "Sunflower · Soybean · Sunflower + triticale cover",
-      "short": "Pick #2",
+      "rank": 3,
+      "name": "Sunflower · Sorghum · Sorghum + triticale cover",
+      "short": "Pick #3",
       "category": null,
       "sequence": [
         {
@@ -245,49 +358,49 @@
         },
         {
           "year": 2028,
-          "crop": "soybean",
+          "crop": "sorghum",
           "irrigation": "full",
           "cover": "triticale",
           "plant_date": "2028-06-01",
-          "harvest_date": "2028-10-15"
+          "harvest_date": "2028-10-17"
         },
         {
           "year": 2029,
-          "crop": "sunflower",
+          "crop": "sorghum",
           "irrigation": "full",
           "cover": null,
-          "plant_date": "2029-06-12",
-          "harvest_date": "2029-10-23"
+          "plant_date": "2029-06-02",
+          "harvest_date": "2029-10-18"
         }
       ],
-      "score": 0.2044,
+      "score": 0.2977,
       "score_parts": {
-        "water": 0.1927,
-        "risk": 0.2527,
-        "soil_health": 0.1463,
-        "nitrogen": 0.2258
+        "water": 0.1216,
+        "risk": 0.3427,
+        "soil_health": 0.1473,
+        "nitrogen": 0.5794
       },
       "kpi": {
-        "risk_per_crop_day": 0.415679,
-        "bare_share": 0.0880124,
-        "window_days": 863.515,
+        "risk_per_crop_day": 0.457871,
+        "bare_share": 0.088525,
+        "window_days": 858.515,
         "cycle_days": 1095.75,
-        "heat_days": 154.879,
+        "heat_days": 131.606,
         "kill_days": 0.0,
-        "water_in_per_day": 0.04790354330708662,
-        "irrigation_in": 41.36496062992126,
-        "n_lb": 195.58083050410676,
-        "irrigation_in_per_year": 13.788320209973755,
-        "n_lb_per_year": 65.19361016803559,
-        "rank_all": 2,
+        "water_in_per_day": 0.044157874015748035,
+        "irrigation_in": 37.90984251968504,
+        "n_lb": 499.0546665439276,
+        "irrigation_in_per_year": 12.636614173228347,
+        "n_lb_per_year": 166.35155551464254,
+        "rank_all": 3,
         "n_rotations": 225
       },
       "cover_variant": {
-        "id": "sunflower-soybean-sunflower",
+        "id": "sunflower-sorghum-sorghum",
         "is_current": false,
-        "rank": 2,
-        "name": "Sunflower · Soybean · Sunflower",
-        "short": "Pick #2",
+        "rank": 3,
+        "name": "Sunflower · Sorghum · Sorghum",
+        "short": "Pick #3",
         "category": null,
         "sequence": [
           {
@@ -300,154 +413,41 @@
           },
           {
             "year": 2028,
-            "crop": "soybean",
+            "crop": "sorghum",
             "irrigation": "full",
             "cover": null,
             "plant_date": "2028-06-01",
-            "harvest_date": "2028-10-15"
+            "harvest_date": "2028-10-17"
           },
           {
             "year": 2029,
-            "crop": "sunflower",
+            "crop": "sorghum",
             "irrigation": "full",
             "cover": null,
-            "plant_date": "2029-06-12",
-            "harvest_date": "2029-10-23"
+            "plant_date": "2029-06-02",
+            "harvest_date": "2029-10-18"
           }
         ],
-        "score": 0.3913,
+        "score": 0.4702,
         "score_parts": {
-          "water": 0.1286,
-          "risk": 0.2527,
-          "soil_health": 0.9899,
-          "nitrogen": 0.194
+          "water": 0.0533,
+          "risk": 0.3427,
+          "soil_health": 0.9694,
+          "nitrogen": 0.5155
         },
         "kpi": {
-          "risk_per_crop_day": 0.415679,
-          "bare_share": 0.534461,
-          "window_days": 863.515,
+          "risk_per_crop_day": 0.457871,
+          "bare_share": 0.523596,
+          "window_days": 858.515,
           "cycle_days": 1095.75,
-          "heat_days": 154.879,
+          "heat_days": 131.606,
           "kill_days": 0.0,
-          "water_in_per_day": 0.044525984251968506,
-          "irrigation_in": 38.448228346456695,
-          "n_lb": 168.08119343842262,
-          "irrigation_in_per_year": 12.816076115485565,
-          "n_lb_per_year": 56.027064479474205,
-          "rank_all": 62,
-          "n_rotations": 225
-        },
-        "cover_variant": null
-      }
-    },
-    {
-      "id": "soybean-sunflower-sunflower+triticale",
-      "is_current": false,
-      "rank": 3,
-      "name": "Soybean · Sunflower · Sunflower + triticale cover",
-      "short": "Pick #3",
-      "category": null,
-      "sequence": [
-        {
-          "year": 2027,
-          "crop": "soybean",
-          "irrigation": "full",
-          "cover": "triticale",
-          "plant_date": "2027-06-02",
-          "harvest_date": "2027-10-16"
-        },
-        {
-          "year": 2028,
-          "crop": "sunflower",
-          "irrigation": "full",
-          "cover": "triticale",
-          "plant_date": "2028-06-11",
-          "harvest_date": "2028-10-22"
-        },
-        {
-          "year": 2029,
-          "crop": "sunflower",
-          "irrigation": "full",
-          "cover": null,
-          "plant_date": "2029-06-12",
-          "harvest_date": "2029-10-23"
-        }
-      ],
-      "score": 0.2093,
-      "score_parts": {
-        "water": 0.1894,
-        "risk": 0.249,
-        "soil_health": 0.1444,
-        "nitrogen": 0.2545
-      },
-      "kpi": {
-        "risk_per_crop_day": 0.41395,
-        "bare_share": 0.0870048,
-        "window_days": 873.515,
-        "cycle_days": 1095.75,
-        "heat_days": 154.848,
-        "kill_days": 0.0,
-        "water_in_per_day": 0.04773110236220472,
-        "irrigation_in": 41.693307086614176,
-        "n_lb": 223.0804675697909,
-        "irrigation_in_per_year": 13.897769028871393,
-        "n_lb_per_year": 74.36015585659696,
-        "rank_all": 3,
-        "n_rotations": 225
-      },
-      "cover_variant": {
-        "id": "soybean-sunflower-sunflower",
-        "is_current": false,
-        "rank": 3,
-        "name": "Soybean · Sunflower · Sunflower",
-        "short": "Pick #3",
-        "category": null,
-        "sequence": [
-          {
-            "year": 2027,
-            "crop": "soybean",
-            "irrigation": "full",
-            "cover": null,
-            "plant_date": "2027-06-02",
-            "harvest_date": "2027-10-16"
-          },
-          {
-            "year": 2028,
-            "crop": "sunflower",
-            "irrigation": "full",
-            "cover": null,
-            "plant_date": "2028-06-11",
-            "harvest_date": "2028-10-22"
-          },
-          {
-            "year": 2029,
-            "crop": "sunflower",
-            "irrigation": "full",
-            "cover": null,
-            "plant_date": "2029-06-12",
-            "harvest_date": "2029-10-23"
-          }
-        ],
-        "score": 0.3901,
-        "score_parts": {
-          "water": 0.1195,
-          "risk": 0.249,
-          "soil_health": 1.0,
-          "nitrogen": 0.1918
-        },
-        "kpi": {
-          "risk_per_crop_day": 0.41395,
-          "bare_share": 0.53979,
-          "window_days": 873.515,
-          "cycle_days": 1095.75,
-          "heat_days": 154.848,
-          "kill_days": 0.0,
-          "water_in_per_day": 0.04404566929133858,
-          "irrigation_in": 38.47417322834646,
-          "n_lb": 168.08119343842262,
-          "irrigation_in_per_year": 12.82472440944882,
-          "n_lb_per_year": 56.027064479474205,
-          "rank_all": 58,
+          "water_in_per_day": 0.04055826771653544,
+          "irrigation_in": 34.81968503937008,
+          "n_lb": 444.05539241255934,
+          "irrigation_in_per_year": 11.606561679790026,
+          "n_lb_per_year": 148.01846413751977,
+          "rank_all": 49,
           "n_rotations": 225
         },
         "cover_variant": null
