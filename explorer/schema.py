@@ -42,7 +42,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "6.2.0-draft"
+CONTRACT_VERSION = "6.3.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -214,11 +214,24 @@ class ScorerRotation(_Strict):
     score_parts: ScoreParts | None = None
     # The scorer owns the kpi values, so their shape is not fixed here (keys: explorer/build.py, in US units).
     kpi: dict[str, Any] | None = None
+    # The same crops with the cover crop toggled (with <-> without), for the cover crop switch in the UI. It takes
+    # the same slot (is_current, rank, short); score, kpi and everything else are its own. None if no gap of the
+    # rotation fits a cover crop. One level only: a variant has no variant itself.
+    cover_variant: ScorerRotation | None = None
 
     @model_validator(mode="after")
     def _check(self) -> ScorerRotation:
         if self.is_current and self.rank is not None:
             raise ValueError(f"rotation {self.id}: the current rotation must not have a rank")
+        if (v := self.cover_variant) is not None:
+            crops, _, cover = self.id.partition("+")
+            v_crops, _, v_cover = v.id.partition("+")
+            if v_crops != crops or bool(v_cover) == bool(cover):
+                raise ValueError(f"rotation {self.id}: cover_variant {v.id} is not the same crops with the cover toggled")
+            if (v.is_current, v.rank, v.short) != (self.is_current, self.rank, self.short):
+                raise ValueError(f"rotation {self.id}: cover_variant {v.id} must take the same slot (is_current, rank, short)")
+            if v.cover_variant is not None:
+                raise ValueError(f"rotation {self.id}: cover_variant {v.id} must not have a cover_variant itself")
         for before, after in zip(self.sequence, self.sequence[1:]):
             if after.plant_date < before.harvest_date:
                 raise ValueError(
@@ -327,6 +340,7 @@ class Rotation(ScorerRotation):
     sequence: list[SeasonDetail] = Field(min_length=1)
     monthly: list[MonthDetail] = Field(min_length=1)
     summary: Summary
+    cover_variant: Rotation | None = None  # see ScorerRotation.cover_variant, with our data added
 
     @model_validator(mode="after")
     def _months_cover_window(self) -> Rotation:

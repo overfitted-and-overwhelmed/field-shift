@@ -26,6 +26,7 @@ from crop_scorer.scoring.score_rotations import UI_INPUT_FILE, rank
 
 from explorer import field_climate, nitrogen, yields
 from explorer.field_calendar import (
+    COVER_CROPS,
     load_scorer_scores,
     monthly_kinds,
     parse_key,
@@ -94,7 +95,8 @@ LABELS = {crop: c.label for crop, c in field_climate.CROPS.items()}
 
 
 def scorer_rotation(key: str, start_year: int, *, is_current: bool, pick: int | None,
-                    total: float | None, parts: dict, kpi: dict) -> ScorerRotation:
+                    total: float | None, parts: dict, kpi: dict,
+                    cover_variant: ScorerRotation | None = None) -> ScorerRotation:
     """The scorer's view of one rotation, with its seasons moved to the display years."""
     crops, cover = parse_key(key)
     seasons = [
@@ -106,7 +108,7 @@ def scorer_rotation(key: str, start_year: int, *, is_current: bool, pick: int | 
     return ScorerRotation(
         id=key, is_current=is_current, rank=pick, name=name,
         short="Your rotation" if is_current else f"Pick #{pick}",
-        sequence=seasons, score=total, score_parts=ScoreParts(**parts), kpi=kpi,
+        sequence=seasons, score=total, score_parts=ScoreParts(**parts), kpi=kpi, cover_variant=cover_variant,
     )
 
 
@@ -121,8 +123,12 @@ def scorer_response(field_history: list[str], start_year: int, weights: dict[str
     current = rotation_key(main_crops[-length:])
     picks = [r for r in ranked.index if r != current][:N_PICKS]
 
-    def build(key: str, is_current: bool, pick: int | None) -> ScorerRotation:
+    def build(key: str, is_current: bool, pick: int | None, with_variant: bool = True) -> ScorerRotation:
         row = ranked.loc[key]
+        crops, cover = parse_key(key)
+        toggled = rotation_key(crops, None if cover else COVER_CROPS[0])
+        # the scorer only has a cover variant where a gap fits a cover crop
+        variant = build(toggled, is_current, pick, False) if with_variant and toggled in ranked.index else None
         kpi = ({c: float(row[c]) for c in KPI_COLUMNS}
                | {ours: float(row[mm]) / MM_PER_IN for mm, ours in KPI_MM_COLUMNS.items()}
                | {ours: float(row[kg]) / LB_PER_AC_TO_KG_PER_HA for kg, ours in KPI_KG_COLUMNS.items()}
@@ -132,7 +138,8 @@ def scorer_response(field_history: list[str], start_year: int, weights: dict[str
         parts = {name: row[f"{name}_score"] for name in ScoreParts.model_fields}  # one per scorer criterion
         return scorer_rotation(key, start_year, is_current=is_current, pick=pick,
                                total=round(float(row["total_score"]), 4),
-                               parts={k: round(float(v), 4) for k, v in parts.items()}, kpi=kpi)
+                               parts={k: round(float(v), 4) for k, v in parts.items()}, kpi=kpi,
+                               cover_variant=variant)
 
     rotations = [build(current, True, None)] + [build(k, False, i) for i, k in enumerate(picks, 1)]
     return ScorerResponse(placeholder=False, rotations=rotations)
@@ -159,8 +166,9 @@ def explorer_rotation(sr: ScorerRotation, start_year: int, history: list[str], p
                for k in kinds]
     s = summarize(key, previous_crop)
     summary = Summary(bare_months=round(s["bare_months"], 2), same_crop_repeats=s["same_crop_repeats"])
-    return Rotation(**sr.model_dump(exclude={"sequence"}), placeholder=False, sequence=sequence,
-                    monthly=monthly, summary=summary)
+    variant = sr.cover_variant and explorer_rotation(sr.cover_variant, start_year, history, previous_crop)
+    return Rotation(**sr.model_dump(exclude={"sequence", "cover_variant"}), placeholder=False, sequence=sequence,
+                    monthly=monthly, summary=summary, cover_variant=variant)
 
 
 def build_explorer(weights: dict[str, float]) -> tuple[ExplorerExport, ScorerResponse]:
@@ -193,8 +201,9 @@ def main() -> None:
     _write(EXAMPLES / "explorer.json", export)
     _write(EXAMPLES / "scorer" / "response.json", response)
     for r in export.rotations:
-        print(f"{'current' if r.is_current else f'pick {r.rank}':8} {r.id:35} seasons {len(r.sequence)}  "
-              f"months {len(r.monthly)}  bare {r.summary.bare_months}")
+        for v, label in ((r, "current" if r.is_current else f"pick {r.rank}"), (r.cover_variant, "  toggle")):
+            if v is not None:
+                print(f"{label:8} {v.id:40} seasons {len(v.sequence)}  months {len(v.monthly)}  bare {v.summary.bare_months}")
 
 
 if __name__ == "__main__":

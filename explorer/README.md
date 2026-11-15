@@ -48,6 +48,14 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
 - Cover crop days are not bare (`bare_months`) and are not irrigated. The cover takes soil water, so the
   next crop's water need and rain-fed yield can change.
 
+**Cover crop switch:** every rotation in `rotations` carries `cover_variant`: the same crops with the cover crop
+toggled (`corn-corn-corn` ↔ `corn-corn-corn+triticale`), as a full rotation with its own score, kpi, sequence,
+monthly and summary. To switch, show `cover_variant` instead of the rotation. It takes the same slot
+(`is_current`, `rank`, `short`), so the farmer's rotation stays "Your rotation" and pick #1 stays pick #1.
+`cover_variant` is `null` where no gap of the rotation fits a cover crop (e.g. corn → winter wheat → sorghum),
+and a variant never has a variant itself. The ranking is not redone: switched off, the picks are the same crops
+without the cover crop, not the best rotations without a cover crop (`kpi.rank_all` shows where they stand).
+
 ## Conventions
 
 - Units are in the field name: `_in` = inches of water, `_lb` = lb N per acre, `_ft` = feet, `_pct` = 0–100.
