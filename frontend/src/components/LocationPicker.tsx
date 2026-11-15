@@ -1,5 +1,5 @@
 import 'leaflet/dist/leaflet.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type { CircleMarker as LeafletCircleMarker } from 'leaflet';
 import { CircleMarker, LayersControl, MapContainer, Popup, TileLayer, Tooltip, useMapEvents } from 'react-leaflet';
 import { DEFAULT_LOCATION, type LatLon } from '../lib/request';
@@ -21,7 +21,7 @@ function FieldMarker({ value, onRemove }: { value: LatLon; onRemove: () => void 
       center={[value.lat, value.lon]}
       radius={9}
       bubblingMouseEvents={false}
-      pathOptions={{ color: '#fff', weight: 2, fillColor: '#2d6a4a', fillOpacity: 1 }}
+      pathOptions={{ color: '#fff', weight: 2, fillColor: '#3cd6bf', fillOpacity: 1 }}
       eventHandlers={{ contextmenu: (e) => { e.originalEvent.preventDefault(); ref.current?.openPopup(); } }}
     >
       <Tooltip direction="top" offset={[0, -10]}>{fmt(value)}</Tooltip>
@@ -62,13 +62,13 @@ function ConfirmRemove({ value, onConfirm, onCancel }: { value: LatLon; onConfir
   );
 }
 
-export function LocationPicker({ value, onChange }: { value: LatLon | null; onChange: (p: LatLon | null) => void }) {
+export function LocationPicker({ value, onChange, children }: { value: LatLon | null; onChange: (p: LatLon | null) => void; children?: ReactNode }) {
   const start = value ?? DEFAULT_LOCATION;
   const [confirming, setConfirming] = useState(false);
   return (
     <div className={value ? 'map' : 'map picking'}>
-      <MapContainer center={[start.lat, start.lon]} zoom={value ? 13 : 9} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
-        <LayersControl position="topright">
+      <MapContainer center={[start.lat, start.lon]} zoom={value ? 13 : 9} scrollWheelZoom style={{ height: '100%', width: '100%' }}>
+        <LayersControl position="topleft">
           <LayersControl.BaseLayer checked name="Satellite">
             <TileLayer
               url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
@@ -85,6 +85,7 @@ export function LocationPicker({ value, onChange }: { value: LatLon | null; onCh
           </LayersControl.BaseLayer>
         </LayersControl>
         <ClickToPick enabled={!value} onPick={onChange} />
+        {children}
         {value && <FieldMarker value={value} onRemove={() => setConfirming(true)} />}
       </MapContainer>
       {confirming && value && <ConfirmRemove value={value} onCancel={() => setConfirming(false)} onConfirm={() => { setConfirming(false); onChange(null); }} />}
