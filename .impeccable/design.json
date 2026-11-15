@@ -1,0 +1,1037 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-15T12:35:59+00:00",
+  "title": "Design System: AGRIscora",
+  "extensions": {
+    "colorMeta": {
+      "field-ground": {
+        "role": "neutral",
+        "displayName": "Field Ground",
+        "canonical": "#12231a",
+        "tonalRamp": [
+          "#070d09",
+          "#1d2721",
+          "#36433c",
+          "#516259",
+          "#708378",
+          "#93a39a",
+          "#bbc8c0",
+          "#e7f1eb"
+        ]
+      },
+      "field-panel": {
+        "role": "neutral",
+        "displayName": "Field Panel",
+        "canonical": "#1a3024",
+        "tonalRamp": [
+          "#060d09",
+          "#1b2720",
+          "#34443b",
+          "#4e6357",
+          "#6d8476",
+          "#90a498",
+          "#b8c9bf",
+          "#e6f2eb"
+        ]
+      },
+      "field-raise": {
+        "role": "neutral",
+        "displayName": "Raised Field",
+        "canonical": "#223a2c",
+        "tonalRamp": [
+          "#050d08",
+          "#1a2820",
+          "#33453a",
+          "#4d6456",
+          "#6b8475",
+          "#8fa597",
+          "#b8c9be",
+          "#e5f2ea"
+        ]
+      },
+      "field-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Field",
+        "canonical": "#152a1f",
+        "tonalRamp": [
+          "#060d09",
+          "#1b2721",
+          "#34443b",
+          "#4f6358",
+          "#6d8477",
+          "#91a499",
+          "#b9c9bf",
+          "#e6f2eb"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#2e4a3a",
+        "tonalRamp": [
+          "#050e08",
+          "#19281f",
+          "#314539",
+          "#4b6555",
+          "#698574",
+          "#8da596",
+          "#b6cabd",
+          "#e4f3ea"
+        ]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline",
+        "canonical": "#426350",
+        "tonalRamp": [
+          "#040e08",
+          "#17291f",
+          "#2f4638",
+          "#486654",
+          "#668673",
+          "#8ba695",
+          "#b4cbbd",
+          "#e3f3e9"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#ecf2ec",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#222522",
+          "#3d413d",
+          "#5a5f5a",
+          "#7a7f7a",
+          "#9ba09b",
+          "#c2c5c2",
+          "#edefed"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#b8c9bc",
+        "tonalRamp": [
+          "#080d09",
+          "#1e2620",
+          "#38433b",
+          "#546257",
+          "#738276",
+          "#95a298",
+          "#bdc7bf",
+          "#e9f1eb"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "#8fa697",
+        "tonalRamp": [
+          "#060d09",
+          "#1c2720",
+          "#35443a",
+          "#506357",
+          "#6e8376",
+          "#92a498",
+          "#bac8bf",
+          "#e7f2ea"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Full Ink",
+        "canonical": "#ecf2ec",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#222522",
+          "#3d413d",
+          "#5a5f5a",
+          "#7a7f7a",
+          "#9ba09b",
+          "#c2c5c2",
+          "#edefed"
+        ]
+      },
+      "on-primary": {
+        "role": "primary",
+        "displayName": "On Full Ink",
+        "canonical": "#12231a",
+        "tonalRamp": [
+          "#070d09",
+          "#1d2721",
+          "#36433c",
+          "#516259",
+          "#708378",
+          "#93a39a",
+          "#bbc8c0",
+          "#e7f1eb"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Full Ink Hover",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "good": {
+        "role": "tertiary",
+        "displayName": "Verdict Green",
+        "canonical": "#7ad48f",
+        "tonalRamp": [
+          "#001100",
+          "#002e0d",
+          "#044d21",
+          "#1b6f37",
+          "#3d9154",
+          "#6db17c",
+          "#9ed4a8",
+          "#d3fada"
+        ]
+      },
+      "bad": {
+        "role": "tertiary",
+        "displayName": "Verdict Red",
+        "canonical": "#f4917f",
+        "tonalRamp": [
+          "#1d0100",
+          "#41120b",
+          "#68291f",
+          "#924234",
+          "#b86051",
+          "#d48779",
+          "#f2b2a5",
+          "#ffe1d8"
+        ]
+      },
+      "warn": {
+        "role": "tertiary",
+        "displayName": "Caution Amber",
+        "canonical": "#f2c14e",
+        "tonalRamp": [
+          "#170700",
+          "#361f00",
+          "#593900",
+          "#7e5600",
+          "#a17500",
+          "#be9944",
+          "#dec080",
+          "#ffecbe"
+        ]
+      },
+      "water": {
+        "role": "tertiary",
+        "displayName": "Irrigation Blue",
+        "canonical": "#6fb2ee",
+        "tonalRamp": [
+          "#000c1f",
+          "#012642",
+          "#124369",
+          "#266293",
+          "#4482b8",
+          "#70a4d3",
+          "#a0c9f0",
+          "#d4f3ff"
+        ]
+      },
+      "rain": {
+        "role": "tertiary",
+        "displayName": "Rain Blue",
+        "canonical": "#a7cbe6",
+        "tonalRamp": [
+          "#030c14",
+          "#152632",
+          "#2c4353",
+          "#446177",
+          "#628299",
+          "#87a2b7",
+          "#b1c8d9",
+          "#e1f1fe"
+        ]
+      },
+      "heat": {
+        "role": "tertiary",
+        "displayName": "Heat Orange",
+        "canonical": "#f08a4b",
+        "tonalRamp": [
+          "#1f0100",
+          "#431100",
+          "#6b2900",
+          "#964100",
+          "#bc6022",
+          "#d88859",
+          "#f5b38e",
+          "#ffe3c7"
+        ]
+      },
+      "cold": {
+        "role": "tertiary",
+        "displayName": "Cold Blue",
+        "canonical": "#7fb0f0",
+        "tonalRamp": [
+          "#000b1f",
+          "#0c2442",
+          "#204069",
+          "#365f93",
+          "#537fb8",
+          "#7ba1d3",
+          "#a7c7f0",
+          "#d9f1ff"
+        ]
+      },
+      "nitro": {
+        "role": "tertiary",
+        "displayName": "Nitrogen Violet",
+        "canonical": "#c9b6ff",
+        "tonalRamp": [
+          "#0d061c",
+          "#271d3e",
+          "#443664",
+          "#63528c",
+          "#8271b1",
+          "#a394cc",
+          "#c7bcea",
+          "#f1e9ff"
+        ]
+      },
+      "crop-corn": {
+        "role": "secondary",
+        "displayName": "Corn Gold",
+        "canonical": "#e8b23a",
+        "tonalRamp": [
+          "#180600",
+          "#381e00",
+          "#5b3800",
+          "#805400",
+          "#a47400",
+          "#c19741",
+          "#e1bf7f",
+          "#ffebbd"
+        ]
+      },
+      "crop-soybean": {
+        "role": "secondary",
+        "displayName": "Soybean Green",
+        "canonical": "#5dbb63",
+        "tonalRamp": [
+          "#001200",
+          "#002e01",
+          "#014e10",
+          "#177124",
+          "#3a9342",
+          "#6bb26e",
+          "#9dd59d",
+          "#d2fcd2"
+        ]
+      },
+      "crop-winter-wheat": {
+        "role": "secondary",
+        "displayName": "Winter Wheat Violet",
+        "canonical": "#a58be0",
+        "tonalRamp": [
+          "#0e051f",
+          "#291a43",
+          "#46336b",
+          "#654e95",
+          "#856dba",
+          "#a591d5",
+          "#c9baf2",
+          "#f2e7ff"
+        ]
+      },
+      "crop-sorghum": {
+        "role": "secondary",
+        "displayName": "Sorghum Rust",
+        "canonical": "#e07a45",
+        "tonalRamp": [
+          "#1f0000",
+          "#431100",
+          "#6b2800",
+          "#964007",
+          "#bd5f2d",
+          "#d8875f",
+          "#f6b292",
+          "#ffe2ca"
+        ]
+      },
+      "crop-sunflower": {
+        "role": "secondary",
+        "displayName": "Sunflower Teal",
+        "canonical": "#3cc4a0",
+        "tonalRamp": [
+          "#001208",
+          "#002f1f",
+          "#004f39",
+          "#007255",
+          "#009474",
+          "#52b396",
+          "#8dd6bd",
+          "#c8fce9"
+        ]
+      },
+      "crop-triticale": {
+        "role": "secondary",
+        "displayName": "Triticale Rose",
+        "canonical": "#e58aae",
+        "tonalRamp": [
+          "#1b020c",
+          "#3d1226",
+          "#632942",
+          "#8b4160",
+          "#b05f80",
+          "#cd86a1",
+          "#ecb0c6",
+          "#ffe0f0"
+        ]
+      },
+      "band-label-ink": {
+        "role": "tertiary",
+        "displayName": "Band Ink",
+        "canonical": "#10200f",
+        "tonalRamp": [
+          "#070d07",
+          "#1d271d",
+          "#374436",
+          "#526351",
+          "#71836f",
+          "#94a492",
+          "#bbc8ba",
+          "#e8f2e7"
+        ]
+      },
+      "light-ground": {
+        "role": "neutral",
+        "displayName": "Ground (light theme)",
+        "canonical": "#f2f5f0",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232422",
+          "#3f403d",
+          "#5c5e5b",
+          "#7c7e7a",
+          "#9d9f9b",
+          "#c3c5c2",
+          "#edefed"
+        ]
+      },
+      "light-panel": {
+        "role": "neutral",
+        "displayName": "Panel (light theme)",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "light-raise": {
+        "role": "neutral",
+        "displayName": "Raise (light theme)",
+        "canonical": "#eaf0e8",
+        "tonalRamp": [
+          "#0a0c09",
+          "#222521",
+          "#3d413c",
+          "#5b5f59",
+          "#7a7f78",
+          "#9ba09a",
+          "#c2c5c0",
+          "#edefec"
+        ]
+      },
+      "light-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk (light theme)",
+        "canonical": "#f6f8f5",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232423",
+          "#3f403e",
+          "#5d5e5c",
+          "#7c7e7b",
+          "#9d9f9d",
+          "#c3c4c3",
+          "#eeefed"
+        ]
+      },
+      "light-hairline": {
+        "role": "neutral",
+        "displayName": "Hairline (light theme)",
+        "canonical": "#d5dfd3",
+        "tonalRamp": [
+          "#090c09",
+          "#212520",
+          "#3c423a",
+          "#586057",
+          "#788076",
+          "#99a198",
+          "#c0c6bf",
+          "#ebf0ea"
+        ]
+      },
+      "light-hairline-strong": {
+        "role": "neutral",
+        "displayName": "Strong Hairline (light theme)",
+        "canonical": "#b4c4b2",
+        "tonalRamp": [
+          "#080d07",
+          "#1f261e",
+          "#394338",
+          "#556253",
+          "#748272",
+          "#96a395",
+          "#bdc7bc",
+          "#e9f1e8"
+        ]
+      },
+      "light-ink": {
+        "role": "neutral",
+        "displayName": "Ink (light theme)",
+        "canonical": "#13251a",
+        "tonalRamp": [
+          "#060d09",
+          "#1c2720",
+          "#36443a",
+          "#516357",
+          "#6f8376",
+          "#92a398",
+          "#bac8bf",
+          "#e7f2ea"
+        ]
+      },
+      "light-ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2 (light theme)",
+        "canonical": "#43574a",
+        "tonalRamp": [
+          "#060d09",
+          "#1c2720",
+          "#35443a",
+          "#506357",
+          "#6f8376",
+          "#92a498",
+          "#bac8bf",
+          "#e7f2ea"
+        ]
+      },
+      "light-ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3 (light theme)",
+        "canonical": "#5f7366",
+        "tonalRamp": [
+          "#070d09",
+          "#1d2720",
+          "#36443b",
+          "#516357",
+          "#708376",
+          "#93a398",
+          "#bac8bf",
+          "#e7f1eb"
+        ]
+      },
+      "light-primary": {
+        "role": "primary",
+        "displayName": "Full Ink (light theme)",
+        "canonical": "#1f5136",
+        "tonalRamp": [
+          "#010f06",
+          "#102a1b",
+          "#264834",
+          "#3d694f",
+          "#5b8a6d",
+          "#82aa90",
+          "#adcdb9",
+          "#def5e6"
+        ]
+      },
+      "light-on-primary": {
+        "role": "primary",
+        "displayName": "On Full Ink (light theme)",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "light-primary-hover": {
+        "role": "primary",
+        "displayName": "Full Ink Hover (light theme)",
+        "canonical": "#163d28",
+        "tonalRamp": [
+          "#030e07",
+          "#15291d",
+          "#2b4736",
+          "#446752",
+          "#628870",
+          "#87a893",
+          "#b1ccbb",
+          "#e1f4e8"
+        ]
+      },
+      "light-good": {
+        "role": "tertiary",
+        "displayName": "Verdict Green (light theme)",
+        "canonical": "#1d7a39",
+        "tonalRamp": [
+          "#001100",
+          "#002e0b",
+          "#094d20",
+          "#1f6f36",
+          "#409153",
+          "#6fb07a",
+          "#9fd4a7",
+          "#d4fad9"
+        ]
+      },
+      "light-bad": {
+        "role": "tertiary",
+        "displayName": "Verdict Red (light theme)",
+        "canonical": "#b3261e",
+        "tonalRamp": [
+          "#240000",
+          "#4c0000",
+          "#77130e",
+          "#a52a21",
+          "#ce4b3e",
+          "#e9796a",
+          "#ffa89a",
+          "#ffdbd0"
+        ]
+      },
+      "light-warn": {
+        "role": "tertiary",
+        "displayName": "Caution Amber (light theme)",
+        "canonical": "#8a5d00",
+        "tonalRamp": [
+          "#160700",
+          "#361e00",
+          "#583800",
+          "#7d5508",
+          "#a0742e",
+          "#bd9760",
+          "#debf93",
+          "#ffebcb"
+        ]
+      },
+      "light-water": {
+        "role": "tertiary",
+        "displayName": "Irrigation Blue (light theme)",
+        "canonical": "#2b6cb0",
+        "tonalRamp": [
+          "#000a22",
+          "#012447",
+          "#124170",
+          "#265f9b",
+          "#4480c2",
+          "#70a2db",
+          "#9fc8f7",
+          "#d4f2ff"
+        ]
+      },
+      "light-rain": {
+        "role": "tertiary",
+        "displayName": "Rain Blue (light theme)",
+        "canonical": "#5b8db8",
+        "tonalRamp": [
+          "#000c1a",
+          "#0b263b",
+          "#20435f",
+          "#366286",
+          "#5382aa",
+          "#7ca3c6",
+          "#a8c8e5",
+          "#daf2ff"
+        ]
+      },
+      "light-heat": {
+        "role": "tertiary",
+        "displayName": "Heat Orange (light theme)",
+        "canonical": "#c2410c",
+        "tonalRamp": [
+          "#230000",
+          "#4a0400",
+          "#751a00",
+          "#a23100",
+          "#cb5127",
+          "#e67d5c",
+          "#ffab8f",
+          "#ffddc8"
+        ]
+      },
+      "light-cold": {
+        "role": "tertiary",
+        "displayName": "Cold Blue (light theme)",
+        "canonical": "#2563eb",
+        "tonalRamp": [
+          "#000233",
+          "#001961",
+          "#0a3493",
+          "#1b51c9",
+          "#3773f4",
+          "#649aff",
+          "#95c3ff",
+          "#ccefff"
+        ]
+      },
+      "light-nitro": {
+        "role": "tertiary",
+        "displayName": "Nitrogen Violet (light theme)",
+        "canonical": "#6d4fc2",
+        "tonalRamp": [
+          "#0e0128",
+          "#271551",
+          "#432d7d",
+          "#6147ad",
+          "#8067d5",
+          "#a08eec",
+          "#c4b8ff",
+          "#eee6ff"
+        ]
+      },
+      "light-crop-corn": {
+        "role": "secondary",
+        "displayName": "Corn Gold (light theme)",
+        "canonical": "#d9980b",
+        "tonalRamp": [
+          "#1a0500",
+          "#3b1b00",
+          "#5f3500",
+          "#865000",
+          "#ab7000",
+          "#c7943e",
+          "#e6bd7d",
+          "#ffeabc"
+        ]
+      },
+      "light-crop-soybean": {
+        "role": "secondary",
+        "displayName": "Soybean Green (light theme)",
+        "canonical": "#2e8b3a",
+        "tonalRamp": [
+          "#001100",
+          "#002e03",
+          "#064e15",
+          "#1c7029",
+          "#3d9246",
+          "#6db271",
+          "#9ed5a0",
+          "#d3fbd4"
+        ]
+      },
+      "light-crop-winter-wheat": {
+        "role": "secondary",
+        "displayName": "Winter Wheat Violet (light theme)",
+        "canonical": "#6f55b8",
+        "tonalRamp": [
+          "#0e0325",
+          "#27184b",
+          "#433075",
+          "#624ba2",
+          "#816ac9",
+          "#a190e2",
+          "#c5b9fd",
+          "#efe7ff"
+        ]
+      },
+      "light-crop-sorghum": {
+        "role": "secondary",
+        "displayName": "Sorghum Rust (light theme)",
+        "canonical": "#c8551e",
+        "tonalRamp": [
+          "#210000",
+          "#470b00",
+          "#712100",
+          "#9d3900",
+          "#c55827",
+          "#e0825c",
+          "#fcaf90",
+          "#ffdfc8"
+        ]
+      },
+      "light-crop-sunflower": {
+        "role": "secondary",
+        "displayName": "Sunflower Teal (light theme)",
+        "canonical": "#13917a",
+        "tonalRamp": [
+          "#00110a",
+          "#002e23",
+          "#004d3e",
+          "#006f5b",
+          "#24917b",
+          "#60b09c",
+          "#95d3c2",
+          "#cefaed"
+        ]
+      },
+      "light-crop-triticale": {
+        "role": "secondary",
+        "displayName": "Triticale Rose (light theme)",
+        "canonical": "#d2668f",
+        "tonalRamp": [
+          "#1e000b",
+          "#420b24",
+          "#6a2140",
+          "#94385d",
+          "#bb577d",
+          "#d77f9e",
+          "#f5acc4",
+          "#ffddee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The four headline numbers and the rank on the Plan tab."
+      },
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "The AGRIscora wordmark in the top bar only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Panel titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Tabs, buttons, group names, slider labels, rotation names."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, capped near 72ch."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Sub-lines, popovers, tables, facts."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Units, legends, axes, table headers, tags. The 13 px floor."
+      }
+    },
+    "themes": {
+      "default": "dark",
+      "switch": "html[data-theme=\"light\"]",
+      "note": "Every colour token has a light-* counterpart; dark is set on :root and :root[data-theme=\"dark\"]."
+    },
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 10px 30px rgb(0 0 0 / .35), 0 2px 6px rgb(0 0 0 / .25)",
+        "lightValue": "0 10px 30px rgb(19 37 26 / .14), 0 2px 6px rgb(19 37 26 / .08)",
+        "purpose": "Info popovers only."
+      },
+      {
+        "name": "contact",
+        "value": "0 1px 3px rgb(0 0 0 / .25)",
+        "purpose": "The selected segment of a segmented control."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state",
+        "value": "150ms ease-out",
+        "purpose": "Background, border and switch transitions on controls."
+      },
+      {
+        "name": "disclose",
+        "value": "200ms ease-out",
+        "purpose": "Chevron rotation and tab-panel opacity."
+      },
+      {
+        "name": "value-in",
+        "value": "450ms cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Headline numbers rise 6 px into place when they change; bar widths animate on the same curve over 350ms."
+      },
+      {
+        "name": "pop",
+        "value": "150ms ease-out",
+        "purpose": "Info popover fades in from 4 px above."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "All animation and transition collapses under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1280px"
+      },
+      {
+        "name": "stack",
+        "value": "960px"
+      },
+      {
+        "name": "phone",
+        "value": "600px"
+      }
+    ],
+    "focus": {
+      "value": "outline: 2px solid var(--water); outline-offset: 2px",
+      "purpose": "Every focusable element."
+    },
+    "patterns": [
+      {
+        "name": "bare-hatch",
+        "value": "repeating-linear-gradient(135deg, transparent 0 4px, rgb(236 242 236 / .16) 4px 5px)",
+        "purpose": "Bare-soil months in strips and legends."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one decisive action in a context, in full ink.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Use this rotation</button>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 16px; border-radius:8px; border:1px solid var(--line-strong); background:var(--panel); color:var(--ink); font:600 15px var(--font); cursor:pointer; white-space:nowrap; transition:background .15s ease-out, border-color .15s ease-out; } .ds-btn-primary { background:var(--primary); border-color:var(--primary); color:var(--on-primary); } .ds-btn-primary:hover { background:var(--primary-hover); } .ds-btn:focus-visible { outline:2px solid var(--water); outline-offset:2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Panel-filled button with a strong hairline, for secondary actions.",
+      "html": "<button class=\"ds-btn-secondary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"/><path d=\"M3 3v5h5\"/></svg>Start from your field history</button>",
+      "css": ".ds-btn-secondary { display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 16px; border-radius:8px; border:1px solid var(--line-strong); background:var(--panel); color:var(--ink); font:600 15px var(--font); cursor:pointer; transition:background .15s ease-out; } .ds-btn-secondary:hover { background:var(--raise); } .ds-btn-secondary:focus-visible { outline:2px solid var(--water); outline-offset:2px; }"
+    },
+    {
+      "name": "Select",
+      "kind": "input",
+      "refersTo": "select",
+      "description": "Sunk select for a year's crop.",
+      "html": "<select class=\"ds-select\"><option>Corn</option><option>Soybean</option><option>Winter wheat</option></select>",
+      "css": ".ds-select { height:40px; width:220px; padding:0 12px; border-radius:8px; border:1px solid var(--line-strong); background:var(--sunk); color:var(--ink); font:600 16px var(--font); cursor:pointer; } .ds-select:hover { border-color:var(--ink-3); } .ds-select:focus-visible { outline:2px solid var(--water); outline-offset:2px; }"
+    },
+    {
+      "name": "Tabs",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Top-bar tabs with a 3 px ink underline on the selected one.",
+      "html": "<nav class=\"ds-tabs\" role=\"tablist\"><button role=\"tab\" aria-selected=\"false\">Field</button><button role=\"tab\" aria-selected=\"true\">Plan</button><button role=\"tab\" aria-selected=\"false\">Compare</button><button role=\"tab\" aria-selected=\"false\">Data</button></nav>",
+      "css": ".ds-tabs { display:flex; gap:4px; height:60px; background:var(--panel); border-bottom:1px solid var(--line); padding:0 8px; } .ds-tabs button { position:relative; padding:0 16px; border:0; background:none; color:var(--ink-2); font:600 15px var(--font); cursor:pointer; } .ds-tabs button:hover, .ds-tabs button[aria-selected=\"true\"] { color:var(--ink); } .ds-tabs button[aria-selected=\"true\"]::after { content:\"\"; position:absolute; left:12px; right:12px; bottom:0; height:3px; border-radius:3px 3px 0 0; background:var(--ink); } .ds-tabs button:focus-visible { outline:2px solid var(--water); outline-offset:-2px; }"
+    },
+    {
+      "name": "Crop Chip",
+      "kind": "chip",
+      "refersTo": "crop-chip",
+      "description": "Draggable pill with the crop swatch.",
+      "html": "<span class=\"ds-crop-chip\"><i style=\"background:var(--c-corn)\"></i>Corn</span> <span class=\"ds-crop-chip\"><i style=\"background:var(--c-soybean)\"></i>Soybean</span>",
+      "css": ".ds-crop-chip { display:inline-flex; align-items:center; gap:7px; height:32px; padding:0 12px; border-radius:999px; border:1px solid var(--line-strong); color:var(--ink); font:600 14px var(--font); cursor:grab; } .ds-crop-chip:hover { background:var(--raise); } .ds-crop-chip i { width:10px; height:10px; border-radius:3px; }"
+    },
+    {
+      "name": "Crop Toggle",
+      "kind": "custom",
+      "refersTo": "crop-toggle",
+      "description": "Settings-rail toggle for an allowed crop.",
+      "html": "<button class=\"ds-crop-toggle\" aria-pressed=\"true\"><i style=\"background:var(--c-sorghum)\"></i>Sorghum<svg class=\"tick\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 6 9 17l-5-5\"/></svg></button><button class=\"ds-crop-toggle\" aria-pressed=\"false\"><i style=\"background:var(--c-sunflower)\"></i>Sunflower</button>",
+      "css": ".ds-crop-toggle { display:flex; align-items:center; gap:10px; width:260px; height:38px; margin-bottom:6px; padding:0 12px; border-radius:8px; border:1px solid var(--line); background:none; color:var(--ink-2); font:600 16px var(--font); cursor:pointer; } .ds-crop-toggle i { width:12px; height:12px; border-radius:3px; opacity:.45; } .ds-crop-toggle .tick { margin-left:auto; } .ds-crop-toggle[aria-pressed=\"true\"] { color:var(--ink); background:var(--panel); border-color:var(--line-strong); } .ds-crop-toggle[aria-pressed=\"true\"] i { opacity:1; } .ds-crop-toggle:hover { border-color:var(--ink-3); } .ds-crop-toggle:focus-visible { outline:2px solid var(--water); outline-offset:2px; }"
+    },
+    {
+      "name": "Panel with KPI and Delta",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat panel holding a headline number, yours vs best-match bars and a verdict delta.",
+      "html": "<section class=\"ds-panel\"><h3>Irrigation water</h3><div class=\"ds-num\">18.9</div><div class=\"ds-unit\">inches per year</div><div class=\"ds-bar\"><span>Yours</span><b>18.9 in</b><i><u style=\"width:100%;background:var(--ink)\"></u></i></div><div class=\"ds-bar\"><span>Best match</span><b>12.6 in</b><i><u style=\"width:67%;background:var(--ink-3)\"></u></i></div><span class=\"ds-delta good\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg>Best match: 6.3 in less</span></section>",
+      "css": ".ds-panel { width:240px; background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:12px; padding:18px 22px; font:400 16px/1.5 var(--font); font-variant-numeric:tabular-nums; display:grid; gap:6px; } .ds-panel h3 { margin:0; font-size:14px; font-weight:600; color:var(--ink-2); } .ds-num { font-size:32px; font-weight:600; line-height:1.1; letter-spacing:-.02em; } .ds-unit { font-size:13px; color:var(--ink-2); } .ds-bar { display:grid; grid-template-columns:1fr auto; gap:3px 8px; font-size:13px; } .ds-bar span { color:var(--ink-2); } .ds-bar i { grid-column:1/-1; height:8px; border-radius:8px; background:var(--line); overflow:hidden; } .ds-bar u { display:block; height:100%; border-radius:8px; } .ds-delta { display:inline-flex; align-items:center; gap:5px; font-size:14px; font-weight:600; } .ds-delta.good { color:var(--good); } .ds-delta.bad { color:var(--bad); }"
+    },
+    {
+      "name": "Info Point",
+      "kind": "custom",
+      "refersTo": "info-popover",
+      "description": "Non-modal popover explaining a metric.",
+      "html": "<div class=\"ds-info\"><button class=\"ds-info-btn\" aria-expanded=\"true\" aria-label=\"About: Bare soil\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 16v-4\"/><path d=\"M12 8h.01\"/></svg></button><div class=\"ds-info-pop\" role=\"dialog\"><b>Bare soil</b><p>Months per year with no crop or cover crop on the field.</p></div></div>",
+      "css": ".ds-info { display:grid; gap:8px; justify-items:start; font-family:var(--font); } .ds-info-btn { display:inline-grid; place-items:center; width:24px; height:24px; padding:0; border-radius:50%; border:0; background:none; color:var(--ink-3); cursor:pointer; } .ds-info-btn:hover, .ds-info-btn[aria-expanded=\"true\"] { color:var(--ink); background:var(--raise); } .ds-info-btn:focus-visible { outline:2px solid var(--water); outline-offset:2px; } .ds-info-pop { width:320px; background:var(--panel); color:var(--ink); border:1px solid var(--line-strong); border-radius:10px; box-shadow:var(--shadow); font-size:14px; line-height:1.5; padding:10px 14px 14px; display:grid; gap:6px; } .ds-info-pop p { margin:0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Field Office",
+    "overview": "AGRIscora is a farm-management dashboard built the way the category ships it, then finished with care: a top bar with the name, the field and four tabs (Field, Plan, Compare, Data), a fixed settings rail on the left, and calm raised panels on the right. It sits on a deep field green at night-office brightness by default, with a light theme for projectors and print. Nothing about the frame is novel on purpose; the craft is in the numbers, the hairlines and the restraint.\n\nColour carries data and verdicts, not decoration. The neutral layers are all greens of one hue, text is near-white ink, and the primary action is plain full ink rather than a brand hue. The only saturated colours on screen are the six crop colours (the data series), the weather and water colours inside charts, and green or red when a number is better or worse for the farmer. The farmer's own rotation is always in full ink; the scorer's best match is shown neutral beside it, never as a winner colour.\n\nDensity is office-desktop comfortable: 16 px body, 13 px floor, tabular numerals everywhere so columns of numbers line up. Depth comes from tonal panels and hairlines; shadows appear only on things that float (popovers). The rejected earlier look (condensed display type, uppercase eyebrows, middle-dot meta lines, monospace numbers) does not return.",
+    "keyCharacteristics": [
+      "Category-standard shell: 60 px top bar, 300 px settings rail, panels on a 20/28 px main gutter.",
+      "One-hue green neutrals, flat panels with 1 px hairlines, 12 px panel corners.",
+      "Full-ink primary action and selection in both themes.",
+      "Crop colours are the only data series; green and red only mean better and worse.",
+      "Public Sans 400/500/600/700 with tabular numerals; drawn line icons from Lucide.",
+      "Non-modal info points next to every metric that needs explaining."
+    ],
+    "rules": [
+      {
+        "name": "The Verdict-Only Rule",
+        "body": "Green and red mean better and worse for this farmer, and nothing else. Every coloured delta also carries an arrow and words (\"6.3 in less\"); an equal value is ink-2 with an equals sign.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gold Belongs to Corn Rule",
+        "body": "Crop colours are the only data series and are never borrowed for actions, selection or emphasis. The primary is full ink; selection is an ink border or an ink underline.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neutral Best Match Rule",
+        "body": "The scorer's best match is drawn in ink-3 grey beside the farmer's ink bar. It is a reference, not a winner; only the delta under it may turn green or red.",
+        "section": "colors"
+      },
+      {
+        "name": "The 13 Pixel Floor Rule",
+        "body": "No text renders below 13 px, including chart axes, legends and map labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Labels, headers and tags are sentence case at normal tracking. No uppercase eyebrows, no kickers above headings, no monospace numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Rule",
+        "body": "`font-variant-numeric: tabular-nums` is set on the body and inherited everywhere, so every column of numbers aligns.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Panel Rule",
+        "body": "Panels, cards and rows are separated by tone and hairline, never by shadow. A shadow means the layer floats above the page.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use full ink (primary) for the main action, the selected tab, slider fill and the farmer's own rotation.",
+      "Do give every crop its colour from the crop series and use those colours only for crops.",
+      "Do pair every green or red value with an arrow and words such as \"less\" or \"more\".",
+      "Do show the scorer's best match in neutral ink-3 next to the farmer's ink value.",
+      "Do separate layers with the four green tones and 1 px hairlines, keeping panels flat.",
+      "Do keep all text at 13 px or larger and in sentence case, with tabular numerals.",
+      "Do explain a metric with a non-modal info point rather than a modal or a long caption.",
+      "Do define every colour for both themes; dark is the default."
+    ],
+    "donts": [
+      "Don't use a crop colour (corn gold especially) for buttons, selection or emphasis.",
+      "Don't use green or red for anything except better and worse.",
+      "Don't colour the best match as a winner.",
+      "Don't bring back the rejected Mockup v2 look: condensed display type, uppercase eyebrows or kickers, middle-dot meta lines, monospace numbers.",
+      "Don't put shadows on panels or cards at rest.",
+      "Don't offer any cover crop other than triticale."
+    ]
+  }
+}

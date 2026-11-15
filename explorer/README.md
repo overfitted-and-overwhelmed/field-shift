@@ -103,6 +103,7 @@ without the cover crop, not the best rotations without a cover crop (`kpi.rank_a
 
 ```bash
 uv run python -m explorer.build    # regenerate the examples from the scorer's data
+uv run python -m explorer.api      # API for the frontend on http://127.0.0.1:8000/api/explorer
 uv run pytest                      # examples match schema.py, every rule rejects bad data, adapters match the scorer
 ```
 
@@ -118,3 +119,4 @@ If you change a format: change `schema.py` first, bump `CONTRACT_VERSION`, then 
 | `field_calendar.py` | WP5 | the scorer's seasons placed in the display years, crop per month, bare months |
 | `frost_heat.py` | WP6 | heat / cold stress / kill per month (cold stress: at least half a day below the optimum) |
 | `build.py` | WP7 | puts everything together and writes the examples |
+| `api.py` | WP7 | HTTP API for the frontend: `build_explorer` for the farmer's weights, crops and number of picks |

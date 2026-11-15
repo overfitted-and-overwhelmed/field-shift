@@ -9,3 +9,10 @@ data/raw/power_daily_long.csv
 # optional SoilGrids cross-check, not part of the pipeline
 data/processed/soil_long.csv
 knowledge_base/
+# Playwright CLI output (may contain credentials)
+.playwright-cli/
+.vercel
+.playwright/
+.claude/
+.impeccable/mocks/
+.impeccable/review/

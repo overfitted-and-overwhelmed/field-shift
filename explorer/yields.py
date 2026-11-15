@@ -28,7 +28,7 @@ import numpy as np
 import pandas as pd
 
 from crop_scorer.scoring.yield_levels import yield_levels
-from explorer.field_calendar import rotation_key
+from explorer.field_calendar import load_scorer_seasons, rotation_key
 from explorer.paths import NASS_EXPECTED_YIELD, NASS_YIELDS, ROTATION_EFFECTS, SCORER_SEASONS_BY_YEAR
 from explorer.schema import Effect, Irrigation, ProvenanceEntry, SequenceStep, Source, YieldSpread
 
@@ -99,6 +99,10 @@ def season_deficits(rotation: str, path: Path = SCORER_SEASONS_BY_YEAR) -> dict[
     """Rain-fed ET deficit per weather year for each season (0, 1, ...) of a scorer rotation like 'corn-corn-corn'."""
     s = scorer_seasons(path)
     rows = s[s["rotation"] == rotation]
+    if rows.empty:  # scored on request (explorer/on_demand.py): only in the explorer's scorer tables
+        extra = load_scorer_seasons(path)
+        rows = extra[extra["rotation"] == rotation]
+        rows = rows.assign(d=(1 - rows["eta_mm"] / rows["etc_mm"]).clip(0, 1))
     if rows.empty:
         raise KeyError(f"rotation '{rotation}' is not in {path.name}")
     return {int(season): g["d"].tolist() for season, g in rows.groupby("season")}
@@ -231,12 +235,17 @@ def rotation_yields(
     sequence: Sequence[SequenceStep],
     history: Sequence[str],
     seasons_path: Path = SCORER_SEASONS_BY_YEAR,
+    rotation: str | None = None,
 ) -> list[SeasonYield]:
-    """Yields of all seasons of a scorer rotation. ``history``: crops before the rotation, oldest first (CDL)."""
+    """Yields of all seasons of a scorer rotation. ``history``: crops before the rotation, oldest first (CDL).
+
+    ``rotation``: the scorer's key. Without it, it is derived from the sequence (cover in every gap or none),
+    which cannot tell a cover in one gap only ("+triticale_1") apart.
+    """
     # the scorer's key: crops joined by "-", plus "+triticale" if the scorer sowed a cover crop in the pass
     # (the cover uses soil water, so the deficits of the variant with cover differ from the one without)
     cover = next((s.cover for s in sequence if s.cover), None)
-    rotation = rotation_key([s.crop for s in sequence], cover)
+    rotation = rotation or rotation_key([s.crop for s in sequence], cover)
     deficits = season_deficits(rotation, seasons_path)
     if len(deficits) != len(sequence):
         raise ValueError(f"rotation '{rotation}': {len(sequence)} seasons, scorer has {len(deficits)}")
