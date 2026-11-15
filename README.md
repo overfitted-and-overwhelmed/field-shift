@@ -25,7 +25,7 @@
 ## What We Built
 - **Crop Scorer:** Models multi-year rotation performance, calculating irrigation needs (FAO-56 water balance), climate risk (heat and frost stress from temperature bounds), nitrogen dynamics, and erosion risk (bare soil days).
 - **Rotation Explorer:** Compiles multi-year rotation metrics, seasonal yields, and monthly water/risk breakdowns with complete data provenance.
-- **Farmer Advisor & MCP Server:** An interactive decision-support interface and Model Context Protocol (MCP) server that explains rotation trade-offs and allows farmers to re-rank candidate rotations based on their specific priorities (e.g., water savings vs. soil health).
+- **Farmer Advisor:** An interactive decision-support interface that explains rotation trade-offs and allows farmers to re-rank candidate rotations based on their specific priorities (e.g., water savings vs. soil health).
 
 ## NASA Data & Resources
 - **NASA POWER (Prediction Of Worldwide Energy Resources):** Daily meteorological data (precipitation, $T_{min}$, $T_{max}$, $T_{mean}$, solar radiation, and relative humidity) from 1991 to 2025.
