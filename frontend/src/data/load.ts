@@ -14,16 +14,19 @@ const DEBOUNCE_MS = 250; // sliders fire on every step; wait until they rest
 async function readError(r: Response): Promise<string> {
   try { const body = (await r.json()) as { error?: string }; if (body.error) return body.error; } catch { /* not JSON */ }
   return r.status === 502 || r.status === 504 || r.status === 500
-    ? 'The explorer API is not running. Start it in the repo root with: uv run python -m explorer.api'
+    ? 'The AGRIscora server is not running. Start it in the project folder with: uv run python -m explorer.api'
     : `${r.status} ${r.statusText} (${DATA_URL})`;
 }
 
 /** The last good data stays on screen while new data loads or when a request fails. */
 export interface DataState { data: ExplorerData | null; loading: boolean; error: string | null }
+const IDLE: DataState = { data: null, loading: false, error: null };
 
-export function useExplorerData(query: string, weights: Record<string, number>): DataState {
+/** Loads explorer data for `query`; `null` loads nothing (e.g. no rotation built yet). */
+export function useExplorerData(query: string | null, weights: Record<string, number>): DataState {
   const [state, setState] = useState<DataState>({ data: null, loading: true, error: null });
   useEffect(() => {
+    if (query == null) return;
     const ctrl = new AbortController();
     const timer = setTimeout(() => {
       setState((s) => ({ ...s, loading: true }));
@@ -34,5 +37,5 @@ export function useExplorerData(query: string, weights: Record<string, number>):
     }, DEBOUNCE_MS);
     return () => { clearTimeout(timer); ctrl.abort(); };
   }, [query, weights]);
-  return state;
+  return query == null ? IDLE : state;
 }

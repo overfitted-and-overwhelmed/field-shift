@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../map.css';
 import { FieldPanel } from '../components/FieldPanel';
 import { FieldsLayer, type Layer } from '../components/FieldsLayer';
 import { LocationPicker } from '../components/LocationPicker';
@@ -6,15 +7,14 @@ import { SceneBar } from '../components/SceneBar';
 import { CONTENT } from '../config/content';
 import { useFieldData } from '../lib/fields/useFieldData';
 import { DEFAULT_LOCATION, type LatLon } from '../lib/request';
-import { SecHead } from './ui';
 
-const LAYERS: { id: Layer; label: string }[] = [{ id: 'ndvi', label: 'NDVI' }, { id: 'crop', label: 'Crop type' }, { id: 'plain', label: 'Outlines' }];
+const LAYERS: { id: Layer; label: string }[] = [{ id: 'ndvi', label: 'Crop vigour (NDVI)' }, { id: 'crop', label: 'Crop type' }, { id: 'plain', label: 'Outlines' }];
 
 /**
- * The fields around the farm (USDA CDL crops, Sentinel-2 NDVI). For orientation only: moving the marker does not change
- * the numbers on the page, which are computed for the Kearny County field.
+ * Start tab: the fields around the farm (USDA CDL crops, Sentinel-2 NDVI), with zoom and field selection.
+ * Moving the marker does not change the numbers on the other tabs, which are computed for the Kearny County field.
  */
-export function FieldMap() {
+export function FieldView() {
   const [location, setLocation] = useState<LatLon | null>(DEFAULT_LOCATION);
   const [layer, setLayer] = useState<Layer>('ndvi');
   const [picked, setPicked] = useState<{ at: string; id: string } | null>(null);
@@ -25,11 +25,14 @@ export function FieldMap() {
   const ndvi = fd.ndvi.status === 'ready' ? fd.ndvi.data : null;
 
   return (
-    <section id="field" aria-labelledby="field-h">
-      <SecHead id="field-h" {...CONTENT.field} />
+    <section className="panel fieldview" aria-labelledby="field-tab-h">
+      <header className="panel-head">
+        <h2 id="field-tab-h">{CONTENT.field.title}</h2>
+        <p className="panel-sub">{CONTENT.field.hint}</p>
+      </header>
       <div className="land mapsec">
-        <div className="stage" aria-label="Map of the fields around your farm">
-          <LocationPicker value={location} onChange={setLocation} scrollWheelZoom={false}>
+        <div className="stage">
+          <LocationPicker value={location} onChange={setLocation}>
             {fd.surr.status === 'ready' && <FieldsLayer data={fd.surr.data} layer={layer} ndvi={ndvi} selectedId={selectedId} onSelect={setSelectedId} />}
           </LocationPicker>
           <div className="hud layers" role="group" aria-label="Map layer">

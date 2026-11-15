@@ -15,7 +15,9 @@ GET /api/explorer?w=water:5,risk:3,soil_health:3,nitrogen:2&crops=corn,soybean,s
             request, ~1.5 s). It replaces the crop-history rotation as the current one; the picks stay the same.
 * ``lat``, ``lon`` are accepted but not used yet: there is one field (``field.id``) until other fields are processed.
 
-Answer: ``explorer.json`` (``ExplorerExport`` in schema.py).
+Answer: ``explorer.json`` (``ExplorerExport`` in schema.py) plus ``weather_monthly`` (not part of the contract): the
+field's average weather per calendar month over 1991-2025 from the NASA POWER daily data, ``[{"month": 1..12,
+"tmax_f", "tmin_f"}]``, for the expected weather course in the UI. Left out when the daily file is missing.
 Errors: 400 with ``{"error": "..."}``.
 Standard library only, so no extra dependency. It is meant for local development, not for production.
 """
@@ -24,11 +26,15 @@ from __future__ import annotations
 
 import argparse
 import json
+from functools import cache
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import get_args
 from urllib.parse import parse_qs, urlparse
 
+import pandas as pd
+
 from explorer.build import N_PICKS, build_explorer
+from explorer.paths import DATA_PROCESSED
 from explorer.schema import MainCropId, ScoreParts
 
 CRITERIA = list(ScoreParts.model_fields)
@@ -88,6 +94,21 @@ def parse_request(query: str) -> dict:
     return {"weights": weights, "crops": crops, "n_picks": n_picks, "current": current}
 
 
+POWER_DAILY = DATA_PROCESSED / "climate_data" / "power_daily_long.csv"
+
+
+@cache
+def weather_monthly() -> list[dict]:
+    """Mean daily max and min temperature (°F) per calendar month over all years of the NASA POWER daily file."""
+    if not POWER_DAILY.exists():
+        return []
+    d = pd.read_csv(POWER_DAILY, usecols=["date", "parameter", "value"], parse_dates=["date"])
+    d = d[d["parameter"].isin(["air_temperature_max", "air_temperature_min"])]
+    m = d.groupby([d["date"].dt.month, "parameter"])["value"].mean().unstack()
+    to_f = lambda c: round(float(c) * 9 / 5 + 32, 1)  # noqa: E731
+    return [{"month": int(i), "tmax_f": to_f(r["air_temperature_max"]), "tmin_f": to_f(r["air_temperature_min"])} for i, r in m.iterrows()]
+
+
 class Handler(BaseHTTPRequestHandler):
     def _send(self, status: int, body: dict) -> None:
         data = json.dumps(body, ensure_ascii=False).encode("utf-8")
@@ -108,7 +129,11 @@ class Handler(BaseHTTPRequestHandler):
             export, _ = build_explorer(**parse_request(url.query))
         except (BadRequest, ValueError) as e:
             return self._send(400, {"error": str(e)})
-        self._send(200, export.model_dump(mode="json"))
+        body = export.model_dump(mode="json")
+        weather = weather_monthly()
+        if weather:
+            body["weather_monthly"] = weather
+        self._send(200, body)
 
 
 def main() -> None:

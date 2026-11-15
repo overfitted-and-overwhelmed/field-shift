@@ -27,7 +27,7 @@ function History({ f }: { f: Field }) {
   const first = f.history[0]?.year, last = f.history[f.history.length - 1]?.year;
   return (
     <div className="hist">
-      <span className="k">Crop each year (USDA CDL)</span>
+      <span className="k">Crop each year on the map layer (USDA CDL to {last})</span>
       <ol className="years" aria-label="Crop per year">
         {f.history.map((h) => <li key={h.year} style={{ background: h.cls ? cdlColor(h.cls) : 'var(--ln-line)' }} title={`${h.year}: ${h.cls ? cdlName(h.cls) : 'no data'}`} />)}
       </ol>

@@ -1,35 +1,32 @@
-/** Page text. Edit here, no component changes needed. */
+import type { Tab } from '../lib/request';
+
+/** Page text. Short, in the farmer's words. Edit here, no component changes needed. */
 export const CONTENT = {
-  brand: 'Field Shift',
-  brandSub: 'Explorer',
-  nav: [
-    { id: 'inputs', label: 'Your situation' },
-    { id: 'field', label: 'Your field' },
-    { id: 'build', label: 'Build your rotation' },
+  brand: 'AGRIscora',
+  tabs: [
+    { id: 'field', label: 'Field' },
+    { id: 'plan', label: 'Plan' },
     { id: 'compare', label: 'Compare' },
-    { id: 'season', label: 'Season view' },
-    { id: 'why', label: 'Why & what to check' },
+    { id: 'data', label: 'Data' },
+  ] as { id: Tab; label: string }[],
+  plan: {
+    builder: 'Your rotation',
+    builderHint: 'Drag a crop onto a year or pick it from the list. Between two years you can add a cover crop.',
+    sclerotinia: 'Sunflower and soybean both carry white mold (Sclerotinia), which survives years in the soil. Grow one of them at most once in three years; this rotation is ranked after all that do.',
+    result: 'What your rotation means for your field',
+    rotations: 'Your rotation and the best suggestions',
+    rotationsHint: 'Choose a rotation to see it month by month. The suggestions come from the scorer for your priorities and crops.',
+  },
+  compare: { title: 'Compare rotations', chart: 'Water against fertilizer', strengths: 'Strengths by priority' },
+  field: { title: 'Your field and its neighbours', hint: 'USDA crop map and Sentinel-2 crop vigour (NDVI). Zoom and click fields to look around; the numbers in the other tabs are computed for your field in Kearny County, Kansas.' },
+  data: { title: 'Where the numbers come from', weather: 'The 35 seasons behind every number', metrics: 'What each number means', sources: 'Sources', assumptions: 'Assumptions to check' },
+  assumptions: [
+    'Every season is irrigated in full; the irrigation level cannot be chosen yet.',
+    'Weather is NASA POWER on a ~50 km grid, not a station on your farm.',
+    'Yields are county averages from USDA NASS, adjusted for the crop before.',
+    'The only cover crop so far is triticale; it is not irrigated.',
+    'At most one sunflower or soybean crop in three years (white mold, NDSU). Rotations with more come after all others in the ranking.',
+    'Prices and costs are not part of the comparison.',
   ],
-  title: 'Try your own rotation against the best alternatives',
-  lead: 'Set what matters to you, then change your rotation: drag crops, swap them, add a cover crop. Every number on this page is recalculated from 35 seasons of NASA POWER weather for your field.',
-  inputs: { eyebrow: 'Step 1 · What the scorer should know', title: 'Your situation and priorities' },
-  field: { eyebrow: 'Your field', title: 'Where the data comes from', lead: 'The fields around your farm from the USDA Cropland Data Layer and Sentinel-2 NDVI. The map is for orientation: the numbers below are computed for the field in Kearny County, Kansas.' },
-  build: {
-    eyebrow: 'Step 2 · Build your rotation', title: 'Your rotation, year by year',
-    lead: 'Drag a crop from the shelf onto a year to replace it, drag years to reorder them, or use the menus and arrows. Choose for each year whether a triticale cover crop follows the harvest. The scorer compares three-crop rotations, so yours has three crops too. It starts from your field’s crop history (USDA CDL).',
-  },
-  compare: {
-    eyebrow: 'Step 3 · Side by side', title: 'Your rotation against the scorer’s picks',
-    lead: 'The picks come from the scorer for your crops and priorities; they do not change while you edit your rotation. Green and red compare each pick with your rotation. Tags show how each number is made.',
-  },
-  season: {
-    eyebrow: 'Step 4 · Month by month', title: 'What is on the field, and what it needs',
-    lead: 'A typical year from 35 years of NASA POWER weather, not a forecast. The nitrogen view shows fertilizer per season by K-State rules; there is no monthly soil nitrate balance because no source gives loss rates.',
-  },
-  why: { eyebrow: 'Step 5 · Reasons, evidence and open questions' },
-  caution: {
-    title: 'This tool supports your judgment. It does not replace it.',
-    text: 'The model uses regional weather, generic crop coefficients, K-State nitrogen rules and county yields. Before changing a rotation, check the open questions with your K-State Research and Extension agronomist, your NRCS office and your groundwater district (GMD 3).',
-  },
-  credits: 'Field Shift Explorer, NASA Space Apps 2026. Full irrigation on every season is an assumption until you can set it for your farm.',
+  caution: 'Talk to your K-State Research and Extension agronomist, your NRCS office and your groundwater district (GMD 3) before you change a rotation.',
 };

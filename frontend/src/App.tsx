@@ -1,96 +1,123 @@
-import { useEffect, useMemo, useState } from 'react';
-import { ScrollTop } from './components/ScrollTop';
+import { LoaderCircle, Moon, Sprout, Sun, TriangleAlert } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { Tooltip } from './components/Tooltip';
 import { CONTENT } from './config/content';
 import { cropLabel } from './config/crops';
+import { METRICS } from './config/metrics';
 import { useExplorerData } from './data/load';
-import { activeMetrics } from './data/metrics';
-import { apiQuery, noCover, usePageState } from './lib/request';
+import { CROP_IDS, ROTATION_LENGTH, TABS, apiQuery, noCover, usePageState, type Tab } from './lib/request';
+import { useTheme } from './lib/theme';
 import type { Units } from './lib/units';
-import { Builder } from './sections/Builder';
-import { Compare } from './sections/Compare';
-import { FieldMap } from './sections/FieldMap';
-import { Season } from './sections/Season';
-import { Situation } from './sections/Situation';
-import { Why } from './sections/Why';
+import { CompareView } from './sections/CompareView';
+import { DataView } from './sections/DataView';
+import { FieldView } from './sections/FieldView';
+import { PlanView } from './sections/PlanView';
+import { Sidebar } from './sections/Sidebar';
+import type { Rotation } from './types';
 
 /**
- * One long page: inputs → map → rotation builder → comparison → season view → reasons.
- * Every input change reloads the data from the explorer API; the last good data stays on screen meanwhile.
+ * Dashboard: top bar with tabs, settings on the left, one tab on the right.
+ * Two requests: the base (the rotation from the field history and the scorer's picks) and, once the farmer edits, their rotation.
+ * The last good data stays on screen while new data loads.
  */
 export default function App() {
   const [state, set] = usePageState();
-  const weights = useMemo(() => state.weights, [state.weights]);
-  const { data: raw, loading, error } = useExplorerData(apiQuery(state), weights);
+  const [theme, toggleTheme] = useTheme();
   const [units, setUnits] = useState<Units>('in');
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState('mine'); // rotation shown month by month on the Plan tab
   const [notice, setNotice] = useState<string | null>(null);
+  const weights = useMemo(() => state.weights, [state.weights]);
+  const base = useExplorerData(apiQuery({ ...state, rotation: null, cover: noCover() }), weights);
+  const plan = useExplorerData(state.rotation ? apiQuery(state) : null, weights);
 
-  // A built rotation the scorer cannot score: drop the cover crop if no gap fits one, else go back to the crop history.
-  // Otherwise a shared link with such a rotation would leave the page without data and without a way to fix it.
+  // A rotation the scorer cannot score: drop the cover crop if a gap is too short for one, else go back to the field history.
   useEffect(() => {
+    const error = plan.error;
     if (!error || !state.rotation) return;
-    const name = state.rotation.map(cropLabel).join(' → ');
+    const name = state.rotation.map(cropLabel).join(', ');
     if (state.cover.some(Boolean) && error.includes('cover crop')) {
-      const after = /fits after (.*)\)/.exec(error)?.[1]?.split(', ').map(cropLabel).join(', ');
-      setNotice(`A triticale cover crop does not fit${after ? ` after ${after}` : ''} in ${name} (the gap is too short), so it is scored without one.`);
+      const after = /fits after (.*)\)/.exec(error)?.[1]?.split(', ').map((c) => cropLabel(c).toLowerCase()).join(' and ');
+      setNotice(`A cover crop does not fit${after ? ` after ${after}` : ''}: the gap is too short. Shown without it.`);
       set((s) => ({ ...s, cover: noCover() }));
-    } else if (error.includes('not scored') && !error.includes('cover crop')) { // a cover-crop error here is stale (cover already dropped)
-      setNotice(`The scorer has no result for ${name}; showing your crop-history rotation.`);
+    } else if (error.includes('not scored') && !error.includes('cover crop')) {
+      setNotice(`There is no result for ${name}. Showing the rotation from your field history.`);
       set((s) => ({ ...s, rotation: null, cover: noCover() }));
     }
-  }, [error, state.rotation, state.cover, set]);
+  }, [plan.error, state.rotation, state.cover, set]);
 
-  const data = raw;
-  const metrics = useMemo(() => (data ? activeMetrics(data) : []), [data]);
-  const mctx = { units, nRotations: data?.nRotations ?? null };
-  const selected = data ? data.rotations.find((r) => r.id === selectedId) ?? data.options[0] ?? data.current : null;
-  const edited = state.rotation != null;
+  const data = base.data;
+  const fromHistory = data?.current ?? null; // the field's last three crops: where "your rotation" starts
+  const history = data ? data.field.crop_history.map((h) => h.crop).filter((c) => CROP_IDS.includes(c)).slice(-ROTATION_LENGTH) : [];
+  const edited = state.rotation != null && (state.rotation.join('-') !== history.join('-') || state.cover.some(Boolean));
+  const mine: Rotation | null = edited ? plan.data?.current ?? null : fromHistory;
+  const picks = data?.options ?? [];
+  const ctx = { units, nRotations: data?.nRotations ?? null };
+  const loading = base.loading || plan.loading;
+  const userSet = (f: Parameters<typeof set>[0]) => { setNotice(null); set(f); };
 
-  // the page title tells where the data is for
-  useEffect(() => { document.title = data ? `${CONTENT.brand} ${CONTENT.brandSub} · ${data.field.name}` : `${CONTENT.brand} ${CONTENT.brandSub}`; }, [data]);
+  const showMonths = (id: string) => { setSelectedId(id); userSet((s) => ({ ...s, tab: 'plan' })); };
 
-  const view = (id: string) => {
-    setSelectedId(id);
-    document.getElementById('season')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  };
+  useEffect(() => { document.title = data ? `${CONTENT.brand}: ${data.field.name}` : CONTENT.brand; }, [data]);
+  // a pick the farmer had selected can drop out when the weights change; fall back to their own rotation
+  const selectable = ['mine', ...picks.map((r) => r.id)];
+  const shownId = selectable.includes(selectedId) ? selectedId : 'mine';
 
   return (
-    <div className="wrap">
-      <header className="top">
-        <div className="brand">{CONTENT.brand} <span>{CONTENT.brandSub}</span></div>
-        <nav className="nav" aria-label="Sections">{CONTENT.nav.map((n) => <a key={n.id} href={`#${n.id}`} onClick={(e) => { e.preventDefault(); document.getElementById(n.id)?.scrollIntoView({ behavior: 'smooth' }); }}>{n.label}</a>)}</nav>
-        {/* status only while loading or after an error; nothing when the data is up to date */}
-        <span className={`flag${error ? ' err' : ' busy'}`} role="status" hidden={!error && !loading}>{error ? 'Data could not be updated' : 'Updating…'}</span>
+    <div className="app">
+      <header className="topbar">
+        <div className="brand"><span className="brand-mark" aria-hidden="true"><Sprout size={20} strokeWidth={2.25} /></span>{CONTENT.brand}</div>
+        {data && <span className="place">{data.field.name}, plans from {data.field.rotation_start_year}</span>}
+        <Tabs tab={state.tab} onTab={(tab) => userSet((s) => ({ ...s, tab }))} />
+        <span className="sync" role="status" aria-live="polite">
+          {loading ? <><LoaderCircle size={16} className="spin" aria-hidden="true" />Updating</> : base.error && data ? <><TriangleAlert size={16} aria-hidden="true" />Not updated</> : null}
+        </span>
+        <button type="button" className="icon-btn theme" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}>
+          {theme === 'dark' ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
+        </button>
       </header>
 
-      <div className="hero">
-        <p className="eyebrow">{data ? `${data.field.name} · rotation from ${data.field.rotation_start_year}` : 'Field Shift'}</p>
-        <h1>{CONTENT.title}</h1>
-        <p className="lead">{CONTENT.lead}</p>
-      </div>
+      <Sidebar state={state} set={userSet} units={units} onUnits={setUnits} data={data} />
 
-      {error && !data && !notice && <p role="alert" className="note warn"><b>The data could not be loaded.</b> {error}</p>}
-      {error && data && !state.rotation && !notice && <p role="alert" className="note warn">{error}</p>}
-
-      <Situation state={state} set={set} />
-      <FieldMap />
-      <Builder state={state} set={(f) => { setNotice(null); set(f); }} data={data} error={error} loading={loading} notice={notice} />
-
-      {data && selected ? (
-        <div className={`results${loading ? ' stale' : ''}`} aria-busy={loading}>
-          <Compare data={data} metrics={metrics} mctx={mctx} edited={edited} units={units} onUnits={setUnits} onView={view} />
-          <Season data={data} selected={selected} onSelect={setSelectedId} units={units} />
-          <Why data={data} selected={selected} metrics={metrics} mctx={mctx} units={units} />
-        </div>
-      ) : !error && <p className="note" role="status">Loading the scorer’s rotations…</p>}
-
-      <footer>
-        <span>Data: {data ? Object.values(data.sources).map((s) => s.title).join(' · ') : 'NASA POWER · USDA NASS · USDA NRCS SSURGO · K-State MF2586'}</span>
-        <span>{CONTENT.credits}</span>
-      </footer>
-      <ScrollTop />
+      <main className="main" id="main">
+        {base.error && <p role="alert" className="banner"><TriangleAlert size={18} aria-hidden="true" /><span><b>{data ? 'The numbers could not be updated.' : 'The numbers could not be loaded.'}</b> {base.error}</span></p>}
+        {state.tab === 'field' ? <FieldView /> : !data || !fromHistory ? (!base.error && <Skeleton />) : (
+          <div role="tabpanel" id={`panel-${state.tab}`} aria-labelledby={`tab-${state.tab}`} className={loading ? 'stale' : ''}>
+            {state.tab === 'plan' && <PlanView state={state} set={userSet} data={data} mine={mine} picks={picks} history={history} edited={edited}
+              scoring={plan.loading} notice={notice} error={plan.error} ctx={ctx} units={units} selectedId={shownId} onSelect={setSelectedId} />}
+            {state.tab === 'compare' && (mine ? <CompareView data={data} mine={mine} picks={picks} metrics={METRICS} ctx={ctx} units={units} set={userSet} onMonths={showMonths} /> : <Skeleton />)}
+            {state.tab === 'data' && <DataView data={data} metrics={METRICS} ctx={ctx} units={units} />}
+          </div>
+        )}
+      </main>
       <Tooltip />
+    </div>
+  );
+}
+
+/** Tab bar: standard ARIA tabs, arrow keys move between them. */
+function Tabs({ tab, onTab }: { tab: Tab; onTab: (t: Tab) => void }) {
+  const refs = useRef<(HTMLButtonElement | null)[]>([]);
+  const onKey = (e: KeyboardEvent, i: number) => {
+    const k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (!k && e.key !== 'Home' && e.key !== 'End') return;
+    e.preventDefault();
+    const next = e.key === 'Home' ? 0 : e.key === 'End' ? TABS.length - 1 : (i + k + TABS.length) % TABS.length;
+    onTab(TABS[next]); refs.current[next]?.focus();
+  };
+  return (
+    <nav className="tabs" role="tablist" aria-label="Dashboard">
+      {CONTENT.tabs.map((t, i) => (
+        <button key={t.id} ref={(el) => { refs.current[i] = el; }} id={`tab-${t.id}`} type="button" role="tab" aria-selected={tab === t.id} aria-controls={`panel-${t.id}`}
+          tabIndex={tab === t.id ? 0 : -1} onClick={() => onTab(t.id)} onKeyDown={(e) => onKey(e, i)}>{t.label}</button>
+      ))}
+    </nav>
+  );
+}
+
+function Skeleton() {
+  return (
+    <div className="skeleton-wrap" aria-busy="true" aria-label="Loading the rotations">
+      <div className="panel skeleton tall" /><div className="panel skeleton" /><div className="panel skeleton" />
     </div>
   );
 }

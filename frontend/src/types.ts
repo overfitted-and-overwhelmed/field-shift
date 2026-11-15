@@ -27,7 +27,8 @@ export interface ApiMonth {
   kind: 'crop' | 'cover' | 'bare';
   crop: string | null;
   et_in: number; rain_in: number; irr_in: number;
-  heat_years_pct: number; cold_stress_years_pct: number; kill_years_pct: number; // share of weather years, 0-100
+  heat_days: number; cold_stress_days: number; kill_days: number; // mean stress days in this month (contract 6.4+)
+  heat_years_pct: number; cold_stress_years_pct: number; kill_years_pct: number; // share of weather years with >= 1 stress day, 0-100
 }
 
 /** Scores 0 = best, 1 = worst among all rotations the scorer ranked. */
@@ -42,6 +43,8 @@ export interface ApiRotation {
   placeholder: boolean;
   monthly: ApiMonth[];
   summary: { bare_months: number; same_crop_repeats: number; n_loss_lb: number | null };
+  /** The same crops with the cover crop toggled (contract 6.3+); null if no gap fits a cover crop. */
+  cover_variant?: ApiRotation | null;
 }
 
 export interface ApiField {
@@ -57,6 +60,8 @@ export interface ApiExplorer {
   crops: Record<string, { label: string; yield_unit: 'bu' | 'lb' | null; season: string; legume: boolean; is_cover: boolean }>;
   climate: { weather_years: number[]; rain_in: number[]; et0_apr_sep_in: number[]; deficit_apr_sep_in: number[]; heat_days_ge_35: number[] };
   rotations: ApiRotation[];
+  /** Added by explorer/api.py, not part of explorer.json: average weather per calendar month (NASA POWER 1991-2025). */
+  weather_monthly?: { month: number; tmax_f: number; tmin_f: number }[];
   provenance: Record<string, { label: string; source: string | null }>;
   sources: Record<string, { title: string; url?: string | null; retrieved?: string | null }>;
 }
@@ -64,12 +69,13 @@ export interface ApiExplorer {
 /* ---------- normalized shape used by components ---------- */
 export interface Kpi { v: number; lo?: number; hi?: number }
 
-export interface Rotation extends Omit<ApiRotation, 'kpi' | 'rank' | 'score_parts'> {
-  pick: number | null; // 1 = best match; null for today's rotation
+export interface Rotation extends Omit<ApiRotation, 'kpi' | 'rank' | 'score_parts' | 'cover_variant'> {
+  pick: number | null; // 1 = best match; null for your own rotation
   years: number; // length of the pass in years (window days / 365.25)
   score_parts: ScoreParts;
   raw: Record<string, number>; // the scorer's kpi as sent
   kpi: Record<string, Kpi>; // derived values shown in the UI, keys in config/metrics.ts
+  cover_variant: Rotation | null; // same crops with the cover crop toggled, if the API sent one
 }
 
 export interface ExplorerData extends Omit<ApiExplorer, 'rotations'> {

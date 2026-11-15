@@ -61,3 +61,11 @@ def test_a_cover_in_one_gap_only_is_scored_on_request():
     assert cur.kpi["n_rotations"] == 225  # still ranked against the precomputed rotations only
     assert all("_" not in r.id.partition("+")[2] for r in export.rotations if not r.is_current)
     assert parse_request("rotation=corn-soybean-sorghum%2Btriticale_2")["current"] == "corn-soybean-sorghum+triticale_2"
+
+
+def test_weather_monthly_has_twelve_months_with_tmax_above_tmin():
+    from explorer.api import weather_monthly
+    w = weather_monthly()
+    assert [x["month"] for x in w] == list(range(1, 13))
+    assert all(x["tmax_f"] > x["tmin_f"] for x in w)
+    assert max(x["tmax_f"] for x in w) > 85  # a western Kansas summer
