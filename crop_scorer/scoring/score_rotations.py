@@ -6,6 +6,7 @@ day, so rotations of different length compare:
 - water: irrigation need (mm) per window day
 - risk: mean daily temperature risk score per crop day (fallow has no risk)
 - soil_health: share of bare (fallow) days in the window
+- nitrogen: N fertilizer need after K-State MF2586 (kg N/ha) summed over the seasons, per window day (see nitrogen.py)
 Each score is min-max normalised over all rotations of ROTATION_LENGTH crops (0 = best, 1 = worst).
 Weights and the farmer's rotation come from ui_input_mock.json until the UI exists; total = weighted mean.
 
@@ -24,6 +25,7 @@ from pathlib import Path
 import pandas as pd
 
 from crop_scorer.risk_score import load_crop_configs, load_temperature_data, rotation_daily_risk
+from crop_scorer.scoring.nitrogen import rotation_n_need_kg, season_n_need_kg
 from crop_scorer.water_usage.water_usage import FIRST_YEAR, LAST_YEAR, REPO, load_crop_params, simulate
 
 OUT_DIR = REPO / "data/processed/rotation_scores"
@@ -35,7 +37,12 @@ ROTATION_LENGTH = 3
 TOP_N = 10
 
 # criterion -> raw column; smaller is better for all of them
-CRITERIA = {"water": "water_mm_per_day", "risk": "risk_per_crop_day", "soil_health": "bare_share"}
+CRITERIA = {
+    "water": "water_mm_per_day",
+    "risk": "risk_per_crop_day",
+    "soil_health": "bare_share",
+    "nitrogen": "n_fertilizer_kg_per_day",
+}
 
 # daily export: internal column -> (parameter, unit); means over the start years
 DAILY_PARAMS = {
@@ -106,12 +113,15 @@ def score_days(rotation: list[str], days: pd.DataFrame) -> dict:
     per_year["water_mm_per_day"] = per_year["irrigation_mm"] / per_year["window_days"]
     per_year["risk_per_crop_day"] = per_year["risk_sum"] / per_year["crop_days"]
     per_year["bare_share"] = 1 - per_year["crop_days"] / per_year["window_days"]
+    # the K-State need does not depend on the weather, only on crops and previous crops
+    per_year["n_fertilizer_kg"] = sum(rotation_n_need_kg(rotation))
+    per_year["n_fertilizer_kg_per_day"] = per_year["n_fertilizer_kg"] / per_year["window_days"]
     mean = per_year.mean()
     return {
         "rotation": "-".join(rotation),
         "n_start_years": len(per_year),
         **{col: mean[col] for col in CRITERIA.values()},
-        **{col: mean[col] for col in ["window_days", "irrigation_mm", "frost_days", "heat_days", "kill_days"]},
+        **{col: mean[col] for col in ["window_days", "irrigation_mm", "n_fertilizer_kg", "frost_days", "heat_days", "kill_days"]},
     }
 
 
@@ -131,7 +141,9 @@ def normalize(scores: pd.DataFrame, reference: pd.DataFrame) -> pd.DataFrame:
 
 
 def rank(scores: pd.DataFrame, weights: dict[str, float]) -> pd.DataFrame:
-    total = sum(weights[name] * scores[f"{name}_score"] for name in CRITERIA) / sum(weights[name] for name in CRITERIA)
+    # a criterion without a weight is not counted (e.g. callers that do not know the nitrogen criterion yet)
+    weights = {name: weights.get(name, 0) for name in CRITERIA}
+    total = sum(weights[name] * scores[f"{name}_score"] for name in CRITERIA) / sum(weights.values())
     ranked = scores.assign(total_score=total).sort_values("total_score", ignore_index=True)
     ranked.insert(0, "rank", range(1, len(ranked) + 1))
     return ranked
@@ -194,20 +206,22 @@ def season_by_year(days: pd.DataFrame) -> pd.DataFrame:
     out["harvest_date"] = out["last_day"] + pd.Timedelta(days=1)  # harvest day is not part of the season
     out["harvest_year"] = out["harvest_date"].dt.year
     out["eta_mm"] = out["etc_mm"] - out["irrigation_need_mm"]  # rain-fed: irrigation need = ETc - ETa
-    return out[["season", "crop", "start_year", "sow_date", "harvest_date", "harvest_year", "season_days", "etc_mm",
-                "eta_mm", "precipitation_mm", "irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days"]]
+    previous = out.sort_values(["start_year", "season"]).groupby("start_year")["crop"].shift()
+    out["n_fertilizer_kg_ha"] = [season_n_need_kg(c, p if isinstance(p, str) else None) for c, p in zip(out["crop"], previous.reindex(out.index))]
+    return out[["season", "crop", "start_year", "sow_date", "harvest_date", "harvest_year", "season_days", "etc_mm", "eta_mm",
+                "precipitation_mm", "irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days", "n_fertilizer_kg_ha"]]
 
 
 def season_table(days: pd.DataFrame) -> pd.DataFrame:
     by_year = season_by_year(days)
     first = by_year[by_year["start_year"] == by_year["start_year"].min()].set_index("season")
-    means = by_year.groupby("season")[["irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days"]].mean()
+    means = by_year.groupby("season")[["irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days", "n_fertilizer_kg_ha"]].mean()
     out = first[["crop", "sow_date", "harvest_date", "season_days"]].join(means).reset_index()
     out["sow_month_day"] = out["sow_date"].dt.strftime("%m-%d")
     out["harvest_month_day"] = out["harvest_date"].dt.strftime("%m-%d")
     out["sow_cycle_day"] = (out["sow_date"] - out["sow_date"].min()).dt.days
     return out[["season", "crop", "sow_month_day", "harvest_month_day", "sow_cycle_day", "season_days",
-                "irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days"]]
+                "irrigation_need_mm", "risk_per_crop_day", "frost_days", "heat_days", "kill_days", "n_fertilizer_kg_ha"]]
 
 
 def monthly_table(days: pd.DataFrame) -> pd.DataFrame:
