@@ -36,7 +36,7 @@ CORN_CONDITION = "irrigated"
 # ASSUMPTION: MF2586 has no N recommendation for soybean; as a legume it fixes its own N, so no fertilizer
 NO_FORMULA_KG = {"soybean": 0.0}
 # Clark (ed.) 2007, Managing Cover Crops Profitably, 3rd ed., SARE, p. 46: after a high-residue cereal cover the cash
-# crop may need 25-30 lb N/ac more; middle of the range (cited in data/cover_crop_effects.csv on feat/fertilizer-need)
+# crop may need 25-30 lb N/ac more; middle of the range (data/base-data/literature/cover_crop_effects.csv, n_cereal_cover_extra_fert)
 COVER_N_LB = 27.5
 
 
@@ -86,6 +86,13 @@ def previous_crop_adjustment_lb(crop: str, previous: str | None) -> float:
     return float(d["n_adjustment_lb_a"].iloc[0])
 
 
+def season_n_adjustment_lb(crop: str, previous: str | None, after_cover: bool = False) -> float:
+    # PreviousCropAdj of the formula (negative = credit) plus the extra N after a cover crop; 0 without a formula
+    if crop in NO_FORMULA_KG:
+        return 0.0
+    return previous_crop_adjustment_lb(crop, previous) + (COVER_N_LB if after_cover else 0.0)
+
+
 @cache
 def season_n_need_kg(crop: str, previous: str | None, after_cover: bool = False) -> float:
     if crop in NO_FORMULA_KG:
@@ -94,7 +101,7 @@ def season_n_need_kg(crop: str, previous: str | None, after_cover: bool = False)
     ey = expected_yield(crop)
     som_credit = organic_matter_pct() * ksu(season, "som_credit")
     profile_n = ksu("all", "profile_n_default")
-    previous_adj = previous_crop_adjustment_lb(crop, previous) + (COVER_N_LB if after_cover else 0.0)
+    previous_adj = season_n_adjustment_lb(crop, previous, after_cover)
     if crop == "sunflower":
         n = ey * ksu("sunflower", "yield_factor") - som_credit - profile_n + previous_adj
     else:
