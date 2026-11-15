@@ -1,0 +1,10 @@
+{
+  "_comment": "MOCK of the UI input until the UI exists. current_rotation is a random draw (seed 2026), not the real field history. Weights: any non-negative numbers, only their ratio matters.",
+  "weights": {
+    "water": 1,
+    "risk": 1,
+    "soil_health": 1,
+    "nitrogen": 1
+  },
+  "current_rotation": ["corn", "soybean", "soybean"]
+}
