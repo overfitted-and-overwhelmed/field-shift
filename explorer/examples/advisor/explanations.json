@@ -1,0 +1,747 @@
+{
+  "contract_version": "1.0.0-draft",
+  "explorer_generated_at": "2026-11-15T01:43:56+00:00",
+  "current_rotation": "corn-corn-corn",
+  "rotations": {
+    "corn-corn-corn": {
+      "explain": {
+        "id": "corn-corn-corn",
+        "name": "Corn · Corn · Corn",
+        "rank": 221,
+        "n_rotations": 225,
+        "total_score": 0.5732,
+        "weights": {
+          "water": 1.0,
+          "risk": 1.0,
+          "soil_health": 1.0,
+          "nitrogen": 1.0
+        },
+        "breakdown": [
+          {
+            "criterion": "water",
+            "score": 0.4999,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.125,
+            "level": "mid",
+            "phrase": "needs a medium amount of irrigation water"
+          },
+          {
+            "criterion": "risk",
+            "score": 0.0,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0,
+            "level": "good",
+            "phrase": "has a low risk of heat, cold and frost damage"
+          },
+          {
+            "criterion": "soil_health",
+            "score": 0.8773,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.2193,
+            "level": "bad",
+            "phrase": "leaves the soil bare for long stretches (erosion risk)"
+          },
+          {
+            "criterion": "nitrogen",
+            "score": 0.9157,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.2289,
+            "level": "bad",
+            "phrase": "needs a lot of nitrogen fertilizer"
+          }
+        ],
+        "strongest": "risk",
+        "weakest": "nitrogen",
+        "summary": "Corn · Corn · Corn is place 221 of 225 tested rotations with your weights. Its strongest point: it has a low risk of heat, cold and frost damage. Its weakest point: it needs a lot of nitrogen fertilizer.",
+        "note": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit.",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        }
+      },
+      "caveats": {
+        "id": "corn-corn-corn",
+        "name": "Corn · Corn · Corn",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        },
+        "caveats": [
+          {
+            "code": "relative_scores",
+            "text": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit."
+          },
+          {
+            "code": "nitrogen_pending",
+            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+          },
+          {
+            "code": "modeled",
+            "text": "Yields, irrigation and stress values are model results based on past weather (1991-2025). They are not forecasts."
+          },
+          {
+            "code": "grid_weather",
+            "text": "Weather comes from a coarse grid (about 50 km), not from a station at your field."
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (Seifert, Roberts & Lobell 2017, Agron. J. 109(2):541 (summary: UNL CropWatch 2020)). Treat it as a rough guide.",
+            "source": "seifert_2017"
+          }
+        ],
+        "assumptions": [
+          {
+            "field": "field.previous_crop",
+            "text": "The crop before the first season comes from satellite crop maps (USDA CDL), not from your own records.",
+            "source": "nass_cdl"
+          },
+          {
+            "field": "field.rotation_start_year",
+            "text": "The year of the first sowing is assumed, not chosen by you.",
+            "source": null
+          },
+          {
+            "field": "sequence.irrigation",
+            "text": "The irrigation level of each season (full) is an assumption, not your own choice.",
+            "source": null
+          },
+          {
+            "field": "monthly.cold_stress_years_pct",
+            "text": "Cold stress is our own rule (below the crop's best temperature for at least half a day), not a standard threshold.",
+            "source": "scorer_risk"
+          }
+        ],
+        "sources": {
+          "nasa_power": {
+            "title": "NASA POWER daily weather, ~50 km grid",
+            "url": "https://power.larc.nasa.gov/parameters/",
+            "retrieved": null
+          },
+          "nass_cdl": {
+            "title": "USDA NASS Cropland Data Layer via CropScape",
+            "url": "https://nassgeodata.gmu.edu/CropScape/",
+            "retrieved": "2026-11-14"
+          },
+          "nass_quickstats": {
+            "title": "USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)",
+            "url": "https://quickstats.nass.usda.gov",
+            "retrieved": "2026-11-14"
+          },
+          "scorer": {
+            "title": "Field Shift scorer: seasons from the USDA NASS crop calendar, scores per rotation",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_risk": {
+            "title": "Field Shift scorer: daily temperature risk from NASA POWER and Ecocrop limits",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_water": {
+            "title": "Field Shift scorer: FAO-56 soil water balance on NASA POWER weather",
+            "url": null,
+            "retrieved": null
+          },
+          "seifert_2017": {
+            "title": "Seifert, Roberts & Lobell 2017, Agron. J. 109(2):541 (summary: UNL CropWatch 2020)",
+            "url": "https://cropwatch.unl.edu/2020/yield-penalties-continuous-corn-and-soybean-midwest-us/",
+            "retrieved": null
+          },
+          "ssurgo": {
+            "title": "USDA NRCS SSURGO via Soil Data Access",
+            "url": "https://sdmdataaccess.sc.egov.usda.gov/",
+            "retrieved": null
+          },
+          "usgs_3dep": {
+            "title": "USGS 3DEP/NED 10 m via OpenTopoData",
+            "url": "https://api.opentopodata.org/v1/ned10m",
+            "retrieved": null
+          }
+        }
+      },
+      "trade_offs_vs_current": null
+    },
+    "sunflower-soybean-sunflower+triticale": {
+      "explain": {
+        "id": "sunflower-soybean-sunflower+triticale",
+        "name": "Sunflower · Soybean · Sunflower + triticale cover",
+        "rank": 1,
+        "n_rotations": 225,
+        "total_score": 0.1289,
+        "weights": {
+          "water": 1.0,
+          "risk": 1.0,
+          "soil_health": 1.0,
+          "nitrogen": 1.0
+        },
+        "breakdown": [
+          {
+            "criterion": "water",
+            "score": 0.1927,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0482,
+            "level": "good",
+            "phrase": "needs little irrigation water"
+          },
+          {
+            "criterion": "risk",
+            "score": 0.0672,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0168,
+            "level": "good",
+            "phrase": "has a low risk of heat, cold and frost damage"
+          },
+          {
+            "criterion": "soil_health",
+            "score": 0.1463,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0366,
+            "level": "good",
+            "phrase": "keeps the soil covered most of the time"
+          },
+          {
+            "criterion": "nitrogen",
+            "score": 0.1096,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0274,
+            "level": "good",
+            "phrase": "needs little nitrogen fertilizer"
+          }
+        ],
+        "strongest": "risk",
+        "weakest": "water",
+        "summary": "Sunflower · Soybean · Sunflower + triticale cover is place 1 of 225 tested rotations with your weights. Its strongest point: it has a low risk of heat, cold and frost damage. Its weakest point: it needs little irrigation water.",
+        "note": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit.",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        }
+      },
+      "caveats": {
+        "id": "sunflower-soybean-sunflower+triticale",
+        "name": "Sunflower · Soybean · Sunflower + triticale cover",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        },
+        "caveats": [
+          {
+            "code": "relative_scores",
+            "text": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit."
+          },
+          {
+            "code": "nitrogen_pending",
+            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+          },
+          {
+            "code": "modeled",
+            "text": "Yields, irrigation and stress values are model results based on past weather (1991-2025). They are not forecasts."
+          },
+          {
+            "code": "grid_weather",
+            "text": "Weather comes from a coarse grid (about 50 km), not from a station at your field."
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)). Treat it as a rough guide.",
+            "source": "nass_quickstats"
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
+            "source": "ndsu_sunflower"
+          }
+        ],
+        "assumptions": [
+          {
+            "field": "field.previous_crop",
+            "text": "The crop before the first season comes from satellite crop maps (USDA CDL), not from your own records.",
+            "source": "nass_cdl"
+          },
+          {
+            "field": "field.rotation_start_year",
+            "text": "The year of the first sowing is assumed, not chosen by you.",
+            "source": null
+          },
+          {
+            "field": "sequence.irrigation",
+            "text": "The irrigation level of each season (full) is an assumption, not your own choice.",
+            "source": null
+          },
+          {
+            "field": "monthly.cold_stress_years_pct",
+            "text": "Cold stress is our own rule (below the crop's best temperature for at least half a day), not a standard threshold.",
+            "source": "scorer_risk"
+          }
+        ],
+        "sources": {
+          "nasa_power": {
+            "title": "NASA POWER daily weather, ~50 km grid",
+            "url": "https://power.larc.nasa.gov/parameters/",
+            "retrieved": null
+          },
+          "nass_cdl": {
+            "title": "USDA NASS Cropland Data Layer via CropScape",
+            "url": "https://nassgeodata.gmu.edu/CropScape/",
+            "retrieved": "2026-11-14"
+          },
+          "nass_quickstats": {
+            "title": "USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)",
+            "url": "https://quickstats.nass.usda.gov",
+            "retrieved": "2026-11-14"
+          },
+          "ndsu_sunflower": {
+            "title": "NDSU Sunflower Production Guide",
+            "url": "https://www.ndsu.edu/agriculture/extension/publications/sunflower-production-guide",
+            "retrieved": null
+          },
+          "scorer": {
+            "title": "Field Shift scorer: seasons from the USDA NASS crop calendar, scores per rotation",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_risk": {
+            "title": "Field Shift scorer: daily temperature risk from NASA POWER and Ecocrop limits",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_water": {
+            "title": "Field Shift scorer: FAO-56 soil water balance on NASA POWER weather",
+            "url": null,
+            "retrieved": null
+          },
+          "ssurgo": {
+            "title": "USDA NRCS SSURGO via Soil Data Access",
+            "url": "https://sdmdataaccess.sc.egov.usda.gov/",
+            "retrieved": null
+          },
+          "usgs_3dep": {
+            "title": "USGS 3DEP/NED 10 m via OpenTopoData",
+            "url": "https://api.opentopodata.org/v1/ned10m",
+            "retrieved": null
+          }
+        }
+      },
+      "trade_offs_vs_current": {
+        "threshold": 0.1,
+        "items": [
+          {
+            "criterion": "water",
+            "better": "sunflower-soybean-sunflower+triticale",
+            "diff": -0.3072,
+            "sentence": "Sunflower · Soybean · Sunflower + triticale cover needs less irrigation water than Corn · Corn · Corn."
+          },
+          {
+            "criterion": "soil_health",
+            "better": "sunflower-soybean-sunflower+triticale",
+            "diff": -0.731,
+            "sentence": "Sunflower · Soybean · Sunflower + triticale cover keeps the soil covered more of the time than Corn · Corn · Corn."
+          },
+          {
+            "criterion": "nitrogen",
+            "better": "sunflower-soybean-sunflower+triticale",
+            "diff": -0.8061,
+            "sentence": "Sunflower · Soybean · Sunflower + triticale cover needs less nitrogen fertilizer than Corn · Corn · Corn."
+          }
+        ],
+        "summary": "Sunflower · Soybean · Sunflower + triticale cover needs less irrigation water than Corn · Corn · Corn. Sunflower · Soybean · Sunflower + triticale cover keeps the soil covered more of the time than Corn · Corn · Corn. Sunflower · Soybean · Sunflower + triticale cover needs less nitrogen fertilizer than Corn · Corn · Corn."
+      }
+    },
+    "sunflower-sunflower-sunflower+triticale": {
+      "explain": {
+        "id": "sunflower-sunflower-sunflower+triticale",
+        "name": "Sunflower · Sunflower · Sunflower + triticale cover",
+        "rank": 2,
+        "n_rotations": 225,
+        "total_score": 0.1363,
+        "weights": {
+          "water": 1.0,
+          "risk": 1.0,
+          "soil_health": 1.0,
+          "nitrogen": 1.0
+        },
+        "breakdown": [
+          {
+            "criterion": "water",
+            "score": 0.0707,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0177,
+            "level": "good",
+            "phrase": "needs little irrigation water"
+          },
+          {
+            "criterion": "risk",
+            "score": 0.0547,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0137,
+            "level": "good",
+            "phrase": "has a low risk of heat, cold and frost damage"
+          },
+          {
+            "criterion": "soil_health",
+            "score": 0.1463,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0366,
+            "level": "good",
+            "phrase": "keeps the soil covered most of the time"
+          },
+          {
+            "criterion": "nitrogen",
+            "score": 0.2736,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0684,
+            "level": "good",
+            "phrase": "needs little nitrogen fertilizer"
+          }
+        ],
+        "strongest": "risk",
+        "weakest": "nitrogen",
+        "summary": "Sunflower · Sunflower · Sunflower + triticale cover is place 2 of 225 tested rotations with your weights. Its strongest point: it has a low risk of heat, cold and frost damage. Its weakest point: it needs little nitrogen fertilizer.",
+        "note": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit.",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        }
+      },
+      "caveats": {
+        "id": "sunflower-sunflower-sunflower+triticale",
+        "name": "Sunflower · Sunflower · Sunflower + triticale cover",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        },
+        "caveats": [
+          {
+            "code": "relative_scores",
+            "text": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit."
+          },
+          {
+            "code": "nitrogen_pending",
+            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+          },
+          {
+            "code": "modeled",
+            "text": "Yields, irrigation and stress values are model results based on past weather (1991-2025). They are not forecasts."
+          },
+          {
+            "code": "grid_weather",
+            "text": "Weather comes from a coarse grid (about 50 km), not from a station at your field."
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)). Treat it as a rough guide.",
+            "source": "nass_quickstats"
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
+            "source": "ndsu_sunflower"
+          }
+        ],
+        "assumptions": [
+          {
+            "field": "field.previous_crop",
+            "text": "The crop before the first season comes from satellite crop maps (USDA CDL), not from your own records.",
+            "source": "nass_cdl"
+          },
+          {
+            "field": "field.rotation_start_year",
+            "text": "The year of the first sowing is assumed, not chosen by you.",
+            "source": null
+          },
+          {
+            "field": "sequence.irrigation",
+            "text": "The irrigation level of each season (full) is an assumption, not your own choice.",
+            "source": null
+          },
+          {
+            "field": "monthly.cold_stress_years_pct",
+            "text": "Cold stress is our own rule (below the crop's best temperature for at least half a day), not a standard threshold.",
+            "source": "scorer_risk"
+          }
+        ],
+        "sources": {
+          "nasa_power": {
+            "title": "NASA POWER daily weather, ~50 km grid",
+            "url": "https://power.larc.nasa.gov/parameters/",
+            "retrieved": null
+          },
+          "nass_cdl": {
+            "title": "USDA NASS Cropland Data Layer via CropScape",
+            "url": "https://nassgeodata.gmu.edu/CropScape/",
+            "retrieved": "2026-11-14"
+          },
+          "nass_quickstats": {
+            "title": "USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)",
+            "url": "https://quickstats.nass.usda.gov",
+            "retrieved": "2026-11-14"
+          },
+          "ndsu_sunflower": {
+            "title": "NDSU Sunflower Production Guide",
+            "url": "https://www.ndsu.edu/agriculture/extension/publications/sunflower-production-guide",
+            "retrieved": null
+          },
+          "scorer": {
+            "title": "Field Shift scorer: seasons from the USDA NASS crop calendar, scores per rotation",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_risk": {
+            "title": "Field Shift scorer: daily temperature risk from NASA POWER and Ecocrop limits",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_water": {
+            "title": "Field Shift scorer: FAO-56 soil water balance on NASA POWER weather",
+            "url": null,
+            "retrieved": null
+          },
+          "ssurgo": {
+            "title": "USDA NRCS SSURGO via Soil Data Access",
+            "url": "https://sdmdataaccess.sc.egov.usda.gov/",
+            "retrieved": null
+          },
+          "usgs_3dep": {
+            "title": "USGS 3DEP/NED 10 m via OpenTopoData",
+            "url": "https://api.opentopodata.org/v1/ned10m",
+            "retrieved": null
+          }
+        }
+      },
+      "trade_offs_vs_current": {
+        "threshold": 0.1,
+        "items": [
+          {
+            "criterion": "water",
+            "better": "sunflower-sunflower-sunflower+triticale",
+            "diff": -0.4292,
+            "sentence": "Sunflower · Sunflower · Sunflower + triticale cover needs less irrigation water than Corn · Corn · Corn."
+          },
+          {
+            "criterion": "soil_health",
+            "better": "sunflower-sunflower-sunflower+triticale",
+            "diff": -0.731,
+            "sentence": "Sunflower · Sunflower · Sunflower + triticale cover keeps the soil covered more of the time than Corn · Corn · Corn."
+          },
+          {
+            "criterion": "nitrogen",
+            "better": "sunflower-sunflower-sunflower+triticale",
+            "diff": -0.6421,
+            "sentence": "Sunflower · Sunflower · Sunflower + triticale cover needs less nitrogen fertilizer than Corn · Corn · Corn."
+          }
+        ],
+        "summary": "Sunflower · Sunflower · Sunflower + triticale cover needs less irrigation water than Corn · Corn · Corn. Sunflower · Sunflower · Sunflower + triticale cover keeps the soil covered more of the time than Corn · Corn · Corn. Sunflower · Sunflower · Sunflower + triticale cover needs less nitrogen fertilizer than Corn · Corn · Corn."
+      }
+    },
+    "soybean-sunflower-sunflower+triticale": {
+      "explain": {
+        "id": "soybean-sunflower-sunflower+triticale",
+        "name": "Soybean · Sunflower · Sunflower + triticale cover",
+        "rank": 3,
+        "n_rotations": 225,
+        "total_score": 0.1379,
+        "weights": {
+          "water": 1.0,
+          "risk": 1.0,
+          "soil_health": 1.0,
+          "nitrogen": 1.0
+        },
+        "breakdown": [
+          {
+            "criterion": "water",
+            "score": 0.1894,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0474,
+            "level": "good",
+            "phrase": "needs little irrigation water"
+          },
+          {
+            "criterion": "risk",
+            "score": 0.0667,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0167,
+            "level": "good",
+            "phrase": "has a low risk of heat, cold and frost damage"
+          },
+          {
+            "criterion": "soil_health",
+            "score": 0.1444,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0361,
+            "level": "good",
+            "phrase": "keeps the soil covered most of the time"
+          },
+          {
+            "criterion": "nitrogen",
+            "score": 0.1511,
+            "weight": 1.0,
+            "weight_share": 0.25,
+            "contribution": 0.0378,
+            "level": "good",
+            "phrase": "needs little nitrogen fertilizer"
+          }
+        ],
+        "strongest": "risk",
+        "weakest": "water",
+        "summary": "Soybean · Sunflower · Sunflower + triticale cover is place 3 of 225 tested rotations with your weights. Its strongest point: it has a low risk of heat, cold and frost damage. Its weakest point: it needs little irrigation water.",
+        "note": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit.",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        }
+      },
+      "caveats": {
+        "id": "soybean-sunflower-sunflower+triticale",
+        "name": "Soybean · Sunflower · Sunflower + triticale cover",
+        "detail_level": "full",
+        "flags": {
+          "placeholder": false,
+          "nitrogen_null": true
+        },
+        "caveats": [
+          {
+            "code": "relative_scores",
+            "text": "Scores compare the 225 tested rotations with each other (0 = best, 1 = worst). They are not an absolute grade and not a promise of yield or profit."
+          },
+          {
+            "code": "nitrogen_pending",
+            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+          },
+          {
+            "code": "modeled",
+            "text": "Yields, irrigation and stress values are model results based on past weather (1991-2025). They are not forecasts."
+          },
+          {
+            "code": "grid_weather",
+            "text": "Weather comes from a coarse grid (about 50 km), not from a station at your field."
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)). Treat it as a rough guide.",
+            "source": "nass_quickstats"
+          },
+          {
+            "code": "literature_effect",
+            "text": "The yield effect of the crop order comes from a study in another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
+            "source": "ndsu_sunflower"
+          }
+        ],
+        "assumptions": [
+          {
+            "field": "field.previous_crop",
+            "text": "The crop before the first season comes from satellite crop maps (USDA CDL), not from your own records.",
+            "source": "nass_cdl"
+          },
+          {
+            "field": "field.rotation_start_year",
+            "text": "The year of the first sowing is assumed, not chosen by you.",
+            "source": null
+          },
+          {
+            "field": "sequence.irrigation",
+            "text": "The irrigation level of each season (full) is an assumption, not your own choice.",
+            "source": null
+          },
+          {
+            "field": "monthly.cold_stress_years_pct",
+            "text": "Cold stress is our own rule (below the crop's best temperature for at least half a day), not a standard threshold.",
+            "source": "scorer_risk"
+          }
+        ],
+        "sources": {
+          "nasa_power": {
+            "title": "NASA POWER daily weather, ~50 km grid",
+            "url": "https://power.larc.nasa.gov/parameters/",
+            "retrieved": null
+          },
+          "nass_cdl": {
+            "title": "USDA NASS Cropland Data Layer via CropScape",
+            "url": "https://nassgeodata.gmu.edu/CropScape/",
+            "retrieved": "2026-11-14"
+          },
+          "nass_quickstats": {
+            "title": "USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)",
+            "url": "https://quickstats.nass.usda.gov",
+            "retrieved": "2026-11-14"
+          },
+          "ndsu_sunflower": {
+            "title": "NDSU Sunflower Production Guide",
+            "url": "https://www.ndsu.edu/agriculture/extension/publications/sunflower-production-guide",
+            "retrieved": null
+          },
+          "scorer": {
+            "title": "Field Shift scorer: seasons from the USDA NASS crop calendar, scores per rotation",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_risk": {
+            "title": "Field Shift scorer: daily temperature risk from NASA POWER and Ecocrop limits",
+            "url": null,
+            "retrieved": null
+          },
+          "scorer_water": {
+            "title": "Field Shift scorer: FAO-56 soil water balance on NASA POWER weather",
+            "url": null,
+            "retrieved": null
+          },
+          "ssurgo": {
+            "title": "USDA NRCS SSURGO via Soil Data Access",
+            "url": "https://sdmdataaccess.sc.egov.usda.gov/",
+            "retrieved": null
+          },
+          "usgs_3dep": {
+            "title": "USGS 3DEP/NED 10 m via OpenTopoData",
+            "url": "https://api.opentopodata.org/v1/ned10m",
+            "retrieved": null
+          }
+        }
+      },
+      "trade_offs_vs_current": {
+        "threshold": 0.1,
+        "items": [
+          {
+            "criterion": "water",
+            "better": "soybean-sunflower-sunflower+triticale",
+            "diff": -0.3105,
+            "sentence": "Soybean · Sunflower · Sunflower + triticale cover needs less irrigation water than Corn · Corn · Corn."
+          },
+          {
+            "criterion": "soil_health",
+            "better": "soybean-sunflower-sunflower+triticale",
+            "diff": -0.7329,
+            "sentence": "Soybean · Sunflower · Sunflower + triticale cover keeps the soil covered more of the time than Corn · Corn · Corn."
+          },
+          {
+            "criterion": "nitrogen",
+            "better": "soybean-sunflower-sunflower+triticale",
+            "diff": -0.7646,
+            "sentence": "Soybean · Sunflower · Sunflower + triticale cover needs less nitrogen fertilizer than Corn · Corn · Corn."
+          }
+        ],
+        "summary": "Soybean · Sunflower · Sunflower + triticale cover needs less irrigation water than Corn · Corn · Corn. Soybean · Sunflower · Sunflower + triticale cover keeps the soil covered more of the time than Corn · Corn · Corn. Soybean · Sunflower · Sunflower + triticale cover needs less nitrogen fertilizer than Corn · Corn · Corn."
+      }
+    }
+  }
+}

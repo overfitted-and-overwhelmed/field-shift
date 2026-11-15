@@ -34,7 +34,18 @@
 
 **Relevant Context:** `explorer/schema.py` (`ExplorerExport`, `Rotation`, `SeasonDetail`, `MonthDetail`), `explorer/paths.py`, `explorer/build.py` (`load_scorer_scores`), `tests/test_build.py` for test style.
 
-**Status:** [ ] pending
+**Status:** [x] done (waiting for review)
+
+**Notes for sub-task 2 and later (what was built)**
+- Layout: `advisor/__init__.py` (public API + errors), `advisor/data.py` (loading), `advisor/lookup.py` (lookups), tests in `tests/test_advisor_core.py`. No existing module was changed.
+- `advisor/data.py`: `load_export()` (validated `ExplorerExport`, `@cache`), `load_scores()` (CSV via `explorer.field_calendar.load_scorer_scores`, ranked with the scorer's `rank` and `DEFAULT_WEIGHTS` = equal weights for all four criteria, indexed by rotation id, has `rank`, `total_score`, `*_score`), `known_ids()`, `check_id(id)`. Errors: `UnknownRotationError` (has `.rotation_id`, `.close_matches`, message lists them) and `DetailNotAvailableError`. Both are `ValueError`.
+- `advisor/lookup.py` (all return JSON-serializable dicts/lists): `field_overview()`, `list_top_rotations(n=10, cover_crop=None)`, `get_rotation(id)`, `compare_rotations(a, b)` (`diff` = b minus a), `monthly_table(id)`.
+- Result shape of a rotation: `id, name, crops, cover_crop, is_current, pick (1-3 or None), rank_all, total_score, score_parts {water, risk, soil_health, nitrogen} (0 = best), detail_level ("full" | "scores_only"), flags {placeholder, nitrogen_null}`; `get_rotation` adds `short, kpi, n_rotations, weights, seasons, summary, note`. `seasons`/`summary` are None for `scores_only`.
+- Detail levels: only the 4 rotations in `explorer.json` (current + 3 picks) are `"full"`. All other candidates are `"scores_only"`, with `flags.placeholder = None` (unknown) and `flags.nitrogen_null = True` (the CSV has the nitrogen score but no amounts). `monthly_table` raises `DetailNotAvailableError` for them.
+- Flags: `flags.nitrogen_null` is true while any season `n_lb` / `n_adj_lb`, `summary.n_loss_lb` or month `nitrogen` is null (currently true for all full rotations). Nulls stay null, differences with a null side are null, never 0.
+- Scores, rank and KPIs always come from the CSV with equal weights (`rank_all` out of 225). The `rank` in `explorer.json` is the pick number (1-3) and is exposed as `pick`. For `explain_score` (sub-task 3) and `rerank` (sub-task 4), reuse `advisor.data.load_scores()` / `crop_scorer.scoring.score_rotations.rank` and `CRITERIA`. Note that `rank` ignores criteria missing from the weights.
+- Provenance and `sources` of `explorer.json` are not part of the lookup results yet. Season `effects` already carry their `provenance` label and `source` key. `load_export().provenance` / `.sources` are available for `get_data_caveats`.
+- `pyproject.toml` `testpaths` is `tests` and `explorer`, so doctests in `advisor/` are not collected (no doctests used).
 
 ### 2. Glossary and plain-language content
 **Intent:** Most of the farmer value: short, accurate, non-technical explanations, kept as data so the web app (and later an MCP wrapper) can use them.
@@ -54,7 +65,11 @@
 
 **Relevant Context:** `crop_scorer/scoring/score_rotations.py` (CRITERIA, docstrings), `crop_scorer/risk_score/severity.py`, `explorer/yields.py` (model description), `explorer/frost_heat.py`, `explorer/build.py` (PROVENANCE, SOURCES).
 
-**Status:** [ ] pending
+**Status:** [x] done (waiting for review). Agronomic review (todo 4) stays open, see Review TODO.
+
+**Notes (what was built)**
+- `advisor/glossary.json` (terms + sentence templates), `advisor/glossary.py` (`explain_term`, `list_terms`, `UnknownTermError`). A term is found by key, alias (also data field names such as `cold_stress_years_pct`, `et0_apr_sep_in`) or title, in any case.
+- Tests (`tests/test_advisor_explain.py`) check that every provenance label, criterion, `MonthDetail` / `MonthNitrogen` / `Summary` / `SeasonDetail` field and every field name in `provenance` resolves to an entry, and that every entry is `reviewed: false`.
 
 ### 3. Explain-score and caveats
 **Intent:** Answer "why is this rotation ranked here?" and "how much can I trust this?" with templated, deterministic sentences.
@@ -72,7 +87,11 @@
 
 **Relevant Context:** `rank` and `normalize` in `score_rotations.py`, `ScoreParts` and `Rotation.kpi` in `explorer/schema.py`.
 
-**Status:** [ ] pending
+**Status:** [x] done (waiting for review)
+
+**Notes (what was built)**
+- `advisor/explain.py`: `explain_score(id, weights=None)`, `trade_offs(a, b)`, `get_data_caveats(id)`. `compare_rotations` now includes `trade_offs`. Score levels: <= 1/3 good, <= 2/3 middle, above weak. Trade-offs are reported from a score difference of 0.1 (`trade_off_threshold` in glossary.json).
+- Criteria with weight 0 are shown but not used for the strongest / weakest point. Scores-only rotations get no season-level assumptions or literature effects in the caveats.
 
 ### 4. Re-rank with custom weights (slider backend)
 **Intent:** Let the farmer say "water matters more to me" and get a new top list, using the existing ranking logic.
@@ -90,7 +109,10 @@
 
 **Relevant Context:** `explorer/build.py` (`scorer_response`, `load_scorer_scores`), `crop_scorer/scoring/ui_input_mock.json` (default weights shape).
 
-**Status:** [ ] pending
+**Status:** [x] done (waiting for review)
+
+**Notes (what was built)**
+- `advisor/rerank.py`: `rerank(weights=None, top_n=10)`, `validate_weights`, `ranked_scores`. Uses the scorer's `rank`; a test checks that default weights reproduce the picks of `explorer.json`. Omitted criteria get weight 0.
 
 ### 5. File-based hand-off to the web app (no API)
 **Intent:** Make the results usable by the web app without a server: the module writes JSON files the frontend reads like it already reads `explorer.json`.
@@ -108,11 +130,14 @@
 
 **Relevant Context:** `explorer/build.py` (`main`, how `explorer.json` is written and validated), `explorer/examples/`.
 
-**Status:** [ ] pending
+**Status:** [x] done (waiting for review)
+
+**Notes (what was built)**
+- `uv run python -m advisor.export` writes `glossary.json`, `explanations.json` and `presets.json` to `explorer/examples/advisor/` (pydantic models with `extra="forbid"`, `contract_version` 1.0.0-draft). A test fails if the committed files are stale. Documented in the README.
 
 ## Review TODO: agronomic correctness of the wording (open)
 
-**Status:** [ ] open, no reviewer assigned yet. Until then every glossary entry carries `reviewed: false`.
+**Status:** [ ] open, no reviewer assigned yet. Until then every glossary entry carries `reviewed: false`. A test enforces `reviewed: false`, so it must be changed when entries are reviewed.
 
 Suggested reference sources, most are already used by the repo's data, so wording can be checked against the same material:
 - **ET0, ETc, Kc, Ks, root depth (water):** FAO Irrigation and Drainage Paper 56 (FAO-56), the basis of the repo's water model (`data/processed/crop_data/fao56/`).
@@ -124,8 +149,12 @@ Suggested reference sources, most are already used by the repo's data, so wordin
 - **Rotation effects (for example continuous-corn penalty):** the literature table in `data/processed/crop_data/literature/rotation_effects_clean.csv`; cite the underlying paper per entry.
 - Possible human reviewers to ask: a K-State or local extension agent for Kansas wording, or a farmer for readability (not agronomy).
 
+## MCP server (added early for testing, was Future Outlook)
+**Status:** [x] done (waiting for review)
+- `mcp_server/` (stdio, Python `mcp` 2.3.0 with `MCPServer`): a thin wrapper over the `advisor` functions with no logic of its own. 10 tools, 2 resources (`glossary://terms`, `rotations://ids`) and 2 prompts. The advisor's `ValueError` becomes a `ToolError`, so the client sees the fix hint (unknown rotation with close matches, bad weights).
+- Registered for Bob in `.bob/mcp.json` (server `field-shift-advisor`). Run: `uv run python -m mcp_server`. `tests/test_mcp_server.py` calls it over the real stdio protocol. Documented in the README.
+
 ## Future Outlook (not in scope now)
-- **MCP server** (`mcp_server/`, stdio): a thin wrapper that registers the `advisor` functions as tools and the glossary as a resource, for demos in Bob or Claude Desktop. It would contain no logic of its own, and the `build-mcp-server` skill covers the setup. Nothing in sub-tasks 1-5 blocks this.
 - **LLM chat in the web app** on top of the same functions, with guardrails against invented numbers; needs a backend and an API key.
 - **HTTP API** (for example FastAPI) for free-form weights from the slider.
 
