@@ -1,0 +1,2396 @@
+{
+  "contract_version": "6.1.0-draft",
+  "generated_at": "2026-11-15T01:43:56+00:00",
+  "field": {
+    "id": "ks-kearny-01",
+    "name": "Kearny County, KS",
+    "lat": 38.02511,
+    "lon": -101.126084,
+    "elevation_ft": 3005.0,
+    "slope_pct": 0.55,
+    "soil": {
+      "texture": "silty clay loam",
+      "water_capacity_in": 7.2,
+      "organic_matter_pct": 1.31
+    },
+    "crop_history": [
+      {
+        "year": 2008,
+        "crop": "corn"
+      },
+      {
+        "year": 2009,
+        "crop": "corn"
+      },
+      {
+        "year": 2010,
+        "crop": "corn"
+      },
+      {
+        "year": 2011,
+        "crop": "corn"
+      },
+      {
+        "year": 2012,
+        "crop": "corn"
+      },
+      {
+        "year": 2013,
+        "crop": "corn"
+      },
+      {
+        "year": 2014,
+        "crop": "corn"
+      },
+      {
+        "year": 2015,
+        "crop": "corn"
+      },
+      {
+        "year": 2016,
+        "crop": "corn"
+      },
+      {
+        "year": 2017,
+        "crop": "corn"
+      },
+      {
+        "year": 2018,
+        "crop": "corn"
+      },
+      {
+        "year": 2019,
+        "crop": "corn"
+      },
+      {
+        "year": 2020,
+        "crop": "corn"
+      },
+      {
+        "year": 2021,
+        "crop": "corn"
+      },
+      {
+        "year": 2022,
+        "crop": "corn"
+      },
+      {
+        "year": 2023,
+        "crop": "corn"
+      },
+      {
+        "year": 2024,
+        "crop": "corn"
+      },
+      {
+        "year": 2025,
+        "crop": "corn"
+      }
+    ],
+    "previous_crop": "corn",
+    "rotation_start_year": 2027
+  },
+  "crops": {
+    "corn": {
+      "label": "Corn",
+      "yield_unit": "bu",
+      "season": "summer",
+      "legume": false,
+      "is_cover": false
+    },
+    "sorghum": {
+      "label": "Sorghum",
+      "yield_unit": "bu",
+      "season": "summer",
+      "legume": false,
+      "is_cover": false
+    },
+    "soybean": {
+      "label": "Soybean",
+      "yield_unit": "bu",
+      "season": "summer",
+      "legume": true,
+      "is_cover": false
+    },
+    "winter_wheat": {
+      "label": "Winter wheat",
+      "yield_unit": "bu",
+      "season": "winter",
+      "legume": false,
+      "is_cover": false
+    },
+    "sunflower": {
+      "label": "Sunflower",
+      "yield_unit": "lb",
+      "season": "summer",
+      "legume": false,
+      "is_cover": false
+    },
+    "triticale": {
+      "label": "Triticale (cover)",
+      "yield_unit": null,
+      "season": "winter",
+      "legume": false,
+      "is_cover": true
+    }
+  },
+  "climate": {
+    "weather_years": [
+      1991,
+      1992,
+      1993,
+      1994,
+      1995,
+      1996,
+      1997,
+      1998,
+      1999,
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "rain_in": [
+      19.21,
+      18.32,
+      21.15,
+      18.35,
+      17.66,
+      24.04,
+      25.04,
+      22.38,
+      23.08,
+      22.16,
+      21.4,
+      15.63,
+      17.3,
+      25.51,
+      19.4,
+      20.96,
+      17.7,
+      18.0,
+      19.58,
+      16.25,
+      15.24,
+      11.03,
+      14.27,
+      15.9,
+      25.78,
+      19.82,
+      24.38,
+      24.35,
+      18.56,
+      15.07,
+      17.81,
+      11.19,
+      23.15,
+      17.72,
+      20.94
+    ],
+    "et0_apr_sep_in": [
+      46.29,
+      41.47,
+      43.28,
+      46.98,
+      42.44,
+      42.43,
+      40.87,
+      45.66,
+      42.61,
+      49.78,
+      46.79,
+      51.05,
+      46.63,
+      43.65,
+      47.09,
+      47.56,
+      43.66,
+      46.9,
+      42.27,
+      48.81,
+      51.74,
+      53.39,
+      49.03,
+      47.98,
+      43.73,
+      43.76,
+      42.9,
+      45.67,
+      45.67,
+      49.46,
+      46.05,
+      51.51,
+      44.13,
+      49.55,
+      44.3
+    ],
+    "deficit_apr_sep_in": [
+      32.27,
+      27.63,
+      28.75,
+      32.49,
+      26.83,
+      20.56,
+      21.6,
+      30.61,
+      24.61,
+      38.26,
+      30.17,
+      39.42,
+      31.76,
+      22.96,
+      32.96,
+      34.99,
+      30.02,
+      34.17,
+      27.85,
+      35.97,
+      41.83,
+      45.54,
+      36.9,
+      35.09,
+      24.75,
+      25.14,
+      22.84,
+      26.82,
+      31.67,
+      37.58,
+      32.19,
+      41.45,
+      24.39,
+      37.55,
+      25.81
+    ],
+    "heat_days_ge_35": [
+      31.0,
+      14.0,
+      25.0,
+      47.0,
+      47.0,
+      26.0,
+      28.0,
+      44.0,
+      37.0,
+      67.0,
+      49.0,
+      55.0,
+      48.0,
+      30.0,
+      39.0,
+      50.0,
+      33.0,
+      39.0,
+      29.0,
+      51.0,
+      73.0,
+      70.0,
+      55.0,
+      49.0,
+      41.0,
+      34.0,
+      34.0,
+      37.0,
+      47.0,
+      59.0,
+      50.0,
+      62.0,
+      36.0,
+      64.0,
+      38.0
+    ]
+  },
+  "rotations": [
+    {
+      "id": "corn-corn-corn",
+      "is_current": true,
+      "rank": null,
+      "name": "Corn · Corn · Corn",
+      "short": "Your rotation",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2027-04-30",
+          "harvest_date": "2027-10-02",
+          "irr_in": {
+            "v": 18.8,
+            "p10": 12.59,
+            "p90": 26.09
+          },
+          "yield": {
+            "v": 199.7,
+            "p10": 181.5,
+            "p90": 213.3,
+            "unit": "bu"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": -1.7,
+          "effects": [
+            {
+              "text": "Corn after corn: -1.7 % yield (irrigated, Corn Belt study)",
+              "source": "seifert_2017",
+              "provenance": "rule"
+            }
+          ]
+        },
+        {
+          "year": 2028,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2028-04-29",
+          "harvest_date": "2028-10-01",
+          "irr_in": {
+            "v": 18.95,
+            "p10": 12.82,
+            "p90": 26.9
+          },
+          "yield": {
+            "v": 199.7,
+            "p10": 181.5,
+            "p90": 213.3,
+            "unit": "bu"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": -1.7,
+          "effects": [
+            {
+              "text": "Corn after corn: -1.7 % yield (irrigated, Corn Belt study)",
+              "source": "seifert_2017",
+              "provenance": "rule"
+            }
+          ]
+        },
+        {
+          "year": 2029,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-04-30",
+          "harvest_date": "2029-10-02",
+          "irr_in": {
+            "v": 19.01,
+            "p10": 12.81,
+            "p90": 26.9
+          },
+          "yield": {
+            "v": 199.7,
+            "p10": 181.5,
+            "p90": 213.3,
+            "unit": "bu"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": -1.7,
+          "effects": [
+            {
+              "text": "Corn after corn: -1.7 % yield (irrigated, Corn Belt study)",
+              "source": "seifert_2017",
+              "provenance": "rule"
+            }
+          ]
+        }
+      ],
+      "score": 0.5732,
+      "score_parts": {
+        "water": 0.4999,
+        "risk": 0.0,
+        "soil_health": 0.8773,
+        "nitrogen": 0.9157
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.564714,
+        "bare_share": 0.474882,
+        "window_days": 885.515,
+        "heat_days": 190.152,
+        "kill_days": 0.727273,
+        "water_in_per_day": 0.06410196850393701,
+        "irrigation_in": 56.762992125984255,
+        "rank_all": 221,
+        "n_rotations": 225
+      },
+      "placeholder": false,
+      "monthly": [
+        {
+          "m": "2027-04",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 0.07,
+          "rain_in": 0.13,
+          "irr_in": 0.02,
+          "heat_years_pct": 6.1,
+          "cold_stress_years_pct": 69.7,
+          "kill_years_pct": 12.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-05",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 2.28,
+          "rain_in": 2.56,
+          "irr_in": 0.45,
+          "heat_years_pct": 87.9,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 9.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-06",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 6.98,
+          "rain_in": 2.96,
+          "irr_in": 2.63,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 60.6,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-07",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 11.13,
+          "rain_in": 3.36,
+          "irr_in": 7.04,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 3.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-08",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 9.22,
+          "rain_in": 2.96,
+          "irr_in": 5.85,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 21.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-09",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 4.45,
+          "rain_in": 1.41,
+          "irr_in": 2.79,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 97.0,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-10",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.15,
+          "rain_in": 1.51,
+          "irr_in": 0.03,
+          "heat_years_pct": 3.0,
+          "cold_stress_years_pct": 24.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-11",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.67,
+          "rain_in": 0.48,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-12",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.47,
+          "rain_in": 0.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-01",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.49,
+          "rain_in": 0.42,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-02",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.63,
+          "rain_in": 0.45,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-03",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.06,
+          "rain_in": 1.05,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-04",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.48,
+          "rain_in": 1.61,
+          "irr_in": 0.03,
+          "heat_years_pct": 6.1,
+          "cold_stress_years_pct": 69.7,
+          "kill_years_pct": 12.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-05",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 2.28,
+          "rain_in": 2.55,
+          "irr_in": 0.59,
+          "heat_years_pct": 87.9,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 9.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-06",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 6.98,
+          "rain_in": 2.93,
+          "irr_in": 2.71,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 60.6,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-07",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 11.13,
+          "rain_in": 3.37,
+          "irr_in": 6.93,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 3.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-08",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 9.25,
+          "rain_in": 2.95,
+          "irr_in": 5.88,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 21.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-09",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 4.47,
+          "rain_in": 1.42,
+          "irr_in": 2.79,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 97.0,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-10",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.15,
+          "rain_in": 1.48,
+          "irr_in": 0.0,
+          "heat_years_pct": 3.0,
+          "cold_stress_years_pct": 24.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-11",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.68,
+          "rain_in": 0.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-12",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.47,
+          "rain_in": 0.58,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-01",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.49,
+          "rain_in": 0.41,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-02",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 0.63,
+          "rain_in": 0.44,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-03",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.07,
+          "rain_in": 1.02,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-04",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.48,
+          "rain_in": 1.65,
+          "irr_in": 0.02,
+          "heat_years_pct": 3.0,
+          "cold_stress_years_pct": 72.7,
+          "kill_years_pct": 12.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-05",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 2.27,
+          "rain_in": 2.6,
+          "irr_in": 0.56,
+          "heat_years_pct": 87.9,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 9.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-06",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 7.04,
+          "rain_in": 2.9,
+          "irr_in": 2.74,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 60.6,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-07",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 11.17,
+          "rain_in": 3.37,
+          "irr_in": 6.95,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 3.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-08",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 9.31,
+          "rain_in": 2.94,
+          "irr_in": 5.97,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 21.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-09",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 4.44,
+          "rain_in": 1.51,
+          "irr_in": 2.75,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 97.0,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-10",
+          "kind": "crop",
+          "crop": "corn",
+          "et_in": 0.07,
+          "rain_in": 0.07,
+          "irr_in": 0.03,
+          "heat_years_pct": 4.0,
+          "cold_stress_years_pct": 32.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        }
+      ],
+      "summary": {
+        "bare_months": 5.7,
+        "same_crop_repeats": 3,
+        "n_loss_lb": null
+      }
+    },
+    {
+      "id": "sunflower-soybean-sunflower+triticale",
+      "is_current": false,
+      "rank": 1,
+      "name": "Sunflower · Soybean · Sunflower + triticale cover",
+      "short": "Pick #1",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-12",
+          "harvest_date": "2027-10-23",
+          "irr_in": {
+            "v": 10.83,
+            "p10": 5.02,
+            "p90": 16.04
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        },
+        {
+          "year": 2028,
+          "crop": "soybean",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-01",
+          "harvest_date": "2028-10-15",
+          "irr_in": {
+            "v": 17.97,
+            "p10": 11.75,
+            "p90": 23.88
+          },
+          "yield": {
+            "v": 57.9,
+            "p10": 46.0,
+            "p90": 64.4,
+            "unit": "bu"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": []
+        },
+        {
+          "year": 2029,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23",
+          "irr_in": {
+            "v": 12.56,
+            "p10": 6.76,
+            "p90": 17.41
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "Sunflower again within 4 years: Sclerotinia risk, not quantified",
+              "source": "ndsu_sunflower",
+              "provenance": "rule"
+            },
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        }
+      ],
+      "score": 0.1289,
+      "score_parts": {
+        "water": 0.1927,
+        "risk": 0.0672,
+        "soil_health": 0.1463,
+        "nitrogen": 0.1096
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.781351,
+        "bare_share": 0.0880124,
+        "window_days": 863.515,
+        "heat_days": 154.879,
+        "kill_days": 1.48485,
+        "water_in_per_day": 0.04790354330708662,
+        "irrigation_in": 41.36496062992126,
+        "rank_all": 1,
+        "n_rotations": 225
+      },
+      "placeholder": false,
+      "monthly": [
+        {
+          "m": "2027-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.06,
+          "rain_in": 1.99,
+          "irr_in": 0.32,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.96,
+          "rain_in": 3.36,
+          "irr_in": 0.97,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.37,
+          "rain_in": 2.96,
+          "irr_in": 3.46,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.17,
+          "rain_in": 1.41,
+          "irr_in": 4.56,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.73,
+          "rain_in": 1.51,
+          "irr_in": 1.52,
+          "heat_years_pct": 15.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 30.3,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-11",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.08,
+          "rain_in": 0.48,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-12",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.75,
+          "rain_in": 0.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-01",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.78,
+          "rain_in": 0.42,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-02",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.01,
+          "rain_in": 0.45,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-03",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 2.47,
+          "rain_in": 1.05,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-04",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 4.99,
+          "rain_in": 1.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-05",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 1.84,
+          "rain_in": 2.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-06",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 3.82,
+          "rain_in": 2.93,
+          "irr_in": 1.1,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 78.8,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-07",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 8.72,
+          "rain_in": 3.37,
+          "irr_in": 4.36,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 27.3,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-08",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 9.36,
+          "rain_in": 2.95,
+          "irr_in": 5.76,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 54.5,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-09",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 7.53,
+          "rain_in": 1.42,
+          "irr_in": 5.51,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-10",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 2.54,
+          "rain_in": 1.48,
+          "irr_in": 1.24,
+          "heat_years_pct": 33.3,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 12.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-11",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.08,
+          "rain_in": 0.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-12",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.75,
+          "rain_in": 0.58,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-01",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.78,
+          "rain_in": 0.41,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-02",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.03,
+          "rain_in": 0.44,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-03",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 2.87,
+          "rain_in": 1.02,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-04",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 6.06,
+          "rain_in": 1.65,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-05",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 3.11,
+          "rain_in": 2.6,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.81,
+          "rain_in": 2.9,
+          "irr_in": 0.59,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.99,
+          "rain_in": 3.37,
+          "irr_in": 1.5,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.44,
+          "rain_in": 2.94,
+          "irr_in": 4.2,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 12.1,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.15,
+          "rain_in": 1.51,
+          "irr_in": 4.72,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.37,
+          "rain_in": 1.0,
+          "irr_in": 1.56,
+          "heat_years_pct": 21.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 27.3,
+          "nitrogen": null
+        }
+      ],
+      "summary": {
+        "bare_months": 1.06,
+        "same_crop_repeats": 0,
+        "n_loss_lb": null
+      }
+    },
+    {
+      "id": "sunflower-sunflower-sunflower+triticale",
+      "is_current": false,
+      "rank": 2,
+      "name": "Sunflower · Sunflower · Sunflower + triticale cover",
+      "short": "Pick #2",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-12",
+          "harvest_date": "2027-10-23",
+          "irr_in": {
+            "v": 10.83,
+            "p10": 5.02,
+            "p90": 16.04
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        },
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22",
+          "irr_in": {
+            "v": 12.49,
+            "p10": 6.68,
+            "p90": 17.33
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "Sunflower again within 4 years: Sclerotinia risk, not quantified",
+              "source": "ndsu_sunflower",
+              "provenance": "rule"
+            },
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        },
+        {
+          "year": 2029,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23",
+          "irr_in": {
+            "v": 12.49,
+            "p10": 6.69,
+            "p90": 17.34
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "Sunflower again within 4 years: Sclerotinia risk, not quantified",
+              "source": "ndsu_sunflower",
+              "provenance": "rule"
+            },
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        }
+      ],
+      "score": 0.1363,
+      "score_parts": {
+        "water": 0.0707,
+        "risk": 0.0547,
+        "soil_health": 0.1463,
+        "nitrogen": 0.2736
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.740803,
+        "bare_share": 0.0880124,
+        "window_days": 863.515,
+        "heat_days": 143.545,
+        "kill_days": 1.78788,
+        "water_in_per_day": 0.04147165354330709,
+        "irrigation_in": 35.81090551181102,
+        "rank_all": 2,
+        "n_rotations": 225
+      },
+      "placeholder": false,
+      "monthly": [
+        {
+          "m": "2027-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.06,
+          "rain_in": 1.99,
+          "irr_in": 0.32,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.96,
+          "rain_in": 3.36,
+          "irr_in": 0.97,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.37,
+          "rain_in": 2.96,
+          "irr_in": 3.46,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.17,
+          "rain_in": 1.41,
+          "irr_in": 4.56,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.73,
+          "rain_in": 1.51,
+          "irr_in": 1.52,
+          "heat_years_pct": 15.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 30.3,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-11",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.08,
+          "rain_in": 0.48,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-12",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.75,
+          "rain_in": 0.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-01",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.78,
+          "rain_in": 0.42,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-02",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.01,
+          "rain_in": 0.45,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-03",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 2.47,
+          "rain_in": 1.05,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-04",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 5.59,
+          "rain_in": 1.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-05",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 3.13,
+          "rain_in": 2.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.79,
+          "rain_in": 2.93,
+          "irr_in": 0.58,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.97,
+          "rain_in": 3.37,
+          "irr_in": 1.46,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.39,
+          "rain_in": 2.95,
+          "irr_in": 4.1,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.19,
+          "rain_in": 1.42,
+          "irr_in": 4.78,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.74,
+          "rain_in": 1.48,
+          "irr_in": 1.56,
+          "heat_years_pct": 18.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 30.3,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-11",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.08,
+          "rain_in": 0.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-12",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.75,
+          "rain_in": 0.58,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-01",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.78,
+          "rain_in": 0.41,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-02",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.01,
+          "rain_in": 0.44,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-03",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 2.5,
+          "rain_in": 1.02,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-04",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 5.59,
+          "rain_in": 1.65,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-05",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 3.11,
+          "rain_in": 2.6,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.81,
+          "rain_in": 2.9,
+          "irr_in": 0.58,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.99,
+          "rain_in": 3.37,
+          "irr_in": 1.47,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.44,
+          "rain_in": 2.94,
+          "irr_in": 4.17,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 12.1,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.15,
+          "rain_in": 1.51,
+          "irr_in": 4.71,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.37,
+          "rain_in": 1.0,
+          "irr_in": 1.56,
+          "heat_years_pct": 21.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 27.3,
+          "nitrogen": null
+        }
+      ],
+      "summary": {
+        "bare_months": 1.06,
+        "same_crop_repeats": 2,
+        "n_loss_lb": null
+      }
+    },
+    {
+      "id": "soybean-sunflower-sunflower+triticale",
+      "is_current": false,
+      "rank": 3,
+      "name": "Soybean · Sunflower · Sunflower + triticale cover",
+      "short": "Pick #3",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "soybean",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-02",
+          "harvest_date": "2027-10-16",
+          "irr_in": {
+            "v": 16.63,
+            "p10": 10.46,
+            "p90": 22.85
+          },
+          "yield": {
+            "v": 57.9,
+            "p10": 46.0,
+            "p90": 64.4,
+            "unit": "bu"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": []
+        },
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22",
+          "irr_in": {
+            "v": 12.57,
+            "p10": 6.76,
+            "p90": 17.41
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        },
+        {
+          "year": 2029,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23",
+          "irr_in": {
+            "v": 12.49,
+            "p10": 6.69,
+            "p90": 17.34
+          },
+          "yield": {
+            "v": 2083.1,
+            "p10": 1653.3,
+            "p90": 2317.9,
+            "unit": "lb"
+          },
+          "n_lb": null,
+          "n_adj_lb": null,
+          "yield_pct_rotation": 0.0,
+          "effects": [
+            {
+              "text": "Sunflower again within 4 years: Sclerotinia risk, not quantified",
+              "source": "ndsu_sunflower",
+              "provenance": "rule"
+            },
+            {
+              "text": "No NASS yields by irrigation for sunflower: irrigated vs. rain-fed level derived",
+              "source": "nass_quickstats",
+              "provenance": "assumption"
+            }
+          ]
+        }
+      ],
+      "score": 0.1379,
+      "score_parts": {
+        "water": 0.1894,
+        "risk": 0.0667,
+        "soil_health": 0.1444,
+        "nitrogen": 0.1511
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.779622,
+        "bare_share": 0.0870048,
+        "window_days": 873.515,
+        "heat_days": 154.848,
+        "kill_days": 1.48485,
+        "water_in_per_day": 0.04773110236220472,
+        "irrigation_in": 41.693307086614176,
+        "rank_all": 3,
+        "n_rotations": 225
+      },
+      "placeholder": false,
+      "monthly": [
+        {
+          "m": "2027-06",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 3.76,
+          "rain_in": 2.9,
+          "irr_in": 0.73,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 75.8,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-07",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 8.71,
+          "rain_in": 3.36,
+          "irr_in": 3.69,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 30.3,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-08",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 9.33,
+          "rain_in": 2.96,
+          "irr_in": 5.51,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 54.5,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-09",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 7.5,
+          "rain_in": 1.41,
+          "irr_in": 5.46,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-10",
+          "kind": "crop",
+          "crop": "soybean",
+          "et_in": 2.53,
+          "rain_in": 1.51,
+          "irr_in": 1.24,
+          "heat_years_pct": 33.3,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 12.1,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-11",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.08,
+          "rain_in": 0.48,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2027-12",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.75,
+          "rain_in": 0.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-01",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.78,
+          "rain_in": 0.42,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-02",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.03,
+          "rain_in": 0.45,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-03",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 2.84,
+          "rain_in": 1.05,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-04",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 6.06,
+          "rain_in": 1.61,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-05",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 3.13,
+          "rain_in": 2.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.79,
+          "rain_in": 2.93,
+          "irr_in": 0.59,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.97,
+          "rain_in": 3.37,
+          "irr_in": 1.5,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.39,
+          "rain_in": 2.95,
+          "irr_in": 4.13,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.19,
+          "rain_in": 1.42,
+          "irr_in": 4.79,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.74,
+          "rain_in": 1.48,
+          "irr_in": 1.56,
+          "heat_years_pct": 18.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 30.3,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-11",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.08,
+          "rain_in": 0.55,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2028-12",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.75,
+          "rain_in": 0.58,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-01",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 0.78,
+          "rain_in": 0.41,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-02",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 1.01,
+          "rain_in": 0.44,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-03",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 2.5,
+          "rain_in": 1.02,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-04",
+          "kind": "cover",
+          "crop": "triticale",
+          "et_in": 5.59,
+          "rain_in": 1.65,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-05",
+          "kind": "bare",
+          "crop": null,
+          "et_in": 3.11,
+          "rain_in": 2.6,
+          "irr_in": 0.0,
+          "heat_years_pct": 0.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-06",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.81,
+          "rain_in": 2.9,
+          "irr_in": 0.58,
+          "heat_years_pct": 97.0,
+          "cold_stress_years_pct": 15.2,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-07",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 4.99,
+          "rain_in": 3.37,
+          "irr_in": 1.47,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 0.0,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-08",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 8.44,
+          "rain_in": 2.94,
+          "irr_in": 4.17,
+          "heat_years_pct": 100.0,
+          "cold_stress_years_pct": 12.1,
+          "kill_years_pct": 0.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-09",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 7.15,
+          "rain_in": 1.51,
+          "irr_in": 4.71,
+          "heat_years_pct": 90.9,
+          "cold_stress_years_pct": 84.8,
+          "kill_years_pct": 3.0,
+          "nitrogen": null
+        },
+        {
+          "m": "2029-10",
+          "kind": "crop",
+          "crop": "sunflower",
+          "et_in": 2.37,
+          "rain_in": 1.0,
+          "irr_in": 1.56,
+          "heat_years_pct": 21.2,
+          "cold_stress_years_pct": 100.0,
+          "kill_years_pct": 27.3,
+          "nitrogen": null
+        }
+      ],
+      "summary": {
+        "bare_months": 1.04,
+        "same_crop_repeats": 1,
+        "n_loss_lb": null
+      }
+    }
+  ],
+  "provenance": {
+    "field.elevation_ft": {
+      "label": "measured",
+      "source": "usgs_3dep"
+    },
+    "field.slope_pct": {
+      "label": "measured",
+      "source": "usgs_3dep"
+    },
+    "field.soil": {
+      "label": "measured",
+      "source": "ssurgo"
+    },
+    "field.crop_history": {
+      "label": "measured",
+      "source": "nass_cdl"
+    },
+    "field.previous_crop": {
+      "label": "assumption",
+      "source": "nass_cdl"
+    },
+    "field.rotation_start_year": {
+      "label": "assumption",
+      "source": null
+    },
+    "climate.rain_in": {
+      "label": "measured",
+      "source": "nasa_power"
+    },
+    "climate.heat_days_ge_35": {
+      "label": "measured",
+      "source": "nasa_power"
+    },
+    "climate.et0_apr_sep_in": {
+      "label": "modeled",
+      "source": "nasa_power"
+    },
+    "climate.deficit_apr_sep_in": {
+      "label": "modeled",
+      "source": "nasa_power"
+    },
+    "sequence.yield": {
+      "label": "modeled",
+      "source": "nass_quickstats"
+    },
+    "sequence.yield_pct_rotation": {
+      "label": "modeled",
+      "source": "scorer_water"
+    },
+    "rotations.*": {
+      "label": "modeled",
+      "source": "scorer"
+    },
+    "sequence.plant_date": {
+      "label": "rule",
+      "source": "scorer"
+    },
+    "sequence.harvest_date": {
+      "label": "rule",
+      "source": "scorer"
+    },
+    "sequence.irrigation": {
+      "label": "assumption",
+      "source": null
+    },
+    "sequence.irr_in": {
+      "label": "modeled",
+      "source": "scorer_water"
+    },
+    "monthly.kind": {
+      "label": "rule",
+      "source": "scorer"
+    },
+    "monthly.et_in": {
+      "label": "modeled",
+      "source": "scorer_water"
+    },
+    "monthly.rain_in": {
+      "label": "measured",
+      "source": "nasa_power"
+    },
+    "monthly.irr_in": {
+      "label": "modeled",
+      "source": "scorer_water"
+    },
+    "monthly.heat_years_pct": {
+      "label": "modeled",
+      "source": "scorer_risk"
+    },
+    "monthly.cold_stress_years_pct": {
+      "label": "assumption",
+      "source": "scorer_risk"
+    },
+    "monthly.kill_years_pct": {
+      "label": "modeled",
+      "source": "scorer_risk"
+    },
+    "summary.bare_months": {
+      "label": "rule",
+      "source": "scorer"
+    }
+  },
+  "sources": {
+    "nasa_power": {
+      "title": "NASA POWER daily weather, ~50 km grid",
+      "url": "https://power.larc.nasa.gov/parameters/",
+      "retrieved": null
+    },
+    "ssurgo": {
+      "title": "USDA NRCS SSURGO via Soil Data Access",
+      "url": "https://sdmdataaccess.sc.egov.usda.gov/",
+      "retrieved": null
+    },
+    "usgs_3dep": {
+      "title": "USGS 3DEP/NED 10 m via OpenTopoData",
+      "url": "https://api.opentopodata.org/v1/ned10m",
+      "retrieved": null
+    },
+    "nass_cdl": {
+      "title": "USDA NASS Cropland Data Layer via CropScape",
+      "url": "https://nassgeodata.gmu.edu/CropScape/",
+      "retrieved": "2026-11-14"
+    },
+    "nass_quickstats": {
+      "title": "USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)",
+      "url": "https://quickstats.nass.usda.gov",
+      "retrieved": "2026-11-14"
+    },
+    "seifert_2017": {
+      "title": "Seifert, Roberts & Lobell 2017, Agron. J. 109(2):541 (summary: UNL CropWatch 2020)",
+      "url": "https://cropwatch.unl.edu/2020/yield-penalties-continuous-corn-and-soybean-midwest-us/",
+      "retrieved": null
+    },
+    "ndsu_sunflower": {
+      "title": "NDSU Sunflower Production Guide",
+      "url": "https://www.ndsu.edu/agriculture/extension/publications/sunflower-production-guide",
+      "retrieved": null
+    },
+    "scorer_water": {
+      "title": "Field Shift scorer: FAO-56 soil water balance on NASA POWER weather",
+      "url": null,
+      "retrieved": null
+    },
+    "scorer": {
+      "title": "Field Shift scorer: seasons from the USDA NASS crop calendar, scores per rotation",
+      "url": null,
+      "retrieved": null
+    },
+    "scorer_risk": {
+      "title": "Field Shift scorer: daily temperature risk from NASA POWER and Ecocrop limits",
+      "url": null,
+      "retrieved": null
+    }
+  }
+}
