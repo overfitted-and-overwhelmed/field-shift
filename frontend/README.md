@@ -2,7 +2,7 @@
 
 React + Vite UI of Field Shift: one long page that is rebuilt from the explorer API on every change.
 
-1. **Your situation**: crops the picks may use, number of picks, weights.
+1. **Your situation**: crops the picks may use, weights (always 3 picks).
 2. **Your field**: map of the fields around the farm (USDA CDL, Sentinel-2 NDVI). Illustration only, it does not
    change the numbers.
 3. **Build your rotation**: three year cards (the scorer ranks three-crop rotations), drag and drop or menus and

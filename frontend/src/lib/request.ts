@@ -10,7 +10,7 @@ export interface LatLon { lat: number; lon: number }
 
 export interface PageState {
   crops: string[]; // main crops the picks may use
-  count: number; // number of picks shown besides your rotation
+  count: number; // number of picks shown besides your rotation (fixed: COUNT_MAX, no control on the page)
   weights: Record<string, number>; // priority id -> 1..5
   rotation: string[] | null; // the rotation built in step 2; null = the one from the crop history
   cover: boolean[]; // per gap of the built rotation (gap i = after year i): triticale cover crop there
@@ -64,7 +64,6 @@ export function apiQuery(s: PageState): string {
 function toHash(s: PageState): string {
   const q = new URLSearchParams();
   q.set('crops', s.crops.join(','));
-  q.set('n', String(s.count));
   q.set('w', Object.entries(s.weights).map(([id, w]) => `${id}:${w}`).join(','));
   if (s.rotation) { q.set('r', s.rotation.join('-')); if (s.cover.some(Boolean)) q.set('cv', s.cover.map((c) => (c ? '1' : '0')).join('')); }
   return `#${q.toString()}`;
@@ -77,8 +76,6 @@ function fromHash(hash: string): PageState {
     const crops = (q.get('crops') ?? '').split(',').filter((c) => CROP_IDS.includes(c));
     if (crops.length) s.crops = crops;
   }
-  const n = Number(q.get('n'));
-  if (Number.isInteger(n) && n > 0) s.count = clamp(n, COUNT_MIN, COUNT_MAX);
   for (const pair of (q.get('w') ?? '').split(',').filter(Boolean)) {
     const [id, w] = pair.split(':');
     if (PRIORITY_IDS.includes(id) && Number.isFinite(Number(w))) s.weights[id] = clamp(Math.round(Number(w)), WEIGHT_MIN, WEIGHT_MAX);

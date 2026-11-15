@@ -2,21 +2,21 @@ import { MultiSelect } from '../components/MultiSelect';
 import { CONTENT } from '../config/content';
 import { cropColor, cropLabel } from '../config/crops';
 import { priorityLabel } from '../config/priorities';
-import { COUNT_MAX, COUNT_MIN, CROP_IDS, PRIORITY_IDS, WEIGHT_MAX, WEIGHT_MIN, type PageState } from '../lib/request';
+import { CROP_IDS, PRIORITY_IDS, WEIGHT_MAX, WEIGHT_MIN, type PageState } from '../lib/request';
 import { SecHead } from './ui';
 
 const WEIGHT_WORDS = ['', 'not important', 'minor', 'moderate', 'important', 'top priority'];
 
 interface Props { state: PageState; set: (f: (s: PageState) => PageState) => void }
 
-/** Step 1: crops the picks may use, how many picks, and the weights. Every change reloads the data. */
+/** Step 1: crops the picks may use, and the weights. Every change reloads the data. The page always shows 3 picks. */
 export function Situation({ state, set }: Props) {
   return (
     <section id="inputs" aria-labelledby="inputs-h">
       <SecHead id="inputs-h" {...CONTENT.inputs} />
       <div className="inputs">
         <div className="card">
-          <h3>Your crops and limits</h3>
+          <h3>Your crops</h3>
           <MultiSelect
             label="Crops you can grow"
             placeholder="Select crops…"
@@ -24,16 +24,6 @@ export function Situation({ state, set }: Props) {
             value={state.crops}
             onChange={(crops) => crops.length && set((s) => ({ ...s, crops }))}
           />
-          <div className="limits">
-            <div className="limit">
-              <span className="field-label" id="count-l">Picks to compare</span>
-              <div className="seg" role="group" aria-labelledby="count-l">
-                {Array.from({ length: COUNT_MAX - COUNT_MIN + 1 }, (_, i) => COUNT_MIN + i).map((n) => (
-                  <button type="button" key={n} aria-pressed={state.count === n} onClick={() => set((s) => ({ ...s, count: n }))}>{n}</button>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
         <div className="card">
           <h3>What matters to you</h3>

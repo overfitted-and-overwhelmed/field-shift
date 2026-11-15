@@ -60,7 +60,8 @@ export default function App() {
       <header className="top">
         <div className="brand">{CONTENT.brand} <span>{CONTENT.brandSub}</span></div>
         <nav className="nav" aria-label="Sections">{CONTENT.nav.map((n) => <a key={n.id} href={`#${n.id}`} onClick={(e) => { e.preventDefault(); document.getElementById(n.id)?.scrollIntoView({ behavior: 'smooth' }); }}>{n.label}</a>)}</nav>
-        <span className={`flag${error ? ' err' : loading ? ' busy' : ''}`} role="status">{error ? 'Data could not be updated' : loading ? 'Updating…' : data ? `Scored ${data.nRotations ?? ''} rotations · weather 1991–2025` : ''}</span>
+        {/* status only while loading or after an error; nothing when the data is up to date */}
+        <span className={`flag${error ? ' err' : ' busy'}`} role="status" hidden={!error && !loading}>{error ? 'Data could not be updated' : 'Updating…'}</span>
       </header>
 
       <div className="hero">
