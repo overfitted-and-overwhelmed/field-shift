@@ -65,12 +65,17 @@ without the cover crop, not the best rotations without a cover crop (`kpi.rank_a
   year. The harvest day itself is not part of the season.
 - All averages over the weather years are means: `monthly` and the season values `irr_in` / `yield`
   (`v`, plus 10th–90th percentile `p10`, `p90`). So months add up to the season.
-- `heat_years_pct` / `cold_stress_years_pct` / `kill_years_pct`: share of weather years with at least one
-  stress day in that month.
-  - heat: Tmax above the crop's optimum (close to 100 in most summer crop months)
-  - cold stress: below the crop's optimum for **at least half the day** (not just a cool night)
+- Temperature stress per month, only while a crop stands:
+  - `heat_days` / `cold_stress_days` / `kill_days`: **mean number of stress days** in that month. Show these.
+    Continuous corn: heat 4.4 days in May, 19.9 in July, 8.2 in September; cold stress 1.3 in May, 0 in summer.
+  - `heat_years_pct` / `cold_stress_years_pct` / `kill_years_pct`: share of weather years with at least one
+    stress day in that month. One day is enough, so heat is ~100 in every summer month; use the days instead.
+  - heat: Tmax above the crop's optimum (e.g. corn 33 °C)
+  - cold stress: below the crop's **absolute minimum** (Ecocrop: no growth below it, e.g. corn 10 °C,
+    sorghum 8 °C) for **at least half the day**. Below the optimum the crop only grows slower, that is not
+    counted, so there is no cold stress in summer.
   - kill: below the crop's killing temperature, i.e. real frost damage. Only winter wheat in its winter rest
-    (Nov–Mar, below −20 °C) has a documented one, so `kill_years_pct` is 0 for every other crop and month
+    (Nov–Mar, below −20 °C) has a documented one, so `kill_*` is 0 for every other crop and month
     (see `crop_scorer/risk_score/README.md`).
   Thresholds are the scorer's (Ecocrop). There is no "frost" field on purpose: real frost is `kill`.
 - Nitrogen comes from the scorer: `sequence[].n_lb` = N fertilizer of the season after K-State MF2586,
