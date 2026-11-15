@@ -1,0 +1,213 @@
+{
+  "placeholder": false,
+  "rotations": [
+    {
+      "id": "corn-corn-corn",
+      "is_current": true,
+      "rank": null,
+      "name": "Corn · Corn · Corn",
+      "short": "Your rotation",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2027-04-30",
+          "harvest_date": "2027-10-02"
+        },
+        {
+          "year": 2028,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2028-04-29",
+          "harvest_date": "2028-10-01"
+        },
+        {
+          "year": 2029,
+          "crop": "corn",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-04-30",
+          "harvest_date": "2029-10-02"
+        }
+      ],
+      "score": 0.5732,
+      "score_parts": {
+        "water": 0.4999,
+        "risk": 0.0,
+        "soil_health": 0.8773,
+        "nitrogen": 0.9157
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.564714,
+        "bare_share": 0.474882,
+        "window_days": 885.515,
+        "heat_days": 190.152,
+        "kill_days": 0.727273,
+        "water_in_per_day": 0.06410196850393701,
+        "irrigation_in": 56.762992125984255,
+        "rank_all": 221,
+        "n_rotations": 225
+      }
+    },
+    {
+      "id": "sunflower-soybean-sunflower+triticale",
+      "is_current": false,
+      "rank": 1,
+      "name": "Sunflower · Soybean · Sunflower + triticale cover",
+      "short": "Pick #1",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-12",
+          "harvest_date": "2027-10-23"
+        },
+        {
+          "year": 2028,
+          "crop": "soybean",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-01",
+          "harvest_date": "2028-10-15"
+        },
+        {
+          "year": 2029,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23"
+        }
+      ],
+      "score": 0.1289,
+      "score_parts": {
+        "water": 0.1927,
+        "risk": 0.0672,
+        "soil_health": 0.1463,
+        "nitrogen": 0.1096
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.781351,
+        "bare_share": 0.0880124,
+        "window_days": 863.515,
+        "heat_days": 154.879,
+        "kill_days": 1.48485,
+        "water_in_per_day": 0.04790354330708662,
+        "irrigation_in": 41.36496062992126,
+        "rank_all": 1,
+        "n_rotations": 225
+      }
+    },
+    {
+      "id": "sunflower-sunflower-sunflower+triticale",
+      "is_current": false,
+      "rank": 2,
+      "name": "Sunflower · Sunflower · Sunflower + triticale cover",
+      "short": "Pick #2",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-12",
+          "harvest_date": "2027-10-23"
+        },
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22"
+        },
+        {
+          "year": 2029,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23"
+        }
+      ],
+      "score": 0.1363,
+      "score_parts": {
+        "water": 0.0707,
+        "risk": 0.0547,
+        "soil_health": 0.1463,
+        "nitrogen": 0.2736
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.740803,
+        "bare_share": 0.0880124,
+        "window_days": 863.515,
+        "heat_days": 143.545,
+        "kill_days": 1.78788,
+        "water_in_per_day": 0.04147165354330709,
+        "irrigation_in": 35.81090551181102,
+        "rank_all": 2,
+        "n_rotations": 225
+      }
+    },
+    {
+      "id": "soybean-sunflower-sunflower+triticale",
+      "is_current": false,
+      "rank": 3,
+      "name": "Soybean · Sunflower · Sunflower + triticale cover",
+      "short": "Pick #3",
+      "category": null,
+      "sequence": [
+        {
+          "year": 2027,
+          "crop": "soybean",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2027-06-02",
+          "harvest_date": "2027-10-16"
+        },
+        {
+          "year": 2028,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": "triticale",
+          "plant_date": "2028-06-11",
+          "harvest_date": "2028-10-22"
+        },
+        {
+          "year": 2029,
+          "crop": "sunflower",
+          "irrigation": "full",
+          "cover": null,
+          "plant_date": "2029-06-12",
+          "harvest_date": "2029-10-23"
+        }
+      ],
+      "score": 0.1379,
+      "score_parts": {
+        "water": 0.1894,
+        "risk": 0.0667,
+        "soil_health": 0.1444,
+        "nitrogen": 0.1511
+      },
+      "kpi": {
+        "risk_per_crop_day": 0.779622,
+        "bare_share": 0.0870048,
+        "window_days": 873.515,
+        "heat_days": 154.848,
+        "kill_days": 1.48485,
+        "water_in_per_day": 0.04773110236220472,
+        "irrigation_in": 41.693307086614176,
+        "rank_all": 3,
+        "n_rotations": 225
+      }
+    }
+  ]
+}
