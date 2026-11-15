@@ -19,6 +19,7 @@ in every gap of the pass where it fits. Which seasons got one is in the scorer's
 
 from __future__ import annotations
 
+import threading
 from dataclasses import dataclass
 from datetime import date
 from functools import cache
@@ -42,27 +43,63 @@ def rotation_key(crops: Sequence[str], cover: str | None = None) -> str:
 
 
 def parse_key(key: str) -> tuple[list[str], str | None]:
-    """``"corn-soybean+triticale"`` -> ``(["corn", "soybean"], "triticale")``."""
+    """``"corn-soybean+triticale"`` -> ``(["corn", "soybean"], "triticale")``.
+
+    A cover in some gaps only (``"corn-soybean-sorghum+triticale_1"``, the farmer's choice) also gives "triticale";
+    which seasons have one is in the scorer's seasons table.
+    """
     crops, _, cover = key.partition("+")
-    if cover and cover not in COVER_CROPS:
+    name, _, gaps = cover.partition("_")
+    if cover and (name not in COVER_CROPS or (gaps and not gaps.isdigit())):
         raise ValueError(f"rotation '{key}': '{cover}' is not a cover crop, allowed: {COVER_CROPS}")
-    return crops.split("-"), cover or None
+    return crops.split("-"), name or None
 
 
 # @cache: each file is read once, later calls reuse the table.
 @cache
+def _read_csv(path: Path, dates: tuple[str, ...] = ()) -> pd.DataFrame:
+    return pd.read_csv(path, parse_dates=list(dates))
+
+
+# Rotations the scorer scored on request (explorer/on_demand.py), e.g. a cover crop in one gap only. They are added
+# to the tables below, so every module finds them like the scorer's precomputed rotations.
+_EXTRA: dict[Path, list[pd.DataFrame]] = {}
+_COMBINED: dict[Path, pd.DataFrame] = {}
+_LOCK = threading.Lock()
+
+
+def add_scorer_rows(path: Path, rows: pd.DataFrame) -> None:
+    """Add rows to the scorer table at ``path`` (only for this process, nothing is written)."""
+    with _LOCK:
+        _EXTRA.setdefault(path, []).append(rows)
+        _COMBINED.pop(path, None)
+
+
+def _table(path: Path, dates: tuple[str, ...] = ()) -> pd.DataFrame:
+    base = _read_csv(path, dates)
+    if path not in _EXTRA:
+        return base
+    with _LOCK:
+        if path not in _COMBINED:
+            _COMBINED[path] = pd.concat([base, *_EXTRA[path]], ignore_index=True)
+        return _COMBINED[path]
+
+
 def load_scorer_seasons(path: Path = SCORER_SEASONS_BY_YEAR) -> pd.DataFrame:
-    return pd.read_csv(path, parse_dates=["sow_date", "harvest_date"])
+    return _table(path, ("sow_date", "harvest_date"))
 
 
-@cache
 def load_scorer_monthly(path: Path = SCORER_MONTHLY) -> pd.DataFrame:
-    return pd.read_csv(path)
+    return _table(path)
 
 
-@cache
 def load_scorer_scores(path: Path = SCORER_SCORES) -> pd.DataFrame:
-    return pd.read_csv(path)
+    return _table(path)
+
+
+def scorer_reference_scores(path: Path = SCORER_SCORES) -> pd.DataFrame:
+    """The scorer's precomputed rotations only: the set it ranks and normalises against."""
+    return _read_csv(path)
 
 
 def scorer_rows(table: pd.DataFrame, rotation: str, file: str) -> pd.DataFrame:

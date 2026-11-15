@@ -10,9 +10,13 @@ GET /api/explorer?w=water:5,risk:3,soil_health:3,nitrogen:2&crops=corn,soybean,s
 * ``crops`` main crops the picks may use. Without it every crop is allowed. The current rotation is
             always included.
 * ``n``     number of picks besides the current rotation, 1-3 (default 3).
+* ``rotation`` a rotation the farmer built, e.g. ``corn-soybean-sorghum``, ``corn-soybean-sorghum+triticale``
+            (cover crop in every gap) or ``corn-soybean-sorghum+triticale_2`` (only after the 2nd crop; scored on
+            request, ~1.5 s). It replaces the crop-history rotation as the current one; the picks stay the same.
 * ``lat``, ``lon`` are accepted but not used yet: there is one field (``field.id``) until other fields are processed.
 
-Answer: ``explorer.json`` (``ExplorerExport`` in schema.py). Errors: 400 with ``{"error": "..."}``.
+Answer: ``explorer.json`` (``ExplorerExport`` in schema.py).
+Errors: 400 with ``{"error": "..."}``.
 Standard library only, so no extra dependency. It is meant for local development, not for production.
 """
 
@@ -71,7 +75,17 @@ def parse_request(query: str) -> dict:
         if not 1 <= n_picks <= N_PICKS:
             raise BadRequest(f"n must be between 1 and {N_PICKS}")
 
-    return {"weights": weights, "crops": crops, "n_picks": n_picks}
+    current = None
+    if q.get("rotation"):
+        current = q["rotation"].replace(" ", "+")  # an unencoded "+" arrives as a space
+        crops_of, _, cover = current.partition("+")
+        name, _, gaps = cover.partition("_")
+        unknown = sorted(set(crops_of.split("-")) - MAIN_CROPS)
+        if unknown or name not in ("", "triticale") or (gaps and not gaps.isdigit()):
+            raise BadRequest(f"rotation {current!r}: use main crops {sorted(MAIN_CROPS)} joined by '-', optionally "
+                             "'+triticale' (cover in every gap) or '+triticale_1' (cover only after the first crop)")
+
+    return {"weights": weights, "crops": crops, "n_picks": n_picks, "current": current}
 
 
 class Handler(BaseHTTPRequestHandler):

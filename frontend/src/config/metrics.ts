@@ -6,7 +6,7 @@ export interface MetricCtx { units: Units; nRotations: number | null }
 
 export interface MetricDef {
   key: string; // key in rotation.kpi (derived in data/normalize.ts)
-  group: string; // priority id = scorer criterion
+  group: string; // priority id = scorer criterion, or 'overall'
   label: string; short: string;
   sub: (c: MetricCtx) => string;
   tag: Tag; better: 'lower' | 'higher';
@@ -21,20 +21,20 @@ const fewerMore = (s: -1 | 1) => (s < 0 ? 'fewer' : 'more');
 
 /**
  * One row per KPI in the comparison table; order inside a priority group = order here.
- * Groups are the scorer's criteria (score_parts). Values per year are divided by the length of the pass.
+ * Groups are the scorer's criteria (score_parts). Values per year are per year of the rotation cycle.
  * To change a label, unit or direction (better = lower/higher), edit only this file.
  */
 export const METRICS: MetricDef[] = [
   { key: 'irrigation_in', group: 'water', label: 'Irrigation need', short: 'water use', sub: () => 'per year, mean over weather 1991–2025', tag: 'modeled', better: 'lower',
-    fmt: (v, c) => fmtWater(v, c.units), range: (k, c) => (k.lo != null && k.hi != null ? `${fmtWaterNum(k.lo, c.units)}–${fmtWaterNum(k.hi, c.units)} (dry vs. wet years)` : null),
+    fmt: (v, c) => fmtWater(v, c.units), range: (k, c) => (k.lo != null && k.hi != null ? `P10–P90 ${fmtWaterNum(k.lo, c.units)}–${fmtWaterNum(k.hi, c.units)}` : null),
     delta: (a, s, c) => `${fmtWater(a, c.units)} ${lessMore(s)}` },
   { key: 'risk', group: 'risk', label: 'Temperature risk', short: 'weather risk', sub: () => 'mean daily heat and frost risk per crop day (0 = none)', tag: 'modeled', better: 'lower',
     fmt: (v) => num(v, 2), delta: (a, s) => `${num(a, 2)} ${s < 0 ? 'lower' : 'higher'}` },
-  { key: 'kill_days', group: 'risk', label: 'Killing frost days', short: 'frost kill', sub: () => 'per year, days below the crop’s killing temperature', tag: 'modeled', better: 'lower',
-    fmt: (v) => `${num(v)} d`, delta: (a, s) => `${num(a)} d ${fewerMore(s)}` },
   { key: 'heat_days', group: 'risk', label: 'Heat stress days', short: 'heat', sub: () => 'per year, days above the crop’s optimum', tag: 'modeled', better: 'lower',
     fmt: (v) => `${Math.round(v)} d`, delta: (a, s) => `${Math.round(a)} d ${fewerMore(s)}` },
-  { key: 'bare_months', group: 'soil_health', label: 'Bare-soil months', short: 'bare soil', sub: () => 'per year within the rotation (first sowing to last harvest), without crop or cover', tag: 'rule', better: 'lower',
+  { key: 'kill_days', group: 'risk', label: 'Killing frost days', short: 'frost kill', sub: () => 'per year, days below the crop’s killing temperature', tag: 'modeled', better: 'lower',
+    fmt: (v) => `${num(v)} d`, delta: (a, s) => `${num(a)} d ${fewerMore(s)}` },
+  { key: 'bare_months', group: 'soil_health', label: 'Bare-soil months', short: 'bare soil', sub: () => 'per year within the rotation, without crop or cover', tag: 'rule', better: 'lower',
     fmt: (v) => `${num(v)} mo`, delta: (a, s) => `${num(a)} mo ${fewerMore(s)}` },
   { key: 'cover_seasons', group: 'soil_health', label: 'Cover crop gaps', short: 'cover crop', sub: () => 'gaps between crops with a triticale cover', tag: 'rule', better: 'higher',
     fmt: (v) => String(v), delta: (a, s) => `${a} ${s > 0 ? 'more' : 'fewer'}` },
@@ -48,8 +48,5 @@ export const METRICS: MetricDef[] = [
 
 export const TAG_LABELS: Record<Tag, string> = { measured: 'Measured', modeled: 'Modeled', rule: 'Rule', assumption: 'Assumption' };
 export const TAG_HELP: Record<Tag, string> = {
-  measured: 'Taken from observations', modeled: 'Calculated with a model from observed weather', rule: 'Follows a fixed agronomic rule', assumption: 'Placeholder or estimate, check locally',
+  measured: 'Taken from observations', modeled: 'Calculated with a model from observed weather', rule: 'Follows a fixed agronomic rule', assumption: 'Estimate or setting, check locally',
 };
-
-/** The numbers shown for every option in the list. Everything else sits under "All numbers". Keys refer to METRICS. */
-export const HEADLINE = ['irrigation_in', 'n_lb', 'bare_months', 'risk'];

@@ -13,6 +13,7 @@ rotation_irrigation_need(), the summed need per rotation cycle for the scorer's 
 """
 
 import json
+from collections.abc import Sequence
 from functools import cache
 from pathlib import Path
 
@@ -189,13 +190,16 @@ def build_timeline(params: pd.DataFrame, rotation: list[str], start_year: int) -
         i += 1
 
 
-def cover_timeline(params: pd.DataFrame, seasons: list) -> list[tuple[str, pd.Timestamp, pd.Timestamp]]:
+def cover_timeline(params: pd.DataFrame, seasons: list, gaps: Sequence[bool] | None = None) -> list[tuple[str, pd.Timestamp, pd.Timestamp]]:
     # a cover crop in every gap between two of the given seasons where it fits: sown MIN_GAP_DAYS after harvest,
     # not before its planting window opens and not after it closes, terminated COVER_TERMINATION_DAYS before
     # the next sowing. Returns [(cover, sow, end)], the end day is not part of the cover.
+    # gaps: optional, one flag per gap (gap i = after season i); only flagged gaps get a cover (the farmer's choice).
     p = params.loc[COVER_PROXY]
     covers = []
-    for (_, _, harvest), (_, next_sow, _) in zip(seasons, seasons[1:]):
+    for i, ((_, _, harvest), (_, next_sow, _)) in enumerate(zip(seasons, seasons[1:])):
+        if gaps is not None and not (i < len(gaps) and gaps[i]):
+            continue
         earliest = harvest + pd.Timedelta(days=MIN_GAP_DAYS)
         jan1 = pd.Timestamp(earliest.year, 1, 1)
         sow = max(earliest, jan1 + pd.Timedelta(days=int(p["sow_begin_doy"]) - 1))
@@ -271,11 +275,13 @@ def soil_water_balance(daily: pd.DataFrame) -> pd.DataFrame:
     return daily.assign(eta=eta, irrigation_need=np.where(daily["main_crop"], daily["etc"] - eta, 0.0))
 
 
-def simulate(rotation: list[str], start_year: int, cover: bool = False) -> tuple[pd.DataFrame, list]:
-    # cover=True: cover crops in the gaps inside the first pass of the rotation (not after its last crop)
+def simulate(rotation: list[str], start_year: int, cover: bool | Sequence[bool] = False) -> tuple[pd.DataFrame, list]:
+    # cover=True: cover crops in the gaps inside the first pass of the rotation (not after its last crop);
+    # a list of flags (one per gap, gap i = after season i) sows a cover only in the flagged gaps
     params = load_crop_params()
     seasons = build_timeline(params, rotation, start_year)
-    covers = cover_timeline(params, seasons[: len(rotation)]) if cover else []
+    gaps = None if cover is True else list(cover) if not isinstance(cover, bool) else []
+    covers = cover_timeline(params, seasons[: len(rotation)], gaps) if gaps is None or any(gaps) else []
     calendar = crop_calendar(params, load_weather().loc[f"{start_year}":], seasons, covers)
     return soil_water_balance(calendar), seasons
 

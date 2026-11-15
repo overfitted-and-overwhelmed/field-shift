@@ -16,7 +16,7 @@ const NAMES: Record<number, string> = {
 
 /** Colours follow the app's crop palette (config/crops.ts, styles.css) so a crop looks the same everywhere. */
 const COLORS: Record<number, string> = {
-  1: '#e0a82a', 5: '#5a9a4a', 24: '#8a7bbd', 4: '#c65f36', 6: '#2b9a86', 205: '#d9829f',
+  1: '#eda100', 5: '#008300', 24: '#4a3aa7', 4: '#eb6834', 6: '#1baf7a', 205: '#e87ba4',
   36: '#8fc46a', 37: '#8fc46a', 61: '#b9b48a', 26: '#a99bd0', 225: '#cdb35a', 236: '#b88a6a',
 };
 const OTHER = '#7f8b96';

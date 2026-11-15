@@ -62,12 +62,13 @@ function ConfirmRemove({ value, onConfirm, onCancel }: { value: LatLon; onConfir
   );
 }
 
-export function LocationPicker({ value, onChange, children }: { value: LatLon | null; onChange: (p: LatLon | null) => void; children?: ReactNode }) {
+/** `scrollWheelZoom={false}` when the map sits inside a long page, so scrolling the page does not zoom the map. */
+export function LocationPicker({ value, onChange, children, scrollWheelZoom = true }: { value: LatLon | null; onChange: (p: LatLon | null) => void; children?: ReactNode; scrollWheelZoom?: boolean }) {
   const start = value ?? DEFAULT_LOCATION;
   const [confirming, setConfirming] = useState(false);
   return (
     <div className={value ? 'map' : 'map picking'}>
-      <MapContainer center={[start.lat, start.lon]} zoom={value ? 13 : 9} scrollWheelZoom style={{ height: '100%', width: '100%' }}>
+      <MapContainer center={[start.lat, start.lon]} zoom={value ? 13 : 9} scrollWheelZoom={scrollWheelZoom} style={{ height: '100%', width: '100%' }}>
         <LayersControl position="topleft">
           <LayersControl.BaseLayer checked name="Satellite">
             <TileLayer

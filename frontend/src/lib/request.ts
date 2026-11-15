@@ -1,18 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { CROP_LABELS } from '../config/crops';
 import { PRIORITY_IDS } from '../config/priorities';
 
 /**
- * What the farmer enters on the start page. It lives in the URL hash (#/results?crops=…&n=…&w=…),
- * so a results page can be reloaded or shared. No router library needed.
+ * Everything the farmer sets on the page. It lives in the URL hash (#crops=…&n=…&w=…&r=…&cv=1), so the page can be
+ * reloaded or shared. Every change reloads the data from the explorer API.
  */
 export interface LatLon { lat: number; lon: number }
 
-export interface FieldRequest {
-  location: LatLon | null; // field position, picked on the map; required for results
-  crops: string[]; // crop ids the farmer can grow
-  count: number; // how many crop rotations to predict (options shown besides today's rotation)
+export interface PageState {
+  crops: string[]; // main crops the picks may use
+  count: number; // number of picks shown besides your rotation
   weights: Record<string, number>; // priority id -> 1..5
+  rotation: string[] | null; // the rotation built in step 2; null = the one from the crop history
+  cover: boolean[]; // per gap of the built rotation (gap i = after year i): triticale cover crop there
 }
 
 /** Main crops the scorer can rotate. Triticale is not offered: the scorer adds it as a cover crop where it fits. */
@@ -22,65 +23,85 @@ export const WEIGHT_MIN = 1;
 export const WEIGHT_MAX = 5;
 export const COUNT_MIN = 1;
 export const COUNT_MAX = 3; // the explorer returns at most 3 picks
+export const ROTATION_LENGTH = 3; // the scorer ranks rotations of three crops
+
+/** Map start position (Kearny County, Kansas). The map is illustration only; the data is for this field. */
+export const DEFAULT_LOCATION: LatLon = { lat: 38.02511, lon: -101.126084 };
 
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
-/** Preselected field position (Kearny County, Kansas). The user can click elsewhere on the map. */
-export const DEFAULT_LOCATION: LatLon = { lat: 38.02511, lon: -101.126084 };
-
-export const emptyRequest = (): FieldRequest => ({
-  location: DEFAULT_LOCATION,
-  crops: [],
-  count: 3,
+export const defaultState = (): PageState => ({
+  crops: [...CROP_IDS],
+  count: COUNT_MAX,
   weights: Object.fromEntries(PRIORITY_IDS.map((id) => [id, 3])),
+  rotation: null,
+  cover: noCover(),
 });
 
-/** Query string for the URL hash and for the data request to the scorer. */
-export function toQuery(req: FieldRequest): string {
+/** No cover crop in any gap. There is no gap after the last year: that is outside the rotation's window. */
+export const noCover = () => Array<boolean>(ROTATION_LENGTH - 1).fill(false);
+
+/**
+ * Rotation key as the scorer writes it: "corn-soybean-sorghum", with a cover in every gap "+triticale",
+ * in some gaps "+triticale_1" (only after year 1). The API scores the latter on request.
+ */
+export function rotationKey(crops: string[], cover: boolean[]): string {
+  const on = cover.map((c, i) => (c ? i + 1 : 0)).filter(Boolean);
+  if (!on.length) return crops.join('-');
+  return crops.join('-') + (on.length === cover.length ? '+triticale' : `+triticale_${on.join('')}`);
+}
+
+/** Query string for the explorer API. */
+export function apiQuery(s: PageState): string {
   const q = new URLSearchParams();
-  if (req.location) { q.set('lat', req.location.lat.toFixed(5)); q.set('lon', req.location.lon.toFixed(5)); }
-  q.set('crops', req.crops.join(','));
-  q.set('n', String(req.count));
-  q.set('w', Object.entries(req.weights).map(([id, w]) => `${id}:${w}`).join(','));
+  q.set('crops', s.crops.join(','));
+  q.set('n', String(s.count));
+  q.set('w', Object.entries(s.weights).map(([id, w]) => `${id}:${w}`).join(','));
+  if (s.rotation) q.set('rotation', rotationKey(s.rotation, s.cover));
   return q.toString();
 }
 
-/** Parses a query string. Returns null if it does not describe a complete request. */
-export function fromQuery(qs: string): FieldRequest | null {
-  const q = new URLSearchParams(qs);
-  const crops = (q.get('crops') ?? '').split(',').filter(Boolean);
-  const count = Number(q.get('n'));
-  const lat = Number(q.get('lat')), lon = Number(q.get('lon'));
-  const location = q.has('lat') && q.has('lon') && Math.abs(lat) <= 90 && Math.abs(lon) <= 180 ? { lat, lon } : null;
-  const weights: Record<string, number> = {};
+function toHash(s: PageState): string {
+  const q = new URLSearchParams();
+  q.set('crops', s.crops.join(','));
+  q.set('n', String(s.count));
+  q.set('w', Object.entries(s.weights).map(([id, w]) => `${id}:${w}`).join(','));
+  if (s.rotation) { q.set('r', s.rotation.join('-')); if (s.cover.some(Boolean)) q.set('cv', s.cover.map((c) => (c ? '1' : '0')).join('')); }
+  return `#${q.toString()}`;
+}
+
+function fromHash(hash: string): PageState {
+  const s = defaultState();
+  const q = new URLSearchParams(hash.replace(/^#\/?(results)?\??/, ''));
+  if (q.has('crops')) {
+    const crops = (q.get('crops') ?? '').split(',').filter((c) => CROP_IDS.includes(c));
+    if (crops.length) s.crops = crops;
+  }
+  const n = Number(q.get('n'));
+  if (Number.isInteger(n) && n > 0) s.count = clamp(n, COUNT_MIN, COUNT_MAX);
   for (const pair of (q.get('w') ?? '').split(',').filter(Boolean)) {
     const [id, w] = pair.split(':');
-    const n = Number(w);
-    if (id && PRIORITY_IDS.includes(id) && Number.isFinite(n)) weights[id] = clamp(Math.round(n), WEIGHT_MIN, WEIGHT_MAX);
+    if (PRIORITY_IDS.includes(id) && Number.isFinite(Number(w))) s.weights[id] = clamp(Math.round(Number(w)), WEIGHT_MIN, WEIGHT_MAX);
   }
-  if (!crops.length || !Number.isInteger(count) || count < COUNT_MIN) return null;
-  if (!Object.keys(weights).length) return null;
-  return { location, crops, count: clamp(count, COUNT_MIN, COUNT_MAX), weights };
+  const r = (q.get('r') ?? '').split('-').filter((c) => CROP_IDS.includes(c));
+  if (r.length === ROTATION_LENGTH) {
+    s.rotation = r;
+    const cv = q.get('cv') ?? '';
+    s.cover = noCover().map((_, i) => (cv === '1' ? true : cv[i] === '1')); // "1" from older links = every gap
+  }
+  return s;
 }
 
-export type Route = { page: 'form'; prefill: FieldRequest | null } | { page: 'results'; req: FieldRequest & { location: LatLon } };
-
-function parseHash(hash: string): Route {
-  const [path, qs = ''] = hash.replace(/^#/, '').split('?');
-  const req = fromQuery(qs);
-  if (path === '/results' && req?.location) return { page: 'results', req: { ...req, location: req.location } };
-  return { page: 'form', prefill: req };
-}
-
-export const goResults = (req: FieldRequest) => { window.location.hash = `/results?${toQuery(req)}`; };
-export const goForm = (req?: FieldRequest) => { window.location.hash = req ? `/?${toQuery(req)}` : '/'; };
-
-export function useRoute(): Route {
-  const [route, setRoute] = useState(() => parseHash(window.location.hash));
+/** Page state backed by the URL hash. replaceState: editing does not fill the browser history. */
+export function usePageState(): [PageState, (update: (s: PageState) => PageState) => void] {
+  const [state, setState] = useState(() => fromHash(window.location.hash));
   useEffect(() => {
-    const on = () => { setRoute(parseHash(window.location.hash)); window.scrollTo(0, 0); };
+    const on = () => setState(fromHash(window.location.hash));
     window.addEventListener('hashchange', on);
     return () => window.removeEventListener('hashchange', on);
   }, []);
-  return route;
+  const update = useCallback((f: (s: PageState) => PageState) => {
+    setState((s) => { const next = f(s); history.replaceState(null, '', toHash(next)); return next; });
+  }, []);
+  return [state, update];
 }

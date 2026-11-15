@@ -19,6 +19,7 @@ Run from the repo root: uv run python -m crop_scorer.scoring.score_rotations [--
 """
 
 import itertools
+from collections.abc import Sequence
 import json
 import sys
 from functools import cache
@@ -63,8 +64,34 @@ def risk_inputs() -> tuple[pd.DataFrame, dict]:
     return load_temperature_data(), load_crop_configs()
 
 
-def rotation_key(rotation: list[str], cover: bool = False) -> str:
-    return "-".join(rotation) + (f"+{COVER_CROP}" if cover else "")
+def rotation_key(rotation: list[str], cover: bool | Sequence[bool] = False) -> str:
+    # cover: True = a cover in every gap where it fits ("+triticale"); or one flag per gap (gap i = after season i):
+    # all flags set = "+triticale", some = "+triticale_<gap numbers from 1>", e.g. "+triticale_1" (only after season 1)
+    if isinstance(cover, bool):
+        return "-".join(rotation) + (f"+{COVER_CROP}" if cover else "")
+    flags = list(cover)
+    if not any(flags):
+        return "-".join(rotation)
+    if all(flags) and len(flags) >= len(rotation) - 1:
+        return "-".join(rotation) + f"+{COVER_CROP}"
+    return "-".join(rotation) + f"+{COVER_CROP}_" + "".join(str(i + 1) for i, f in enumerate(flags) if f)
+
+
+def cover_gaps(key: str) -> bool | list[bool]:
+    # inverse of rotation_key's cover part: False, True (every gap) or one flag per gap
+    crops, _, cover = key.partition("+")
+    if not cover:
+        return False
+    name, _, gaps = cover.partition("_")
+    if name != COVER_CROP or (gaps and not gaps.isdigit()):
+        raise ValueError(f"rotation '{key}': unknown cover '{cover}'")
+    if not gaps:
+        return True
+    n = len(crops.split("-")) - 1
+    picked = {int(g) - 1 for g in gaps}
+    if not picked <= set(range(n)):
+        raise ValueError(f"rotation '{key}': gaps must be between 1 and {n}")
+    return [i in picked for i in range(n)]
 
 
 def parse_key(key: str) -> tuple[list[str], bool]:
@@ -72,7 +99,7 @@ def parse_key(key: str) -> tuple[list[str], bool]:
     return crops.split("-"), bool(cover)
 
 
-def rotation_days(rotation: list[str], cover: bool = False) -> pd.DataFrame:
+def rotation_days(rotation: list[str], cover: bool | Sequence[bool] = False) -> pd.DataFrame:
     # one row per window day and start year; segment = 2 * season (crop) or 2 * season + 1 (gap after it,
     # fallow or cover crop)
     windows, all_seasons = [], []
@@ -121,7 +148,7 @@ def after_cover(rotation: list[str], days: pd.DataFrame, start_year: int) -> lis
     return [i > 0 and 2 * i - 1 in covered for i in range(len(rotation))]
 
 
-def score_days(rotation: list[str], days: pd.DataFrame, cover: bool = False) -> dict:
+def score_days(rotation: list[str], days: pd.DataFrame, cover: bool | Sequence[bool] = False) -> dict:
     per_year = days.assign(cover=days["crop"] == COVER_CROP, cover_eta=days["eta"].where(days["crop"] == COVER_CROP)).groupby("start_year").agg(
         window_days=("date", "size"),
         cycle_days=("cycle_days", "first"),
@@ -144,7 +171,7 @@ def score_days(rotation: list[str], days: pd.DataFrame, cover: bool = False) -> 
     return {
         "rotation": rotation_key(rotation, cover),
         "crops": "-".join(rotation),
-        "cover": COVER_CROP if cover else "",
+        "cover": COVER_CROP if (cover if isinstance(cover, bool) else any(cover)) else "",
         "n_start_years": len(per_year),
         **{col: mean[col] for col in CRITERIA.values()},
         **{col: mean[col] for col in ["window_days", "cycle_days", "irrigation_mm", "n_fertilizer_kg", "cover_days", "cover_eta_mm",
@@ -152,7 +179,7 @@ def score_days(rotation: list[str], days: pd.DataFrame, cover: bool = False) -> 
     }
 
 
-def score_rotation(rotation: list[str], cover: bool = False) -> dict:
+def score_rotation(rotation: list[str], cover: bool | Sequence[bool] = False) -> dict:
     # raw scores of any rotation, e.g. one typed in by the farmer
     return score_days(rotation, rotation_days(rotation, cover), cover)
 
