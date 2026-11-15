@@ -1,16 +1,25 @@
 import { useMemo, useState } from 'react';
 import { Detail } from './components/Detail';
+import { InputForm } from './components/InputForm';
 import { Options } from './components/Options';
 import { Tooltip } from './components/Tooltip';
 import { CONTENT } from './config/content';
+import { cropLabel } from './config/crops';
 import { priorityLabel } from './config/priorities';
 import { DATA_URL, useExplorerData } from './data/load';
 import { activeMetrics } from './data/metrics';
+import { goForm, toQuery, useRoute, type FieldRequest } from './lib/request';
 import type { Units } from './lib/units';
 import type { ExplorerData } from './types';
 
 export default function App() {
-  const state = useExplorerData();
+  const route = useRoute();
+  if (route.page === 'form') return <InputForm key={route.prefill ? toQuery(route.prefill) : ''} prefill={route.prefill} />;
+  return <Results key={toQuery(route.req)} req={route.req} />;
+}
+
+function Results({ req }: { req: FieldRequest }) {
+  const state = useExplorerData(req);
   if (state.status === 'loading') return <main className="page"><p role="status" className="note">Loading…</p></main>;
   if (state.status === 'error')
     return (
@@ -18,10 +27,10 @@ export default function App() {
         <p role="alert" className="note"><b>The data could not be loaded.</b> {state.error} <code>{DATA_URL}</code></p>
       </main>
     );
-  return <Explorer data={state.data} />;
+  return <Explorer data={state.data} req={req} />;
 }
 
-function Explorer({ data }: { data: ExplorerData }) {
+function Explorer({ data, req }: { data: ExplorerData; req: FieldRequest }) {
   const [selectedId, setSelectedId] = useState(data.options[0]?.id ?? data.current.id);
   const [units, setUnits] = useState<Units>('in');
   const metrics = useMemo(() => activeMetrics(data), [data]);
@@ -32,14 +41,15 @@ function Explorer({ data }: { data: ExplorerData }) {
 
   return (
     <>
-      <header className="top"><div className="page"><span className="brand">{CONTENT.brand}</span></div></header>
+      <header className="top"><div className="page head-row"><span className="brand">{CONTENT.brand}</span><button type="button" className="link" onClick={() => goForm(req)}>← Change inputs</button></div></header>
       <main className="page">
         <div className="intro">
           <p className="where">{f.name}{f.start_year ? `, from ${f.start_year}` : ''}</p>
           <h1>{CONTENT.title}</h1>
           <p className="lead">{CONTENT.lead}</p>
           <dl className="facts">
-            <div><dt>Weighted for</dt><dd>{data.priorities.map((p) => priorityLabel(p.id).toLowerCase()).join(', ')}</dd></div>
+            <div><dt>Crops</dt><dd>{req.crops.map(cropLabel).join(', ')}</dd></div>
+            <div><dt>Weighted for</dt><dd>{data.priorities.map((p) => `${priorityLabel(p.id).toLowerCase()} ${p.weight}/5`).join(', ')}</dd></div>
             {given.length > 0 && <div><dt>Given</dt><dd>{given.join(', ')}</dd></div>}
           </dl>
         </div>

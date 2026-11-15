@@ -1,6 +1,8 @@
 /** Page text. Edit here, no component changes needed. */
 export const CONTENT = {
   brand: 'Field Shift',
+  formTitle: 'Plan your next rotation',
+  formLead: 'Tell us which crops you can grow and what matters most to you. We then compare rotations for your field.',
   title: 'Your next four years',
   lead: 'We compared what you grow now with three other rotations, weighted for what matters to you.',
   optionsTitle: 'Options',

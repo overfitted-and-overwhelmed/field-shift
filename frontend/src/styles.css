@@ -68,3 +68,35 @@ table.all { border-collapse: collapse; width: 100%; margin-top: 12px; min-width:
 #tip { position: fixed; z-index: 40; pointer-events: none; background: var(--ink); color: #fff; font-size: 13px; line-height: 1.4; padding: 6px 9px; border-radius: 3px; max-width: 280px; opacity: 0; transition: opacity .1s; } #tip.on { opacity: 1; }
 @media (max-width: 900px) { .cols, .cols3 { grid-template-columns: minmax(0, 1fr); } main.page { gap: 52px; } .facts div { grid-template-columns: 1fr; gap: 0; } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+
+/* input form */
+.top .head-row { align-items: center; }
+button.link { font: 600 15px var(--sans); color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; } button.link:hover { text-decoration: underline; }
+.form { display: grid; gap: 48px; max-width: 40rem; }
+.form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 18px; min-width: 0; }
+.form legend { padding: 0; margin-bottom: 4px; }
+.field-label { display: block; font-weight: 600; font-size: 16px; margin-bottom: 6px; }
+.err { color: var(--bad); font-size: 15px; }
+.ms { position: relative; }
+.ms-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; font: 17px var(--sans); color: var(--ink); background: var(--bg); border: 1px solid var(--mut); border-radius: 4px; padding: 10px 14px; cursor: pointer; text-align: left; }
+.ms-btn[aria-expanded="true"] { border-color: var(--accent); } .ms-ph { color: var(--mut); } .ms-caret { color: var(--mut); }
+.ms-list { position: absolute; z-index: 20; left: 0; right: 0; margin-top: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; box-shadow: 0 6px 20px rgb(0 0 0 / .1); padding: 6px 0; max-height: 320px; overflow-y: auto; }
+.ms-opt { display: flex; align-items: center; gap: 10px; padding: 8px 14px; cursor: pointer; font-size: 17px; } .ms-opt:hover { background: var(--tint); }
+.ms-opt input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; }
+.ms-opt i, .chips i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; flex: none; }
+.ms-actions { display: flex; gap: 16px; padding: 8px 14px 4px; border-top: 1px solid var(--line); margin-top: 6px; }
+.ms-actions button { font: 600 14px var(--sans); color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; }
+.chips { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; background: var(--tint); border: 1px solid var(--line); border-radius: 999px; padding: 2px 4px 2px 10px; }
+.chips button { background: none; border: 0; cursor: pointer; color: var(--mut); font-size: 17px; line-height: 1; padding: 2px 6px; border-radius: 999px; } .chips button:hover { color: var(--ink); background: var(--line); }
+.stepper { display: inline-flex; border: 1px solid var(--mut); border-radius: 4px; overflow: hidden; }
+.stepper button { font: 600 20px var(--sans); width: 44px; background: var(--bg); color: var(--ink); border: 0; cursor: pointer; } .stepper button:disabled { color: var(--line); cursor: default; }
+.stepper input { width: 64px; text-align: center; font: 600 18px var(--sans); border: 0; border-inline: 1px solid var(--line); padding: 8px 0; -moz-appearance: textfield; }
+.stepper input::-webkit-inner-spin-button, .stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.count .note { margin-top: 6px; }
+.sliders { display: grid; gap: 4px; }
+.slider { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 9.5rem; align-items: center; gap: 8px 20px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.slider label { font-weight: 600; } .slider input { width: 100%; accent-color: var(--accent); }
+.slider output { font-size: 15px; color: var(--mut); } .slider output b { font: 600 20px var(--serif); color: var(--ink); margin-right: 4px; }
+@media (max-width: 600px) { .slider { grid-template-columns: 1fr auto; } .slider input { grid-column: 1 / -1; grid-row: 2; } }
+button.primary { font: 600 18px var(--sans); color: #fff; background: var(--accent); border: 0; border-radius: 4px; padding: 12px 26px; cursor: pointer; } button.primary:hover { background: var(--ink); }
