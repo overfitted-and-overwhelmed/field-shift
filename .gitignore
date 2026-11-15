@@ -8,3 +8,4 @@ data/raw/power_daily_long.csv
 # optional SoilGrids cross-check, not part of the pipeline
 data/processed/soil_long.csv
 knowledge_base/
+.vercel
