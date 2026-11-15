@@ -54,8 +54,9 @@ SOURCES: dict[str, Source] = {
         url="https://cropwatch.unl.edu/2020/yield-penalties-continuous-corn-and-soybean-midwest-us/",
     ),
     "ndsu_sunflower": Source(
-        title="NDSU Sunflower Production Guide",
-        url="https://www.ndsu.edu/agriculture/extension/publications/sunflower-production-guide",
+        title="Kandel, Endres, Buetow (eds.) 2020, Sunflower Production Guide, NDSU Extension A1995, p. 46 (also p. 26)",
+        url="https://www.ndsu.edu/agriculture/sites/default/files/2023-12/a1995.pdf",
+        retrieved="2026-11-15",
     ),
     "scorer_water": Source(title="Field Shift scorer: FAO-56 soil water balance on NASA POWER weather"),
 }

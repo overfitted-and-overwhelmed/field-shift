@@ -10,6 +10,9 @@ day, so rotations of different length compare:
 Every rotation is scored without and, if one fits, with a cover crop (triticale) in the gaps between its crops
 (key "a-b-c+triticale", see water_usage.cover_timeline): the cover uses soil water, is not bare and adds N to the next crop.
 Each score is min-max normalised over all these candidates (0 = best, 1 = worst).
+Rotation rule: at most one Sclerotinia host (sunflower, soybean) per pass (NDSU A1995, see MAX_SCLEROTINIA_HOSTS_PER_PASS).
+Rotations that break it are ranked behind all others, so they are never picked, but the
+farmer's own rotation can still be scored and shown.
 Weights and the farmer's rotation come from ui_input_mock.json until the UI exists; total = weighted mean.
 
 Output (data/processed/rotation_scores): for all rotations rotation_scores.csv (cache for the ranking),
@@ -46,6 +49,14 @@ CRITERIA = {
     "soil_health": "bare_share",
     "nitrogen": "n_fertilizer_kg_per_day",
 }
+
+# Kandel, Endres, Buetow (eds.) 2020, Sunflower Production Guide, NDSU Extension A1995, p. 46: "Rotations of at least
+# three- or four-year spacings between sunflower or other Sclerotinia-susceptible crops (e.g., canola, dry bean,
+# soybean) are recommended to help reduce disease risk." Also p. 26: "a minimum of three to four years' rotation between
+# successive sunflower crops". We only simulate one pass, so we allow one host per pass (3 crops, mostly 3 years).
+# https://www.ndsu.edu/agriculture/sites/default/files/2023-12/a1995.pdf
+MAX_SCLEROTINIA_HOSTS_PER_PASS = 1
+SCLEROTINIA_HOSTS = ("sunflower", "soybean")  # of our crops; canola and dry bean are not in the model
 
 # daily export: internal column -> (parameter, unit); means over the start years
 DAILY_PARAMS = {
@@ -194,11 +205,18 @@ def normalize(scores: pd.DataFrame, reference: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def follows_rotation_rules(crops: list[str]) -> bool:
+    return sum(crop in SCLEROTINIA_HOSTS for crop in crops) <= MAX_SCLEROTINIA_HOSTS_PER_PASS
+
+
 def rank(scores: pd.DataFrame, weights: dict[str, float]) -> pd.DataFrame:
     # a criterion without a weight is not counted (e.g. callers that do not know the nitrogen criterion yet)
     weights = {name: weights.get(name, 0) for name in CRITERIA}
     total = sum(weights[name] * scores[f"{name}_score"] for name in CRITERIA) / sum(weights.values())
-    ranked = scores.assign(total_score=total).sort_values("total_score", ignore_index=True)
+    follows_rules = [follows_rotation_rules(parse_key(r)[0]) for r in scores["rotation"]]
+    # rule breakers go behind all others: never picked, but still ranked (the farmer's rotation may break a rule)
+    ranked = scores.assign(total_score=total, follows_rules=follows_rules).sort_values(
+        ["follows_rules", "total_score"], ascending=[False, True], ignore_index=True)
     ranked.insert(0, "rank", range(1, len(ranked) + 1))
     return ranked
 

@@ -23,7 +23,8 @@ Both files are generated from real data: `uv run python -m explorer.build`.
 - **Frontend:** build against `explorer.json`. Ignore `scorer/`.
 - The formats are defined in [`schema.py`](schema.py). Every field and allowed value is listed there.
 - The rotations are the field's current rotation plus the scorer's top 3 for the weights in
-  `crop_scorer/scoring/ui_input_mock.json` (a mock until the UI sends weights).
+  `crop_scorer/scoring/ui_input_mock.json` (a mock until the UI sends weights). Picks have at most one Sclerotinia host
+  (sunflower or soybean) per pass (scorer rotation rule, NDSU A1995 p. 46, see `data/processed/rotation_scores/README.md`).
 
 ## What a rotation looks like
 
@@ -47,6 +48,14 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
 - `monthly[].kind` is `"cover"` (with `crop: "triticale"`) in months where the cover crop stands most days.
 - Cover crop days are not bare (`bare_months`) and are not irrigated. The cover takes soil water, so the
   next crop's water need and rain-fed yield can change.
+
+**Cover crop switch:** every rotation in `rotations` carries `cover_variant`: the same crops with the cover crop
+toggled (`corn-corn-corn` ↔ `corn-corn-corn+triticale`), as a full rotation with its own score, kpi, sequence,
+monthly and summary. To switch, show `cover_variant` instead of the rotation. It takes the same slot
+(`is_current`, `rank`, `short`), so the farmer's rotation stays "Your rotation" and pick #1 stays pick #1.
+`cover_variant` is `null` where no gap of the rotation fits a cover crop (e.g. corn → winter wheat → sorghum),
+and a variant never has a variant itself. The ranking is not redone: switched off, the picks are the same crops
+without the cover crop, not the best rotations without a cover crop (`kpi.rank_all` shows where they stand).
 
 ## Conventions
 
