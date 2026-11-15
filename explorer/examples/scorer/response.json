@@ -41,14 +41,13 @@
         "soil_health": 0.8773
       },
       "kpi": {
-        "water_mm_per_day": 1.66707,
         "risk_per_crop_day": 0.564714,
         "bare_share": 0.474882,
         "window_days": 885.515,
-        "irrigation_mm": 1476.2,
-        "frost_days": 255.697,
         "heat_days": 190.152,
         "kill_days": 0.727273,
+        "water_in_per_day": 0.06563267716535434,
+        "irrigation_in": 58.118110236220474,
         "rank_all": 65,
         "n_rotations": 125
       }
@@ -93,14 +92,13 @@
         "soil_health": 0.9965
       },
       "kpi": {
-        "water_mm_per_day": 1.0084,
         "risk_per_crop_day": 0.740803,
         "bare_share": 0.537935,
         "window_days": 863.515,
-        "irrigation_mm": 870.758,
-        "frost_days": 170.121,
         "heat_days": 143.545,
         "kill_days": 1.78788,
+        "water_in_per_day": 0.0397007874015748,
+        "irrigation_in": 34.28181102362205,
         "rank_all": 1,
         "n_rotations": 125
       }
@@ -145,14 +143,13 @@
         "soil_health": 0.9957
       },
       "kpi": {
-        "water_mm_per_day": 1.02462,
         "risk_per_crop_day": 0.756608,
         "bare_share": 0.537501,
         "window_days": 873.515,
-        "irrigation_mm": 895.006,
-        "frost_days": 234.697,
         "heat_days": 137.455,
         "kill_days": 1.54545,
+        "water_in_per_day": 0.04033937007874017,
+        "irrigation_in": 35.236456692913386,
         "rank_all": 2,
         "n_rotations": 125
       }
@@ -197,14 +194,13 @@
         "soil_health": 0.9804
       },
       "kpi": {
-        "water_mm_per_day": 1.0458,
         "risk_per_crop_day": 0.757172,
         "bare_share": 0.52942,
         "window_days": 858.515,
-        "irrigation_mm": 897.825,
-        "frost_days": 234.97,
         "heat_days": 137.606,
         "kill_days": 1.54545,
+        "water_in_per_day": 0.041173228346456696,
+        "irrigation_in": 35.347440944881896,
         "rank_all": 3,
         "n_rotations": 125
       }

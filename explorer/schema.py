@@ -41,7 +41,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "5.0.0-draft"
+CONTRACT_VERSION = "6.0.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -209,7 +209,7 @@ class ScorerRotation(_Strict):
     sequence: list[ScorerSeason] = Field(min_length=1)
     score: float | None = None  # the scorer's weighted total, 0 = best
     score_parts: ScoreParts | None = None
-    # The scorer owns the kpi format. We pass it through untouched instead of guessing a shape.
+    # The scorer owns the kpi values, so their shape is not fixed here (keys: explorer/build.py, in US units).
     kpi: dict[str, Any] | None = None
 
     @model_validator(mode="after")

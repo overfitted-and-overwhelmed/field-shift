@@ -47,6 +47,13 @@ def test_dates_are_the_calendar_adapters(built):
         assert [(s.plant_date, s.harvest_date) for s in r.sequence] == [(p.plant_date, p.harvest_date) for p in placed]
 
 
+def test_kpi_is_in_inches_without_the_scorers_frost_days(built):
+    export, _ = built
+    for r in export.rotations:
+        assert "frost_days" not in r.kpi and not any("_mm" in k for k in r.kpi)
+        assert r.kpi["irrigation_in"] == pytest.approx(sum(s.irr_in.v for s in r.sequence), abs=0.05)
+
+
 def test_nitrogen_is_null_until_wp4(built):
     export, _ = built
     r = export.rotations[0]

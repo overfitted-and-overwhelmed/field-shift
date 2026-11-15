@@ -42,13 +42,15 @@ from explorer.schema import (
     Source,
     Summary,
 )
-from explorer.water import monthly_water, season_irrigation
+from explorer.water import MM_PER_IN, monthly_water, season_irrigation
 
 EXAMPLES = Path(__file__).parent / "examples"
 DEFAULT_IRRIGATION: Irrigation = "full"
 N_PICKS = 3
-KPI_COLUMNS = ["water_mm_per_day", "risk_per_crop_day", "bare_share", "window_days", "irrigation_mm",
-               "frost_days", "heat_days", "kill_days"]
+# the scorer's values per pass (rotation_scores.csv). Its frost_days is left out: days below the crop's optimum,
+# not frost (real frost = kill_days).
+KPI_COLUMNS = ["risk_per_crop_day", "bare_share", "window_days", "heat_days", "kill_days"]
+KPI_MM_COLUMNS = {"water_mm_per_day": "water_in_per_day", "irrigation_mm": "irrigation_in"}  # converted to inches
 
 PROVENANCE: dict[str, ProvenanceEntry] = {
     "rotations.*": ProvenanceEntry(label="modeled", source="scorer"),
@@ -105,7 +107,9 @@ def scorer_response(field_history: list[str], start_year: int, weights: dict[str
 
     def build(key: str, is_current: bool, pick: int | None) -> ScorerRotation:
         row = ranked.loc[key]
-        kpi = {c: float(row[c]) for c in KPI_COLUMNS} | {"rank_all": int(row["rank"]), "n_rotations": len(ranked)}
+        kpi = ({c: float(row[c]) for c in KPI_COLUMNS}
+               | {ours: float(row[mm]) / MM_PER_IN for mm, ours in KPI_MM_COLUMNS.items()}
+               | {"rank_all": int(row["rank"]), "n_rotations": len(ranked)})
         parts = {"water": row["water_score"], "risk": row["risk_score"], "soil_health": row["soil_health_score"]}
         return scorer_rotation(key.split("-"), start_year, is_current=is_current, pick=pick,
                                total=round(float(row["total_score"]), 4),

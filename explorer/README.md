@@ -32,8 +32,8 @@ A rotation is **one pass** of the scorer's crops (3 today), from the first sowin
 - **The number of seasons and months varies.** Two harvests can fall into one year (double crop, e.g.
   wheat harvested in June, soybean sown right after), and a year can be skipped (the next crop missed
   its planting window). Do not assume one season per year or a fixed number of months.
-- `monthly` covers exactly the window: from the month of the first sowing to the month before the last
-  harvest. The first and last month can be partial.
+- `monthly` covers exactly the window: from the month of the first sowing to the month of the day before
+  the last harvest (e.g. harvest 2 October -> last month is October). The first and last month can be partial.
 - The first sowing is in `field.rotation_start_year` (2027).
 
 ## Conventions
@@ -53,7 +53,9 @@ A rotation is **one pass** of the scorer's crops (3 today), from the first sowin
 - **`null` means "not computed yet"**: nitrogen (`n_lb`, `n_adj_lb`, `monthly.nitrogen`, `summary.n_loss_lb`)
   is null until WP4 Nitrogen is done.
 - `score` and `score_parts` are the scorer's: **0 = best, 1 = worst** among all its rotations.
-  `rank`, `score`, `score_parts` and `kpi` are passed through unchanged.
+  `rank`, `score` and `score_parts` are passed through unchanged. `kpi` holds the scorer's values for the
+  whole pass, converted to US units (`irrigation_in`, `water_in_per_day`). The scorer's `frost_days` is left
+  out (days below the optimum, not frost).
 - `sequence[].irrigation` is an assumption (`full` for every season) until the farmer can choose it.
 - Every per-year list in `climate` is aligned to `climate.weather_years`.
 - `provenance` says what kind of number a field is (`measured | modeled | rule | assumption`)
