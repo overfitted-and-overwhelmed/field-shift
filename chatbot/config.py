@@ -11,7 +11,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
-DEFAULT_MODEL = "gemini-3-flash-preview"  # the "-latest" alias hung without an answer in the spike
+DEFAULT_MODEL = "gemini-3.5-flash-lite"  # see chatbot-plan.md, sub-task 1, for why not "-latest" or gemini-3-flash
 
 
 class MissingApiKeyError(RuntimeError):

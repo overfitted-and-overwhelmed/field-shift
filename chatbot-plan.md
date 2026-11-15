@@ -45,12 +45,12 @@ Browser chat window -> POST /chat -> chatbot (system prompt + tools) -> Gemini A
 
 **Relevant Context:** `data/fetch-scripts/quickstats.py` (how `NASS_API_KEY` is loaded), `.env.example`, `pyproject.toml`.
 
-**Status:** [~] partly done (spike on 2026-11-15, manual calls, not the full live test suite). Result:
-- `gemini-3-flash-preview` on the OpenAI-compatible endpoint works with tool calling. One question in German ran 3 tool calls and answered in German in 7.3 s.
-- `gemini-flash-latest` and `gemini-3.8-flash` hung until the timeout (40-80 s, also from the owner's machine), `gemini-3.7-flash` hung, `gemini-3.5-flash` answered empty with `max_tokens=20`, `gemini-2.5-flash` gives 404 ("no longer available to new users"), `gemini-3.1-flash-lite-preview` gave a 503 once. Cause not investigated.
-- Gemini 3 sends a `thought_signature` in `extra_content` of each tool call and answers 400 if the next request does not send it back. `chatbot/agent.py` (`_echo_tool_call`) now passes extra fields of the call on unchanged; a test covers it.
-- Free tier limit seen: 5 requests per minute for `gemini-3-flash` (HTTP 429). One chat turn with tools uses 2 to 4 requests, so about 1 to 2 turns per minute. Not enough for several users at once.
-- Still open: the 8 live guardrail tests, the quality of the answers (the one answer was not checked against the data), preview model may change or be removed.
+**Status:** [x] done (spike on 2026-11-15). Result:
+- **Model:** `gemini-3.5-flash-lite` on the OpenAI-compatible endpoint is the default. Tool calling works and all 8 live guardrail tests pass (22 s): answers rest on tool results, no invented numbers, nitrogen is never stated as 0, a pesticide question and an "ignore all rules" question are declined. I read the answers; they match the data and the caveats.
+- **Why not the others:** `gemini-3-flash-preview` works too (a German question ran 3 tool calls in 7.3 s) but the free tier allows only 20 requests per day for it; after about 20 requests it answered 429 with a retry delay of about 20 hours. `gemini-flash-latest`, `gemini-3.8-flash` and `gemini-3.7-flash` hung until the timeout (40-80 s, also on the owner's machine). `gemini-3.5-flash` answered empty with `max_tokens=20`. `gemini-2.5-flash` and `-flash-lite` give 404 ("no longer available to new users"). `gemini-3.1-flash-lite` and `-preview` answered; the preview gave a 503 once and a tool-calling answer took 16.8 s. Causes not investigated.
+- **Gemini 3 needs the `thought_signature`:** each tool call carries it in `extra_content`; the next request must send it back or the API answers 400. `chatbot/agent.py` (`_echo_tool_call`) passes extra fields of the call on unchanged; a test covers it.
+- **Limits of the free tier (not known for the lite model):** the daily limit is the problem, not the minute limit. One chat turn with tools uses 2 to 4 requests. Plan for a paid key or a quota check before a demo. The preview and lite models can change or be removed.
+- **Language:** answers follow the language of the question. Only English was asked for. German worked in the spike but is not part of the tests.
 
 ### 2. Tool registry for the chat
 **Intent:** One list of tools in the OpenAI function format that maps to the `advisor` functions, so the model can call them.

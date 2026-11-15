@@ -130,7 +130,7 @@ def test_settings_defaults_and_overrides(tmp_path, monkeypatch):
     for name in ("LLM_BASE_URL", "CHAT_MODEL", "CHAT_MAX_TOKENS", "CHAT_TIMEOUT_S"):
         monkeypatch.delenv(name, raising=False)
     s = config.load_settings(tmp_path / ".env")
-    assert s.base_url.startswith("https://generativelanguage.googleapis.com/") and s.model == "gemini-3-flash-preview"
+    assert s.base_url.startswith("https://generativelanguage.googleapis.com/") and s.model == "gemini-3.5-flash-lite"
     monkeypatch.setenv("CHAT_MODEL", "other/model")
     monkeypatch.setenv("CHAT_MAX_TOKENS", "300")
     s = config.load_settings(tmp_path / ".env")
@@ -147,7 +147,7 @@ def test_answer_without_tools():
     assert not result.caveats_shown
     request = client.requests[0]
     assert request["messages"][0]["role"] == "system" and request["messages"][-1] == ASK[0]
-    assert request["model"] == "gemini-3-flash-preview" and request["stream"] is False
+    assert request["model"] == "gemini-3.5-flash-lite" and request["stream"] is False
     assert {t["function"]["name"] for t in request["tools"]} == set(TOOL_NAMES)
 
 

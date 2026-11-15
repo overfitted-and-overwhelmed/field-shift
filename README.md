@@ -43,7 +43,7 @@ Try: "Explain the picks for my field in simple words", "What if water matters mo
 
 ## Chatbot for the web app (backend, JSON)
 
-`chatbot/` is a small FastAPI backend: an LLM (Gemini via its OpenAI-compatible endpoint, model `gemini-3-flash-preview`) answers the farmer's
+`chatbot/` is a small FastAPI backend: an LLM (Gemini via its OpenAI-compatible endpoint, model `gemini-3.5-flash-lite`) answers the farmer's
 questions and uses the `advisor` functions as tools, so every number comes from the data. The frontend only sends JSON.
 The key stays on the server.
 
