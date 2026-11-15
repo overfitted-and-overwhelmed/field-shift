@@ -6,7 +6,7 @@ import { normalize } from './normalize';
 /**
  * Where the data comes from. Set VITE_EXPLORER_DATA_URL (e.g. the scorer API) to switch the source.
  * Default: the static mock in public/data/explorer.json. The response must match RawExplorerData in types.ts.
- * The form inputs are sent as query parameters: crops=corn,soybean&n=2&w=water:5,profit:4,…
+ * The form inputs are sent as query parameters: lat=38.02511&lon=-101.12608&crops=corn,soybean&n=3&w=water:5,profit:4,…
  * The weights entered by the user override the ones in the response.
  */
 export const DATA_URL: string = import.meta.env.VITE_EXPLORER_DATA_URL ?? `${import.meta.env.BASE_URL}data/explorer.json`;

@@ -100,3 +100,9 @@ button.link { font: 600 15px var(--sans); color: var(--accent); background: none
 .slider output { font-size: 15px; color: var(--mut); } .slider output b { font: 600 20px var(--serif); color: var(--ink); margin-right: 4px; }
 @media (max-width: 600px) { .slider { grid-template-columns: 1fr auto; } .slider input { grid-column: 1 / -1; grid-row: 2; } }
 button.primary { font: 600 18px var(--sans); color: #fff; background: var(--accent); border: 0; border-radius: 4px; padding: 12px 26px; cursor: pointer; } button.primary:hover { background: var(--ink); }
+
+/* location picker: isolate Leaflet's high z-indexes so they stay below page overlays */
+.map { height: 380px; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; isolation: isolate; }
+.map .leaflet-container { font: 13px var(--sans); cursor: crosshair; }
+.coords { font-size: 16px; color: var(--mut); } .coords b { color: var(--ink); font-weight: 600; }
+@media (max-width: 600px) { .map { height: 300px; } }

@@ -3,22 +3,24 @@ import { CONTENT } from '../config/content';
 import { cropColor, cropLabel } from '../config/crops';
 import { priorityLabel } from '../config/priorities';
 import { COUNT_MAX, COUNT_MIN, CROP_IDS, PRIORITY_IDS, WEIGHT_MAX, WEIGHT_MIN, emptyRequest, goResults, type FieldRequest } from '../lib/request';
+import { LocationPicker } from './LocationPicker';
 import { MultiSelect } from './MultiSelect';
 
 const WEIGHT_WORDS = ['', 'not important', 'minor', 'moderate', 'important', 'top priority'];
 
-/** Start page: which crops, how many in the rotation, and what matters (1–5 per priority). */
+/** Start page: where the field is, which crops, how many in the rotation, and what matters (1–5 per priority). */
 export function InputForm({ prefill }: { prefill: FieldRequest | null }) {
   const [req, setReq] = useState<FieldRequest>(() => prefill ?? emptyRequest());
   const [tried, setTried] = useState(false);
   const maxCount = COUNT_MAX;
   const count = Math.min(req.count, maxCount);
   const cropsMissing = req.crops.length === 0;
+  const locationMissing = !req.location;
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
     setTried(true);
-    if (cropsMissing) return;
+    if (cropsMissing || locationMissing) return;
     goResults({ ...req, count });
   };
 
@@ -32,6 +34,16 @@ export function InputForm({ prefill }: { prefill: FieldRequest | null }) {
         </div>
 
         <form className="form" onSubmit={submit} noValidate>
+          <fieldset>
+            <legend><h2>Field location</h2></legend>
+            <p className="note">Click on the map where your field is.</p>
+            <LocationPicker value={req.location} onChange={(location) => setReq((r) => ({ ...r, location }))} />
+            <p className="coords" aria-live="polite">
+              {req.location ? <>Selected: <b>{req.location.lat.toFixed(4)}, {req.location.lon.toFixed(4)}</b></> : 'No location selected yet.'}
+            </p>
+            {tried && locationMissing && <p role="alert" className="err">Choose your field on the map.</p>}
+          </fieldset>
+
           <fieldset>
             <legend><h2>Crops</h2></legend>
             <MultiSelect

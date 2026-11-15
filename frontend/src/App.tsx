@@ -8,7 +8,7 @@ import { cropLabel } from './config/crops';
 import { priorityLabel } from './config/priorities';
 import { DATA_URL, useExplorerData } from './data/load';
 import { activeMetrics } from './data/metrics';
-import { goForm, toQuery, useRoute, type FieldRequest } from './lib/request';
+import { goForm, toQuery, useRoute, type FieldRequest, type LatLon } from './lib/request';
 import type { Units } from './lib/units';
 import type { ExplorerData } from './types';
 
@@ -18,7 +18,9 @@ export default function App() {
   return <Results key={toQuery(route.req)} req={route.req} />;
 }
 
-function Results({ req }: { req: FieldRequest }) {
+type ResultsRequest = FieldRequest & { location: LatLon };
+
+function Results({ req }: { req: ResultsRequest }) {
   const state = useExplorerData(req);
   if (state.status === 'loading') return <main className="page"><p role="status" className="note">Loading…</p></main>;
   if (state.status === 'error')
@@ -30,7 +32,7 @@ function Results({ req }: { req: FieldRequest }) {
   return <Explorer data={state.data} req={req} />;
 }
 
-function Explorer({ data, req }: { data: ExplorerData; req: FieldRequest }) {
+function Explorer({ data, req }: { data: ExplorerData; req: ResultsRequest }) {
   const [selectedId, setSelectedId] = useState(data.options[0]?.id ?? data.current.id);
   const [units, setUnits] = useState<Units>('in');
   const metrics = useMemo(() => activeMetrics(data), [data]);
@@ -48,6 +50,7 @@ function Explorer({ data, req }: { data: ExplorerData; req: FieldRequest }) {
           <h1>{CONTENT.title}</h1>
           <p className="lead">{CONTENT.lead}</p>
           <dl className="facts">
+            <div><dt>Location</dt><dd>{req.location.lat.toFixed(4)}, {req.location.lon.toFixed(4)}</dd></div>
             <div><dt>Crops</dt><dd>{req.crops.map(cropLabel).join(', ')}</dd></div>
             <div><dt>Weighted for</dt><dd>{data.priorities.map((p) => `${priorityLabel(p.id).toLowerCase()} ${p.weight}/5`).join(', ')}</dd></div>
             {given.length > 0 && <div><dt>Given</dt><dd>{given.join(', ')}</dd></div>}
