@@ -3,6 +3,7 @@
 corn, sorghum, winter wheat:  N = ie / fe x EY - se x ProfileN - SOM x credit + PreviousCropAdj
 sunflower:                    N = 0.075 x EY - SOM x 20 - ProfileN + PreviousCropAdj
 then limited to the K-State minimum (and maximum for corn). No manure, no other N sources.
+After a cereal cover crop (triticale) the next crop needs COVER_N_LB more (residue ties up N).
 
 All factors come from the cleaned K-State tables (data/processed/crop_data/ksu). EY = expected yield from NASS,
 practice "all" at the most local level with 5 years (1.05 x mean, K-State rule; nass_quickstats/expected_yield_clean.csv).
@@ -34,6 +35,9 @@ SE_CONDITION = "low N-loss risk: medium texture or western KS"
 CORN_CONDITION = "irrigated"
 # ASSUMPTION: MF2586 has no N recommendation for soybean; as a legume it fixes its own N, so no fertilizer
 NO_FORMULA_KG = {"soybean": 0.0}
+# Clark (ed.) 2007, Managing Cover Crops Profitably, 3rd ed., SARE, p. 46: after a high-residue cereal cover the cash
+# crop may need 25-30 lb N/ac more; middle of the range (cited in data/cover_crop_effects.csv on feat/fertilizer-need)
+COVER_N_LB = 27.5
 
 
 @cache
@@ -83,14 +87,14 @@ def previous_crop_adjustment_lb(crop: str, previous: str | None) -> float:
 
 
 @cache
-def season_n_need_kg(crop: str, previous: str | None) -> float:
+def season_n_need_kg(crop: str, previous: str | None, after_cover: bool = False) -> float:
     if crop in NO_FORMULA_KG:
         return NO_FORMULA_KG[crop]
     season = SEASON_TYPE[crop]
     ey = expected_yield(crop)
     som_credit = organic_matter_pct() * ksu(season, "som_credit")
     profile_n = ksu("all", "profile_n_default")
-    previous_adj = previous_crop_adjustment_lb(crop, previous)
+    previous_adj = previous_crop_adjustment_lb(crop, previous) + (COVER_N_LB if after_cover else 0.0)
     if crop == "sunflower":
         n = ey * ksu("sunflower", "yield_factor") - som_credit - profile_n + previous_adj
     else:
@@ -104,6 +108,8 @@ def season_n_need_kg(crop: str, previous: str | None) -> float:
     return n * LB_PER_AC_TO_KG_PER_HA
 
 
-def rotation_n_need_kg(rotation: list[str]) -> list[float]:
-    # one value per season of one pass; the previous crop is the one before it in the rotation
-    return [season_n_need_kg(crop, rotation[i - 1] if i else None) for i, crop in enumerate(rotation)]
+def rotation_n_need_kg(rotation: list[str], after_cover: list[bool] | None = None) -> list[float]:
+    # one value per season of one pass; the previous crop is the one before it in the rotation,
+    # after_cover[i]: a cover crop stood in the gap before season i
+    after_cover = after_cover or [False] * len(rotation)
+    return [season_n_need_kg(crop, rotation[i - 1] if i else None, after_cover[i]) for i, crop in enumerate(rotation)]

@@ -35,13 +35,25 @@ ROTATION = ["winter_wheat", "corn", "sorghum"]
 FIRST_YEAR, LAST_YEAR = 1991, 2025
 STAGES = ["ini", "dev", "mid", "late"]
 
-# ASSUMPTION (no FAO fallow value): bare soil evaporation = kc_ini of corn/sorghum, whose
-# initial stage ET is mostly soil evaporation. Overestimates fallow losses once the topsoil is dry.
-FALLOW_KC = 0.3
+# ASSUMPTION (no FAO fallow value): bare soil evaporates FALLOW_KC x ET0 from the whole bucket. Calibrated so that
+# 25 % of the rain in the long fallow of the test rotation stays in the soil, inside the 20-35 % measured for fallow
+# in western Kansas (K-State Research Reports, https://ksu.janeway.systems/kaesrr/article/6348/galley/6292/download).
+# 0.3 (kc_ini of corn/sorghum) kept only 17 %. Real bare soil only dries the top 10-15 cm (FAO-56 ch. 7), not modelled.
+FALLOW_KC = 0.25
 
 # ASSUMPTION (same as explorer/field_calendar.py): days between harvest and the next sowing when the
 # field is still occupied on the target sowing date (e.g. wheat drilled right after soybean harvest)
 MIN_GAP_DAYS = 3
+
+# Cover crop in the gaps between two crops of a rotation (optional, see cover_timeline)
+COVER_CROP = "triticale"
+# ASSUMPTION: triticale grows like winter wheat (K-State MF2586 names wheat as its closest proxy): same Kc curve
+# (FAO-56) and same full NASS planting window (Sep 10 - Nov 1)
+COVER_PROXY = "winter_wheat"
+# NRCS Cover Crop Termination Guidelines, non-irrigated cropland, zone 1 (June 2013): terminate >= 35 days before planting
+COVER_TERMINATION_DAYS = 35
+# ASSUMPTION: a cover that would stand less than four weeks is not sown
+MIN_COVER_DAYS = 28
 
 # ASSUMPTION: bucket 30 % full on Jan 1 of the start year = mean Jan 1 fill level of our own
 # simulation after a few years of replay (~0.31-0.33 for several rotations, median ~0.27)
@@ -122,6 +134,7 @@ def load_crop_params() -> pd.DataFrame:
         rows.append({
             "crop": crop,
             "sow_doy": sow_doy,
+            "sow_begin_doy": int(nass.loc[crop, "planting_begin"]),
             "sow_end_doy": int(nass.loc[crop, "planting_end"]),
             "season_days": season_days,
             # FAO-56 stage shares, scaled to the local season length (FAO-56 ch. 6: Table 11 is only a guide)
@@ -175,6 +188,24 @@ def build_timeline(params: pd.DataFrame, rotation: list[str], start_year: int) -
         i += 1
 
 
+def cover_timeline(params: pd.DataFrame, seasons: list) -> list[tuple[str, pd.Timestamp, pd.Timestamp]]:
+    # a cover crop in every gap between two of the given seasons where it fits: sown MIN_GAP_DAYS after harvest,
+    # not before its planting window opens and not after it closes, terminated COVER_TERMINATION_DAYS before
+    # the next sowing. Returns [(cover, sow, end)], the end day is not part of the cover.
+    p = params.loc[COVER_PROXY]
+    covers = []
+    for (_, _, harvest), (_, next_sow, _) in zip(seasons, seasons[1:]):
+        earliest = harvest + pd.Timedelta(days=MIN_GAP_DAYS)
+        jan1 = pd.Timestamp(earliest.year, 1, 1)
+        sow = max(earliest, jan1 + pd.Timedelta(days=int(p["sow_begin_doy"]) - 1))
+        if sow > jan1 + pd.Timedelta(days=int(p["sow_end_doy"]) - 1):
+            continue
+        end = next_sow - pd.Timedelta(days=COVER_TERMINATION_DAYS)
+        if (end - sow).days >= MIN_COVER_DAYS:
+            covers.append((COVER_CROP, sow, end))
+    return covers
+
+
 def kc_curve(p: pd.Series) -> tuple[np.ndarray, np.ndarray]:
     # FAO-56 piecewise linear Kc: flat ini, rise during dev, flat mid, decline during late
     ini_end, dev_end, mid_end, season_end = p["stage_ends"]
@@ -188,19 +219,27 @@ def kc_curve(p: pd.Series) -> tuple[np.ndarray, np.ndarray]:
     return kc, stage
 
 
-def crop_calendar(params: pd.DataFrame, weather: pd.DataFrame, seasons: list) -> pd.DataFrame:
-    daily = weather.assign(crop="fallow", harvest_year=0, sow_date=pd.NaT, stage="", kc=FALLOW_KC)
+def crop_calendar(params: pd.DataFrame, weather: pd.DataFrame, seasons: list, covers: list = ()) -> pd.DataFrame:
+    daily = weather.assign(crop="fallow", main_crop=False, harvest_year=0, sow_date=pd.NaT, stage="", kc=FALLOW_KC)
     for crop, sow, harvest in seasons:
         kc, stage = kc_curve(params.loc[crop])
         dates = pd.date_range(sow, periods=len(kc))
         daily.loc[dates, "crop"] = crop
+        daily.loc[dates, "main_crop"] = True
         daily.loc[dates, "harvest_year"] = harvest.year
         daily.loc[dates, "sow_date"] = sow
         daily.loc[dates, "stage"] = stage
         daily.loc[dates, "kc"] = kc
 
     # during fallow the bucket already has the size of the next crop's root zone (it stores water for it)
-    bucket_crop = daily["crop"].where(daily["crop"] != "fallow").bfill().ffill()
+    # a cover crop takes its water from the fallow bucket, with the Kc curve of its proxy from its own sowing day
+    proxy_kc, _ = kc_curve(params.loc[COVER_PROXY])
+    for cover, sow, end in covers:
+        dates = pd.date_range(sow, end - pd.Timedelta(days=1))
+        daily.loc[dates, "crop"] = cover
+        daily.loc[dates, "kc"] = proxy_kc[np.minimum(np.arange(len(dates)), len(proxy_kc) - 1)]
+
+    bucket_crop = daily["crop"].where(daily["main_crop"]).bfill().ffill()
     daily["taw_mm"] = bucket_crop.map(params["taw_mm"])
     daily["p_table"] = bucket_crop.map(params["p"])
     daily["etc"] = daily["kc"] * daily["et0"]
@@ -227,14 +266,16 @@ def soil_water_balance(daily: pd.DataFrame) -> pd.DataFrame:
         eta[i] = ks * etc[i]
         depletion += eta[i]
 
-    in_crop = daily["crop"] != "fallow"
-    return daily.assign(eta=eta, irrigation_need=np.where(in_crop, daily["etc"] - eta, 0.0))
+    # only main crops are irrigated; a cover crop lives on rain and leaves a drier bucket to the next crop
+    return daily.assign(eta=eta, irrigation_need=np.where(daily["main_crop"], daily["etc"] - eta, 0.0))
 
 
-def simulate(rotation: list[str], start_year: int) -> tuple[pd.DataFrame, list]:
+def simulate(rotation: list[str], start_year: int, cover: bool = False) -> tuple[pd.DataFrame, list]:
+    # cover=True: cover crops in the gaps inside the first pass of the rotation (not after its last crop)
     params = load_crop_params()
     seasons = build_timeline(params, rotation, start_year)
-    calendar = crop_calendar(params, load_weather().loc[f"{start_year}":], seasons)
+    covers = cover_timeline(params, seasons[: len(rotation)]) if cover else []
+    calendar = crop_calendar(params, load_weather().loc[f"{start_year}":], seasons, covers)
     return soil_water_balance(calendar), seasons
 
 
