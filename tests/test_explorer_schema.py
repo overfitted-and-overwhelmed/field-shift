@@ -34,16 +34,18 @@ def test_scorer_example_is_valid():
 
 def test_explorer_passes_scorer_rotations_through():
     # Our rotations must contain exactly what the scorer sent. We strip what we added
-    # (placeholder flag, monthly, summary, extra season fields) and compare.
+    # (placeholder flag, monthly, summary, extra season fields; also in the cover variant) and compare.
     scorer = ScorerResponse.model_validate(_load("scorer/response.json"))
     export = load_explorer(EXAMPLES / "explorer.json")
     scorer_fields = set(ScorerSeason.model_fields)
-    ours = []
-    for r in export.rotations:
-        d = r.model_dump(exclude={"placeholder", "monthly", "summary"})
+
+    def strip(d: dict) -> dict:
+        d = {k: v for k, v in d.items() if k not in ("placeholder", "monthly", "summary")}
         d["sequence"] = [{k: v for k, v in s.items() if k in scorer_fields} for s in d["sequence"]]
-        ours.append(d)
-    assert ours == [r.model_dump() for r in scorer.rotations]
+        d["cover_variant"] = d["cover_variant"] and strip(d["cover_variant"])
+        return d
+
+    assert [strip(r.model_dump()) for r in export.rotations] == [r.model_dump() for r in scorer.rotations]
 
 
 def test_yield_is_written_as_yield():
@@ -63,7 +65,8 @@ CASES = [
     ("unknown key", lambda d, r: d["field"].update(typo=1), "typo"),
     ("wrong contract version", lambda d, r: d.update(contract_version="0.0.1"), "contract_version"),
     ("climate lists differ in length", lambda d, r: d["climate"]["rain_in"].pop(), "rain_in"),
-    ("two current rotations", lambda d, r: r.update(is_current=True, rank=None), "exactly one current"),
+    ("two current rotations", lambda d, r: [x.update(is_current=True, rank=None) for x in (r, r["cover_variant"])],
+     "exactly one current"),
     ("crop missing from catalog", lambda d, r: d["crops"].pop("sunflower"), "sunflower"),
     ("gap in months", lambda d, r: r["monthly"][5].update(m="2027-07"), "without gaps"),
     ("water on dryland", lambda d, r: r["sequence"][0].update(irrigation="none"), "irrigation 'none'"),
@@ -75,6 +78,12 @@ CASES = [
     ("planted after harvest", lambda d, r: r["sequence"][0].update(plant_date="2027-11-01"), "not before harvest_date"),
     ("seasons overlap", lambda d, r: r["sequence"][1].update(plant_date=r["sequence"][0]["plant_date"]), "before .* is harvested"),
     ("window misses its last month", lambda d, r: r["monthly"].pop(), "without gaps"),
+    ("nitrogen missing", lambda d, r: r["sequence"][0].pop("n_lb"), "n_lb"),
+    ("cover variant with other crops", lambda d, r: r["cover_variant"].update(id="corn-corn-corn"), "cover toggled"),
+    ("cover variant with the same cover", lambda d, r: r["cover_variant"].update(id=r["id"]), "cover toggled"),
+    ("cover variant in another slot", lambda d, r: r["cover_variant"].update(rank=2), "same slot"),
+    ("cover variant of a cover variant", lambda d, r: r["cover_variant"].update(cover_variant=copy.deepcopy(r)),
+     "must not have a cover_variant"),
 ]
 
 

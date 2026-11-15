@@ -20,7 +20,8 @@ be skipped (the next crop missed its planting window). So the number of seasons 
 fixed, and seasons are not one per year.
 
 Who computes what: the scorer decides the seasons (dates) and computes water and temperature risk;
-we take them over. Yield comes from us (WP3). Values nobody computes yet (nitrogen, WP4) are null.
+we take them over, also its N fertilizer need per season (K-State). Yield comes from us (WP3). What nobody
+computes (monthly N balance, N loss) is null.
 Placeholders are marked with ``placeholder=True``.
 
 Units are part of the field names: ``_in`` inches of water, ``_lb`` lb N per acre, ``_ft`` feet,
@@ -41,7 +42,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 # Bump this when the JSON format changes. Major = breaking for the frontend.
-CONTRACT_VERSION = "6.1.0-draft"
+CONTRACT_VERSION = "6.4.0-draft"
 
 # Literal = "only these exact strings are allowed". Typos like "Corn" or "winterwheat"
 # are rejected instead of silently creating a new crop.
@@ -213,11 +214,24 @@ class ScorerRotation(_Strict):
     score_parts: ScoreParts | None = None
     # The scorer owns the kpi values, so their shape is not fixed here (keys: explorer/build.py, in US units).
     kpi: dict[str, Any] | None = None
+    # The same crops with the cover crop toggled (with <-> without), for the cover crop switch in the UI. It takes
+    # the same slot (is_current, rank, short); score, kpi and everything else are its own. None if no gap of the
+    # rotation fits a cover crop. One level only: a variant has no variant itself.
+    cover_variant: ScorerRotation | None = None
 
     @model_validator(mode="after")
     def _check(self) -> ScorerRotation:
         if self.is_current and self.rank is not None:
             raise ValueError(f"rotation {self.id}: the current rotation must not have a rank")
+        if (v := self.cover_variant) is not None:
+            crops, _, cover = self.id.partition("+")
+            v_crops, _, v_cover = v.id.partition("+")
+            if v_crops != crops or bool(v_cover) == bool(cover):
+                raise ValueError(f"rotation {self.id}: cover_variant {v.id} is not the same crops with the cover toggled")
+            if (v.is_current, v.rank, v.short) != (self.is_current, self.rank, self.short):
+                raise ValueError(f"rotation {self.id}: cover_variant {v.id} must take the same slot (is_current, rank, short)")
+            if v.cover_variant is not None:
+                raise ValueError(f"rotation {self.id}: cover_variant {v.id} must not have a cover_variant itself")
         for before, after in zip(self.sequence, self.sequence[1:]):
             if after.plant_date < before.harvest_date:
                 raise ValueError(
@@ -248,8 +262,9 @@ class SeasonDetail(ScorerSeason):
 
     irr_in: Spread  # from the scorer's water balance, with the season's irrigation level applied
     yield_: YieldSpread = Field(alias="yield")
-    n_lb: float | None = Field(default=None, ge=0)  # null until WP4 Nitrogen delivers
-    n_adj_lb: float | None = None  # previous-crop adjustment, can be negative (e.g. after soybean)
+    n_lb: float = Field(ge=0)  # N fertilizer of the season after K-State MF2586, from the scorer
+    # previous-crop adjustment in that formula (+27.5 lb after a cover crop), negative = credit (e.g. after soybean)
+    n_adj_lb: float
     yield_pct_rotation: float
     effects: list[Effect]
 
@@ -261,7 +276,7 @@ class SeasonDetail(ScorerSeason):
 
 
 class MonthNitrogen(_Strict):
-    """Nitrogen balance of one month (WP4, not computed yet)."""
+    """Nitrogen balance of one month (not computed: K-State gives the need per season, no monthly balance)."""
 
     fert_lb: float = Field(ge=0)
     uptake_lb: float = Field(ge=0)
@@ -285,13 +300,19 @@ class MonthDetail(_Strict):
     et_in: float = Field(ge=0)  # crop water use without water stress (ETc); on bare months evaporation from bare soil
     rain_in: float = Field(ge=0)
     irr_in: float = Field(ge=0)
-    # Share of weather years with at least one stress day in this month (see explorer/frost_heat.py):
-    # heat = Tmax above the crop's optimum; cold stress = below the optimum for at least half the day;
-    # kill = below the crop's killing temperature (real frost damage).
+    # Temperature stress while a crop stands (see explorer/frost_heat.py): heat = Tmax above the crop's optimum;
+    # cold stress = below the crop's absolute minimum (no growth) for at least half the day; kill = below the
+    # crop's killing temperature (real frost damage).
+    # Mean number of stress days in this month: the values to show.
+    heat_days: float = Field(ge=0, le=31)
+    cold_stress_days: float = Field(ge=0, le=31)
+    kill_days: float = Field(ge=0, le=31)
+    # Share of weather years with at least one stress day in this month: ~100 in every summer month as soon as one
+    # day crosses the line, so it hardly tells months apart.
     heat_years_pct: float = Field(ge=0, le=100)
     cold_stress_years_pct: float = Field(ge=0, le=100)
     kill_years_pct: float = Field(ge=0, le=100)
-    nitrogen: MonthNitrogen | None = None  # null until WP4 Nitrogen delivers
+    nitrogen: MonthNitrogen | None = None  # null, see MonthNitrogen
 
     @model_validator(mode="after")
     def _crop_matches_kind(self) -> MonthDetail:
@@ -303,10 +324,12 @@ class MonthDetail(_Strict):
 
 
 class Summary(_Strict):
-    bare_months: float = Field(ge=0, le=12)  # months per year without crop or cover, mean over the window
+    # months per year without crop or cover INSIDE the window (first sowing to last harvest): the gap after the last
+    # harvest is not counted (team decision; the scorer sows no cover crop there). Not per cycle like kpi.*_per_year.
+    bare_months: float = Field(ge=0, le=12)
     # Seasons whose crop equals the crop before it; season 0 compares to field.previous_crop.
     same_crop_repeats: int = Field(ge=0)
-    n_loss_lb: float | None = Field(default=None, ge=0)  # null until WP4 Nitrogen delivers
+    n_loss_lb: float | None = Field(default=None, ge=0)  # null: N losses are not modelled
 
 
 def _month(d: date) -> str:
@@ -323,6 +346,7 @@ class Rotation(ScorerRotation):
     sequence: list[SeasonDetail] = Field(min_length=1)
     monthly: list[MonthDetail] = Field(min_length=1)
     summary: Summary
+    cover_variant: Rotation | None = None  # see ScorerRotation.cover_variant, with our data added
 
     @model_validator(mode="after")
     def _months_cover_window(self) -> Rotation:

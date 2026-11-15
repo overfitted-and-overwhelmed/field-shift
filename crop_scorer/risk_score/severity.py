@@ -66,9 +66,9 @@ def compute_daily_risk(
       continuing to rise above it (no cap, no heat kill) (on Tmax).
     - frost_severity: 0 at ``temp_opt_min`` rising linearly to 1 at ``temp_abs_min`` (on Tmin),
       capped at 1.
-    - kill_cold: Tmin < ``kill_temp_lower``. There is no heat kill.
-    - Winter wheat only: in the dormancy window kill_cold uses ``kill_temp_rest`` and
-      frost_severity is 0. Heat is unchanged.
+    - kill_cold: winter wheat only, in the dormancy window: Tmin < ``kill_temp_rest``; frost_severity
+      is 0 there, heat is unchanged. No crop has a documented killing temperature outside it
+      (see README), so there cold only counts as frost stress. There is no heat kill.
     - daily_score: ``kill_penalty`` on kill days, otherwise frost_severity + heat_severity.
       The severity columns keep their raw values on kill days; the score is not double counted.
     - stress_flag: severity > 0 on a non-kill day.
@@ -93,13 +93,13 @@ def compute_daily_risk(
     heat_severity = _linear_severity(tmax - crop.temp_opt_max, heat_span, cap=None)
     frost_severity = _linear_severity(crop.temp_opt_min - tmin, cold_span)
 
-    kill_cold = tmin < crop.kill_temp_lower
+    kill_cold = pd.Series(False, index=temps.index)
 
     # Dormancy only applies to winter crops (Ecocrop also lists a rest value for sunflower,
     # but it does not overwinter in the field).
     if crop.is_winter_crop and crop.kill_temp_rest is not None:
         rest = in_winter_rest(temps["month"], temps["day"], rest_start, rest_end)
-        kill_cold = pd.Series(np.where(rest, tmin < crop.kill_temp_rest, kill_cold), index=temps.index)
+        kill_cold = rest & (tmin < crop.kill_temp_rest)
         frost_severity = frost_severity.where(~rest, 0.0)
 
     kill = kill_cold

@@ -51,6 +51,7 @@ COVER_CROP = "triticale"
 # (FAO-56) and same full NASS planting window (Sep 10 - Nov 1)
 COVER_PROXY = "winter_wheat"
 # NRCS Cover Crop Termination Guidelines, non-irrigated cropland, zone 1 (June 2013): terminate >= 35 days before planting
+# (data/base-data/literature/cover_crop_effects.csv, termination_zone_1)
 COVER_TERMINATION_DAYS = 35
 # ASSUMPTION: a cover that would stand less than four weeks is not sown
 MIN_COVER_DAYS = 28

@@ -7,7 +7,7 @@ Steps:
 2. Which rotations: the field's current rotation (last crops in the CDL history) plus the scorer's
    top 3 for the given weights. Until the scorer has an API we read its CSV exports and build the
    scorer response (``ScorerResponse``) from them.
-3. Per rotation: dates (WP5 calendar adapter), water (WP2), frost/heat (WP6), yield (WP3).
+3. Per rotation: dates (WP5 calendar adapter), water (WP2), frost/heat (WP6), yield (WP3), nitrogen (WP4).
 4. Validate everything against ``schema.py`` and write the files.
 
 Irrigation level per season: the scorer has none (it scores the rain-fed irrigation need), so we use
@@ -21,10 +21,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import get_args
 
+from crop_scorer.scoring.nitrogen import LB_PER_AC_TO_KG_PER_HA
 from crop_scorer.scoring.score_rotations import UI_INPUT_FILE, rank
 
-from explorer import field_climate, yields
+from explorer import field_climate, nitrogen, yields
 from explorer.field_calendar import (
+    COVER_CROPS,
     load_scorer_scores,
     monthly_kinds,
     parse_key,
@@ -54,10 +56,18 @@ from explorer.water import MM_PER_IN, monthly_water, season_irrigation
 EXAMPLES = Path(__file__).parent / "examples"
 DEFAULT_IRRIGATION: Irrigation = "full"
 N_PICKS = 3
+DAYS_PER_YEAR = 365.25
 # the scorer's values per pass (rotation_scores.csv). Its frost_days is left out: days below the crop's optimum,
 # not frost (real frost = kill_days).
-KPI_COLUMNS = ["risk_per_crop_day", "bare_share", "window_days", "heat_days", "kill_days"]
+KPI_COLUMNS = ["risk_per_crop_day", "bare_share", "window_days", "cycle_days", "heat_days", "kill_days"]
 KPI_MM_COLUMNS = {"water_mm_per_day": "water_in_per_day", "irrigation_mm": "irrigation_in"}  # converted to inches
+KPI_KG_COLUMNS = {"n_fertilizer_kg": "n_lb"}  # kg N/ha -> lb N/acre
+# per year of the rotation: pass value / cycle years (first sowing to the first sowing of the next pass), so passes
+# of different length compare. Not per window day x 365.25: the window leaves out the gap after the last crop.
+KPI_PER_YEAR = {
+    "irrigation_in_per_year": ("irrigation_mm", MM_PER_IN),
+    "n_lb_per_year": ("n_fertilizer_kg", LB_PER_AC_TO_KG_PER_HA),
+}
 
 PROVENANCE: dict[str, ProvenanceEntry] = {
     "rotations.*": ProvenanceEntry(label="modeled", source="scorer"),
@@ -69,9 +79,12 @@ PROVENANCE: dict[str, ProvenanceEntry] = {
     "monthly.et_in": ProvenanceEntry(label="modeled", source="scorer_water"),
     "monthly.rain_in": ProvenanceEntry(label="measured", source="nasa_power"),
     "monthly.irr_in": ProvenanceEntry(label="modeled", source="scorer_water"),
+    "monthly.heat_days": ProvenanceEntry(label="modeled", source="scorer_risk"),
     "monthly.heat_years_pct": ProvenanceEntry(label="modeled", source="scorer_risk"),
-    # our rule on the scorer's thresholds: below the optimum for at least half the day (assumption)
+    # our rule on the Ecocrop limits: below the absolute minimum for at least half the day (assumption)
+    "monthly.cold_stress_days": ProvenanceEntry(label="assumption", source="scorer_risk"),
     "monthly.cold_stress_years_pct": ProvenanceEntry(label="assumption", source="scorer_risk"),
+    "monthly.kill_days": ProvenanceEntry(label="modeled", source="scorer_risk"),
     "monthly.kill_years_pct": ProvenanceEntry(label="modeled", source="scorer_risk"),
     "summary.bare_months": ProvenanceEntry(label="rule", source="scorer"),
 }
@@ -85,7 +98,8 @@ LABELS = {crop: c.label for crop, c in field_climate.CROPS.items()}
 
 
 def scorer_rotation(key: str, start_year: int, *, is_current: bool, pick: int | None,
-                    total: float | None, parts: dict, kpi: dict) -> ScorerRotation:
+                    total: float | None, parts: dict, kpi: dict,
+                    cover_variant: ScorerRotation | None = None) -> ScorerRotation:
     """The scorer's view of one rotation, with its seasons moved to the display years."""
     crops, cover = parse_key(key)
     seasons = [
@@ -97,7 +111,7 @@ def scorer_rotation(key: str, start_year: int, *, is_current: bool, pick: int | 
     return ScorerRotation(
         id=key, is_current=is_current, rank=pick, name=name,
         short="Your rotation" if is_current else f"Pick #{pick}",
-        sequence=seasons, score=total, score_parts=ScoreParts(**parts), kpi=kpi,
+        sequence=seasons, score=total, score_parts=ScoreParts(**parts), kpi=kpi, cover_variant=cover_variant,
     )
 
 
@@ -112,15 +126,23 @@ def scorer_response(field_history: list[str], start_year: int, weights: dict[str
     current = rotation_key(main_crops[-length:])
     picks = [r for r in ranked.index if r != current][:N_PICKS]
 
-    def build(key: str, is_current: bool, pick: int | None) -> ScorerRotation:
+    def build(key: str, is_current: bool, pick: int | None, with_variant: bool = True) -> ScorerRotation:
         row = ranked.loc[key]
+        crops, cover = parse_key(key)
+        toggled = rotation_key(crops, None if cover else COVER_CROPS[0])
+        # the scorer only has a cover variant where a gap fits a cover crop
+        variant = build(toggled, is_current, pick, False) if with_variant and toggled in ranked.index else None
         kpi = ({c: float(row[c]) for c in KPI_COLUMNS}
                | {ours: float(row[mm]) / MM_PER_IN for mm, ours in KPI_MM_COLUMNS.items()}
+               | {ours: float(row[kg]) / LB_PER_AC_TO_KG_PER_HA for kg, ours in KPI_KG_COLUMNS.items()}
+               | {ours: float(row[col]) / factor / (float(row["cycle_days"]) / DAYS_PER_YEAR)
+                  for ours, (col, factor) in KPI_PER_YEAR.items()}
                | {"rank_all": int(row["rank"]), "n_rotations": len(ranked)})
         parts = {name: row[f"{name}_score"] for name in ScoreParts.model_fields}  # one per scorer criterion
         return scorer_rotation(key, start_year, is_current=is_current, pick=pick,
                                total=round(float(row["total_score"]), 4),
-                               parts={k: round(float(v), 4) for k, v in parts.items()}, kpi=kpi)
+                               parts={k: round(float(v), 4) for k, v in parts.items()}, kpi=kpi,
+                               cover_variant=variant)
 
     rotations = [build(current, True, None)] + [build(k, False, i) for i, k in enumerate(picks, 1)]
     return ScorerResponse(placeholder=False, rotations=rotations)
@@ -133,21 +155,23 @@ def explorer_rotation(sr: ScorerRotation, start_year: int, history: list[str], p
     placed = place_seasons(key, start_year)
     irr = season_irrigation(key, irrigation)
     ylds = yields.rotation_yields(sr.sequence, history=history)
+    n = nitrogen.season_nitrogen(key)
     sequence = [
-        SeasonDetail(**s.model_dump(), irr_in=irr[i], yield_=y.yield_, yield_pct_rotation=y.pct_rotation,
-                     effects=y.effects)
+        SeasonDetail(**s.model_dump(), irr_in=irr[i], yield_=y.yield_, n_lb=n[i].n_lb, n_adj_lb=n[i].n_adj_lb,
+                     yield_pct_rotation=y.pct_rotation, effects=y.effects + n[i].effects)
         for i, (s, y) in enumerate(zip(sr.sequence, ylds))
     ]
     kinds = monthly_kinds(key, start_year)
     water = {w["m"]: w for w in monthly_water(key, start_year, placed, irrigation)}
     stress = {x["m"]: x for x in monthly_stress(key, start_year)}
     monthly = [MonthDetail(**k, **{f: water[k["m"]][f] for f in ("et_in", "rain_in", "irr_in")},
-                           **{f: stress[k["m"]][f] for f in ("heat_years_pct", "cold_stress_years_pct", "kill_years_pct")})
+                           **{f: v for f, v in stress[k["m"]].items() if f != "m"})
                for k in kinds]
     s = summarize(key, previous_crop)
     summary = Summary(bare_months=round(s["bare_months"], 2), same_crop_repeats=s["same_crop_repeats"])
-    return Rotation(**sr.model_dump(exclude={"sequence"}), placeholder=False, sequence=sequence,
-                    monthly=monthly, summary=summary)
+    variant = sr.cover_variant and explorer_rotation(sr.cover_variant, start_year, history, previous_crop)
+    return Rotation(**sr.model_dump(exclude={"sequence", "cover_variant"}), placeholder=False, sequence=sequence,
+                    monthly=monthly, summary=summary, cover_variant=variant)
 
 
 def build_explorer(weights: dict[str, float]) -> tuple[ExplorerExport, ScorerResponse]:
@@ -163,8 +187,8 @@ def build_explorer(weights: dict[str, float]) -> tuple[ExplorerExport, ScorerRes
         crops=field_climate.build_crops(),
         climate=field_climate.build_climate(),
         rotations=rotations,
-        provenance=field_climate.PROVENANCE | yields.PROVENANCE | PROVENANCE,
-        sources=field_climate.SOURCES | yields.SOURCES | SOURCES,
+        provenance=field_climate.PROVENANCE | yields.PROVENANCE | nitrogen.PROVENANCE | PROVENANCE,
+        sources=field_climate.SOURCES | yields.SOURCES | nitrogen.SOURCES | SOURCES,
     )
     return export, response
 
@@ -180,8 +204,9 @@ def main() -> None:
     _write(EXAMPLES / "explorer.json", export)
     _write(EXAMPLES / "scorer" / "response.json", response)
     for r in export.rotations:
-        print(f"{'current' if r.is_current else f'pick {r.rank}':8} {r.id:35} seasons {len(r.sequence)}  "
-              f"months {len(r.monthly)}  bare {r.summary.bare_months}")
+        for v, label in ((r, "current" if r.is_current else f"pick {r.rank}"), (r.cover_variant, "  toggle")):
+            if v is not None:
+                print(f"{label:8} {v.id:40} seasons {len(v.sequence)}  months {len(v.monthly)}  bare {v.summary.bare_months}")
 
 
 if __name__ == "__main__":

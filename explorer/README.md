@@ -23,7 +23,8 @@ Both files are generated from real data: `uv run python -m explorer.build`.
 - **Frontend:** build against `explorer.json`. Ignore `scorer/`.
 - The formats are defined in [`schema.py`](schema.py). Every field and allowed value is listed there.
 - The rotations are the field's current rotation plus the scorer's top 3 for the weights in
-  `crop_scorer/scoring/ui_input_mock.json` (a mock until the UI sends weights).
+  `crop_scorer/scoring/ui_input_mock.json` (a mock until the UI sends weights). Picks have at most one Sclerotinia host
+  (sunflower or soybean) per pass (scorer rotation rule, NDSU A1995 p. 46, see `data/processed/rotation_scores/README.md`).
 
 ## What a rotation looks like
 
@@ -48,6 +49,14 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
 - Cover crop days are not bare (`bare_months`) and are not irrigated. The cover takes soil water, so the
   next crop's water need and rain-fed yield can change.
 
+**Cover crop switch:** every rotation in `rotations` carries `cover_variant`: the same crops with the cover crop
+toggled (`corn-corn-corn` ↔ `corn-corn-corn+triticale`), as a full rotation with its own score, kpi, sequence,
+monthly and summary. To switch, show `cover_variant` instead of the rotation. It takes the same slot
+(`is_current`, `rank`, `short`), so the farmer's rotation stays "Your rotation" and pick #1 stays pick #1.
+`cover_variant` is `null` where no gap of the rotation fits a cover crop (e.g. corn → winter wheat → sorghum),
+and a variant never has a variant itself. The ranking is not redone: switched off, the picks are the same crops
+without the cover crop, not the best rotations without a cover crop (`kpi.rank_all` shows where they stand).
+
 ## Conventions
 
 - Units are in the field name: `_in` = inches of water, `_lb` = lb N per acre, `_ft` = feet, `_pct` = 0–100.
@@ -56,19 +65,35 @@ The scorer also has every rotation with a **triticale cover crop** where it fits
   year. The harvest day itself is not part of the season.
 - All averages over the weather years are means: `monthly` and the season values `irr_in` / `yield`
   (`v`, plus 10th–90th percentile `p10`, `p90`). So months add up to the season.
-- `heat_years_pct` / `cold_stress_years_pct` / `kill_years_pct`: share of weather years with at least one
-  stress day in that month.
-  - heat: Tmax above the crop's optimum (close to 100 in most summer crop months)
-  - cold stress: below the crop's optimum for **at least half the day** (not just a cool night)
-  - kill: below the crop's killing temperature, i.e. real frost damage
+- Temperature stress per month, only while a crop stands:
+  - `heat_days` / `cold_stress_days` / `kill_days`: **mean number of stress days** in that month. Show these.
+    Continuous corn: heat 4.4 days in May, 19.9 in July, 8.2 in September; cold stress 1.3 in May, 0 in summer.
+  - `heat_years_pct` / `cold_stress_years_pct` / `kill_years_pct`: share of weather years with at least one
+    stress day in that month. One day is enough, so heat is ~100 in every summer month; use the days instead.
+  - heat: Tmax above the crop's optimum (e.g. corn 33 °C)
+  - cold stress: below the crop's **absolute minimum** (Ecocrop: no growth below it, e.g. corn 10 °C,
+    sorghum 8 °C) for **at least half the day**. Below the optimum the crop only grows slower, that is not
+    counted, so there is no cold stress in summer.
+  - kill: below the crop's killing temperature, i.e. real frost damage. Only winter wheat in its winter rest
+    (Nov–Mar, below −20 °C) has a documented one, so `kill_*` is 0 for every other crop and month
+    (see `crop_scorer/risk_score/README.md`).
   Thresholds are the scorer's (Ecocrop). There is no "frost" field on purpose: real frost is `kill`.
-- **`null` means "not computed yet"**: nitrogen (`n_lb`, `n_adj_lb`, `monthly.nitrogen`, `summary.n_loss_lb`)
-  is null until WP4 Nitrogen is done.
+- Nitrogen comes from the scorer: `sequence[].n_lb` = N fertilizer of the season after K-State MF2586,
+  `n_adj_lb` = the previous-crop adjustment in that formula (negative = credit, e.g. −40 after soybean;
+  +27.5 after a cover crop, SARE). Soybean is 0 (no K-State formula, assumption, see its `effects`).
+  **`null` means "not computed"**: K-State gives the need per season, not a monthly balance or losses, so
+  `monthly.nitrogen` and `summary.n_loss_lb` stay null.
 - `score` and `score_parts` are the scorer's: **0 = best, 1 = worst** among all its rotations.
   `score_parts` has one value per scorer criterion: `water`, `risk`, `soil_health`, `nitrogen`.
   `rank`, `score` and `score_parts` are passed through unchanged. `kpi` holds the scorer's values for the
-  whole pass, converted to US units (`irrigation_in`, `water_in_per_day`). The scorer's `frost_days` is left
-  out (days below the optimum, not frost).
+  whole pass, converted to US units (`irrigation_in`, `water_in_per_day`, `n_lb`), plus per year of the rotation
+  (`irrigation_in_per_year`, `n_lb_per_year` = pass value / (`cycle_days` / 365.25); `cycle_days` = first sowing
+  to the first sowing of the next pass). Compare rotations per year: a pass is 2–3 years long and not the same
+  for every rotation. The scorer's `frost_days` is left out (days below the optimum, not frost).
+- Two kinds of "per year": `summary.bare_months` is per year of the **window** (first sowing to last harvest;
+  the gap after the last harvest is not counted, e.g. continuous corn 5.7, over the full cycle about 6.9). The
+  `kpi.*_per_year` values are per year of the **cycle** (first sowing to the first sowing of the next pass).
+  In the UI say "bare months within the rotation", not just "per year".
 - `sequence[].irrigation` is an assumption (`full` for every season) until the farmer can choose it.
 - Every per-year list in `climate` is aligned to `climate.weather_years`.
 - `provenance` says what kind of number a field is (`measured | modeled | rule | assumption`)
@@ -89,6 +114,7 @@ If you change a format: change `schema.py` first, bump `CONTRACT_VERSION`, then 
 | `field_climate.py` | WP1 | field, crops, climate |
 | `water.py` | WP2 | irrigation per season and month, from the scorer's water balance |
 | `yields.py` | WP3 | yield per season |
+| `nitrogen.py` | WP4 | N fertilizer and previous-crop adjustment per season, from the scorer (K-State) |
 | `field_calendar.py` | WP5 | the scorer's seasons placed in the display years, crop per month, bare months |
 | `frost_heat.py` | WP6 | heat / cold stress / kill per month (cold stress: at least half a day below the optimum) |
 | `build.py` | WP7 | puts everything together and writes the examples |
