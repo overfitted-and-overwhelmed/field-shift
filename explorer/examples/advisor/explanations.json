@@ -79,7 +79,7 @@
           },
           {
             "code": "nitrogen_pending",
-            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+            "text": "Nitrogen amounts in pounds are not in the data yet, only the nitrogen score is. A missing amount does not mean zero."
           },
           {
             "code": "modeled",
@@ -91,7 +91,7 @@
           },
           {
             "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (Seifert, Roberts & Lobell 2017, Agron. J. 109(2):541 (summary: UNL CropWatch 2020)). Treat it as a rough guide.",
+            "text": "An effect of the crop order comes from a study or guide from another region (Seifert, Roberts & Lobell 2017, Agron. J. 109(2):541 (summary: UNL CropWatch 2020)). Treat it as a rough guide.",
             "source": "seifert_2017"
           }
         ],
@@ -243,7 +243,7 @@
           },
           {
             "code": "nitrogen_pending",
-            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+            "text": "Nitrogen amounts in pounds are not in the data yet, only the nitrogen score is. A missing amount does not mean zero."
           },
           {
             "code": "modeled",
@@ -255,12 +255,7 @@
           },
           {
             "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)). Treat it as a rough guide.",
-            "source": "nass_quickstats"
-          },
-          {
-            "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
+            "text": "An effect of the crop order comes from a study or guide from another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
             "source": "ndsu_sunflower"
           }
         ],
@@ -435,7 +430,7 @@
           },
           {
             "code": "nitrogen_pending",
-            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+            "text": "Nitrogen amounts in pounds are not in the data yet, only the nitrogen score is. A missing amount does not mean zero."
           },
           {
             "code": "modeled",
@@ -447,12 +442,7 @@
           },
           {
             "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)). Treat it as a rough guide.",
-            "source": "nass_quickstats"
-          },
-          {
-            "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
+            "text": "An effect of the crop order comes from a study or guide from another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
             "source": "ndsu_sunflower"
           }
         ],
@@ -627,7 +617,7 @@
           },
           {
             "code": "nitrogen_pending",
-            "text": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero."
+            "text": "Nitrogen amounts in pounds are not in the data yet, only the nitrogen score is. A missing amount does not mean zero."
           },
           {
             "code": "modeled",
@@ -639,12 +629,7 @@
           },
           {
             "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (USDA NASS Quick Stats, yields by irrigation practice (mean of the last 5 available years)). Treat it as a rough guide.",
-            "source": "nass_quickstats"
-          },
-          {
-            "code": "literature_effect",
-            "text": "The yield effect of the crop order comes from a study in another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
+            "text": "An effect of the crop order comes from a study or guide from another region (NDSU Sunflower Production Guide). Treat it as a rough guide.",
             "source": "ndsu_sunflower"
           }
         ],

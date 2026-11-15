@@ -196,6 +196,13 @@ def test_caveats_name_the_literature_source_of_rotation_effects():
     assert effects and all(c["source"] in result["sources"] for c in effects)
 
 
+def test_literature_caveat_skips_model_notes_and_assumptions():
+    # pick 1 has the NDSU sunflower guide and a 'derived yield level' note citing NASS, which is no study
+    result = get_data_caveats(PICK_1)
+    assert {c["source"] for c in result["caveats"] if c["code"] == "literature_effect"} == {"ndsu_sunflower"}
+    assert "nass_quickstats" in result["sources"]
+
+
 # ---------------------------------------------------------------- rerank (sub-task 4)
 
 

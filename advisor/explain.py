@@ -144,7 +144,8 @@ def get_data_caveats(rotation_id: str) -> dict[str, Any]:
         seen: set[str] = set()
         for season in rotation.sequence:
             for effect in season.effects:
-                if effect.source is None or effect.source in seen:
+                # only effects from studies ("rule"); model notes and assumptions also cite a source
+                if effect.provenance != "rule" or effect.source is None or effect.source in seen:
                     continue
                 seen.add(effect.source)
                 used_sources.add(effect.source)

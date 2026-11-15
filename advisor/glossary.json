@@ -4,7 +4,7 @@
     "water": {
       "term": "Water need",
       "short": "How much irrigation water the rotation needs, per day.",
-      "long": "The irrigation water the crops need on top of rain, averaged over every day of one pass through the rotation and over past weather years (1991-2025). The model is a daily soil water balance after FAO-56. The score runs from 0 (needs the least water of all tested rotations) to 1 (needs the most).",
+      "long": "The irrigation water the main crops need on top of what rain and the water stored in the soil give them, averaged over every day of one pass through the rotation and over past weather years (1991-2025). The model is a daily soil water balance after FAO-56. A cover crop is not irrigated, but it uses soil water that the next crop then lacks. The score always counts the full need, whatever irrigation level is shown. The score runs from 0 (needs the least water of all tested rotations) to 1 (needs the most).",
       "unit": "score 0-1 (0 = best); raw value in the details is inches of irrigation per day",
       "why_it_matters": "Irrigation costs money and, in dry regions, water is limited.",
       "source": "FAO-56 via the Field Shift scorer",
@@ -14,7 +14,7 @@
     "risk": {
       "term": "Temperature risk",
       "short": "How often heat, cold or frost hurt the crops of this rotation.",
-      "long": "A daily risk value for each crop on the days it stands in the field: it grows when the day is hotter or colder than the crop likes, and jumps on days that are cold enough to kill the crop. Days without a crop (fallow) carry no risk. The score runs from 0 (lowest risk of all tested rotations) to 1 (highest).",
+      "long": "A daily risk value for each main crop on the days it stands in the field: it grows when the day is hotter or colder than the crop likes, and jumps on days that are cold enough to kill the crop. The score is the mean over the days with a main crop; bare days and cover crop days carry no risk. The score runs from 0 (lowest risk of all tested rotations) to 1 (highest).",
       "unit": "score 0-1 (0 = best)",
       "why_it_matters": "Heat and frost are a main reason for a bad harvest, and they cannot be fixed afterwards.",
       "source": "FAO Ecocrop temperature limits, NASA POWER weather, via the Field Shift scorer",
@@ -34,7 +34,7 @@
     "nitrogen": {
       "term": "Nitrogen fertilizer need",
       "short": "How much nitrogen fertilizer the rotation needs, per day.",
-      "long": "The nitrogen fertilizer the crops need, summed over the seasons of one pass and divided by the days of the window. It follows the K-State recommendation (MF2586): it depends on the expected yield, the soil's organic matter, and the crop before. Soybean is assumed to need no fertilizer because it fixes its own nitrogen. After a cover crop of triticale the next crop needs more nitrogen. The score runs from 0 (needs the least) to 1 (needs the most). Today only this score exists; nitrogen amounts per season and month are not computed yet.",
+      "long": "The nitrogen fertilizer the crops need, summed over the seasons of one pass and divided by the days of the window. It follows the K-State recommendation (MF2586): it depends on the expected yield, the soil's organic matter, and the crop before it in the rotation (the first season has none, so it gets no adjustment). Soybean is assumed to need no fertilizer because it fixes its own nitrogen. After a triticale cover crop the next crop needs 27.5 pounds of nitrogen per acre more. The score runs from 0 (needs the least) to 1 (needs the most). The scorer computes the amount per season, but it is not in the explorer data yet, so only this score is shown.",
       "unit": "score 0-1 (0 = best)",
       "why_it_matters": "Fertilizer is a large cost and too much of it can leave the field with the water.",
       "source": "K-State MF2586 via the Field Shift scorer",
@@ -55,7 +55,7 @@
       "term": "Weights",
       "short": "How much each criterion counts in the ranking.",
       "long": "The total score is the weighted mean of the four criterion scores. Only the ratio of the weights matters: 2, 1, 1, 1 means water counts twice as much as each other criterion. A weight of 0 switches a criterion off.",
-      "unit": "any non-negative numbers",
+      "unit": "any non-negative numbers, at least one above 0",
       "why_it_matters": "Your priorities decide the ranking. A farmer with little water will weight water higher.",
       "source": "Field Shift scorer",
       "aliases": ["weight", "priorities"],
@@ -64,7 +64,7 @@
     "rank": {
       "term": "Rank and picks",
       "short": "The place in the ranking; the top 3 are shown as picks.",
-      "long": "All tested rotations are ordered by total score. 'Pick 1-3' marks the three best that have a full detailed view (seasons, yields, months). Other rotations only have their scores.",
+      "long": "All tested rotations are ordered by total score. 'Pick 1-3' are the three best for equal weights, not counting your current rotation. The picks and your current rotation have a full detailed view (seasons, yields, months); other rotations only have their scores. With other weights the place in the ranking ('rank_all') changes, the pick number does not.",
       "unit": "place, 1 = best",
       "why_it_matters": "The rank depends on the weights you choose.",
       "source": "Field Shift scorer, explorer.json",
@@ -84,7 +84,7 @@
     "window": {
       "term": "Window",
       "short": "The time from the first sowing to the last harvest of one pass.",
-      "long": "All scores are measured over this window and divided by its days, so rotations of different length can be compared. The first and last month of the window can be partial.",
+      "long": "All scores are measured over this window. Water, soil cover and nitrogen are divided by the days of the window, temperature risk by the days with a main crop, so rotations of different length can be compared. The first and last month of the window can be partial.",
       "unit": "days",
       "why_it_matters": "It explains why the first and last month show lower values than the months in between.",
       "source": "Field Shift scorer",
@@ -94,17 +94,17 @@
     "et0": {
       "term": "ET0 (reference evapotranspiration)",
       "short": "How much water the weather alone would evaporate from a standard grass field.",
-      "long": "ET0 is the water a well-watered standard grass surface loses to the air through evaporation and plant leaves, calculated from the weather. It is the starting point of the water model: the crop's own water use (ETc) is ET0 times a crop factor. In the data ET0 is shown for April to September.",
+      "long": "ET0 is the water a well-watered standard grass surface loses to the air through evaporation and plant leaves, calculated from the weather (FAO-56 Penman-Monteith with NASA POWER weather). It is the starting point of the water model: the crop's own water use (ETc) is ET0 times a crop factor. In the climate data ET0 is shown per year, summed from April to September.",
       "unit": "inches",
-      "why_it_matters": "ET0 minus rain tells how much water is missing in a season.",
-      "source": "FAO-56",
+      "why_it_matters": "ET0 minus rain gives a rough idea of how dry a season was.",
+      "source": "FAO-56, NASA POWER weather",
       "aliases": ["reference_evapotranspiration", "et0_apr_sep_in", "evapotranspiration"],
       "reviewed": false
     },
     "etc": {
       "term": "ETc (crop water use)",
-      "short": "How much water the crop actually uses.",
-      "long": "ETc is ET0 multiplied by a crop factor (Kc) that changes with the crop's growth stage. In explorer.json it is the field 'et_in': crop water use per month; in a bare month it is only evaporation from bare soil.",
+      "short": "How much water the crop uses when it has enough water.",
+      "long": "ETc is ET0 multiplied by a crop factor (Kc) that changes with the crop's growth stage. It is the use without water shortage; when the soil runs dry the crop uses less (see water stress factor). In explorer.json it is the field 'et_in': water use per month; in a bare month it is only evaporation from bare soil.",
       "unit": "inches",
       "why_it_matters": "Whatever rain does not cover of the crop's water use has to come from irrigation or from the soil's stored water.",
       "source": "FAO-56",
@@ -124,7 +124,7 @@
     "spread": {
       "term": "Mean and range (p10 / p90)",
       "short": "The average and the range of a value over past weather years.",
-      "long": "'v' is the mean over all weather years (1991-2025). 'p10' is the value that only the lowest 10% of the years fell below, 'p90' the value that only the highest 10% of the years exceeded. So 8 out of 10 years fall between p10 and p90. The mean is used (not the median) so that months add up exactly to the season.",
+      "long": "'v' is the mean over all weather years (1991-2025). 'p10' is the value that only the lowest 10% of the years fell below, 'p90' the value that only the highest 10% of the years exceeded. So 8 out of 10 years fall between p10 and p90. The mean is used (not the median) so that months add up exactly to the season. Exception: for the yield of a fully irrigated season 'v' is the NASS mean yield and the range is the year-to-year range of NASS irrigated yields, because the model has no water stress then.",
       "unit": "same unit as the value",
       "why_it_matters": "A wide range means that the value differs a lot from year to year.",
       "source": "explorer/schema.py (Spread)",
@@ -134,7 +134,7 @@
     "irr_in": {
       "term": "Irrigation applied",
       "short": "The water added by irrigation.",
-      "long": "Per season it is a mean with p10/p90 range from the scorer's water balance with the season's irrigation level applied; per month it is the mean over the weather years. It is zero if the irrigation level is 'none'.",
+      "long": "Per season it is a mean with p10/p90 range from the scorer's water balance with the season's irrigation level applied; per month it is the mean over the weather years. It is zero if the irrigation level is 'none'. For the whole rotation (key figure 'irrigation_in') it is the full irrigation need summed over one pass.",
       "unit": "inches",
       "why_it_matters": "It is the water you would have to pump, and a main driver of the water score.",
       "source": "Field Shift scorer (FAO-56 water balance)",
@@ -144,7 +144,7 @@
     "irrigation": {
       "term": "Irrigation level",
       "short": "Full, reduced or none: how much of the water need you irrigate.",
-      "long": "'full' means all water the crop needs beyond rain is supplied. 'reduced' means half of that. 'none' means rain-fed. The level in the data is an assumption (currently full), not your own choice.",
+      "long": "'full' means all water the crop needs beyond rain and the water stored in the soil is supplied. 'reduced' means half of that. 'none' means rain-fed. The level in the data is an assumption (currently full for every season), not your own choice. The water score does not depend on it, it always counts the full need.",
       "unit": "full / reduced / none",
       "why_it_matters": "Yield and water use change strongly with the level. Reduced is an assumption of 50% of full.",
       "source": "Field Shift explorer (assumption)",
@@ -174,7 +174,7 @@
     "crop_history": {
       "term": "Crop history",
       "short": "Which crops grew on the field in past years.",
-      "long": "Read from the USDA satellite crop maps (Cropland Data Layer), one crop per year. The map can misjudge a crop, and some years show classes such as fallow or idle land.",
+      "long": "Read from the USDA satellite crop maps (Cropland Data Layer), one crop per year. The map can misjudge a crop, and some years show classes such as fallow, idle land or double crops.",
       "unit": "crop per year",
       "why_it_matters": "It sets what the crop before the first season was and so the 'current rotation'.",
       "source": "USDA NASS Cropland Data Layer",
@@ -184,9 +184,9 @@
     "previous_crop": {
       "term": "Previous crop",
       "short": "The crop that grew on the field before the first season.",
-      "long": "Taken from the satellite crop maps, not from your own records. It affects the nitrogen need and the yield of the first season.",
+      "long": "Taken from the newest year of the satellite crop maps that shows one of our crops, not from your own records. It affects the yield of the first season (for example corn after corn) and counts in 'same crop twice in a row'. The scores do not depend on it: the scorer starts every rotation without a crop before it.",
       "unit": "",
-      "why_it_matters": "A legume such as soybean before a crop saves fertilizer; the same crop twice can cost yield.",
+      "why_it_matters": "The same crop twice in a row can cost yield.",
       "source": "USDA NASS Cropland Data Layer (assumption)",
       "aliases": ["crop_before"],
       "reviewed": false
@@ -194,7 +194,7 @@
     "rotation_start_year": {
       "term": "Start year",
       "short": "The year of the first sowing in the display.",
-      "long": "The dates in the data are moved to this year so the three seasons follow each other. It is an assumption for display, the scores use all weather years 1991-2025.",
+      "long": "The scorer's season dates of one pass are moved so that the first sowing falls into this year. It is an assumption for display, the scores use all weather years 1991-2025.",
       "unit": "year",
       "why_it_matters": "It does not change the ranking, only the dates shown.",
       "source": "explorer.json (assumption)",
@@ -214,9 +214,9 @@
     "deficit_apr_sep_in": {
       "term": "Water deficit April to September",
       "short": "ET0 minus rain over the growing season; positive means water is missing.",
-      "long": "The difference between what the weather would evaporate (ET0) and the rain, summed from April to September, per year.",
+      "long": "The difference between what the weather would evaporate from grass (ET0) and the rain, summed from April to September, per year.",
       "unit": "inches",
-      "why_it_matters": "Shows how much irrigation a normal grass-like crop would need in each year.",
+      "why_it_matters": "Shows how dry each growing season was. It is not the irrigation need, which also depends on the crop, its season and the water stored in the soil.",
       "source": "NASA POWER, FAO-56",
       "aliases": ["water_deficit", "deficit"],
       "reviewed": false
@@ -224,8 +224,8 @@
 
     "rain_in": {
       "term": "Rain",
-      "short": "The rain that falls in a month, as a mean over past years.",
-      "long": "Rain is taken from NASA POWER daily weather (about 50 km grid) and averaged over the weather years.",
+      "short": "The rain that falls: per year in the climate data, per month in the monthly view.",
+      "long": "Rain is taken from NASA POWER daily weather (about 50 km grid). In the climate data it is the total of each year; in the monthly view it is the mean of that month over the weather years.",
       "unit": "inches",
       "why_it_matters": "Rain reduces the irrigation need. Grid data can differ from your own rain gauge.",
       "source": "NASA POWER",
@@ -234,8 +234,8 @@
     },
     "et_in": {
       "term": "Crop water use per month",
-      "short": "What the crop uses in a month; on bare months only evaporation.",
-      "long": "See ETc. The monthly value is the mean over all weather years.",
+      "short": "What the crop would use in a month with enough water; on bare months only evaporation.",
+      "long": "See ETc. The monthly value is the mean over all weather years. Evaporation from bare soil is set to a quarter of ET0 (an assumption, FAO-56 has no value for it).",
       "unit": "inches",
       "why_it_matters": "It shows in which months the water demand peaks.",
       "source": "FAO-56 via the Field Shift scorer",
@@ -285,7 +285,7 @@
     "plant_date": {
       "term": "Sowing date",
       "short": "When the crop is sown, from the typical calendar.",
-      "long": "Dates come from the USDA NASS crop calendar for Kansas and are a rule, not your own plan.",
+      "long": "The middle of the main sowing period in the USDA NASS crop calendar for Kansas. If the field is still occupied then, the crop is sown 3 days after the previous harvest when that is still inside the sowing period, otherwise a year later. It is a rule, not your own plan.",
       "unit": "date",
       "why_it_matters": "Sowing time decides which weather the crop meets.",
       "source": "USDA NASS crop calendar",
@@ -295,7 +295,7 @@
     "harvest_date": {
       "term": "Harvest date",
       "short": "When the crop is harvested, from the typical calendar.",
-      "long": "Dates come from the USDA NASS crop calendar for Kansas and are a rule, not your own plan.",
+      "long": "The sowing date plus a fixed season length per crop, from the USDA NASS crop calendar for Kansas (middle of the main sowing period to the middle of the main harvest period). It is a rule, not your own plan.",
       "unit": "date",
       "why_it_matters": "",
       "source": "USDA NASS crop calendar",
@@ -315,17 +315,17 @@
     "cover_crop": {
       "term": "Cover crop (triticale)",
       "short": "A crop grown between two main crops to keep the soil covered.",
-      "long": "The scorer tests every rotation with and without a triticale cover crop, where a gap is long enough. The cover crop uses soil water, so it can raise the water need, and it is not bare soil, so it improves the soil cover score. After a cereal cover crop the next crop needs more nitrogen, because the residue ties up nitrogen.",
+      "long": "The scorer tests every rotation with and without a triticale cover crop. Triticale is sown in a gap between two main crops when the gap reaches into its sowing period (September 10 to November 1) and it can stand at least 28 days before it is ended, 35 days before the next sowing. It is not irrigated and uses soil water, so it can raise the water need; it is not bare soil, so it improves the soil cover score. After a cereal cover crop the next crop needs more nitrogen (27.5 pounds per acre in the model), because the residue ties up nitrogen. In the model triticale uses water like winter wheat (an assumption).",
       "unit": "",
       "why_it_matters": "It trades some water and nitrogen for less erosion.",
-      "source": "Field Shift scorer; Clark (ed.) 2007, Managing Cover Crops Profitably, SARE, for the nitrogen effect",
+      "source": "Field Shift scorer; Clark (ed.) 2007, Managing Cover Crops Profitably, SARE, for the nitrogen effect; NRCS Cover Crop Termination Guidelines for the 35 days",
       "aliases": ["triticale", "cover_crops"],
       "reviewed": false
     },
     "yield": {
       "term": "Expected yield",
       "short": "The yield to expect, with a range over past weather years.",
-      "long": "The yield level comes from USDA NASS statistics for the county (full irrigation or rain-fed). A water deficit of the season reduces it, and literature effects of the crop order (for example corn after corn) raise or lower it. The range p10 to p90 comes from the weather years. This is a model result, not a forecast.",
+      "long": "The yield level is the USDA NASS mean of recent years (up to 5) with full irrigation or rain-fed, at the most local level that has these numbers (district or state). For sorghum and sunflower NASS has no recent split by irrigation, so both levels are derived (an assumption). Without full irrigation a water deficit of the season lowers the yield and the range p10 to p90 comes from the weather years; with full irrigation the range is the year-to-year range of NASS irrigated yields. Literature effects of the crop order (for example corn after corn) raise or lower it. This is a model result, not a forecast.",
       "unit": "bushels per acre, or pounds per acre (shown in the unit field)",
       "why_it_matters": "It is the base of any income estimate, with the range showing the bad-year risk.",
       "source": "USDA NASS Quick Stats; FAO-33 idea via explorer/yields.py",
@@ -335,7 +335,7 @@
     "yield_pct_rotation": {
       "term": "Yield compared with the crop's reference",
       "short": "How the season's yield compares with the typical yield of that crop, in percent.",
-      "long": "100% is the typical yield of the crop at the same irrigation level. Below or above 100% comes from water carry-over in the rotation and from literature effects of the crop order.",
+      "long": "100% is the typical yield of the crop at the same irrigation level. Below or above 100% comes from literature effects of the crop order and, without full irrigation, from the soil water the crops before left behind.",
       "unit": "percent",
       "why_it_matters": "Shows whether this position in the rotation helps or hurts the crop.",
       "source": "explorer/yields.py",
@@ -344,20 +344,20 @@
     },
     "effects": {
       "term": "Rotation effects",
-      "short": "Yield effects of the crop order found in studies.",
-      "long": "For example a yield drag for corn after corn. Every effect carries its source and a label of how reliable it is (see provenance labels).",
+      "short": "Notes on what changes the season's yield, mostly effects of the crop order found in studies.",
+      "long": "For example a yield drag for corn after corn. The list also holds model notes (water supply in this rotation) and assumptions (for example a derived yield level). Every note carries a label of how reliable it is (see provenance labels) and, where there is one, its source.",
       "unit": "text",
       "why_it_matters": "Studies come from other regions, so treat them as a rough guide for your field.",
-      "source": "Seifert, Roberts & Lobell 2017; NDSU Sunflower Production Guide",
+      "source": "Seifert, Roberts & Lobell 2017; NDSU Sunflower Production Guide; Field Shift yield model",
       "aliases": ["rotation_effect", "literature_effects"],
       "reviewed": false
     },
     "n_lb": {
       "term": "Nitrogen fertilizer per season",
       "short": "The nitrogen fertilizer recommended for the season.",
-      "long": "Planned after the K-State recommendation for the crop. It is not computed yet and shows as missing until the nitrogen work package is delivered.",
+      "long": "The nitrogen fertilizer for the season after the K-State recommendation. The scorer already computes it for its nitrogen score, but it is not in the explorer data yet, so it shows as missing.",
       "unit": "pounds of nitrogen per acre",
-      "why_it_matters": "A main cost item; missing values mean only the nitrogen score exists.",
+      "why_it_matters": "A main cost item; while it is missing, only the nitrogen score is available.",
       "source": "K-State MF2586",
       "aliases": ["n_fertilizer_lb", "nitrogen_per_season"],
       "reviewed": false
@@ -365,10 +365,10 @@
     "n_adj_lb": {
       "term": "Previous-crop nitrogen adjustment",
       "short": "More or less fertilizer because of the crop before.",
-      "long": "After a legume such as soybean the next crop needs less fertilizer, so the value can be negative. Not computed yet, shows as missing.",
+      "long": "After K-State, for example 40 pounds less for a summer crop after soybean (so the value can be negative) and 30 more for winter wheat after sorghum or sunflower; the model adds 27.5 after a triticale cover crop. The scorer uses it inside the nitrogen score, but it is not in the explorer data yet, so it shows as missing.",
       "unit": "pounds of nitrogen per acre",
-      "why_it_matters": "It is the nitrogen benefit of a good crop order.",
-      "source": "K-State MF2586",
+      "why_it_matters": "It is the nitrogen benefit or cost of the crop order.",
+      "source": "K-State MF2586; Clark (ed.) 2007, SARE, for the cover crop",
       "aliases": ["previous_crop_credit", "previous_crop_adjustment"],
       "reviewed": false
     },
@@ -465,7 +465,7 @@
     "same_crop_repeats": {
       "term": "Same crop twice in a row",
       "short": "How many seasons follow the same crop as the one before.",
-      "long": "The first season is compared with the crop before the rotation (your field's previous crop).",
+      "long": "The first season is compared with the crop before the rotation (the field's previous crop from the satellite crop maps).",
       "unit": "number of seasons",
       "why_it_matters": "Same-crop repeats can build up disease and pests and often cost some yield.",
       "source": "explorer/schema.py (Summary)",
@@ -475,7 +475,7 @@
     "heat_years_pct": {
       "term": "Heat years",
       "short": "In how many of the past years the month had at least one too-hot day.",
-      "long": "A heat day is a day whose highest temperature is above the optimum of the crop in the field. The value is the share of weather years with at least one such day in that month.",
+      "long": "A heat day is a day whose highest temperature is above the upper end of the best temperature range of the crop in the field (Ecocrop). The value is the share of weather years with at least one such day in that month. The key figure 'heat_days' of a rotation is different: the number of heat days in one pass, as a mean over the weather years.",
       "unit": "percent of years",
       "why_it_matters": "Heat in sensitive months can cut the yield.",
       "source": "FAO Ecocrop limits, NASA POWER weather",
@@ -485,7 +485,7 @@
     "cold_stress_years_pct": {
       "term": "Cold-stress years",
       "short": "In how many of the past years the month had at least one cold day for the crop.",
-      "long": "A cold-stress day is a day on which the temperature stayed below the crop's optimum for at least half of the day. It is less severe than a killing frost. The half-day rule is our own assumption, not a standard threshold.",
+      "long": "A cold-stress day is a day on which the temperature stayed below the lower end of the crop's best temperature range for at least half of the day (estimated from the day's lowest and highest temperature). It is less severe than a killing frost, and winter wheat has none during its winter rest (November to March). The half-day rule is our own assumption, not a standard threshold.",
       "unit": "percent of years",
       "why_it_matters": "Cool spells slow growth, for example after early sowing.",
       "source": "FAO Ecocrop limits, NASA POWER weather; half-day rule is an assumption",
@@ -495,17 +495,17 @@
     "kill_years_pct": {
       "term": "Frost-kill years",
       "short": "In how many of the past years the month had a day cold enough to kill the crop.",
-      "long": "A kill day is a day below the crop's killing temperature, which means real frost damage. The value is the share of weather years with at least one such day in that month.",
+      "long": "A kill day is a day whose lowest temperature is below the crop's killing temperature, which means real frost damage. The killing temperature is Ecocrop's value for early growth, or 0 degrees C where Ecocrop has none (corn, sorghum, soybean); for winter wheat in its winter rest (November to March) it is -20 degrees C. The value is the share of weather years with at least one such day in that month. The key figure 'kill_days' of a rotation is the number of kill days in one pass, as a mean over the weather years.",
       "unit": "percent of years",
       "why_it_matters": "This is the most severe temperature risk, because the crop may have to be re-sown or is lost.",
-      "source": "FAO Ecocrop limits, NASA POWER weather",
+      "source": "FAO Ecocrop limits, NASA POWER weather; the 0 and -20 degrees C values are assumptions",
       "aliases": ["kill", "kill_days", "frost", "frost_kill"],
       "reviewed": false
     },
     "nitrogen_pending": {
       "term": "Nitrogen amounts pending",
-      "short": "Only the nitrogen score exists, the amounts in pounds are not computed yet.",
-      "long": "The nitrogen amounts per season and month, and the nitrogen loss, are still missing in the data. Treat the nitrogen score as the only available nitrogen information.",
+      "short": "Only the nitrogen score is in the data, the amounts in pounds are missing.",
+      "long": "The scorer computes the nitrogen amount per season, but it is not passed into the data yet; the monthly nitrogen balance and the nitrogen loss are not computed at all. Treat the nitrogen score as the only available nitrogen information.",
       "unit": "",
       "why_it_matters": "Do not read a missing value as zero.",
       "source": "explorer.json",
@@ -545,7 +545,7 @@
     "rule": {
       "term": "Label: rule",
       "short": "Set by a fixed rule, for example the typical sowing calendar.",
-      "long": "Example: sowing and harvest dates from the USDA NASS crop calendar, or 'which crop stands on most days of a month'.",
+      "long": "Example: sowing and harvest dates from the USDA NASS crop calendar, 'which crop stands on most days of a month', or a yield effect of the crop order taken from a study.",
       "unit": "",
       "why_it_matters": "A rule is a simplification; your own dates may differ.",
       "source": "explorer.json provenance",
@@ -555,7 +555,7 @@
     "assumption": {
       "term": "Label: assumption",
       "short": "An assumption we made, not a measurement and not your input.",
-      "long": "Example: the irrigation level of each season, the year the first sowing takes place, and the half-day rule for cold stress. The result changes if the assumption does not fit your field.",
+      "long": "Example: the irrigation level of each season, the crop before the rotation, the year the first sowing takes place, and the half-day rule for cold stress. The result changes if the assumption does not fit your field.",
       "unit": "",
       "why_it_matters": "These are the values you should check first.",
       "source": "explorer.json provenance",
@@ -608,9 +608,9 @@
       "scores_only": "This rotation only has scores. There are no seasons, yields, nitrogen amounts or monthly values for it.",
       "placeholder": "The values of this rotation are placeholder (demo) values, not the real results. Do not use them for decisions.",
       "placeholder_unknown": "It is not known whether the scores of this rotation are final, because it has no detailed view.",
-      "nitrogen_pending": "Nitrogen amounts in pounds are not computed yet, only the nitrogen score exists. A missing amount does not mean zero.",
+      "nitrogen_pending": "Nitrogen amounts in pounds are not in the data yet, only the nitrogen score is. A missing amount does not mean zero.",
       "modeled": "Yields, irrigation and stress values are model results based on past weather ({first_year}-{last_year}). They are not forecasts.",
-      "literature_effect": "The yield effect of the crop order comes from a study in another region ({title}). Treat it as a rough guide.",
+      "literature_effect": "An effect of the crop order comes from a study or guide from another region ({title}). Treat it as a rough guide.",
       "grid_weather": "Weather comes from a coarse grid (about 50 km), not from a station at your field."
     },
     "assumptions": {

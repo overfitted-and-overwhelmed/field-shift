@@ -137,12 +137,28 @@
 
 ## Review TODO: agronomic correctness of the wording (open)
 
-**Status:** [ ] open, no reviewer assigned yet. Until then every glossary entry carries `reviewed: false`. A test enforces `reviewed: false`, so it must be changed when entries are reviewed.
+**Status:** [x] part A done (2026-11-15): every glossary entry and template checked against the code it describes. [ ] part B open, no reviewer assigned: agronomic review. Every glossary entry keeps `reviewed: false` until part B; a test enforces it, so it must be changed when entries are reviewed (then also re-run `uv run python -m advisor.export`).
+
+**Part A, what was fixed** (wording did not match the code):
+- ETc / `et_in` described as actual use; it is the use without water stress (actual use is ETa = Ks x ETc).
+- Water and irrigation: the need is on top of rain *and* stored soil water; the water score always counts the full need; cover crops are not irrigated.
+- Risk and window: risk is averaged over main-crop days only, not over the window.
+- Nitrogen: amounts per season *are* computed by the scorer, just not passed into explorer.json; the first season gets no previous-crop adjustment, so the field's previous crop does not change any score.
+- Yield: levels are NASS district/state means, not county; sorghum and sunflower levels are derived; with full irrigation the p10/p90 range comes from NASS irrigated years, not weather years.
+- `effects` also holds model notes and assumptions, not only studies. Bug fixed in `get_data_caveats`: NASS and scorer notes were reported as "a study from another region".
+- Smaller: `rain_in` (per year in climate, per month in monthly), `deficit_apr_sep_in` (not the irrigation need), rank/picks, sowing/harvest rule, cover crop rule, kill thresholds (0 / -20 °C fallbacks), `heat_days` / `kill_days` key figures, weights need one value above 0.
+
+**Part B, questions for the agronomist** (only modelling choices and general claims are left):
+- Kill temperature: Ecocrop's early-growth value is used for the whole season; corn, sorghum, soybean have none and fall back to 0 °C; winter wheat in winter rest uses -20 °C. Reasonable for southwest Kansas?
+- Cold-stress half-day rule and heat above the optimum range: sensible thresholds for "stress"?
+- Bare-soil evaporation as 25 % of ET0; triticale water use like winter wheat; +27.5 lb N after triticale for every next crop.
+- Yield response to the water deficit (FAO-33 idea, `ks` entry) and the Corn Belt / North Dakota effects applied to Kansas.
+- The general `why_it_matters` sentences (erosion, slope, frost, fertilizer loss).
 
 Suggested reference sources, most are already used by the repo's data, so wording can be checked against the same material:
-- **ET0, ETc, Kc, Ks, root depth (water):** FAO Irrigation and Drainage Paper 56 (FAO-56), the basis of the repo's water model (`data/processed/crop_data/fao56/`).
+- **ET0, ETc, Kc, Ks, root depth (water):** FAO Irrigation and Drainage Paper 56 (FAO-56), the basis of the repo's water model (`data/base-data/fao56/`).
 - **Nitrogen need and previous-crop credit:** K-State MF2586 (K-State Research and Extension nitrogen recommendations), basis of `crop_scorer/scoring/nitrogen.py`.
-- **Heat, cold, kill temperatures:** FAO Ecocrop database (`data/processed/crop_data/ecocrop/`).
+- **Heat, cold, kill temperatures:** FAO Ecocrop database (`data/base-data/ecocrop/`).
 - **Weather and temperature data (measured):** NASA POWER documentation, for describing what "measured" means.
 - **Yields, planting/harvest windows:** USDA NASS QuickStats and Crop Progress calendar.
 - **Soil water capacity, organic matter:** USDA NRCS SSURGO.
@@ -157,13 +173,3 @@ Suggested reference sources, most are already used by the repo's data, so wordin
 ## Future Outlook (not in scope now)
 - **LLM chat in the web app** on top of the same functions, with guardrails against invented numbers; needs a backend and an API key.
 - **HTTP API** (for example FastAPI) for free-form weights from the slider.
-
-## Possible sources
-Review TODO: the agronomic review of the glossary wording is now an open TODO with no owner assigned. Glossary entries stay reviewed: false until someone checks them. I suggested reference sources per topic, most of which the repo's data already uses:
-Water: FAO-56
-Nitrogen: K-State MF2586
-Temperature limits: FAO Ecocrop
-Measured weather: NASA POWER
-Yields and calendar: USDA NASS
-Soil: NRCS SSURGO
-Rotation effects: the underlying papers behind rotation_effects_clean.csv
